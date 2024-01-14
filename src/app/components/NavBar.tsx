@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { UserAuth } from "../context/AuthContext";
+import { googleSignIn, logOut } from "../context/api";
 
 const NavBar = () => {
-  const { user, googleSignIn, logOut } = UserAuth();
+  const { user } = UserAuth();
   const [ loading, setLoading ] = useState(true);
   // console.log(user);
   // console.log(typeof user);

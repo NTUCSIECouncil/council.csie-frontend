@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 
 const page = () => {
-  const { user } = UserAuth();
+  const { user } = UserAuth()
   const [ loading, setLoading ] = useState(true);
 
   useEffect(() => {

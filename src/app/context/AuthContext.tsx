@@ -1,26 +1,19 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import { signInWithPopup, signOut, onAuthStateChanged, 
-  GoogleAuthProvider } from "firebase/auth";
+import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from '../../lib/firebase/firebase';
 
-const AuthContext = createContext<any>(null);
-// I don't know which type is correct.
+interface AuthContextType {
+  user: User | null;
+}
+
+const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export const AuthContextProvider = ({
-  children, 
+  children,
 }: {
   children: React.ReactNode
 }) => {
-  const [user, setUser] = useState<any>(null);
-  
-  const googleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
-  }
-
-  const logOut = () => {
-    signOut(auth);
-  }
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -31,12 +24,12 @@ export const AuthContextProvider = ({
   }, [user])
 
   return (
-    <AuthContext.Provider value = {{ user, googleSignIn, logOut }}>
+    <AuthContext.Provider value={{ user }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
-export const UserAuth = () => {
+export const UserAuth = (): AuthContextType => {
   return useContext(AuthContext);
-}
+};
