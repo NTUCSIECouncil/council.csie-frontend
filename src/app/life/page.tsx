@@ -1,5 +1,5 @@
 export default function Page() {
     return (
-        <p>德田生活:D</p>
+        <h1>德田生活:D</h1>
     )
 }
