@@ -14,7 +14,7 @@ export default function Page() {
           <Link href="main/rate">課程評價網</Link>
         </div>
         <div className="bg-gray-100 h-50 w-50 flex justify-center">
-          <Link href="main/database">課程資料庫:D</Link>
+          <Link href="main/database">課程資料庫</Link>
         </div>
       </div>
     </main> 

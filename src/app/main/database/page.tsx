@@ -1,5 +1,10 @@
+import Search from '@/app/ui/search';
+
 export default function Page() {
     return (
-        <p>課程資料庫</p>
+        <main>
+            <h1>課程資料庫:D</h1>
+            <Search placeholder='搜尋課程...'/>
+        </main>
     ) 
 }
