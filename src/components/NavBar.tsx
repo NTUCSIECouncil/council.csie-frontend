@@ -42,6 +42,15 @@ const NavBar = () => {
         <li>
           <Link href="/test1">test1</Link>
         </li>
+        <li>
+          <Link href="/life">德田生活</Link>
+        </li>
+        <li>
+          <Link href="/rate">課程評價網</Link>
+        </li>
+        <li>
+          <Link href="/database">課程資料庫</Link>
+        </li>
       </ul>
       {loading ? null : !user ? (<ul>
         <button onClick={handleSignIn}>

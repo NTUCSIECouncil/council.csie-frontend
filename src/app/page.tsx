@@ -3,18 +3,24 @@ import Link from "next/link";
 export default function Page() {
   return (
     <main>
-      <div className="flex justify-center">
-        <p>The main page of CSIE website.</p>
+      <div>
+        <h1>The main page of CSIE website.</h1>
       </div>
-      <div className="flex flex-row justify-center gap-4">
-        <div className="bg-gray-100 h-50 w-50 flex justify-center">
-          <Link href="life">德田生活</Link>
+      <div>
+        <div>
+          <Link href="/life">
+            <button>德田生活</button>
+          </Link>
         </div>
-        <div className="bg-gray-100 h-50 w-50 flex justify-center">
-          <Link href="rate">課程評價網</Link>
+        <div>
+          <Link href="/rate">
+            <button>課程評價網</button>
+          </Link>
         </div>
-        <div className="bg-gray-100 h-50 w-50 flex justify-center">
-          <Link href="database">課程資料庫</Link>
+        <div>
+          <Link href="/database">
+            <button>課程資料庫</button>
+          </Link>
         </div>
       </div>
     </main> 
