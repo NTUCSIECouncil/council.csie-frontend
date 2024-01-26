@@ -1,3 +1,16 @@
 {
-  "extends": ["next/core-web-vitals", "standard-with-typescript"]
+  "extends": [
+    "next/core-web-vitals",
+    "standard-with-typescript"
+  ],
+  "plugins": [
+    "@stylistic"
+  ],
+  "rules": {
+    "semi": "off",
+    "@typescript-eslint/semi": [
+      "error",
+      "always"
+    ]
+  }
 }
