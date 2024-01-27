@@ -1,6 +1,7 @@
-import Link from "next/link";
+import Link from 'next/link';
+import { type FC } from 'react';
 
-export default function Page() {
+const Page: FC = () => {
   return (
     <main>
       <div>
@@ -23,6 +24,8 @@ export default function Page() {
           </Link>
         </div>
       </div>
-    </main> 
-  )
-}
+    </main>
+  );
+};
+
+export default Page;

@@ -1,16 +1,13 @@
-'use client'
+'use client';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import NavBar from '../components/NavBar';
 import { AuthContextProvider } from '../context/AuthContext';
+import { type FC, type ReactNode } from 'react';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -20,5 +17,7 @@ export default function RootLayout({
         </AuthContextProvider>
       </body>
     </html>
-  )
-}
+  );
+};
+
+export default RootLayout;

@@ -1,36 +1,37 @@
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { UserAuth } from "../context/AuthContext";
-import { googleSignIn, logOut } from "../context/api";
+import { type FC, useState, useEffect } from 'react';
+import Link from 'next/link';
+import { UserAuth } from '../context/AuthContext';
+import { googleSignIn, logOut } from '../context/api';
 
-const NavBar = () => {
+const NavBar: FC = () => {
   const { user } = UserAuth();
-  const [ loading, setLoading ] = useState(true);
+  const [loading, setLoading] = useState(true);
   // console.log(user);
   // console.log(typeof user);
 
-  const handleSignIn = async () => {
-    try {
+  const handleSignIn = (): void => {
+    (async () => {
       await googleSignIn();
-    } catch (error) {
-      console.log(error);
-    }
+    })().catch((err) => {
+      console.log(err);
+    });
   };
 
-  const handleSignOut = async () => {
-    try {
+  const handleSignOut = (): void => {
+    (async () => {
       await logOut();
-    } catch (error) {
-      console.log(error);
-    }
+    })().catch((err) => {
+      console.log(err);
+    });
   };
 
   useEffect(() => {
-    const checkAuthentication = async () => {
+    (async () => {
       await new Promise((resolve) => setTimeout(resolve, 50));
       setLoading(false);
-    };
-    checkAuthentication();
+    })().catch((err) => {
+      console.log(err);
+    });
   }, [user]);
 
   return (
@@ -52,18 +53,22 @@ const NavBar = () => {
           <Link href="/database">課程資料庫</Link>
         </li>
       </ul>
-      {loading ? null : !user ? (<ul>
+      {loading
+        ? null
+        : user === null
+          ? (<ul>
         <button onClick={handleSignIn}>
           Login
         </button>
-      </ul>) : (
+      </ul>)
+          : (
         <div>
           <p>Welcome, {user.displayName}</p>
           <button onClick={handleSignOut}>Sign out</button>
         </div>
-      )}
+            )}
     </div>
   );
-}
+};
 
-export default NavBar
+export default NavBar;

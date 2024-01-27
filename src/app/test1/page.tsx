@@ -1,30 +1,62 @@
-'use client'
-import React, { useState, useEffect } from "react";
-import { UserAuth } from "../../context/AuthContext";
+'use client';
+import React, { useState, useEffect } from 'react';
+import { UserAuth } from '../../context/AuthContext';
 
-const page = () => {
-  const { user } = UserAuth()
-  const [ loading, setLoading ] = useState(true);
+const Page: React.FC = () => {
+  const { user } = UserAuth();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const checkAuthentication = async () => {
+    (async () => {
       await new Promise((resolve) => setTimeout(resolve, 50));
       setLoading(false);
-    };
-    checkAuthentication();
+    })().catch((err) => {
+      console.log(err);
+    });
+  }, [user]);
+
+  const [backendData, setBackendData] = useState();
+
+  useEffect(() => {
+    (async () => {
+      console.log('!');
+      const header = {};
+      if (user !== null) {
+        const responce = await fetch('http://localhost:3010/create-time', {
+          headers: {
+            ...header,
+            Authorization: await user.getIdToken()
+          }
+        }
+        );
+        const createTime = (await responce.json()).createTime;
+        setBackendData(createTime);
+      }
+    })().catch((err) => {
+      console.log(err);
+    });
   }, [user]);
 
   return (
     <div>
-      {loading ? (
+      {loading
+        ? (
         <p>Loading...</p>
-      ): user ? (
-        <p>Welcome to test1, {user.displayName}</p>
-      ): (
+          )
+        : user !== null
+          ? (
+        <div>
+          <p>Welcome to test1, {user.displayName}</p>
+          {
+            (backendData !== undefined) ? (<p>{backendData}</p>) : (<p></p>)
+          }
+        </div>
+            )
+          : (
         <p>please login.</p>
-      )}
+            )}
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;
