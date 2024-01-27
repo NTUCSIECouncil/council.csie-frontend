@@ -7,12 +7,12 @@
     "@stylistic"
   ],
   "rules": {
-    "semi": "off",
-    "@typescript-eslint/semi": [
+    "@typescript-eslint/semi": "off",
+    "@stylistic/semi": [
       "error",
       "always"
     ],
-    "@typescript-eslint/member-delimiter-style": [
+    "@stylistic/member-delimiter-style": [
       "error",
       {
         "multiline": {
