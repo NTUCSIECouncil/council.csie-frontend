@@ -12,6 +12,7 @@
       "error",
       "always"
     ],
+    "@typescript-eslint/member-delimiter-style": "off",
     "@stylistic/member-delimiter-style": [
       "error",
       {
@@ -21,7 +22,7 @@
         },
         "singleline": {
           "delimiter": "semi",
-          "requireLast": false
+          "requireLast": true
         }
       }
     ]

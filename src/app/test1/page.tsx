@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { UserAuth } from '../../context/AuthContext';
+import { type UserStateText } from '@/types/FetchText';
 
 const Page: React.FC = () => {
   const { user } = UserAuth();
@@ -15,7 +16,7 @@ const Page: React.FC = () => {
     });
   }, [user]);
 
-  const [backendData, setBackendData] = useState();
+  const [backendData, setBackendData] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -29,7 +30,8 @@ const Page: React.FC = () => {
           }
         }
         );
-        const createTime = (await responce.json()).createTime;
+        const body = await responce.json() as UserStateText;
+        const createTime = body.createTime;
         setBackendData(createTime);
       }
     })().catch((err) => {
