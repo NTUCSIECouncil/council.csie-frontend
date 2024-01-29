@@ -1,4 +1,5 @@
 {
+  "ignorePatterns": ["/*", "!/src"],
   "extends": [
     "next/core-web-vitals",
     "standard-with-typescript"
