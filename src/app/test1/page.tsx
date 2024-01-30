@@ -23,7 +23,7 @@ const Page: React.FC = () => {
       console.log('!');
       const header = {};
       if (user !== null) {
-        const responce = await fetch('/api/a/create-time', {
+        const responce = await fetch('/api/create-time', {
           headers: {
             ...header,
             Authorization: await user.getIdToken()
