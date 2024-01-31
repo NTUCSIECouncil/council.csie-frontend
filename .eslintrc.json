@@ -1,21 +1,24 @@
 {
-  "ignorePatterns": ["/*", "!/src"],
-  "extends": [
-    "next/core-web-vitals",
-    "standard-with-typescript"
+  "ignorePatterns": [
+    "/*",
+    "!/src"
   ],
   "plugins": [
     "@stylistic"
   ],
+  "extends": [
+    "next/core-web-vitals",
+    "standard-with-typescript"
+  ],
   "rules": {
     "@typescript-eslint/semi": "off",
     "@stylistic/semi": [
-      "error",
+      "warn",
       "always"
     ],
     "@typescript-eslint/member-delimiter-style": "off",
     "@stylistic/member-delimiter-style": [
-      "error",
+      "warn",
       {
         "multiline": {
           "delimiter": "semi",
