@@ -23,14 +23,35 @@ const Page: React.FC = () => {
       console.log('!');
       const header = {};
       if (user !== null) {
-        const responce = await fetch('/api/create-time', {
+        // Example of how to POST a new user
+        // const response = await fetch(`/api/users/${user.uid}`, {
+        //   body: JSON.stringify({
+        //     name: 'Sean',
+        //     uid: user.uid
+        //   }),
+        //   headers: {
+        //     ...header,
+        //     'Content-Type': 'application/json',
+        //     Authorization: await user.getIdToken()
+        //   },
+        //   method: 'POST'
+        // });
+
+        // Example of how to GET self-user
+        // const response = await fetch(`/api/users/${user.uid}`, {
+        //   headers: {
+        //     ...header,
+        //     Authorization: await user.getIdToken()
+        //   },
+        //   method: 'GET'
+        // });
+        const response = await fetch('/api/create-time', {
           headers: {
             ...header,
             Authorization: await user.getIdToken()
           }
-        }
-        );
-        const body = await responce.json() as UserStateText;
+        });
+        const body = await response.json() as UserStateText;
         const createTime = body.createTime;
         setBackendData(createTime);
       }
