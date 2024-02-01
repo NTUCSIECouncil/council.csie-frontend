@@ -26,7 +26,7 @@ const Page: React.FC = () => {
         // Example of how to POST a new user
         // const response = await fetch(`/api/users/${user.uid}`, {
         //   body: JSON.stringify({
-        //     name: 'Sean',
+        //     name: 'rwei',
         //     uid: user.uid
         //   }),
         //   headers: {
@@ -45,6 +45,7 @@ const Page: React.FC = () => {
         //   },
         //   method: 'GET'
         // });
+
         const response = await fetch('/api/create-time', {
           headers: {
             ...header,
