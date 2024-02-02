@@ -1,0 +1,117 @@
+.body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #40465a; /* Set your desired background color here */
+  }
+
+.layout_ver {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.title {
+    padding-top: 60px;
+    text-align: center;
+    color: white;
+    font-size: 40px
+}
+
+.left_bar {
+    background-color: #40465a;
+    border: #ffffff11;
+    border-radius: 20px;
+    color: white;
+    padding: 10px 10px;
+    width: 250px;
+    height: 400px;
+    margin: 20px
+    /* display: flex;
+    flex-direction: column; */
+    /* align-items: center; */
+}
+
+/* .mainBox {
+    background-color: #40465a55;
+    border: #ffffff11;
+    border-radius: 20px;
+    color: white;
+    padding: 10px 10px;
+    width: 250px;
+    height: 400px;
+    margin: 20px
+} */
+
+.selectBox {
+    /* styling */
+    background-color: white;
+    border: #40465a;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.3em 1em 0.3em 1em;
+  
+    /* reset */
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /* -webkit-appearance: none; */
+    /* -moz-appearance: none; */
+  }
+
+.tag {
+    background-color: #f7f7f7;
+    padding: 3px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    display: inline-block;
+    margin-right: 5px;
+    text-decoration: none;
+    color: black
+  }
+
+.searchContainer {
+  display:block;
+  left:50%;
+  position:absolute;
+  top:30%;
+
+  .searchContainer > input {
+    border:solid 3px #fff;
+    box-sizing:border-box;
+    font-size:2em;
+    height:2em;
+    margin-left:-15vw;
+    outline:solid #fc0 0;
+    padding:.5em;
+    transition:all 2s ease-in;
+    width:30vw;
+    z-index:1;
+    /* &:focus {
+      border:solid 3px #09f;      
+      outline:solid #fc0 2000px;
+    } */
+  }
+}
+
+.searchContainer > input {
+    border:solid 3px #fff;
+    box-sizing:border-box;
+    font-size:2em;
+    height:2em;
+    margin-left:-15vw;
+    outline:solid #fc0 0;
+    padding:.5em;
+    transition:all 2s ease-in;
+    width:30vw;
+    z-index:1;
+    /* &:focus {
+      border:solid 3px #09f;      
+      outline:solid #fc0 2000px;
+    } */
+  }
