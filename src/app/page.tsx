@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { type FC } from 'react';
-import styles from '@/styles/utils.module.css'
+import styles from '@/styles/rate.module.css';
 
 const Page: FC = () => {
   return (
