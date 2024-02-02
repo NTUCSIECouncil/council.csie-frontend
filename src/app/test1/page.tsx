@@ -4,7 +4,7 @@ import { UserAuth } from '../../context/AuthContext';
 import { type UserStateText } from '@/types/FetchText';
 
 const Page: React.FC = () => {
-  const { user } = UserAuth();
+  const { user, request } = UserAuth();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,45 +21,39 @@ const Page: React.FC = () => {
   useEffect(() => {
     (async () => {
       console.log('!');
-      const header = {};
-      if (user !== null) {
-        // Example of how to POST a new user
-        // const response = await fetch(`/api/users/${user.uid}`, {
-        //   body: JSON.stringify({
-        //     name: 'rwei',
-        //     uid: user.uid
-        //   }),
-        //   headers: {
-        //     ...header,
-        //     'Content-Type': 'application/json',
-        //     Authorization: await user.getIdToken()
-        //   },
-        //   method: 'POST'
-        // });
+      // if (user !== null) {
+      // Example of how to POST a new user
+      // const response = await fetch(`/api/users/${user.uid}`, {
+      //   body: JSON.stringify({
+      //     name: 'rwei',
+      //     uid: user.uid
+      //   }),
+      //   headers: {
+      //     ...header,
+      //     'Content-Type': 'application/json',
+      //     Authorization: await user.getIdToken()
+      //   },
+      //   method: 'POST'
+      // });
 
-        // Example of how to GET self-user
-        // const response = await fetch(`/api/users/${user.uid}`, {
-        //   headers: {
-        //     ...header,
-        //     Authorization: await user.getIdToken()
-        //   },
-        //   method: 'GET'
-        // });
+      // Example of how to GET self-user
+      // const response = await fetch(`/api/users/${user.uid}`, {
+      //   headers: {
+      //     ...header,
+      //     Authorization: await user.getIdToken()
+      //   },
+      //   method: 'GET'
+      // });
+      // }
 
-        const response = await fetch('/api/create-time', {
-          headers: {
-            ...header,
-            Authorization: await user.getIdToken()
-          }
-        });
-        const body = await response.json() as UserStateText;
-        const createTime = body.createTime;
-        setBackendData(createTime);
-      }
+      const response = await request('/api/create-time');
+      const body = await response.json() as UserStateText;
+      const createTime = body.createTime;
+      setBackendData(createTime);
     })().catch((err) => {
       console.log(err);
     });
-  }, [user]);
+  }, [request]);
 
   return (
     <div>
