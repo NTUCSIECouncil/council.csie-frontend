@@ -16,18 +16,14 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+*/
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
+      rgb(190, 190, 190)
     )
-    rgb(var(--background-start-rgb));
-}
-*/
-
-body {
-  margin-top: 80px;
-}
+    rgb(155, 155, 155);
+} */

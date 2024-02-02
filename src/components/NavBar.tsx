@@ -2,8 +2,20 @@ import { type FC, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { UserAuth } from '../context/AuthContext';
 import { googleSignIn, logOut } from '../context/api';
+import styles from '@/styles/utils.module.css';
 import './NavBar.css';
 import '@/styles/color.css';
+import { Playfair_Display, Roboto } from 'next/font/google';
+
+const playfairDisplay = Playfair_Display({
+  weight: '800',
+  subsets: ['latin']
+});
+
+const roboto = Roboto({
+  weight: '900',
+  subsets: ['latin']
+});
 
 const NavBar: FC = () => {
   const { user } = UserAuth();
@@ -38,8 +50,8 @@ const NavBar: FC = () => {
 
   return (
     <nav>
-        <Link href="/">NTU CSIE</Link>
-        <ul>
+        <Link href="/" className={playfairDisplay.className} style={{ paddingLeft: '110px', paddingTop: '40px', paddingBottom: '40px', fontSize: '32px' }} >NTU CSIE</Link>
+        <ul className={ roboto.className } style={{ paddingRight: '110px' }}>
           {/* <li>
             <Link href="/test1">test1</Link>
           </li> */}
@@ -52,19 +64,19 @@ const NavBar: FC = () => {
           <li>
             <Link href="/database">課程資料庫</Link>
           </li>
-          <li>
+          <li className={roboto.className}>
             {loading
               ? null
               : user === null
                 ? (
-                  <button onClick={handleSignIn}>
+                  <button className={styles.loginButton} onClick={handleSignIn}>
                     Login
                   </button>
                   )
                 : (
                   <div>
                     <p>Welcome, {user.displayName}</p>
-                    <button onClick={handleSignOut} >Sign out</button>
+                    <button className={styles.loginButton} onClick={handleSignOut} >Sign out</button>
                   </div>
                   )}
           </li>
