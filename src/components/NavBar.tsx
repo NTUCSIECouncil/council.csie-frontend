@@ -2,6 +2,8 @@ import { type FC, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { UserAuth } from '../context/AuthContext';
 import { googleSignIn, logOut } from '../context/api';
+import './NavBar.css';
+import '@/styles/color.css';
 
 const NavBar: FC = () => {
   const { user } = UserAuth();
@@ -35,39 +37,39 @@ const NavBar: FC = () => {
   }, [user]);
 
   return (
-    <div>
-      <ul>
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          <Link href="/test1">test1</Link>
-        </li>
-        <li>
-          <Link href="/life">德田生活</Link>
-        </li>
-        <li>
-          <Link href="/rate">課程評價網</Link>
-        </li>
-        <li>
-          <Link href="/database">課程資料庫</Link>
-        </li>
-      </ul>
-      {loading
-        ? null
-        : user === null
-          ? (<ul>
-        <button onClick={handleSignIn}>
-          Login
-        </button>
-      </ul>)
-          : (
-        <div>
-          <p>Welcome, {user.displayName}</p>
-          <button onClick={handleSignOut}>Sign out</button>
-        </div>
-            )}
-    </div>
+    <nav>
+        <Link href="/">NTU CSIE</Link>
+        <ul>
+          {/* <li>
+            <Link href="/test1">test1</Link>
+          </li> */}
+          <li>
+            <Link href="/life">德田生活</Link>
+          </li>
+          <li>
+            <Link href="/rate">課程評價網</Link>
+          </li>
+          <li>
+            <Link href="/database">課程資料庫</Link>
+          </li>
+          <li>
+            {loading
+              ? null
+              : user === null
+                ? (
+                  <button onClick={handleSignIn}>
+                    Login
+                  </button>
+                  )
+                : (
+                  <div>
+                    <p>Welcome, {user.displayName}</p>
+                    <button onClick={handleSignOut} >Sign out</button>
+                  </div>
+                  )}
+          </li>
+        </ul>
+    </nav>
   );
 };
 
