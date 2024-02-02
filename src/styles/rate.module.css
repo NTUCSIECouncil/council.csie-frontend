@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     background-color: #40465a; /* Set your desired background color here */
+    height: 1200px;
   }
 
 .layout_ver {
@@ -13,7 +14,7 @@
 }
 
 .title {
-    padding-top: 60px;
+    padding-top: 100px;
     text-align: center;
     color: white;
     font-size: 40px
@@ -33,16 +34,33 @@
     /* align-items: center; */
 }
 
-/* .mainBox {
-    background-color: #40465a55;
-    border: #ffffff11;
-    border-radius: 20px;
-    color: white;
+.mainLayout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    gap: 20px;
     padding: 10px 10px;
     width: 250px;
-    height: 400px;
-    margin: 20px
-} */
+    height: 700px;
+    margin-left: 400px;
+    margin-top: -300px;
+}
+
+.mainButton {
+    background-color: rgb(28, 42, 69);
+    color: var(--text);
+    padding: 10px 10px;
+    width: 800px;
+    height: 300px;
+    border-radius: 15px;
+    border-color: #40465a;
+    /* display: flex;
+    flex-direction: column; */
+    text-align: left;
+    padding-left: 50px;
+    padding-right: 50px;
+}
 
 .selectBox {
     /* styling */
@@ -75,6 +93,11 @@
     color: black
   }
 
+.paragraph {
+    font-size: 16px;
+    /* text-indent: 2em; */
+    text-align: left;
+}
 .searchContainer {
   display:block;
   left:50%;

@@ -1,4 +1,5 @@
 // import Search from '@/app/ui/search';
+import Link from 'next/link';
 import { type FC } from 'react';
 import styles from '@/styles/rate.module.css';
 
@@ -41,6 +42,59 @@ const Page: FC = () => {
         <a href="/tagged/超硬" className={styles.tag}>超硬</a>
         <a href="/tagged/甜涼" className={styles.tag}>甜涼</a>
         </button>
+      </div>
+      <div className={styles.mainLayout}>
+      <div>
+          <Link href="/courses/physics/hu">
+            <button className={styles.mainButton}>
+              <div>
+                <h1>普通物理學</h1>
+                <hr color="white" style={{ width: '100%' }}/>
+                <br></br>
+                <a href="/tagged/SP" className={styles.tag}>普物</a>
+                <a href="/tagged/ADA" className={styles.tag}>大一</a>
+                <a href="/tagged/DSA" className={styles.tag}>甜涼</a>
+                <p className={styles.paragraph}>
+                要想清楚，&#20320;&#22909;，到底是一種怎麽樣的存在。我認為，而這些並不是完全重要，更加重要的問題是，&#20320;&#22909;，到底應該如何實現。我們一般認為，抓住了問題的關鍵，其他一切則會迎刃而解。
+                </p>
+              </div>
+            </button>
+          </Link>
+        </div>
+        <div>
+          <Link href="/courses/physics/hu">
+            <button className={styles.mainButton}>
+            <div>
+                <h1>普通物理學</h1>
+                <hr color="white" style={{ width: '100%' }}/>
+                <br></br>
+                <a href="/tagged/SP" className={styles.tag}>普物</a>
+                <a href="/tagged/ADA" className={styles.tag}>大一</a>
+                <a href="/tagged/DSA" className={styles.tag}>甜涼</a>
+                <p className={styles.paragraph}>
+                要想清楚，&#20320;&#22909;，到底是一種怎麽樣的存在。我認為，而這些並不是完全重要，更加重要的問題是，&#20320;&#22909;，到底應該如何實現。我們一般認為，抓住了問題的關鍵，其他一切則會迎刃而解。
+                </p>
+              </div>
+            </button>
+          </Link>
+        </div>
+        <div>
+          <Link href="/courses/physics/hu">
+            <button className={styles.mainButton}>
+              <div>
+                <h1>普通物理學</h1>
+                <hr color="white" style={{ width: '100%' }}/>
+                <br></br>
+                <a href="/tagged/SP" className={styles.tag}>普物</a>
+                <a href="/tagged/ADA" className={styles.tag}>大一</a>
+                <a href="/tagged/DSA" className={styles.tag}>甜涼</a>
+                <p className={styles.paragraph}>
+                要想清楚，&#20320;&#22909;，到底是一種怎麽樣的存在。我認為，而這些並不是完全重要，更加重要的問題是，&#20320;&#22909;，到底應該如何實現。我們一般認為，抓住了問題的關鍵，其他一切則會迎刃而解。
+                </p>
+              </div>
+            </button>
+          </Link>
+        </div>
       </div>
     </main>
   );
