@@ -7,8 +7,8 @@ const Page: FC = () => {
   return (
     <main className={styles.body}>
       <h1 className={styles.title}>課程評價網:D</h1>
-      <div className={styles.layout_ver}>
-        <button className={styles.left_bar}>
+      <div className={styles.layoutVer}>
+        <button className={styles.leftBar}>
         <p>Search: &nbsp;
           <input id="search" className={styles.search} placeholder='搜尋課程...'></input>
         </p>
@@ -45,10 +45,11 @@ const Page: FC = () => {
       </div>
       <div className={styles.mainLayout}>
       <div>
-          <Link href="/courses/physics/hu">
+          <Link href="/rate/courses/">
             <button className={styles.mainButton}>
               <div>
                 <h1>普通物理學</h1>
+                <h3 text-align="left">胡德邦</h3>
                 <hr color="white" style={{ width: '100%' }}/>
                 <br></br>
                 <a href="/tagged/SP" className={styles.tag}>普物</a>
@@ -62,10 +63,11 @@ const Page: FC = () => {
           </Link>
         </div>
         <div>
-          <Link href="/courses/physics/hu">
+          <Link href="/rate/courses/">
             <button className={styles.mainButton}>
             <div>
                 <h1>普通物理學</h1>
+                <h3 text-align="left">胡德邦</h3>
                 <hr color="white" style={{ width: '100%' }}/>
                 <br></br>
                 <a href="/tagged/SP" className={styles.tag}>普物</a>
@@ -79,10 +81,12 @@ const Page: FC = () => {
           </Link>
         </div>
         <div>
-          <Link href="/courses/physics/hu">
+          <Link href="/rate/courses">
             <button className={styles.mainButton}>
               <div>
-                <h1>普通物理學</h1>
+                <h1 className={styles.courseName}>普通物理學</h1>
+                <h3 text-align="left">胡德邦</h3>
+                {/* how to align right and put in same line? */}
                 <hr color="white" style={{ width: '100%' }}/>
                 <br></br>
                 <a href="/tagged/SP" className={styles.tag}>普物</a>

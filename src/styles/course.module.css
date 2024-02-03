@@ -1,0 +1,87 @@
+.body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #40465a; /* Set your desired background color here */
+    height: 1200px;
+  }
+
+.layoutVer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 20px;
+}
+
+.courseName {
+    display: inline;
+}
+
+.title {
+    padding-top: 100px;
+    text-align: center;
+    color: white;
+    font-size: 40px
+}
+
+.courseButton {
+    background-color: rgb(28, 42, 69);
+    color: var(--text);
+    padding: 10px 10px;
+    width: 800px;
+    height: auto;
+    border-radius: 15px;
+    border-color: #40465a;
+    /* display: flex;
+    flex-direction: column; */
+    text-align: left;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.courseLayout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px;
+    gap: 20px;
+    padding: 450px 300px;
+    width: 250px;
+    height: 100px;
+    align-items: center; /* horizontal centering */
+    /* margin-right: 370px; */
+    margin-left: 370px;
+    box-align: center;
+    margin-top: 0px;
+}
+
+.tag {
+    background-color: #f7f7f7;
+    padding: 3px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    display: inline-block;
+    margin-right: 5px;
+    text-decoration: none;
+    color: black
+  }
+
+.paragraph {
+    font-size: 16px;
+    /* text-indent: 2em; */
+    text-align: left;
+}
+
+.backButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #bcc4d0;
+    color: black;
+    text-decoration: none;
+    border: 1px solid #bcc4d0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }

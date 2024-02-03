@@ -6,11 +6,15 @@
     height: 1200px;
   }
 
-.layout_ver {
+.layoutVer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+}
+
+.courseName {
+    display: inline;
 }
 
 .title {
@@ -20,7 +24,7 @@
     font-size: 40px
 }
 
-.left_bar {
+.leftBar {
     background-color: #40465a;
     border: #ffffff11;
     border-radius: 20px;
