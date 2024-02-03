@@ -1,7 +1,7 @@
 // import Search from '@/app/ui/search';
 import Link from 'next/link';
 import { type FC } from 'react';
-import styles from '@/styles/course.module.css';
+import styles from '@/styles/rate.module.css';
 
 const Page: FC = () => {
   return (
@@ -43,7 +43,7 @@ const Page: FC = () => {
             </button>
           </Link>
         </div>
-        <a href="/rate" className={styles.backButton}>
+        <a href="/filterResults" className={styles.backButton}>
           回搜尋結果
         </a>
       </div>

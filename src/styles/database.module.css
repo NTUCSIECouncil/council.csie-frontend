@@ -1,0 +1,141 @@
+.body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1c1c29;
+    background-image: url("/building_right.png");
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    height: 618px; /* auto set? */
+  }
+
+.layoutVer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.courseName {
+    display: inline;
+}
+
+.title {
+    padding-top: 150px;
+    text-align: center;
+    color: #d4d2d5;
+    font-size: 55px;
+    letter-spacing: 10px;
+}
+
+.word {
+    color: #bbb9bd;
+    font-weight: bold;
+}
+
+.customBreak {
+    height: 10px;
+}
+
+/* select box and tag */
+.selectBox {
+    /* styling */
+    background-color: #41414c;
+    border: #1c1c29;
+    border-radius: 4px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.3em 0.6em 0.3em 0.6em;
+    color: #d4d2d5;
+  
+    /* reset */
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /* -webkit-appearance: none; */
+    /* -moz-appearance: none; */
+  }
+
+.tag {
+    background-color: #41414c;
+    padding: 3px;
+    border: 1px solid #1c1c29;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 5px;
+    text-decoration: none;
+    padding: 0.3em 0.6em 0.3em 0.6em;
+    color: #d4d2d5;
+  }
+
+/* Search Bar Related */
+.search {
+    padding-top: 60px;
+    padding-bottom: 10px;
+    width: 100%;
+    position: relative;
+    display: flex;
+  }
+  
+.searchTerm {
+    width: 100%;
+    border: 3px solid #d4d2d5;
+    /* border-right: none; */
+    padding: 5px;
+    height: 35px;
+    border-radius: 0px 0 0 0px;
+    outline: none;
+    background-color: #1c1c29;
+  }
+  
+.searchTerm:focus{
+    color: #d4d2d5;
+    font-size: 24px;
+  }
+  
+.searchButton {
+    width: 55px;
+    /* height: 55px; */
+    border: 3px solid #d4d2d5;
+    background: #d4d2d5;
+    text-align: center;
+    color: #1c1c29;
+    border-radius: 0 0px 0px 0;
+    cursor: pointer;
+    font-size: 30px;
+  }
+
+.searchTerm::placeholder {
+    color: #5c5b65;
+    font-size: 17px;
+    line-height: 55px;
+    font-weight: bold;
+}
+
+.wrap{  /*Resize the wrap to see the search bar change!*/
+    width: 30%;
+    position: relative;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+/* image related */
+.imageContainer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+.maskedImage {
+    width: 100px;
+    height: auto;
+    /* display: block; */
+    /* transition: opacity 0.5s ease; */
+  }
+  
+/* .maskedImage:hover {
+    opacity: 0.7;
+  } */
