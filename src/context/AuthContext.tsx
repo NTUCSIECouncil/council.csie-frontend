@@ -2,8 +2,15 @@ import { type FC, type ReactNode, useContext, createContext, useState, useEffect
 import { onAuthStateChanged, type User } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase';
 
+interface customRequestOptions {
+  auth?: boolean;
+  headers?: HeadersInit;
+  options?: RequestInit;
+}
+
 interface AuthContextType {
   user: User | null;
+  request?: (url: string, { auth, headers, ...options }?: customRequestOptions) => Promise<Response>;
 }
 
 const authContext = createContext<AuthContextType>({ user: null });
@@ -38,12 +45,14 @@ export const AuthContextProvider: FC<{ children: ReactNode }> =
     auth = true,
     headers = {},
     ...options
-  } = {}) => {
+  }: customRequestOptions = {}) => {
+    const realHeaders = new Headers(headers);
     if (user != null) {
-      headers.Authorization = `Bearer ${await user.getIdToken()}`;
+      realHeaders.set('Authorization', `Bearer ${await user.getIdToken()}`);
+      // headers.Authorization = `Bearer ${await user.getIdToken()}`;
     }
-    const newOptions: RequestInfo = {
-      headers, ...options
+    const newOptions: RequestInit = {
+      headers: realHeaders, ...options
     };
     return await fetch(url, newOptions);
   }, [user]);
