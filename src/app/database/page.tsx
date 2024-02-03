@@ -1,5 +1,6 @@
 // import Search from '@/app/ui/search';
 // import Image from 'next/image';
+import Link from 'next/link';
 import { type FC } from 'react';
 import styles from '@/styles/database.module.css';
 
@@ -13,9 +14,11 @@ const Page: FC = () => {
       <div className={styles.wrap}>
         <div className={styles.search}>
             <input type="text" className={styles.searchTerm} placeholder="關鍵字搜尋" />
+            <Link href="/database/filterResults">
             <button type="submit" className={styles.searchButton}>
               <i className="fa fa-search"></i>
             </button>
+            </Link>
         </div>
         <p className={styles.word}>篩選：&nbsp;&nbsp;&nbsp;
           <select id="selectGrade" className={styles.selectBox}>

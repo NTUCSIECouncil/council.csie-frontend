@@ -248,8 +248,8 @@
 }
 
 .searchButton {
-  width: 55px;
-  /* height: 55px; */
+  width: 50px;
+  height: 50px;
   border: 3px solid #d4d2d5;
   background: #d4d2d5;
   text-align: center;
@@ -265,6 +265,7 @@
   line-height: 55px;
   font-weight: bold;
 }
+
 
 .wrap{  /*Resize the wrap to see the search bar change!*/
   width: 30%;

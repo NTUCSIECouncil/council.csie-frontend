@@ -97,8 +97,8 @@
   }
   
 .searchButton {
-    width: 55px;
-    /* height: 55px; */
+    width: 50px;
+    height: 50px;
     border: 3px solid #d4d2d5;
     background: #d4d2d5;
     text-align: center;

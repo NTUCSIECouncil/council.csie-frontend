@@ -8,6 +8,11 @@
     bottom: 0;
     top: 80px;
     width: 100vw;
+    background-color: var(--background);
+    background-image: url("/building.jpg");
+    background-repeat: no-repeat;
+    background-size: 120%;
+    background-position: -150px;
 }
 
 .button {
@@ -17,6 +22,8 @@
     width: 290px;
     height: 396px;
     border-radius: 15px;
+    border-color: transparent;
+    opacity: 0.85;
     cursor: pointer;
 }
 
