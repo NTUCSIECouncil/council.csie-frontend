@@ -1,39 +1,41 @@
 .body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #1c1c29;/* Set your desired background color here */
-    height: 1200px;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1c1c29;
+  /* Set your desired background color here */
+  height: 1200px;
+}
 
 .bodyRate {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #1c1c29;
-    background-image: url("/building_left.png");
-    background-size: 20%;
-    background-repeat: no-repeat;
-    background-position-x: left;
-    height: 618px; /* auto set? */
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1c1c29;
+  background-image: url("/building_left.png");
+  background-size: 20%;
+  background-repeat: no-repeat;
+  background-position-x: left;
+  height: 618px;
+  /* auto set? */
+}
 
 .layoutVer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
 }
 
 .courseName {
-    display: inline;
+  display: inline;
 }
 
 .title {
-    padding-top: 100px;
-    text-align: center;
-    color: white;
-    font-size: 40px
+  padding-top: 100px;
+  text-align: center;
+  color: white;
+  font-size: 40px
 }
 
 .titleRate {
@@ -55,45 +57,45 @@
 
 /* /rate/ related functions */
 .leftBar {
-    background-color: #1c1c29;
-    border: #ffffff11;
-    border-radius: 20px;
-    color: white;
-    padding: 10px 10px;
-    width: 250px;
-    height: 400px;
-    margin: 20px
+  background-color: #1c1c29;
+  border: #ffffff11;
+  border-radius: 20px;
+  color: white;
+  padding: 10px 10px;
+  width: 250px;
+  height: 400px;
+  margin: 20px
     /* display: flex;
     flex-direction: column; */
     /* align-items: center; */
 }
 
 .mainLayout {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 20px;
-    gap: 20px;
-    padding: 10px 10px;
-    width: 250px;
-    height: 700px;
-    margin-left: 400px;
-    margin-top: -300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+  gap: 20px;
+  padding: 10px 10px;
+  width: 250px;
+  height: 700px;
+  margin-left: 400px;
+  margin-top: -300px;
 }
 
 .mainButton {
-    background-color: #41414c;
-    color: var(--text);
-    padding: 10px 10px;
-    width: 800px;
-    height: 300px;
-    border-radius: 15px;
-    border-color: #41414c;
-    /* display: flex;
+  background-color: #41414c;
+  color: var(--text);
+  padding: 10px 10px;
+  width: 800px;
+  height: 300px;
+  border-radius: 15px;
+  border-color: #41414c;
+  /* display: flex;
     flex-direction: column; */
-    text-align: left;
-    padding-left: 50px;
-    padding-right: 50px;
+  text-align: left;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .selectBox {
@@ -108,7 +110,7 @@
   color: #d4d2d5;
 
   /* reset */
-  margin: 0;      
+  margin: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -129,98 +131,104 @@
 }
 
 .paragraph {
-    font-size: 16px;
-    /* text-indent: 2em; */
-    text-align: left;
+  font-size: 16px;
+  /* text-indent: 2em; */
+  text-align: left;
 }
+
+/*
 .searchContainer {
-  display:block;
-  left:50%;
-  position:absolute;
-  top:30%;
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 30%;
 
-.searchContainer::input {
-    border:solid 3px #fff;
-    box-sizing:border-box;
-    font-size:2em;
-    height:2em;
-    margin-left:-15vw;
-    outline:solid #fc0 0;
-    padding:.5em;
-    transition:all 2s ease-in;
-    width:30vw;
-    z-index:1;
+  .searchContainer::input {
+    border: solid 3px #fff;
+    box-sizing: border-box;
+    font-size: 2em;
+    height: 2em;
+    margin-left: -15vw;
+    outline: solid #fc0 0;
+    padding: .5em;
+    transition: all 2s ease-in;
+    width: 30vw;
+    z-index: 1;
     /* &:focus {
       border:solid 3px #09f;      
       outline:solid #fc0 2000px;
-    } */
+    } /
   }
 }
+*/
 
+/*
 .searchContainer::input {
-    border:solid 3px #fff;
-    box-sizing:border-box;
-    font-size:2em;
-    height:2em;
-    margin-left:-15vw;
-    outline:solid #fc0 0;
-    padding:.5em;
-    transition:all 2s ease-in;
-    width:30vw;
-    z-index:1;
-    /* &:focus {
+  border: solid 3px #fff;
+  box-sizing: border-box;
+  font-size: 2em;
+  height: 2em;
+  margin-left: -15vw;
+  outline: solid #fc0 0;
+  padding: .5em;
+  transition: all 2s ease-in;
+  width: 30vw;
+  z-index: 1;
+  /* &:focus {
       border:solid 3px #09f;      
       outline:solid #fc0 2000px;
-    } */
-  }
+    } /
+}
+*/
 
 /* /rate/courses related styling */
 .courseName {
-    display: inline;
+  display: inline;
 }
 
 .courseButton {
-    background-color: #41414c;
-    color: var(--text);
-    padding: 10px 10px;
-    width: 800px;
-    height: auto;
-    border-radius: 15px;
-    border-color: #41414c;
-    /* display: flex;
+  background-color: #41414c;
+  color: var(--text);
+  padding: 10px 10px;
+  width: 800px;
+  height: auto;
+  border-radius: 15px;
+  border-color: #41414c;
+  /* display: flex;
     flex-direction: column; */
-    text-align: left;
-    padding-left: 50px;
-    padding-right: 50px;
+  text-align: left;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .courseLayout {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 20px;
-    gap: 20px;
-    padding: 450px 300px;
-    width: 250px;
-    height: 100px;
-    align-items: center; /* horizontal centering */
-    /* margin-right: 370px; */
-    margin-left: 370px;
-    box-align: center;
-    margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+  gap: 20px;
+  padding: 450px 300px;
+  width: 250px;
+  height: 100px;
+  align-items: center;
+  /* horizontal centering */
+  /* margin-right: 370px; */
+  margin-left: 370px;
+  box-align: center;
+  margin-top: 0px;
 }
 
 .backButton {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #bcc4d0;
-    color: black;
-    text-decoration: none;
-    border: 1px solid #bcc4d0;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #bcc4d0;
+  color: black;
+  text-decoration: none;
+  border: 1px solid #bcc4d0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
 /* Search Bar Related */
 .search {
@@ -242,7 +250,7 @@
   background-color: #1c1c29;
 }
 
-.searchTerm:focus{
+.searchTerm:focus {
   color: #d4d2d5;
   font-size: 24px;
 }
@@ -267,7 +275,8 @@
 }
 
 
-.wrap{  /*Resize the wrap to see the search bar change!*/
+.wrap {
+  /*Resize the wrap to see the search bar change!*/
   width: 30%;
   position: relative;
   top: 6%;
