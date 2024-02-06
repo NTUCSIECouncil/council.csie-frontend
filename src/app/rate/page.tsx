@@ -14,17 +14,17 @@ const Page: FC = () => {
       {/* <div className={styles.courseLayout}> */}
       <div className={styles.wrap}>
         <div className={styles.search}>
-            <input type="text" className={styles.searchTerm} placeholder="關鍵字搜尋" />
-            <Link href="/rate/filterResults">
+          <input type="text" className={styles.searchTerm} placeholder="關鍵字搜尋" />
+          <Link href="/rate/filterResults">
             <button type="submit" className={styles.searchButton}>
-             <i className="fa fa-search"></i>
+              <i className="fa fa-search"></i>
             </button>
-            </Link>
+          </Link>
         </div>
         <p className={styles.word}>
           篩選：&nbsp;&nbsp;&nbsp;
           <select
-            defaultValue={'all'}
+            defaultValue="all"
             id="selectGrade"
             className={styles.selectBox}
           >
@@ -35,7 +35,7 @@ const Page: FC = () => {
             <option value="senior">大四</option>
           </select>
           &nbsp; &nbsp;
-          <select defaultValue='all' id="selectType" className={styles.selectBox}>
+          <select defaultValue="all" id="selectType" className={styles.selectBox}>
             <option value="all">分類</option>
             <option value="require">必修</option>
             <option value="select">選修</option>
@@ -46,7 +46,7 @@ const Page: FC = () => {
           <Link href="/tagged/taxi" className={styles.tag}>計程</Link>
           <Link href="/tagged/hard" className={styles.tag}>超硬</Link>
           <Link href="/tagged/hw" className={styles.tag}>作業永遠寫不完</Link>
-          </p>
+        </p>
       </div>
     </main>
   );

@@ -13,14 +13,15 @@ const Page: FC = () => {
       {/* <div className={styles.courseLayout}> */}
       <div className={styles.wrap}>
         <div className={styles.search}>
-            <input type="text" className={styles.searchTerm} placeholder="關鍵字搜尋" />
-            <Link href="/database/filterResults">
+          <input type="text" className={styles.searchTerm} placeholder="關鍵字搜尋" />
+          <Link href="/database/filterResults">
             <button type="submit" className={styles.searchButton}>
               <i className="fa fa-search"></i>
             </button>
-            </Link>
+          </Link>
         </div>
-        <p className={styles.word}>篩選：&nbsp;&nbsp;&nbsp;
+        <p className={styles.word}>
+          篩選：&nbsp;&nbsp;&nbsp;
           <select id="selectGrade" className={styles.selectBox}>
             <option value="all">年級</option>
             <option value="freshman">大一</option>
@@ -41,13 +42,13 @@ const Page: FC = () => {
           <a href="/tagged/hw" className={styles.tag}>作業永遠寫不完</a>
         </p>
         <svg width="0" height="0" viewBox="0 0 400 300">
-            <defs>
-              <mask id="mask">
-                <rect fill="#000000" x="0" y="0" width="400" height="300"></rect>
-                <circle fill="#FFFFFF" cx="150" cy="150" r="100" />
-                <circle fill="#FFFFFF" cx="50" cy="50" r="150" />
-              </mask>
-            </defs>
+          <defs>
+            <mask id="mask">
+              <rect fill="#000000" x="0" y="0" width="400" height="300"></rect>
+              <circle fill="#FFFFFF" cx="150" cy="150" r="100" />
+              <circle fill="#FFFFFF" cx="50" cy="50" r="150" />
+            </mask>
+          </defs>
         </svg>
       </div>
     </main>
