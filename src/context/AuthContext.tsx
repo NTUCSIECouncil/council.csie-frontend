@@ -2,7 +2,7 @@ import { type FC, type ReactNode, useContext, createContext, useState, useEffect
 import { onAuthStateChanged, type User } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase';
 
-interface customRequestOptions {
+interface CustomRequestOptions {
   auth?: boolean;
   headers?: HeadersInit;
   options?: RequestInit;
@@ -10,7 +10,7 @@ interface customRequestOptions {
 
 interface AuthContextType {
   user: User | null;
-  request?: (url: string, { auth, headers, ...options }?: customRequestOptions) => Promise<Response>;
+  request?: (url: string, { auth, headers, ...options }?: CustomRequestOptions) => Promise<Response>;
 }
 
 const authContext = createContext<AuthContextType>({ user: null });
@@ -22,17 +22,27 @@ export const AuthContextProvider: FC<{ children: ReactNode }> =
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       (async () => {
-        console.log(currentUser);
         if (currentUser == null) {
           setUser(null);
           return;
         }
-        const res = await fetch('/api/users', {
+
+        let res = await fetch(`/api/users/${currentUser?.uid}`, {
           headers: {
             Authorization: `Bearer ${await currentUser.getIdToken()}`
           }
         });
-        console.log(res);
+
+        // If user is not currently exist in server DB, request to create it
+        if (res.status === 404) {
+          res = await fetch(`/api/users/${currentUser?.uid}`, {
+            method: 'PUT',
+            headers: {
+              Authorization: `Bearer ${await currentUser.getIdToken()}`
+            }
+          });
+        }
+
         if (res.ok) setUser(currentUser);
         else console.error('auth error');
       })().catch(err => { console.error(err); });
@@ -45,7 +55,7 @@ export const AuthContextProvider: FC<{ children: ReactNode }> =
     auth = true,
     headers = {},
     ...options
-  }: customRequestOptions = {}) => {
+  }: CustomRequestOptions = {}) => {
     const realHeaders = new Headers(headers);
     if (user != null) {
       realHeaders.set('Authorization', `Bearer ${await user.getIdToken()}`);

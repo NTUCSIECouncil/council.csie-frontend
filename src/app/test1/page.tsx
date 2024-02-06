@@ -20,36 +20,12 @@ const Page: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      console.log('!');
-      // if (user !== null) {
-      // Example of how to POST a new user
-      // const response = await fetch(`/api/users/${user.uid}`, {
-      //   body: JSON.stringify({
-      //     name: 'rwei',
-      //     uid: user.uid
-      //   }),
-      //   headers: {
-      //     ...header,
-      //     'Content-Type': 'application/json',
-      //     Authorization: await user.getIdToken()
-      //   },
-      //   method: 'POST'
-      // });
-
-      // Example of how to GET self-user
-      // const response = await fetch(`/api/users/${user.uid}`, {
-      //   headers: {
-      //     ...header,
-      //     Authorization: await user.getIdToken()
-      //   },
-      //   method: 'GET'
-      // });
-      // }
-
-      const response = await request('/api/create-time');
-      const body = await response.json() as UserStateText;
-      const createTime = body.createTime;
-      setBackendData(createTime);
+      if (request !== undefined) {
+        const response = await request('/api/create-time');
+        const body: UserStateText = await response.json();
+        const createTime = body.createTime;
+        setBackendData(createTime);
+      }
     })().catch((err) => {
       console.log(err);
     });
