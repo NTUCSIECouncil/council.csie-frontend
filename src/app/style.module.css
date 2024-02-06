@@ -42,10 +42,3 @@
     padding: 1em;
     text-align: left;
 }
-
-.loginButton {
-    background-color: transparent;
-    color: var(--text);
-    border: none;
-    cursor: pointer;
-}

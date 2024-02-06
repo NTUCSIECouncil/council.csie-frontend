@@ -1,12 +1,11 @@
 import Link from 'next/link';
 import { type FC } from 'react';
-import styles from '@/styles/utils.module.css';
+import styles from './style.module.css';
 // import './globals.css';
 
 const Page: FC = () => {
   return (
     <main>
-      {/* <div><h1>main page</h1></div> */}
       <div className={styles.homepageLayout}>
         <Link href="/life">
           <button className={styles.button}>

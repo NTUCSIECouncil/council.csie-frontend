@@ -1,5 +1,6 @@
 'use client';
-import './globals.css';
+import '@/styles/globals.css';
+import '@/styles/color.css';
 import NavBar from '@/components/NavBar';
 import { AuthContextProvider } from '@/context/AuthContext';
 import { type FC, type ReactNode } from 'react';

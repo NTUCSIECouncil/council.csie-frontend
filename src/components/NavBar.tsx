@@ -2,9 +2,7 @@ import { type FC, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { UserAuth } from '../context/AuthContext';
 import { googleSignIn, logOut } from '../context/api';
-import styles from '@/styles/utils.module.css';
 import './NavBar.css';
-import '@/styles/color.css';
 import { Playfair_Display, Roboto } from 'next/font/google';
 
 const playfairDisplay = Playfair_Display({
@@ -69,14 +67,14 @@ const NavBar: FC = () => {
               ? null
               : user === null
                 ? (
-                  <button className={styles.loginButton} onClick={handleSignIn}>
+                  <button className='loginButton' onClick={handleSignIn}>
                     Login
                   </button>
                   )
                 : (
                   <div>
                     <p>Welcome, {user.displayName}</p>
-                    <button className={styles.loginButton} onClick={handleSignOut} >Sign out</button>
+                    <button className='loginButton' onClick={handleSignOut} >Sign out</button>
                   </div>
                   )}
           </li>
