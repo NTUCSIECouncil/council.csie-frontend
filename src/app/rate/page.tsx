@@ -1,7 +1,8 @@
+'use client';
 // import Search from '@/app/ui/search';
 // import Image from 'next/image';
-import Link from 'next/link';
 import { type FC } from 'react';
+import Link from 'next/link';
 import styles from '@/styles/rate.module.css';
 
 const Page: FC = () => {
@@ -20,26 +21,32 @@ const Page: FC = () => {
             </button>
             </Link>
         </div>
-        <p className={styles.word}>篩選：&nbsp;&nbsp;&nbsp;
-          <select id="selectGrade" className={styles.selectBox}>
+        <p className={styles.word}>
+          篩選：&nbsp;&nbsp;&nbsp;
+          <select
+            defaultValue={'all'}
+            id="selectGrade"
+            className={styles.selectBox}
+          >
             <option value="all">年級</option>
             <option value="freshman">大一</option>
-            <option value="sophomore" selected>大二</option>
+            <option value="sophomore">大二</option>
             <option value="junior">大三</option>
             <option value="senior">大四</option>
           </select>
           &nbsp; &nbsp;
-          <select id="selectType" className={styles.selectBox}>
+          <select defaultValue='all' id="selectType" className={styles.selectBox}>
             <option value="all">分類</option>
             <option value="require">必修</option>
-            <option value="select" selected>選修</option>
+            <option value="select">選修</option>
           </select>
-          <div className={styles.customBreak}></div>
-          TAG：&nbsp;&nbsp;&nbsp;
-          <a href="/tagged/taxi" className={styles.tag}>計程</a>
-          <a href="/tagged/hard" className={styles.tag}>超硬</a>
-          <a href="/tagged/hw" className={styles.tag}>作業永遠寫不完</a>
         </p>
+        <p className={styles.word}>
+          TAG：&nbsp;&nbsp;&nbsp;
+          <Link href="/tagged/taxi" className={styles.tag}>計程</Link>
+          <Link href="/tagged/hard" className={styles.tag}>超硬</Link>
+          <Link href="/tagged/hw" className={styles.tag}>作業永遠寫不完</Link>
+          </p>
       </div>
     </main>
   );
