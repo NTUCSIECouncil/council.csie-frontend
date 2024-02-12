@@ -1,23 +1,20 @@
-.body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #1c1c29;
-  /* Set your desired background color here */
-  height: 1200px;
+.background {
+    width: 350px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    object-fit: cover;
 }
 
 .bodyRate {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #1c1c29;
-  background-image: url("/building_left.png");
-  background-size: 20%;
-  background-repeat: no-repeat;
-  background-position-x: left;
-  height: 618px;
   /* auto set? */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .layoutVer {
@@ -39,7 +36,6 @@
 }
 
 .titleRate {
-  padding-top: 150px;
   text-align: center;
   color: #d4d2d5;
   font-size: 55px;
@@ -228,9 +224,9 @@
 
 /* Search Bar Related */
 .search {
-  padding-top: 60px;
   padding-bottom: 10px;
-  width: 100%;
+  width: 30%;
+  min-width: 350px;
   position: relative;
   display: flex;
 }
@@ -244,11 +240,11 @@
   border-radius: 0px 0 0 0px;
   outline: none;
   background-color: #1c1c29;
+  color: #d4d2d5;
+  font-size: 24px;
 }
 
 .searchTerm:focus {
-  color: #d4d2d5;
-  font-size: 24px;
 }
 
 .searchButton {
@@ -273,11 +269,7 @@
 
 .wrap {
   /*Resize the wrap to see the search bar change!*/
-  width: 30%;
-  position: relative;
-  top: 6%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/*  width: 30%;*/
 }
 
 /* image related */

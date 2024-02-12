@@ -4,18 +4,20 @@
     justify-content: center;
     align-items: center;
     gap: 35px;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    bottom: 0;
-    top: 80px;
-    width: 100vw;
+    left: 0;
+    top: 0;
+    object-fit: cover;
     background-color: var(--background);
-    background-image: url("/building.jpg");
-    background-repeat: no-repeat;
-    background-size: 120%;
-    background-position: -150px;
 }
 
 .button {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 10px;
     background-color: #40465a;
     color: var(--text);
     padding: 0px 20px;
@@ -34,6 +36,10 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+
+}
+.buttonLayout > h1 {
+    margin-bottom: 10px;
 }
 
 .paragraph {

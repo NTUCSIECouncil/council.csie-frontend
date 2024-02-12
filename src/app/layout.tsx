@@ -11,7 +11,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
       <body>
         <AuthContextProvider>
           <NavBar />
-          <div style={{ marginTop: '80px' }}>
+          <div>
             {children}
           </div>
         </AuthContextProvider>
