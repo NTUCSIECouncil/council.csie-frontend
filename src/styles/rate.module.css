@@ -25,6 +25,7 @@
   align-items: left;
   background-color: var(--background);
   height: max-content;
+  width: fit-content;
 }
 
 .layoutVer {
@@ -90,8 +91,10 @@
   /* background-color: lightseagreen; */
   align-items: center;
   /* padding-top: 0px; */
-  padding-bottom: 50px;
+  /* padding-bottom: 50px; */
+  padding: 50px;
   gap: 20px;
+  min-width: 500px;
 }
 
 .mainButton {
@@ -99,7 +102,8 @@
   background-color: #40465a;
   color: var(--text);
   padding: 0px 20px;
-  width: 80%;
+  width: 100%;
+  min-width: 300px;
   height: max-content;
   border-radius: 15px;
   border-color: transparent;
