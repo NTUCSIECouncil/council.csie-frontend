@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { type FC } from 'react';
 import styles from '@/styles/rate.module.css';
-import FullScreen from '@/components/FullScreen';
 
 const Page: FC = () => {
   return (

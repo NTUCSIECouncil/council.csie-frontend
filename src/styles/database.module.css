@@ -10,6 +10,25 @@
     height: 618px; /* auto set? */
   }
 
+.background {
+    width: 350px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.bodyDB {
+    font-family: Arial, sans-serif;
+    /* auto set? */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
 .layoutVer {
     display: flex;
     flex-direction: column;
@@ -67,57 +86,56 @@
     color: #d4d2d5;
   }
 
+
 /* Search Bar Related */
 .search {
-    padding-top: 60px;
-    padding-bottom: 10px;
-    width: 100%;
-    position: relative;
-    display: flex;
-  }
-  
-.searchTerm {
-    width: 100%;
-    border: 3px solid #d4d2d5;
-    /* border-right: none; */
-    padding: 5px;
-    height: 35px;
-    border-radius: 0px 0 0 0px;
-    outline: none;
-    background-color: #1c1c29;
-  }
-  
-.searchTerm:focus{
-    color: #d4d2d5;
-    font-size: 24px;
-  }
-  
-.searchButton {
-    width: 50px;
-    height: 50px;
-    border: 3px solid #d4d2d5;
-    background: #d4d2d5;
-    text-align: center;
-    color: #1c1c29;
-    border-radius: 0 0px 0px 0;
-    cursor: pointer;
-    font-size: 30px;
-  }
-
-.searchTerm::placeholder {
-    color: #5c5b65;
-    font-size: 17px;
-    line-height: 55px;
-    font-weight: bold;
+  padding-bottom: 10px;
+  width: 30%;
+  min-width: 350px;
+  position: relative;
+  display: flex;
 }
 
-.wrap{  /*Resize the wrap to see the search bar change!*/
-    width: 30%;
-    position: relative;
-    top: 6%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.searchTerm {
+  width: 100%;
+  border: 3px solid #d4d2d5;
+  /* border-right: none; */
+  padding: 5px;
+  height: 35px;
+  border-radius: 0px 0 0 0px;
+  outline: none;
+  background-color: #1c1c29;
+  color: #d4d2d5;
+  font-size: 24px;
+}
+
+.searchTerm:focus {
+}
+
+.searchButton {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #d4d2d5;
+  background: #d4d2d5;
+  text-align: center;
+  color: #1c1c29;
+  border-radius: 0 0px 0px 0;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.searchTerm::placeholder {
+  color: #5c5b65;
+  font-size: 17px;
+  line-height: 55px;
+  font-weight: bold;
+}
+
+
+.wrap {
+  /*Resize the wrap to see the search bar change!*/
+/*  width: 30%;*/
+}
 
 /* image related */
 .imageContainer {

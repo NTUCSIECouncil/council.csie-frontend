@@ -39,10 +39,11 @@
 }
 
 .title {
-  padding-top: 100px;
+  padding-top: 150px;
   text-align: center;
-  color: white;
-  font-size: 40px
+  color: #d4d2d5;
+  font-size: 55px;
+  letter-spacing: 10px;
 }
 
 .titleFilter {

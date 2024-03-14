@@ -11,7 +11,7 @@ const Page: FC = () => {
   return (
     <FullScreen className={styles.bodyRate}>
       <Image className={styles.background} src="/building.jpg" width="1000" height="1000" alt="background"/>
-      <h1 className={styles.titleRate}> 課程評價網</h1>
+      <h1 className={styles.title}> 課程評價網</h1>
       {/* the following link is for the search icon of the search bar */}
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
       {/* <div className={styles.courseLayout}> */}
