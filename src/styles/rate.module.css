@@ -17,6 +17,16 @@
   align-items: center;
 }
 
+.bodyFilter {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: left;
+  background-color: var(--background);
+  height: max-content;
+}
+
 .layoutVer {
   display: flex;
   flex-direction: column;
@@ -35,11 +45,13 @@
   font-size: 40px
 }
 
-.titleRate {
+.titleFilter {
+  padding-top: 40px;
   text-align: center;
-  color: #d4d2d5;
-  font-size: 55px;
-  letter-spacing: 10px;
+  color: white;
+  font-size: 35px;
+  height: 100px;
+  vertical-align: center;
 }
 
 .word {
@@ -62,32 +74,36 @@
     /* align-items: center; */
 }
 
+.searchArea {
+  /* background-color: lightblue; */
+  padding: 20px;
+  height: auto;
+  padding-top: 185px;
+}
+
 .mainLayout {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 20px;
+  justify-content: flex-start;
+  /* justify-content: center; */
+  /* background-color: lightseagreen; */
+  align-items: center;
+  /* padding-top: 0px; */
+  padding-bottom: 50px;
   gap: 20px;
-  padding: 10px 10px;
-  width: 250px;
-  height: 700px;
-  margin-left: 400px;
-  margin-top: -300px;
 }
 
 .mainButton {
-  background-color: #41414c;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 10px;
+  background-color: #40465a;
   color: var(--text);
-  padding: 10px 10px;
-  width: 800px;
-  height: 300px;
+  padding: 0px 20px;
+  width: 80%;
+  height: max-content;
   border-radius: 15px;
-  border-color: #41414c;
-  /* display: flex;
-    flex-direction: column; */
-  text-align: left;
-  padding-left: 50px;
-  padding-right: 50px;
+  border-color: transparent;
+  opacity: 0.85;
+  cursor: pointer;
 }
 
 .selectBox {
