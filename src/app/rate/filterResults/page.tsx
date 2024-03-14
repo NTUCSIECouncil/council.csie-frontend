@@ -45,8 +45,8 @@ const Page: FC = () => {
       </div>
       <div className={styles.mainLayout}>
           <h1 className={styles.titleFilter}>課程評價網:D</h1>
-          {/* <Link href="/rate/courses/"> */}
-            <button className={styles.mainButton}>
+          <button className={styles.mainButton}>
+            <Link href="/rate/courses/">
               <div>
                 <h1>普通物理學</h1>
                 <h3 text-align="left">胡德邦</h3>
@@ -63,10 +63,10 @@ const Page: FC = () => {
                 要想清楚，&#20320;&#22909;，到底是一種怎麽樣的存在。我認為，而這些並不是完全重要，更加重要的問題是，&#20320;&#22909;，到底應該如何實現。我們一般認為，抓住了問題的關鍵，其他一切則會迎刃而解。
                 </p>
               </div>
-            </button>
-          {/* </Link> */}
-          {/* <Link href="/rate/courses/"> */}
-            <button className={styles.mainButton}>
+            </Link>
+          </button>
+          <button className={styles.mainButton}>
+            <Link href="/rate/courses/">
             <div>
                 <h1>普通物理學</h1>
                 <h3 text-align="left">胡德邦</h3>
@@ -79,10 +79,10 @@ const Page: FC = () => {
                 要想清楚，&#20320;&#22909;，到底是一種怎麽樣的存在。我認為，而這些並不是完全重要，更加重要的問題是，&#20320;&#22909;，到底應該如何實現。我們一般認為，抓住了問題的關鍵，其他一切則會迎刃而解。
                 </p>
               </div>
-            </button>
-          {/* </Link> */}
-          {/* <Link href="/rate/courses"> */}
-            <button className={styles.mainButton}>
+            </Link>
+          </button>
+          <button className={styles.mainButton}>
+            <Link href="/rate/courses">
               <div>
                 <h1 className={styles.courseName}>普通物理學</h1>
                 <h3 text-align="left">胡德邦</h3>
@@ -95,8 +95,8 @@ const Page: FC = () => {
                 要想清楚，&#20320;&#22909;，到底是一種怎麽樣的存在。我認為，而這些並不是完全重要，更加重要的問題是，&#20320;&#22909;，到底應該如何實現。我們一般認為，抓住了問題的關鍵，其他一切則會迎刃而解。
                 </p>
               </div>
-            </button>
-          {/* </Link> */}
+            </Link>
+          </button>
         </div>
     </div>
   );
