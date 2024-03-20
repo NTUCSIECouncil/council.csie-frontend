@@ -1,5 +1,5 @@
 import { type FC, type ReactNode, useContext, createContext, useState, useEffect, useCallback } from 'react';
-import { onAuthStateChanged, type User } from 'firebase/auth';
+import { onAuthStateChanged, GoogleAuthProvider, signInWithRedirect, signOut, updateProfile, type User } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase';
 
 interface customRequestOptions {
@@ -17,45 +17,71 @@ const authContext = createContext<AuthContextType>({ user: null });
 
 export const AuthContextProvider: FC<{ children: ReactNode }> =
 ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null | boolean>(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      (async () => {
-        console.log(currentUser);
-        if (currentUser == null) {
-          setUser(null);
-          return;
-        }
-        const res = await fetch('/api/users', {
-          headers: {
-            Authorization: `Bearer ${await currentUser.getIdToken()}`
-          }
-        });
-        console.log(res);
-        if (res.ok) setUser(currentUser);
-        else console.error('auth error');
-      })().catch(err => { console.error(err); });
+      setUser(currentUser);
     });
-    // console.log(user);
     return () => { unsubscribe(); };
   }, []);
+
+  const signIn = async (): Promise<void> => {
+    const provider = new GoogleAuthProvider();
+    if (window.confirm(`
+Please **DON'T** sign in with in-app browser like Instagram, Facebook or LINE browser. Google Oauth blocks access from insecure browsers.
+On mobile devices, use Chrome or Safari instead.
+
+請**勿**使用應用程式內建瀏覽器登入，如 IG、FB 或 LINE。Google Oauth 拒絕來自不安全瀏覽器的連線。
+若為行動裝置，請在 Chrome 或 Safari 上登入。
+    `.trim())) {
+      await signInWithRedirect(auth, provider);
+      window.location.reload();
+    }
+  };
+
+  const logOut = async (): Promise<void> => {
+    await signOut(auth);
+  };
 
   const request = useCallback(async (url: string, {
     auth = true,
     headers = {},
     ...options
   }: customRequestOptions = {}) => {
-    const realHeaders = new Headers(headers);
-    if (user != null) {
-      realHeaders.set('Authorization', `Bearer ${await user.getIdToken()}`);
-      // headers.Authorization = `Bearer ${await user.getIdToken()}`;
+    try {
+      const realHeaders = new Headers(headers);
+      if (user !== null && typeof user !== 'boolean' && auth) {
+        realHeaders.set('Authorization', `Bearer ${await user.getIdToken()}`);
+        // headers.Authorization = `Bearer ${await user.getIdToken()}`;
+      }
+      const newOptions: RequestInit = {
+        headers: realHeaders, ...options
+      };
+      return await fetch(url, newOptions);
+    } catch (error) {
+      console.log(error);
+      return { ok: false };
     }
-    const newOptions: RequestInit = {
-      headers: realHeaders, ...options
-    };
-    return await fetch(url, newOptions);
   }, [user]);
+
+  /*
+  const updateUser = async profile => {
+    if (auth.currentUser !== null) {
+      await updateProfile(auth.currentUser, profile);
+      if ('displayName' in profile) {
+        let res = await request('/api/me', { options: { method: 'GET' } });
+        if (!res.ok) {
+          console.log(await res.text());
+        }
+      }
+      window.location.reload();
+      return res;
+    } else {
+      return null;
+    }
+  }
+  */
 
   return (
     <authContext.Provider value={{ user, request }}>
