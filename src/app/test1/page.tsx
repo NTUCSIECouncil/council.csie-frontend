@@ -59,19 +59,22 @@ const Page: React.FC = () => {
     <div>
       {loading
         ? (
-        <p>Loading...</p>
+          <p>Loading...</p>
           )
         : user !== null
           ? (
-        <div>
-          <p>Welcome to test1, {user.displayName}</p>
-          {
+            <div>
+              <p>
+                Welcome to test1,
+                {user.displayName}
+              </p>
+              {
             (backendData !== undefined) ? (<p>{backendData}</p>) : (<p></p>)
           }
-        </div>
+            </div>
             )
           : (
-        <p>please login.</p>
+            <p>please login.</p>
             )}
     </div>
   );

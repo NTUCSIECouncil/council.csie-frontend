@@ -8,13 +8,13 @@ const Page: FC = () => {
     <main className={styles.body}>
       <h1 className={styles.title}>［評價］ 普通物理學 胡德邦</h1>
       <div className={styles.courseLayout}>
-      <div>
+        <div>
           <Link href="/rate/courses/">
             <button className={styles.courseButton}>
               <div>
                 <h1>普通物理學</h1>
                 <h3 text-align="left">胡德邦</h3>
-                <hr color="white" style={{ width: '100%' }}/>
+                <hr color="white" style={{ width: '100%' }} />
                 <br></br>
                 <a href="/tagged/SP" className={styles.tag}>普物</a>
                 <a href="/tagged/ADA" className={styles.tag}>大一</a>

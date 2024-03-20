@@ -22,11 +22,7 @@ const Page: FC = () => {
         </div>
         <p className={styles.word}>
           篩選：&nbsp;&nbsp;&nbsp;
-          <select
-            defaultValue={'all'}
-            id="selectGrade"
-            className={styles.selectBox}
-          >
+          <select defaultValue="all" id="selectGrade" className={styles.selectBox}>
             <option value="all">年級</option>
             <option value="freshman">大一</option>
             <option value="sophomore">大二</option>
@@ -34,7 +30,7 @@ const Page: FC = () => {
             <option value="senior">大四</option>
           </select>
           &nbsp; &nbsp;
-          <select defaultValue='all' id="selectType" className={styles.selectBox}>
+          <select defaultValue="all" id="selectType" className={styles.selectBox}>
             <option value="all">分類</option>
             <option value="require">必修</option>
             <option value="select">選修</option>

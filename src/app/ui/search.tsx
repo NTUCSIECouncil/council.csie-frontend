@@ -10,7 +10,8 @@ const Search: FC<{ placeholder: string }> = ({ placeholder }) => {
       <label htmlFor="search" className="sr-only">
         Search &nbsp;
       </label>
-      <input id="search"
+      <input
+        id="search"
         className={styles.searchBox}
         // className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
         placeholder={placeholder}
