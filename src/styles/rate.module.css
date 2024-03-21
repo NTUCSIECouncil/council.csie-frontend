@@ -40,7 +40,7 @@
 }
 
 .title {
-  padding-top: 150px;
+  /* padding-top: 150px; */
   text-align: center;
   color: #d4d2d5;
   font-size: 55px;
@@ -137,7 +137,7 @@
   border: 1px solid #1c1c29;
   border-radius: 5px;
   display: inline-block;
-  margin-right: 5px;
+  margin-right: 10px;
   text-decoration: none;
   padding: 0.3em 0.6em 0.3em 0.6em;
   color: #d4d2d5;
@@ -246,8 +246,9 @@
 /* Search Bar Related */
 .search {
   padding-bottom: 10px;
-  width: 30%;
-  min-width: 350px;
+  width: 400px;
+  /* width: 30%;
+  min-width: 350px; */
   position: relative;
   display: flex;
 }
