@@ -48,7 +48,7 @@ const NavBar: FC = () => {
 
   return (
     <nav>
-      <Link href="/" className={playfairDisplay.className} style={{ paddingLeft: '110px', paddingTop: '40px', paddingBottom: '40px', fontSize: '32px' }}>NTU CSIE</Link>
+      <Link href="/" className={playfairDisplay.className} style={{ paddingLeft: '110px', fontSize: '32px' }}>NTU CSIE</Link>
       <ul className={roboto.className} style={{ paddingRight: '110px' }}>
         {/* <li>
             <Link href="/test1">test1</Link>
