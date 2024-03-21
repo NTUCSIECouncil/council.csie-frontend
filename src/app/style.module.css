@@ -4,6 +4,8 @@
     justify-content: center;
     align-items: center;
     gap: 35px;
+    height: calc(100vh - 80px);
+    top: 80px;
 }
 
 .background {
@@ -13,7 +15,9 @@
     left: 0;
     top: 0;
     object-fit: cover;
-    background-color: var(--background);
+    background-color: aquamarine;
+    background-size: cover;
+    background-position: center;
 }
 
 .button {
