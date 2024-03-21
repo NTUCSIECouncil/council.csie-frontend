@@ -2,15 +2,13 @@ import { type FC, type ReactNode, useContext, createContext, useState, useEffect
 import { onAuthStateChanged, GoogleAuthProvider, signInWithRedirect, signOut, updateProfile, type User } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase';
 
-interface customRequestOptions {
+interface customRequestInit extends RequestInit {
   auth?: boolean;
-  headers?: HeadersInit;
-  options?: RequestInit;
-}
+};
 
 interface AuthContextType {
   user: User | null;
-  request?: (url: string, { auth, headers, ...options }?: customRequestOptions) => Promise<Response>;
+  request?: (url: string, { auth, headers, ...options }?: customRequestInit) => Promise<Response | null>;
 }
 
 const authContext = createContext<AuthContextType>({ user: null });
@@ -48,7 +46,7 @@ On mobile devices, use Chrome or Safari instead.
     auth = true,
     headers = {},
     ...options
-  }: customRequestOptions = {}) => {
+  }: customRequestInit = {}): Promise<Response | null> => {
     try {
       const realHeaders = new Headers(headers);
       if (user !== null && typeof user !== 'boolean' && auth) {
@@ -61,27 +59,25 @@ On mobile devices, use Chrome or Safari instead.
       return await fetch(url, newOptions);
     } catch (error) {
       console.log(error);
-      return { ok: false };
+      return null;
     }
   }, [user]);
 
-  /*
-  const updateUser = async profile => {
-    if (auth.currentUser !== null) {
-      await updateProfile(auth.currentUser, profile);
-      if ('displayName' in profile) {
-        let res = await request('/api/me', { options: { method: 'GET' } });
-        if (!res.ok) {
-          console.log(await res.text());
-        }
-      }
-      window.location.reload();
-      return res;
-    } else {
-      return null;
-    }
-  }
-  */
+  // const updateUser = async profile => {
+  //   if (auth.currentUser !== null) {
+  //     await updateProfile(auth.currentUser, profile);
+  //     if ('displayName' in profile) {
+  //       const res = await request('/api/me', { method: 'GET' } });
+  //       if (!res.ok) {
+  //         console.log(await res.text());
+  //       }
+  //     }
+  //     window.location.reload();
+  //     return res;
+  //   } else {
+  //     return null;
+  //   }
+  // };
 
   return (
     <authContext.Provider value={{ user, request }}>
