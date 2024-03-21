@@ -7,12 +7,14 @@ interface customRequestInit extends RequestInit {
 };
 
 interface AuthContextType {
-  user: User | null;
-  userLoaded: boolean;
+  user?: User | null;
+  userLoaded?: boolean;
+  signIn?: () => Promise<void>;
+  logOut?: () => Promise<void>;
   request?: (url: string, { auth, headers, ...options }?: customRequestInit) => Promise<Response | null>;
 };
 
-const authContext = createContext<AuthContextType>({ user: null, userLoaded: false });
+const authContext = createContext<AuthContextType>({});
 
 export const AuthContextProvider: FC<{ children: ReactNode }> =
 ({ children }) => {
@@ -83,7 +85,14 @@ On mobile devices, use Chrome or Safari instead.
   // };
 
   return (
-    <authContext.Provider value={{ userLoaded, user, request }}>
+    <authContext.Provider value={{
+      userLoaded,
+      user,
+      signIn,
+      logOut,
+      request
+    }}
+    >
       {children}
     </authContext.Provider>
   );
