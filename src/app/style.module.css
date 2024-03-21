@@ -8,11 +8,11 @@
     bottom: 0;
     top: 80px;
     width: 100vw;
-    background-color: var(--background);
+    background-color: aquamarine; /* for debugging */
     background-image: url("/building.jpg");
     background-repeat: no-repeat;
-    background-size: 120%;
-    background-position: -150px;
+    background-size: cover;
+    background-position: center;
 }
 
 .button {
