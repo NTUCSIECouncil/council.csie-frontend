@@ -23,9 +23,35 @@ export const AuthContextProvider: FC<{ children: ReactNode }> =
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setUserLoaded(true);
+      (async () => {
+        if (currentUser == null) {
+          setUser(null);
+          return;
+        }
+
+        let res = await fetch(`/api/users/${currentUser?.uid}`, {
+          headers: {
+            Authorization: `Bearer ${await currentUser.getIdToken()}`
+          }
+        });
+
+        // If user is not currently exist in server DB, request to create it
+        if (res.status === 404) {
+          res = await fetch(`/api/users/${currentUser?.uid}`, {
+            method: 'PUT',
+            headers: {
+              Authorization: `Bearer ${await currentUser.getIdToken()}`
+            }
+          });
+        }
+
+        if (res.ok) setUser(currentUser);
+        else console.error('auth error');
+
+        setUserLoaded(true);
+      })().catch(err => { console.error(err); });
     });
+    // console.log(user);
     return () => { unsubscribe(); };
   }, []);
 
