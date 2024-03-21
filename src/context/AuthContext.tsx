@@ -7,15 +7,15 @@ interface customRequestInit extends RequestInit {
 };
 
 interface AuthContextType {
-  user: User | null;
+  user: User | null | false;
   request?: (url: string, { auth, headers, ...options }?: customRequestInit) => Promise<Response | null>;
-}
+};
 
 const authContext = createContext<AuthContextType>({ user: null });
 
 export const AuthContextProvider: FC<{ children: ReactNode }> =
 ({ children }) => {
-  const [user, setUser] = useState<User | null | boolean>(false);
+  const [user, setUser] = useState<User | null | false>(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -49,7 +49,7 @@ On mobile devices, use Chrome or Safari instead.
   }: customRequestInit = {}): Promise<Response | null> => {
     try {
       const realHeaders = new Headers(headers);
-      if (user !== null && typeof user !== 'boolean' && auth) {
+      if (user !== null && user !== false && auth) {
         realHeaders.set('Authorization', `Bearer ${await user.getIdToken()}`);
         // headers.Authorization = `Bearer ${await user.getIdToken()}`;
       }
