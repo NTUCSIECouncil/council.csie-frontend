@@ -7,19 +7,22 @@ interface customRequestInit extends RequestInit {
 };
 
 interface AuthContextType {
-  user: User | null | false;
+  user: User | null;
+  userLoaded: boolean;
   request?: (url: string, { auth, headers, ...options }?: customRequestInit) => Promise<Response | null>;
 };
 
-const authContext = createContext<AuthContextType>({ user: null });
+const authContext = createContext<AuthContextType>({ user: null, userLoaded: false });
 
 export const AuthContextProvider: FC<{ children: ReactNode }> =
 ({ children }) => {
-  const [user, setUser] = useState<User | null | false>(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [userLoaded, setUserLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setUserLoaded(true);
     });
     return () => { unsubscribe(); };
   }, []);
@@ -49,7 +52,7 @@ On mobile devices, use Chrome or Safari instead.
   }: customRequestInit = {}): Promise<Response | null> => {
     try {
       const realHeaders = new Headers(headers);
-      if (user !== null && user !== false && auth) {
+      if (userLoaded && user !== null && auth) {
         realHeaders.set('Authorization', `Bearer ${await user.getIdToken()}`);
         // headers.Authorization = `Bearer ${await user.getIdToken()}`;
       }
@@ -61,7 +64,7 @@ On mobile devices, use Chrome or Safari instead.
       console.log(error);
       return null;
     }
-  }, [user]);
+  }, [userLoaded, user]);
 
   // const updateUser = async profile => {
   //   if (auth.currentUser !== null) {
@@ -80,7 +83,7 @@ On mobile devices, use Chrome or Safari instead.
   // };
 
   return (
-    <authContext.Provider value={{ user, request }}>
+    <authContext.Provider value={{ userLoaded, user, request }}>
       {children}
     </authContext.Provider>
   );
