@@ -18,9 +18,9 @@ const Page: FC = () => {
       <div className={styles.search}>
         <input type="text" className={styles.searchTerm} placeholder="關鍵字搜尋" />
         <Link href="/rate/filterResults">
-        <button type="submit" className={styles.searchButton}>
-        <i className="fa fa-search"></i>
-        </button>
+          <button type="submit" className={styles.searchButton}>
+            <i className="fa fa-search"></i>
+          </button>
         </Link>
       </div>
       <div className={styles.wrap}>
