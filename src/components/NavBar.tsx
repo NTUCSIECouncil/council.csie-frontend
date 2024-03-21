@@ -62,7 +62,7 @@ const NavBar: FC = () => {
         <li>
           <Link href="/database">課程資料庫</Link>
         </li>
-        <li className={roboto.className}>
+        <li>
           {loading
             ? null
             : user === null
