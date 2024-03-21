@@ -1,11 +1,10 @@
-.body {
+/* .body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #1c1c29;
-  /* Set your desired background color here */
   height: 1200px;
-}
+} */
 
 .bodyRate {
   font-family: Arial, sans-serif;
@@ -13,7 +12,7 @@
   padding: 0;
   background-color: #1c1c29;
   background-image: url("/building_left.png");
-  background-size: 20%;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position-x: left;
   height: calc(100vh - 80px);
