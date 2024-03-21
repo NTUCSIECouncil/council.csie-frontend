@@ -16,8 +16,7 @@
   background-size: 20%;
   background-repeat: no-repeat;
   background-position-x: left;
-  height: 618px;
-  /* auto set? */
+  height: calc(100vh - 80px);
 }
 
 .layoutVer {
