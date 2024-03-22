@@ -1,5 +1,6 @@
 .background {
-    width: 350px;
+    width: 25%;
+    min-width: 200px;
     height: 100%;
     position: absolute;
     left: 0;
@@ -10,11 +11,12 @@
 
 .bodyRate {
   font-family: Arial, sans-serif;
-  /* auto set? */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-width: 900px;
+  min-height: 500px;
 }
 
 .bodyFilter {

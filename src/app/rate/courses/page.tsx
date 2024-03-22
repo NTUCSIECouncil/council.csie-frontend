@@ -43,7 +43,7 @@ const Page: FC = () => {
             </button>
           </Link>
         </div>
-        <a href="/filterResults" className={styles.backButton}>
+        <a href="/rate/filterResults" className={styles.backButton}>
           回搜尋結果
         </a>
       </div>

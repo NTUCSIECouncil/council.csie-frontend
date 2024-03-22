@@ -2,6 +2,7 @@ nav {
     width: 100%;
     background-color: var(--navbar);
     height: 48px;
+    min-width: 900px;
     padding: 16px 0px;
     display: flex;
     justify-content: space-between;
