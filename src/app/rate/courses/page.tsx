@@ -16,9 +16,9 @@ const Page: FC = () => {
                 <h3 text-align="left">胡德邦</h3>
                 <hr color="white" style={{ width: '100%' }} />
                 <br></br>
-                <a href="/tagged/SP" className={styles.tag}>普物</a>
-                <a href="/tagged/ADA" className={styles.tag}>大一</a>
-                <a href="/tagged/DSA" className={styles.tag}>甜涼</a>
+                <a href="/tagged/SP" className="tag">普物</a>
+                <a href="/tagged/ADA" className="tag">大一</a>
+                <a href="/tagged/DSA" className="tag">甜涼</a>
                 <p className={styles.paragraph}>
                   &nbsp; &nbsp; 胡德邦教授的普通物理學課程給我留下深刻的印象。這門課不僅提供了堅實的物理學基礎，還展現了教授對科學的熱愛和對學生的耐心。
                   首先，胡德邦教授的授課風格非常生動有趣。他能夠以輕鬆幽默的方式解釋複雜的物理學概念，使得整個學習過程變得更加愉快。他善於將抽象的理論與實際生活中的應用相結合，使我們更容易理解和記憶知識點。

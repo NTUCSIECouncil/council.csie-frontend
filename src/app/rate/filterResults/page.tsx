@@ -33,18 +33,18 @@ const Page: FC = () => {
             </p>
             <h2>常用標籤</h2>
             <hr style={{ width: '50%', margin: 'center' }} />
-            <a href="/tagged/SP" className={styles.tag}>SP</a>
-            <a href="/tagged/ADA" className={styles.tag}>ADA</a>
-            <a href="/tagged/DSA" className={styles.tag}>DSA</a>
+            <a href="/tagged/SP" className="tag">SP</a>
+            <a href="/tagged/ADA" className="tag">ADA</a>
+            <a href="/tagged/DSA" className="tag">DSA</a>
             <br></br>
             <br></br>
-            <a href="/tagged/超硬" className={styles.tag}>超硬</a>
-            <a href="/tagged/甜涼" className={styles.tag}>甜涼</a>
+            <a href="/tagged/超硬" className="tag">超硬</a>
+            <a href="/tagged/甜涼" className="tag">甜涼</a>
           </button>
         </div>
       </div>
       <div className={styles.mainLayout}>
-          <h1 className={styles.titleFilter}>課程評價網:D</h1>
+          <h1 className={styles.titleFilter}>搜尋結果:D</h1>
           <button className={styles.mainButton}>
             <Link href="/rate/courses/">
               <div>
@@ -52,9 +52,9 @@ const Page: FC = () => {
                 <h3 text-align="left">胡德邦</h3>
                 <hr color="white" style={{ width: '100%' }} />
                 <br></br>
-                <a href="/tagged/SP" className={styles.tag}>普物</a>
-                <a href="/tagged/ADA" className={styles.tag}>大一</a>
-                <a href="/tagged/DSA" className={styles.tag}>甜涼</a>
+                <a href="/tagged/SP" className="tag">普物</a>
+                <a href="/tagged/ADA" className="tag">大一</a>
+                <a href="/tagged/DSA" className="tag">甜涼</a>
                 <p className={styles.paragraph}>
                 要想清楚，&#20320;&#22909;，到底是一種怎麽樣的存在。我認為，而這些並不是完全重要，更加重要的問題是，&#20320;&#22909;，到底應該如何實現。我們一般認為，抓住了問題的關鍵，其他一切則會迎刃而解。
                 要想清楚，&#20320;&#22909;，到底是一種怎麽樣的存在。我認為，而這些並不是完全重要，更加重要的問題是，&#20320;&#22909;，到底應該如何實現。我們一般認為，抓住了問題的關鍵，其他一切則會迎刃而解。
@@ -72,9 +72,9 @@ const Page: FC = () => {
                 <h3 text-align="left">胡德邦</h3>
                 <hr color="white" style={{ width: '100%' }} />
                 <br></br>
-                <a href="/tagged/SP" className={styles.tag}>普物</a>
-                <a href="/tagged/ADA" className={styles.tag}>大一</a>
-                <a href="/tagged/DSA" className={styles.tag}>甜涼</a>
+                <a href="/tagged/SP" className="tag">普物</a>
+                <a href="/tagged/ADA" className="tag">大一</a>
+                <a href="/tagged/DSA" className="tag">甜涼</a>
                 <p className={styles.paragraph}>
                   要想清楚，&#20320;&#22909;，到底是一種怎麽樣的存在。我認為，而這些並不是完全重要，更加重要的問題是，&#20320;&#22909;，到底應該如何實現。我們一般認為，抓住了問題的關鍵，其他一切則會迎刃而解。
                 </p>
@@ -88,9 +88,9 @@ const Page: FC = () => {
                 <h3 text-align="left">胡德邦</h3>
                 <hr color="white" style={{ width: '100%' }}/>
                 <br></br>
-                <a href="/tagged/SP" className={styles.tag}>普物</a>
-                <a href="/tagged/ADA" className={styles.tag}>大一</a>
-                <a href="/tagged/DSA" className={styles.tag}>甜涼</a>
+                <a href="/tagged/SP" className="tag">普物</a>
+                <a href="/tagged/ADA" className="tag">大一</a>
+                <a href="/tagged/DSA" className="tag">甜涼</a>
                 <p className={styles.paragraph}>
                   要想清楚，&#20320;&#22909;，到底是一種怎麽樣的存在。我認為，而這些並不是完全重要，更加重要的問題是，&#20320;&#22909;，到底應該如何實現。我們一般認為，抓住了問題的關鍵，其他一切則會迎刃而解。
                 </p>
