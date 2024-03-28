@@ -2,6 +2,9 @@
 import Link from 'next/link';
 import { type FC } from 'react';
 import styles from '@/styles/rate.module.css';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
 
 const Page: FC = () => {
   return (
@@ -9,9 +12,19 @@ const Page: FC = () => {
       <div className={styles.searchArea}>
         <div className={styles.layoutVer}>
           <button className={styles.leftBar}>
-            <p>Search: &nbsp;
+            <TextField
+              sx={{
+                width: 300,
+                color: "white",
+              }}
+              id="filled-search"
+              label="Search field"
+              type="search"
+              variant="filled"
+            />
+            {/* <p>Search: &nbsp;
               <input id="search" placeholder='搜尋課程...'></input>
-            </p>
+            </p> */}
             <h2>貼文篩選</h2>
             <hr style={{ width: '50%', margin: 'left' }} />
             <p>年級：&nbsp;
