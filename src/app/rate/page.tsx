@@ -10,17 +10,17 @@ import FullScreen from '@/components/FullScreen';
 const Page: FC = () => {
   return (
     <FullScreen className={styles.bodyRate}>
-      <Image className={styles.background} src="/building.jpg" width="1000" height="1000" alt="background"/>
-      <h1 className={styles.title}> 課程評價網</h1>
+      <Image className={styles.background} src="/building.jpg" width="1000" height="1000" alt="background" />
+      <h1 className="title"> 課程評價網</h1>
       {/* the following link is for the search icon of the search bar */}
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
       {/* <div className={styles.courseLayout}> */}
-      <div className={styles.search}>
-        <input type="text" className={styles.searchTerm} placeholder="關鍵字搜尋" />
+      <div className="searchWrap">
+        <input type="text" className="searchBox" placeholder="關鍵字搜尋" />
         <Link href="/rate/filterResults">
-        <button type="submit" className={styles.searchButton}>
-        <i className="fa fa-search"></i>
-        </button>
+          <button type="submit" className="searchButton">
+            <i className="fa fa-search"></i>
+          </button>
         </Link>
       </div>
       <div className={styles.wrap}>
@@ -46,9 +46,9 @@ const Page: FC = () => {
         </p>
         <p className={styles.word}>
           TAG：&nbsp;&nbsp;&nbsp;
-          <Link href="/tagged/taxi" className={styles.tag}>計程</Link>
-          <Link href="/tagged/hard" className={styles.tag}>超硬</Link>
-          <Link href="/tagged/hw" className={styles.tag}>作業永遠寫不完</Link>
+          <Link href="/tagged/taxi" className="tag">計程</Link>
+          <Link href="/tagged/hard" className="tag">超硬</Link>
+          <Link href="/tagged/hw" className="tag">作業永遠寫不完</Link>
         </p>
       </div>
     </FullScreen>

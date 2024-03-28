@@ -1,5 +1,6 @@
 .background {
-    width: 350px;
+    width: 25%;
+    min-width: 200px;
     height: 100%;
     position: absolute;
     left: 0;
@@ -10,11 +11,12 @@
 
 .bodyRate {
   font-family: Arial, sans-serif;
-  /* auto set? */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-width: 900px;
+  min-height: 500px;
 }
 
 .bodyFilter {
@@ -37,14 +39,6 @@
 
 .courseName {
   display: inline;
-}
-
-.title {
-  padding-top: 150px;
-  text-align: center;
-  color: #d4d2d5;
-  font-size: 55px;
-  letter-spacing: 10px;
 }
 
 .titleFilter {
@@ -75,13 +69,6 @@
     /* display: flex;
     flex-direction: column; */
     /* align-items: center; */
-}
-
-.searchArea {
-  /* background-color: lightblue; */
-  padding: 20px;
-  height: auto;
-  padding-top: 185px;
 }
 
 .mainLayout {
@@ -132,68 +119,11 @@
   /* -moz-appearance: none; */
 }
 
-.tag {
-  background-color: #41414c;
-  padding: 3px;
-  border: 1px solid #1c1c29;
-  border-radius: 5px;
-  display: inline-block;
-  margin-right: 5px;
-  text-decoration: none;
-  padding: 0.3em 0.6em 0.3em 0.6em;
-  color: #d4d2d5;
-}
-
 .paragraph {
   font-size: 16px;
   /* text-indent: 2em; */
   text-align: left;
 }
-
-/*
-.searchContainer {
-  display: block;
-  left: 50%;
-  position: absolute;
-  top: 30%;
-
-  .searchContainer::input {
-    border: solid 3px #fff;
-    box-sizing: border-box;
-    font-size: 2em;
-    height: 2em;
-    margin-left: -15vw;
-    outline: solid #fc0 0;
-    padding: .5em;
-    transition: all 2s ease-in;
-    width: 30vw;
-    z-index: 1;
-    /* &:focus {
-      border:solid 3px #09f;      
-      outline:solid #fc0 2000px;
-    } /
-  }
-}
-*/
-
-/*
-.searchContainer::input {
-  border: solid 3px #fff;
-  box-sizing: border-box;
-  font-size: 2em;
-  height: 2em;
-  margin-left: -15vw;
-  outline: solid #fc0 0;
-  padding: .5em;
-  transition: all 2s ease-in;
-  width: 30vw;
-  z-index: 1;
-  /* &:focus {
-      border:solid 3px #09f;      
-      outline:solid #fc0 2000px;
-    } /
-}
-*/
 
 /* /rate/courses related styling */
 .courseName {
@@ -243,51 +173,6 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
-/* Search Bar Related */
-.search {
-  padding-bottom: 10px;
-  width: 30%;
-  min-width: 350px;
-  position: relative;
-  display: flex;
-}
-
-.searchTerm {
-  width: 100%;
-  border: 3px solid #d4d2d5;
-  /* border-right: none; */
-  padding: 5px;
-  height: 35px;
-  border-radius: 0px 0 0 0px;
-  outline: none;
-  background-color: #1c1c29;
-  color: #d4d2d5;
-  font-size: 24px;
-}
-
-.searchTerm:focus {
-}
-
-.searchButton {
-  width: 50px;
-  height: 50px;
-  border: 3px solid #d4d2d5;
-  background: #d4d2d5;
-  text-align: center;
-  color: #1c1c29;
-  border-radius: 0 0px 0px 0;
-  cursor: pointer;
-  font-size: 30px;
-}
-
-.searchTerm::placeholder {
-  color: #5c5b65;
-  font-size: 17px;
-  line-height: 55px;
-  font-weight: bold;
-}
-
 
 .wrap {
   /*Resize the wrap to see the search bar change!*/

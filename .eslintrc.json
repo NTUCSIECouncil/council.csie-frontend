@@ -14,6 +14,9 @@
     "standard-with-typescript"
   ],
   "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "warn"
+    ],
     "@typescript-eslint/semi": "off",
     "@stylistic/semi": [
       "warn",
