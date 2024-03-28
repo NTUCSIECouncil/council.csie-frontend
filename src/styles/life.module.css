@@ -5,7 +5,7 @@
     align-items: center;
 
     /* main area size */
-    width: 100vw;
+    /* width: 100vw; */
     min-width: 900px;
     min-height: calc(100vh - 80px);
 

@@ -57,7 +57,8 @@
 
 /* /rate/ related functions */
 .leftBar {
-  background-color: #1c1c29;
+  /* background-color: #1c1c29; */
+  background-color: transparent;
   border: #ffffff11;
   border-radius: 20px;
   color: white;
