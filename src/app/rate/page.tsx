@@ -35,7 +35,7 @@ function submitSearch (router: AppRouterInstance, grade: string, category: strin
     params.tags = chosenTags;
   }
 
-  router.push(searchUrl + '?' + (new URLSearchParams(params)).toString());
+  router.push(searchUrl + '?' + (new URLSearchParams(params as URLSearchParams)).toString());
 }
 
 const Page: FC = () => {
