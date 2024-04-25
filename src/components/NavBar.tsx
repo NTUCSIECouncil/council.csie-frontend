@@ -29,22 +29,6 @@ const NavBar: FC = () => {
   // console.log(user);
   // console.log(typeof user);
 
-  const handleSignIn = (): void => {
-    (async () => {
-      await signIn();
-    })().catch((err) => {
-      console.log(err);
-    });
-  };
-
-  const handleSignOut = (): void => {
-    (async () => {
-      await logOut();
-    })().catch((err) => {
-      console.log(err);
-    });
-  };
-
   useEffect(() => {
     (async () => {
       await new Promise((resolve) => setTimeout(resolve, 200));
@@ -53,6 +37,16 @@ const NavBar: FC = () => {
       console.log(err);
     });
   }, [user]);
+
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>): void => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = (): void => {
+    setAnchorElUser(null);
+  };
 
   const pages = [{ name: '德田生活', link: '/life' },
     { name: '課程評價網', link: '/rate' },
@@ -115,10 +109,34 @@ const NavBar: FC = () => {
             : (
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
-                  <Button>
+                  <Button onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     {user.displayName}
                   </Button>
                 </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {
+                    // settings.map((setting) => (
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center" onClick={logOut}>Logout</Typography>
+                    </MenuItem>
+                    // ))
+                  }
+                </Menu>
               </Box>
               )}
         </Box>
