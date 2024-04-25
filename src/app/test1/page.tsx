@@ -22,7 +22,7 @@ const Page: React.FC = () => {
     (async () => {
       if (request !== undefined) {
         const response = await request('/api/create-time');
-        const body: UserStateText = await response.json();
+        const body: UserStateText = await response?.json();
         const createTime = body.createTime;
         setBackendData(createTime);
       }

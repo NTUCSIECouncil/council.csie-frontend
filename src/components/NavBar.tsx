@@ -52,6 +52,10 @@ const NavBar: FC = () => {
     { name: '課程評價網', link: '/rate' },
     { name: '課程資料庫', link: '/database' }];
 
+  const handlePromise = (promiseFunction: () => Promise<void>): void => {
+    promiseFunction().then().catch(() => "I don't want to do anything.");
+  };
+
   return (
     <AppBar position="static" sx={{ bgcolor: 'black' }}>
       <Toolbar disableGutters>
@@ -102,7 +106,7 @@ const NavBar: FC = () => {
         <Box m={2} sx={{ flexGrow: 0 }}>
           {user === null
             ? (
-              <Button onClick={signIn}>
+              <Button onClick={() => { handlePromise(signIn); }}>
                 Login
               </Button>
               )
@@ -119,7 +123,7 @@ const NavBar: FC = () => {
                   anchorEl={anchorElUser}
                   anchorOrigin={{
                     vertical: 'top',
-                    horizontal: 'right',
+                    horizontal: 'right'
                   }}
                   keepMounted
                   transformOrigin={{
@@ -132,7 +136,7 @@ const NavBar: FC = () => {
                   {
                     // settings.map((setting) => (
                     <MenuItem onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" onClick={logOut}>Logout</Typography>
+                      <Typography textAlign="center" onClick={() => { handlePromise(logOut); }}>Logout</Typography>
                     </MenuItem>
                     // ))
                   }
