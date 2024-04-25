@@ -9,12 +9,17 @@ interface customRequestInit extends RequestInit {
 interface AuthContextType {
   user: User | null;
   userLoaded: boolean;
-  signIn?: () => Promise<void>;
-  logOut?: () => Promise<void>;
+  signIn: () => Promise<void>;
+  logOut: () => Promise<void>;
   request?: (url: string, { auth, headers, ...options }?: customRequestInit) => Promise<Response | null>;
 };
 
-const authContext = createContext<AuthContextType>({ user: null, userLoaded: false });
+const authContext = createContext<AuthContextType>({
+  user: null,
+  userLoaded: false,
+  signIn: async () => {},
+  logOut: async () => {}
+});
 
 export const AuthContextProvider: FC<{ children: ReactNode }> =
 ({ children }) => {

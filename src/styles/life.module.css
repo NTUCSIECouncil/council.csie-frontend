@@ -1,0 +1,31 @@
+.bodyLife {
+    /* flex box */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* main area size */
+    /* width: 100vw; */
+    min-width: 900px;
+    min-height: calc(100vh - 80px);
+
+    background-color: var(--background);
+}
+
+.wrap {
+    /* flex box */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 50px;
+
+    margin-bottom: 50px;
+}
+
+.lifePicture {
+    /* size */
+    width: 100%;
+    object-fit: cover;
+}
