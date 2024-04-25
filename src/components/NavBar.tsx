@@ -119,7 +119,7 @@ const NavBar: FC = () => {
                   anchorEl={anchorElUser}
                   anchorOrigin={{
                     vertical: 'top',
-                    horizontal: 'right',
+                    horizontal: 'right'
                   }}
                   keepMounted
                   transformOrigin={{
