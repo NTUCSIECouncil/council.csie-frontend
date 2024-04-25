@@ -8,9 +8,20 @@ import FullScreen from '@/components/FullScreen';
 import { useRouter } from 'next/navigation';
 import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
-function submitSearch (router: AppRouterInstance, grade: string, category: string, keyword: string, tags: any) {
+interface ParamType {
+  grade?: string;
+  category?: string;
+  keyword?: string;
+  tags?: string[];
+};
+type TagType = Record<string, {
+  name: string;
+  state: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
+}>;;
+
+function submitSearch (router: AppRouterInstance, grade: string, category: string, keyword: string, tags: TagType): void {
   const searchUrl = '/rate/filterResults';
-  const params: any = { };
+  const params: ParamType = { };
 
   if (grade !== 'all') { params.grade = grade; }
   if (category !== 'all') { params.category = category; }
@@ -24,7 +35,7 @@ function submitSearch (router: AppRouterInstance, grade: string, category: strin
     params.tags = chosenTags;
   }
 
-  router.push(searchUrl + '?' + (new URLSearchParams(params)).toString());
+  router.push(searchUrl + '?' + (new URLSearchParams(params as URLSearchParams)).toString());
 }
 
 const Page: FC = () => {
@@ -32,7 +43,7 @@ const Page: FC = () => {
   const [grade, setGrade] = useState('all');
   const [category, setCategory] = useState('all');
   const [keyword, setKeyword] = useState('');
-  const availableTags = {
+  const availableTags: TagType = {
     tax: {
       name: '計程',
       state: useState(false)
@@ -47,7 +58,7 @@ const Page: FC = () => {
     }
   };
 
-  const flipTag = (state: [boolean, React.Dispatch<React.SetStateAction<boolean>>]) => {
+  const flipTag = (state: [boolean, React.Dispatch<React.SetStateAction<boolean>>]): void => {
     state[1](!state[0]);
   };
 
@@ -95,8 +106,9 @@ const Page: FC = () => {
           TAG：&nbsp;&nbsp;&nbsp;
           { Object.keys(availableTags).map((tag, idx) => (
             <button
-              onClick={(e) => { flipTag((availableTags as any)[tag].state); }}
-              className={'tag' + ((availableTags as any)[tag].state[0] ? ' tag-on' : '')}
+              key={idx}
+              onClick={(e) => { flipTag(availableTags[tag].state); }}
+              className={'tag' + (availableTags[tag].state[0] ? ' tag-on' : '')}
               style={{ cursor: 'pointer' }}
               type="button"
             >

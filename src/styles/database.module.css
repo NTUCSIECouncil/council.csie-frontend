@@ -1,79 +1,134 @@
 .background {
-    width: 25%;
-    min-width: 200px;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: -1;
-    object-fit: cover;
+  width: 25%;
+  min-width: 200px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+  object-fit: cover;
 }
 
 .bodyDB {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 900px;
-    min-height: 500px;
-  }
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 900px;
+  min-height: 500px;
+}
 
 .layoutVer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
 }
 
 .courseName {
-    display: inline;
+  display: inline;
 }
 
 .word {
-    color: #bbb9bd;
-    font-weight: bold;
+  color: #bbb9bd;
+  font-weight: bold;
 }
 
 .wrap {
   /*Resize the wrap to see the search bar change!*/
-/*  width: 30%;*/
+  /*  width: 30%;*/
 }
 
 /* select box and tag */
 .selectBox {
-    /* styling */
-    background-color: #41414c;
-    border: #1c1c29;
-    border-radius: 4px;
-    display: inline-block;
-    font: inherit;
-    line-height: 1.5em;
-    padding: 0.3em 0.6em 0.3em 0.6em;
-    color: #d4d2d5;
-  
-    /* reset */
-    margin: 0;      
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    /* -webkit-appearance: none; */
-    /* -moz-appearance: none; */
-  }
+  /* styling */
+  background-color: #41414c;
+  border: #1c1c29;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.3em 0.6em 0.3em 0.6em;
+  color: #d4d2d5;
+
+  /* reset */
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /* -webkit-appearance: none; */
+  /* -moz-appearance: none; */
+}
 
 /* image related */
 .imageContainer {
-    position: relative;
-    overflow: hidden;
-  }
-  
+  position: relative;
+  overflow: hidden;
+}
+
 .maskedImage {
-    width: 100px;
-    height: auto;
-    /* display: block; */
-    /* transition: opacity 0.5s ease; */
-  }
-  
+  width: 100px;
+  height: auto;
+  /* display: block; */
+  /* transition: opacity 0.5s ease; */
+}
+
 /* .maskedImage:hover {
     opacity: 0.7;
   } */
+
+.table {
+  width: 100%;
+}
+
+.table * {
+  color: var(--text);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.link {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 30px;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+.link:hover {
+  color: #003366;
+  text-decoration: underline;
+}
+
+.headRow {
+  border-bottom: 2px solid var(--text);
+}
+
+.table thead:after {
+  content: "@";
+  display: block;
+  line-height: 20px;
+  text-indent: -99999px;
+}
+
+.bodyRow td {
+  border: none;
+  padding: 5px;
+}
+
+.resultLayout {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.resultTitle {
+  color: var(--text);
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between; /* This ensures elements are on opposite ends */
+  align-items: center; /* Aligns items vertically */
+  margin-bottom: 10px; /* Add spacing below the header */
+}
