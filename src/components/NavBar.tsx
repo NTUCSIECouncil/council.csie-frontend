@@ -24,19 +24,9 @@ const roboto = Roboto({
 });
 
 const NavBar: FC = () => {
-  const { user, signIn, logOut } = UserAuth();
-  const [loading, setLoading] = useState(true);
+  const { user, userLoaded, signIn, logOut } = UserAuth();
   // console.log(user);
   // console.log(typeof user);
-
-  useEffect(() => {
-    (async () => {
-      await new Promise((resolve) => setTimeout(resolve, 200));
-      setLoading(false);
-    })().catch((err) => {
-      console.log(err);
-    });
-  }, [user]);
 
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -109,7 +99,11 @@ const NavBar: FC = () => {
             : (
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
-                  <Button onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Button
+                    onClick={handleOpenUserMenu}
+                    sx={{ p: 0 }}
+                    disabled={!userLoaded}
+                  >
                     {user.displayName}
                   </Button>
                 </Tooltip>
@@ -119,7 +113,7 @@ const NavBar: FC = () => {
                   anchorEl={anchorElUser}
                   anchorOrigin={{
                     vertical: 'top',
-                    horizontal: 'right',
+                    horizontal: 'right'
                   }}
                   keepMounted
                   transformOrigin={{
