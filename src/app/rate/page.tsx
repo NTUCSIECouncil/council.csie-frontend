@@ -6,26 +6,22 @@ import Image from 'next/image';
 import styles from '@/styles/rate.module.css';
 import FullScreen from '@/components/FullScreen';
 import { useRouter } from 'next/navigation';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
-function submitSearch(router: AppRouterInstance, grade: string, category: string, keyword: string, tags: any) {
+function submitSearch (router: AppRouterInstance, grade: string, category: string, keyword: string, tags: any) {
   const searchUrl = '/rate/filterResults';
   const params: any = { };
-  
-  if (grade !== 'all')
-    params['grade'] = grade;
-  if (category !== 'all')
-    params['category'] = category;
-  if (keyword !== '')
-    params['keyword'] = keyword;
+
+  if (grade !== 'all') { params.grade = grade; }
+  if (category !== 'all') { params.category = category; }
+  if (keyword !== '') { params.keyword = keyword; }
 
   const chosenTags = [];
   for (const k in tags) {
-    if (tags[k].state[0])
-      chosenTags.push(k);
+    if (tags[k].state[0]) { chosenTags.push(k); }
   }
   if (chosenTags.length > 0) {
-    params['tags'] = chosenTags;
+    params.tags = chosenTags;
   }
 
   router.push(searchUrl + '?' + (new URLSearchParams(params)).toString());
@@ -37,17 +33,17 @@ const Page: FC = () => {
   const [category, setCategory] = useState('all');
   const [keyword, setKeyword] = useState('');
   const availableTags = {
-    'tax': {
+    tax: {
       name: '計程',
-      state: useState(false),
+      state: useState(false)
     },
-    'hard': {
+    hard: {
       name: '超硬',
-      state: useState(false),
+      state: useState(false)
     },
-    'hw': {
+    hw: {
       name: '作業永遠寫不完',
-      state: useState(false),
+      state: useState(false)
     }
   };
 
@@ -63,8 +59,8 @@ const Page: FC = () => {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
       {/* <div className={styles.courseLayout}> */}
       <div className="searchWrap">
-        <input type="text" className="searchBox" placeholder="關鍵字搜尋" onChange={(e) => setKeyword(e.target.value)} />
-        <button type="submit" className="searchButton" onClick={() => submitSearch(router, grade, category, keyword, availableTags)}>
+        <input type="text" className="searchBox" placeholder="關鍵字搜尋" onChange={(e) => { setKeyword(e.target.value); }} />
+        <button type="submit" className="searchButton" onClick={() => { submitSearch(router, grade, category, keyword, availableTags); }}>
           <i className="fa fa-search"></i>
         </button>
       </div>
@@ -75,7 +71,7 @@ const Page: FC = () => {
             defaultValue={grade}
             id="selectGrade"
             className={styles.selectBox}
-            onChange={(e) => setGrade(e.target.value)}
+            onChange={(e) => { setGrade(e.target.value); }}
           >
             <option value="all">年級</option>
             <option value="freshman">大一</option>
@@ -88,7 +84,7 @@ const Page: FC = () => {
             defaultValue={category}
             id="selectType"
             className={styles.selectBox}
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={(e) => { setCategory(e.target.value); }}
           >
             <option value="all">分類</option>
             <option value="require">必修</option>
@@ -99,11 +95,13 @@ const Page: FC = () => {
           TAG：&nbsp;&nbsp;&nbsp;
           { Object.keys(availableTags).map((tag, idx) => (
             <button
-              onClick={(e) => flipTag((availableTags as any)[tag].state)}
-              className={'tag' +  ((availableTags as any)[tag].state[0] ? ' tag-on' : '')}
+              onClick={(e) => { flipTag((availableTags as any)[tag].state); }}
+              className={'tag' + ((availableTags as any)[tag].state[0] ? ' tag-on' : '')}
               style={{ cursor: 'pointer' }}
               type="button"
-            >{(availableTags as any)[tag].name}</button>
+            >
+              {(availableTags as any)[tag].name}
+            </button>
           ))}
         </p>
       </div>
