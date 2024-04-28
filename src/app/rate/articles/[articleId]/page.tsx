@@ -3,20 +3,24 @@ import React, { useState, useEffect } from 'react';
 // import { article, setArticle } from '';
 import styles from '@/styles/rate.module.css';
 import FullScreen from '@/components/FullScreen';
+import { MailOutlined } from '@mui/icons-material';
 
+/*
 interface Article {
   title: string;
   lecturer: string;
   tag?: string[];
+  semester?: string;
   grade?: number;
   categories?: string[];
   content?: string;
-//   creator: User;
+  creator: User;
   createdAt?: Date;
   updatedAt?: Date;
 }
+*/
 
-export default function Article ({ params }) {
+const Article: React.FC = ({ params }) => {
   const [article, setArticle] = useState(null);
   useEffect(() => {
     // (async () => {
@@ -36,7 +40,7 @@ export default function Article ({ params }) {
     return (<div>loading...</div>);
   }
   return (
-    <FullScreen className={styles.bodyRate}>
+    <FullScreen className={styles.articlePage}>
       <div className={styles.articleTitle}>
         <div style={{ fontSize: '32px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>{article.title}</div>
         <div style={{ fontSize: '28px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>111-1 {article.lecturer}</div>
@@ -49,3 +53,5 @@ export default function Article ({ params }) {
     </FullScreen>
   );
 }
+
+export default Article;
