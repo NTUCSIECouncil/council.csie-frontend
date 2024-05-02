@@ -63,7 +63,7 @@ const Page: FC = () => {
       <div className={styles.searchArea}>
         <div className={styles.layoutVer}>
           <button className={styles.leftBar}>
-            <TextField
+            {/* <TextField
               sx={{
                 width: 300,
                 color: 'white'
@@ -72,10 +72,11 @@ const Page: FC = () => {
               label="Search field"
               type="search"
               variant="filled"
-            />
-            {/* <p>Search: &nbsp;
-              <input id="search" placeholder='搜尋課程...'></input>
-            </p> */}
+            /> */}
+            <p>
+              Search: &nbsp;
+              <input id="search" placeholder="搜尋課程..."></input>
+            </p>
             <h2>貼文篩選</h2>
             <hr style={{ width: '50%', margin: 'left' }} />
             <p>
