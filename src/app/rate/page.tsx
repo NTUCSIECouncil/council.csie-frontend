@@ -96,8 +96,10 @@ const Page: FC = () => {
             onChange={(e) => { setCategory(e.target.value); }}
           >
             <option value="all">分類</option>
-            <option value="require">必修</option>
-            <option value="select">選修</option>
+            <option value="required">大學部必修</option>
+            <option value="select">大學部選修</option>
+            <option value="cs">資工所</option>
+            <option value="network">網媒所</option>
           </select>
         </p>
         <p className={styles.word}>
