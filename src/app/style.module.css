@@ -8,6 +8,7 @@
 }
 
 .background {
+    filter: brightness(40%);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -20,13 +21,18 @@
 }
 
 .button {
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 10px;
-    background-color: #40465a;
+    background: rgba(117, 144, 153, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6.4px);
+    -webkit-backdrop-filter: blur(6.4px);
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 10px; */
+    /* background-color: rgba(100, 100, 100, 0.60); */
     color: var(--text);
     padding: 0px 20px;
     width: 290px;
     height: 396px;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     border-color: transparent;
     opacity: 0.85;
     cursor: pointer;

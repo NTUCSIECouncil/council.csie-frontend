@@ -1,6 +1,4 @@
 'use client';
-// import Search from '@/app/ui/search';
-// import Image from 'next/image';
 import React, { useState, type FC } from 'react';
 import Image from 'next/image';
 import styles from '@/styles/rate.module.css';
@@ -17,9 +15,9 @@ interface ParamType {
 type TagType = Record<string, {
   name: string;
   state: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
-}>;;
+}>;
 
-function submitSearch (router: AppRouterInstance, grade: string, category: string, keyword: string, tags: TagType): void {
+function submitSearch (router: AppRouterInstance, grade: string, category: string, keyword: string, tags: any): void {
   const searchUrl = '/rate/filterResults';
   const params: ParamType = { };
 
@@ -29,7 +27,7 @@ function submitSearch (router: AppRouterInstance, grade: string, category: strin
 
   const chosenTags = [];
   for (const k in tags) {
-    if (tags[k].state[0]) { chosenTags.push(k); }
+    if (tags[k].state[0] === true) { chosenTags.push(k); }
   }
   if (chosenTags.length > 0) {
     params.tags = chosenTags;
@@ -107,12 +105,12 @@ const Page: FC = () => {
           { Object.keys(availableTags).map((tag, idx) => (
             <button
               key={idx}
-              onClick={(e) => { flipTag(availableTags[tag].state); }}
-              className={'tag' + (availableTags[tag].state[0] ? ' tag-on' : '')}
+              onClick={(e) => { flipTag((availableTags)[tag].state); }}
+              className={'tag' + ((availableTags)[tag].state[0] ? ' tag-on' : '')}
               style={{ cursor: 'pointer' }}
               type="button"
             >
-              {(availableTags as any)[tag].name}
+              {(availableTags)[tag].name}
             </button>
           ))}
         </p>
