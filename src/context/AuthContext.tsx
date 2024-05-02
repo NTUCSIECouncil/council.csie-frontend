@@ -61,6 +61,7 @@ export const AuthContextProvider: FC<{ children: ReactNode }> =
   }, []);
 
   const signIn = async (): Promise<void> => {
+    setUserLoaded(false);
     const provider = new GoogleAuthProvider();
     if (window.confirm(`
 Please **DON'T** sign in with in-app browser like Instagram, Facebook or LINE browser. Google Oauth blocks access from insecure browsers.
