@@ -12,7 +12,7 @@ const Page: FC<{ params: Params }> = ({ params }) => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch('https://mkd8.wang.works/report.pdf');
+      const res = await fetch('https://mk8d.wang.works/report.pdf');
       if (res.ok) {
         setSrc(URL.createObjectURL(await res.blob()));
       }
