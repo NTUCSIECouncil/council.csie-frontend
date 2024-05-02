@@ -1,12 +1,10 @@
 'use client';
-// import Search from '@/app/ui/search';
-// import Image from 'next/image';
 import React, { useState, type FC } from 'react';
 import Image from 'next/image';
 import styles from '@/styles/rate.module.css';
 import FullScreen from '@/components/FullScreen';
 import { useRouter } from 'next/navigation';
-import { type type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
 interface ParamType {
   grade?: string;
@@ -17,9 +15,9 @@ interface ParamType {
 type TagType = Record<string, {
   name: string;
   state: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
-}>;;
+}>;
 
-function submitSearch (router: AppRouterInstance, grade: string, category: string, keyword: string, tags: any) {
+function submitSearch (router: AppRouterInstance, grade: string, category: string, keyword: string, tags: any): void {
   const searchUrl = '/rate/filterResults';
   const params: ParamType = { };
 
@@ -29,11 +27,9 @@ function submitSearch (router: AppRouterInstance, grade: string, category: strin
 
   const chosenTags = [];
   for (const k in tags) {
-    if (tags[k].state[0]) { chosenTags.push(k); }
-    if (tags[k].state[0]) { chosenTags.push(k); }
+    if (tags[k].state[0] === true) { chosenTags.push(k); }
   }
   if (chosenTags.length > 0) {
-    params.tags = chosenTags;
     params.tags = chosenTags;
   }
 
@@ -108,12 +104,13 @@ const Page: FC = () => {
           TAG：&nbsp;&nbsp;&nbsp;
           { Object.keys(availableTags).map((tag, idx) => (
             <button
-              onClick={(e) => flipTag((availableTags as any)[tag].state)}
-              className={'tag' +  ((availableTags as any)[tag].state[0] ? ' tag-on' : '')}
+              key={idx}
+              onClick={(e) => { flipTag((availableTags)[tag].state); }}
+              className={'tag' + ((availableTags)[tag].state[0] ? ' tag-on' : '')}
               style={{ cursor: 'pointer' }}
               type="button"
             >
-              {(availableTags as any)[tag].name}
+              {(availableTags)[tag].name}
             </button>
           ))}
         </p>
