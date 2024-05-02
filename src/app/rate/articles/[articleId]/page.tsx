@@ -43,7 +43,10 @@ const Article: React.FC = ({ params }) => {
     <FullScreen className={styles.articlePage}>
       <div className={styles.articleTitle}>
         <div style={{ fontSize: '32px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>{article.title}</div>
-        <div style={{ fontSize: '28px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>111-1 {article.lecturer}</div>
+        <div style={{ fontSize: '28px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>
+          111-1
+          {article.lecturer}
+        </div>
       </div>
       <hr style={{ width: '65%' }} />
       <div className={styles.bodyArticle}>
@@ -52,6 +55,6 @@ const Article: React.FC = ({ params }) => {
       </div>
     </FullScreen>
   );
-}
+};
 
 export default Article;
