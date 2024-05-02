@@ -1,0 +1,8 @@
+.all {
+    color: var(--text);
+    align-items: center;
+}
+
+.course {
+    font-size: x-large;
+}
