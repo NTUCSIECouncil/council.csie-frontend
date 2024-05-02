@@ -191,3 +191,32 @@
   /* display: block; */
   /* transition: opacity 0.5s ease; */
 }
+
+/* /rate/articles/[articleId] */
+.articlePage {
+  /* font-family: Arial, sans-serif; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.articleTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  padding: 10px;
+  background-color: #1c1c29;
+
+  margin-top: 50px;
+}
+
+.bodyArticle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: 60%;
+  padding: 10px;
+}

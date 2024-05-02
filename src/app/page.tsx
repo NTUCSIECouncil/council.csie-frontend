@@ -7,7 +7,7 @@ import FullScreen from '@/components/FullScreen';
 const Page: FC = () => {
   return (
     <FullScreen className={styles.homepageLayout}>
-      <Image className={styles.background} src="/building.jpg" width="1000" height="1000" alt="background" />
+      <Image className={styles.background} src="/building_original.jpg" width="1000" height="1000" alt="background" />
       <Link href="/life">
         <button className={styles.button}>
           <div className={styles.buttonLayout}>

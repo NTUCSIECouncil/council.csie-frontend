@@ -8,7 +8,7 @@ import { type FC, type ReactNode } from 'react';
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <html lang="en">
-      <body>
+      <body style={{ backgroundColor: 'var(--background)' }}>
         <AuthContextProvider>
           <NavBar />
           <div>
