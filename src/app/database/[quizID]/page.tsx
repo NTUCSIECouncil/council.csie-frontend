@@ -1,6 +1,13 @@
 'use client';
 import { type FC, useState, useEffect } from 'react';
+import '@/styles/globals.css';
 import styles from './styles.module.css';
+import Stack from '@mui/material/Stack';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import ImageIcon from '@mui/icons-material/Image';
 
 interface Params {
   quizID: string;
@@ -12,6 +19,7 @@ const Page: FC<{ params: Params }> = ({ params }) => {
   const [title, setTitle] = useState<string>('title');
   const [course, setCourse] = useState<string>('course');
   const [semester, setSemester] = useState<string>('semester');
+  const [author, setAuthor] = useState<string>('author');
 
   useEffect(() => {
     (async () => {
@@ -22,20 +30,57 @@ const Page: FC<{ params: Params }> = ({ params }) => {
     })().catch(err => { console.error(err); });
   }, []);
 
-  console.log(params.quizID)
+  console.log(params.quizID);
 
   return (
     <section className={styles.all}>
-      <section className={styles.course}>{course}</section>
-      <center id='title'>{title}</center>
-      <center style={{ height: '70vh' }}>
+      <section className={styles.title}>
+        {course}
+        {' '}
+        -
+        {' '}
+        {title}
+      </section>
+      <Stack direction="row" className={styles.attributes}>
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <ImageIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText
+            primary="Author"
+            secondary={author}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <ImageIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText
+            primary="Course"
+            secondary={course}
+          />
+        </ListItem>
+        {/* <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <BeachAccessIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Vacation" secondary="July 20, 2014" />
+        </ListItem> */}
+      </Stack>
+      <center className={styles.content}>
         {
           src === null
             ? (
                 'loading'
               )
             : (
-              <iframe src={src} height="100%" width="60%" />
+              <iframe src={src} height="100%" width="100%" />
               )
         }
       </center>

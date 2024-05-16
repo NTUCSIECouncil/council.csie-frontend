@@ -89,6 +89,6 @@ const Article: React.FC = ({ params }) => {
       </div>
     </FullScreen>
   );
-}
+};
 
 export default Article;

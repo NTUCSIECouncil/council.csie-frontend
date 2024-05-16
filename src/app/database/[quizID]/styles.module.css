@@ -1,8 +1,24 @@
 .all {
     color: var(--text);
     align-items: center;
+    margin-left: 20pt;
+    margin-right: 20pt;
 }
 
-.course {
-    font-size: x-large;
+.title {
+    text-align: left;
+    font-size: 45pt;
+    /* letter-spacing: 10px; */
+}
+
+.content {
+    height: 70vh;
+    margin-top: 10pt;
+    margin-left: 80pt;
+    margin-right: 80pt;
+}
+
+.attributes {
+    margin-left: 80pt;
+    margin-right: 80pt;
 }

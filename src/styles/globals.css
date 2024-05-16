@@ -63,3 +63,6 @@ body {
 .tag-on {
   background-color: black;
 }
+.MuiListItemText-secondary {
+  color: var(--text)
+}
