@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 // import { article, setArticle } from '';
 import styles from '@/styles/rate.module.css';
 import FullScreen from '@/components/FullScreen';
-import { MailOutlined } from '@mui/icons-material';
+// import { MailOutlined } from '@mui/icons-material';
 
 /*
 interface Article {
@@ -21,16 +21,23 @@ interface Article {
 */
 
 const Article: React.FC = ({ params }) => {
-  const [article, setArticle] = useState(null);
+  const [article, setArticle] = useState<any | null>(null);
   useEffect(() => {
-    // (async () => {
-    //     // fetch API according to $articleId
-    //     const res = fetch();
-    setArticle({
-      title: '普通物理學',
-      lecturer: '胡德邦'
+    const fetchArticle = async () => {
+      // fetch API according to $articleId
+      const response = await fetch(`api/articles/${params.articleId}`);
+      if (!response.ok) {
+        // windows alert
+      }
+      const article = await response.json();
+      setArticle(article);
+      return article;
+    };
+
+    fetchArticle().catch(error => {
+      console.log(error.message); // 'An error has occurred: 404'
     });
-    // })();
+
     console.log(params.articleId);
   }, [params.articleId]);
 
@@ -43,10 +50,7 @@ const Article: React.FC = ({ params }) => {
     <FullScreen className={styles.articlePage}>
       <div className={styles.articleTitle}>
         <div style={{ fontSize: '32px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>{article.title}</div>
-        <div style={{ fontSize: '28px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>
-          111-1
-          {article.lecturer}
-        </div>
+        <div style={{ fontSize: '28px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>111-1 {article.lecturer}</div>
       </div>
       <hr style={{ width: '65%' }} />
       <div className={styles.bodyArticle}>
@@ -55,6 +59,6 @@ const Article: React.FC = ({ params }) => {
       </div>
     </FullScreen>
   );
-};
+}
 
 export default Article;
