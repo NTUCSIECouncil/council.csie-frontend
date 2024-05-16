@@ -26,7 +26,7 @@ const Article: React.FC = ({ params }) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchArticle = async () => {
+    const fetchArticle = async (): Promise<void> => {
       // fetch API according to $articleId
       setIsLoading(true);
       const response = await fetch(`api/articles/${params.articleId}`);
