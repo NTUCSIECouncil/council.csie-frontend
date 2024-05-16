@@ -22,12 +22,12 @@ const Page: FC<{ params: Params }> = ({ params }) => {
     })().catch(err => { console.error(err); });
   }, []);
 
-  console.log(params.quizID)
+  console.log(params.quizID);
 
   return (
     <section className={styles.all}>
       <section className={styles.course}>{course}</section>
-      <center id='title'>{title}</center>
+      <center id="title">{title}</center>
       <center style={{ height: '70vh' }}>
         {
           src === null
