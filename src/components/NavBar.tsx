@@ -49,9 +49,11 @@ const NavBar: FC = () => {
             {...playfairDisplay}
             variant="h4"
             noWrap
+            // align="center"
             sx={{
               mr: 2,
               ml: 2,
+              mb: 0.7,
               display: { xs: 'none', md: 'flex' },
               fontWeight: 600,
               // letterSpacing: '.3rem',
