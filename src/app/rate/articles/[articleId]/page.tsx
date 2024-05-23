@@ -20,7 +20,11 @@ interface Article {
 }
 */
 
-const Article: React.FC = ({ params }) => {
+interface Params {
+  articleId: string;
+};
+
+const Article: React.FC<{ params: Params }> = ({ params }) => {
   const [article, setArticle] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -65,18 +69,18 @@ const Article: React.FC = ({ params }) => {
   // render list of search results provided by $article
   // return JSON.stringify(article, null, 2);
   if (isLoading) {
-    return <div style={{ fontSize: '24px', fontFamily: 'serif', color: 'var(--text)' }}>Loading...</div>;
+    return <div style={{ fontSize: '24px', color: 'var(--text)' }}>Loading...</div>;
   }
 
   if (error !== null && error !== '') {
-    return <div style={{ fontSize: '24px', fontFamily: 'serif', color: 'var(--text)' }}>{error}</div>;
+    return <div style={{ fontSize: '24px', color: 'var(--text)' }}>{error}</div>;
   }
 
   return (
     <FullScreen className={styles.articlePage}>
       <div className={styles.articleTitle}>
-        <div style={{ fontSize: '32px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>{article.title}</div>
-        <div style={{ fontSize: '28px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>
+        <div style={{ fontSize: '32px', fontWeight: 600, color: 'white' }}>{article.title}</div>
+        <div style={{ fontSize: '28px', fontWeight: 600, color: 'white' }}>
           111-1
           {' '}
           {article.lecturer}
@@ -84,8 +88,8 @@ const Article: React.FC = ({ params }) => {
       </div>
       <hr style={{ width: '65%' }} />
       <div className={styles.bodyArticle}>
-        <div style={{ fontSize: '28px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>評價平均</div>
-        <div style={{ fontSize: '28px', fontFamily: 'serif', fontWeight: 600, color: 'white' }}>等第</div>
+        <div style={{ fontSize: '28px', fontWeight: 600, color: 'white' }}>評價平均</div>
+        <div style={{ fontSize: '28px', fontWeight: 600, color: 'white' }}>等第</div>
       </div>
     </FullScreen>
   );

@@ -2,7 +2,7 @@ import { type FC, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { UserAuth } from '@/context/AuthContext';
 import './NavBar.css';
-import { Playfair_Display, Roboto } from 'next/font/google';
+import { Playfair_Display } from 'next/font/google';
 
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,11 +15,6 @@ import MenuItem from '@mui/material/MenuItem';
 
 const playfairDisplay = Playfair_Display({
   weight: '800',
-  subsets: ['latin']
-});
-
-const roboto = Roboto({
-  weight: '900',
   subsets: ['latin']
 });
 
@@ -51,13 +46,13 @@ const NavBar: FC = () => {
       <Toolbar disableGutters>
         <Link href="/">
           <Typography
+            {...playfairDisplay}
             variant="h4"
             noWrap
             sx={{
               mr: 2,
               ml: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'serif',
               fontWeight: 600,
               // letterSpacing: '.3rem',
               color: 'inherit',
@@ -81,7 +76,6 @@ const NavBar: FC = () => {
                   noWrap
                   sx={{
                     display: { xs: 'none', md: 'flex' },
-                    fontFamily: 'serif',
                     fontWeight: 600,
                     color: 'inherit',
                     textDecoration: 'none'
