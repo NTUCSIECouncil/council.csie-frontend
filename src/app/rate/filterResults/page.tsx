@@ -165,7 +165,7 @@ const Page: FC = () => {
         <h1 className={styles.titleFilter}>搜尋結果:D</h1>
         {(Array.isArray(searchResult) ? searchResult : []).map((article: any) => (
           <button key={article._id} className={styles.mainButton}>
-            <Link href={`/article/${article._id}`}>
+            <Link href={`/rate/articles/${article._id}`}>
               <div>
                 <h1>{article.title}</h1>
                 <h3 style={{ textAlign: 'right' }}>{article.lecturer}</h3>
