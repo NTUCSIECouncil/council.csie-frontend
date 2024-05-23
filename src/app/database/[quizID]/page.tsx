@@ -3,11 +3,13 @@ import { type FC, useState, useEffect } from 'react';
 import '@/styles/globals.css';
 import styles from './styles.module.css';
 import Stack from '@mui/material/Stack';
+import Link from 'next/link';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
+import PortraitIcon from '@mui/icons-material/Portrait';
 
 interface Params {
   quizID: string;
@@ -35,17 +37,13 @@ const Page: FC<{ params: Params }> = ({ params }) => {
   return (
     <section className={styles.all}>
       <section className={styles.title}>
-        {course}
-        {' '}
-        -
-        {' '}
-        {title}
+        {course + ' - ' + title}
       </section>
       <Stack direction="row" className={styles.attributes}>
         <ListItem>
           <ListItemAvatar>
             <Avatar>
-              <ImageIcon />
+              <PortraitIcon />
             </Avatar>
           </ListItemAvatar>
           <ListItemText
@@ -73,7 +71,16 @@ const Page: FC<{ params: Params }> = ({ params }) => {
           <ListItemText primary="Vacation" secondary="July 20, 2014" />
         </ListItem> */}
       </Stack>
-      <center className={styles.content}>
+      <div className={styles.content}>
+        <div className={styles.open_in_new_tab_footnote}>
+          <Link
+            href="https://mk8d.wang.works/report.pdf"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Click here to open the file in an new tab.
+          </Link>
+        </div>
         {
           src === null
             ? (
@@ -83,7 +90,7 @@ const Page: FC<{ params: Params }> = ({ params }) => {
               <iframe src={src} height="100%" width="100%" />
               )
         }
-      </center>
+      </div>
     </section>
   );
 };

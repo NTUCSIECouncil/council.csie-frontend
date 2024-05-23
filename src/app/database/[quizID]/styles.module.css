@@ -12,7 +12,7 @@
 }
 
 .content {
-    height: 70vh;
+    height: 60vh;
     margin-top: 10pt;
     margin-left: 80pt;
     margin-right: 80pt;
@@ -21,4 +21,8 @@
 .attributes {
     margin-left: 80pt;
     margin-right: 80pt;
+}
+
+.open_in_new_tab_footnote {
+    text-align:right;
 }
