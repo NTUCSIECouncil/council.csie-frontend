@@ -104,7 +104,11 @@ const Article: React.FC<{ params: Params }> = ({ params }) => {
       <hr style={{ width: '65%' }} />
       <div className={styles.bodyArticle} style={{ fontSize: '28px', color: 'white' }}>
         <Grid container direction="row" gap="1rem" alignItems="end">
-          <div style={{ fontWeight: 600, color: 'white' }}>{article.rate}</div>
+          <div style={{ fontWeight: 600, color: 'white' }}>
+            {article.rate}
+            {' '}
+            / 5
+          </div>
           <div style={{ fontWeight: 600, color: 'white' }}>評價平均</div>
         </Grid>
         <Grid container direction="row" gap="1rem" alignItems="end">
