@@ -46,6 +46,9 @@ const Page: FC<{ params: Params }> = ({ params }) => {
           throw Error('status code error');
         } else {
           const result = (await res.json()).result as Quiz;
+          setTitle(result.title);
+          setCourse(result.course);
+          setSemester(result.semester);
           setSrc(result.download_link);
         }
       }
