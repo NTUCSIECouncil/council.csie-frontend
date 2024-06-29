@@ -5,6 +5,7 @@ import FullScreen from '@/components/FullScreen';
 import { Grid } from '@mui/material';
 
 import Markdown from 'react-markdown';
+import { UserAuth } from '@/context/AuthContext';
 
 /*
 interface Article {
@@ -30,43 +31,28 @@ const Article: React.FC<{ params: Params }> = ({ params }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const { request } = UserAuth();
+
   useEffect(() => {
     const fetchArticle = async (): Promise<void> => {
       // fetch API according to $articleId
       setIsLoading(true);
       // let article;
-      const response = await fetch(`/api/articles/${params.articleId}`);
+      const response = await request(`/api/articles/${params.articleId}`);
 
-      const debug = true;
-      let article;
-      if (debug) {
-        article = {
-          title: '普物',
-          lecturer: '胡德邦',
-          rate: '5',
-          grade: 'A+',
-          content: `
-          # 胡德幫
-          啊啊啊我愛你胡德幫  
-          胡德幫幫忙
-          ## 最牛逼的老師
-          **你說得對**，*但是這就是卡桑帝*，***🤔HP 4700，護甲 329，魔抗 201的英雄***。有不可阻擋🤚，有護盾👌，還能過牆✌️。有控制🤙，甚至冷卻時間只有1秒✊，只要15點藍👍。轉換姿態時甚至可以刷新W的cd👈，還有✌️真實傷害。然後，護甲和魔抗提升後還能獲得技能加速👐，縮短Q的cd🙌，還縮短釋放時間😨，然後還有攻擊力😰。W就👊🏿😭👊🏿啊啊啊啊啊啊🖐️😭🤚
-          `.split('\n').map(it => it.trimStart()).join('\n')
-        };
-      } else {
-        if (!response.ok) {
-          // windows alert
-          if (response.status === 404) {
-            setError('Article not found.');
-          } else {
-            setError('An error occurred while fetching the article.');
-          }
-          return;
+      if (!response.ok) {
+        // windows alert
+        if (response.status === 404) {
+          setError('Article not found.');
+        } else {
+          setError('An error occurred while fetching the article.');
         }
-        article = await response.json();
+        return;
       }
+      const res = await response.json();
 
-      setArticle(article);
+      console.log(res.result);
+      setArticle(res.result);
       setError(null);
     };
 
@@ -79,7 +65,7 @@ const Article: React.FC<{ params: Params }> = ({ params }) => {
         setIsLoading(false);
       });
     console.log(params.articleId);
-  }, [params.articleId]);
+  }, [params.articleId, request]);
 
   // render list of search results provided by $article
   // return JSON.stringify(article, null, 2);
@@ -91,31 +77,40 @@ const Article: React.FC<{ params: Params }> = ({ params }) => {
     return <div style={{ fontSize: '24px', color: 'var(--text)' }}>{error}</div>;
   }
 
+  const grade =
+    article.grade === 1
+      ? '大一'
+      : article.grade === 2
+        ? '大二'
+        : article.grade === 3
+          ? '大三'
+          : article.grade === 4
+            ? '大四'
+            : 'err';
+
+  const titleTags = [grade].concat(article.categories as string[]);
+
   return (
     <FullScreen className={styles.articlePage}>
       <div className={styles.articleTitle}>
-        <div style={{ fontSize: '32px', fontWeight: 600, color: 'white' }}>{article.title}</div>
-        <div style={{ fontSize: '28px', fontWeight: 600, color: 'white' }}>
-          111-1
-          {' '}
-          {article.lecturer}
+        <div style={{ fontSize: '32px', fontWeight: 600, color: 'white', verticalAlign: 'middle' }}>
+          { article.title }
+        </div>
+        <div className={styles.tagWrap}>
+          { titleTags.map((tag) => <button className={styles.courseTag} key={tag}>{tag}</button>) }
+        </div>
+        <div style={{ fontSize: '28px', fontWeight: 600, color: 'white', verticalAlign: 'middle' }}>
+          { article.lecturer }
         </div>
       </div>
       <hr style={{ width: '65%' }} />
       <div className={styles.bodyArticle} style={{ fontSize: '28px', color: 'white' }}>
         <Grid container direction="row" gap="1rem" alignItems="end">
-          <div style={{ fontWeight: 600, color: 'white' }}>
-            {article.rate}
-            {' '}
-            / 5
+          <div className={styles.categoryTags}>
+            { article.tag.map((tag) => <button className={styles.articleTag} key={tag}>{tag}</button>) }
           </div>
-          <div style={{ fontWeight: 600, color: 'white' }}>評價平均</div>
         </Grid>
-        <Grid container direction="row" gap="1rem" alignItems="end">
-          <div style={{ fontWeight: 600, color: 'white' }}>等第</div>
-          <div style={{ fontWeight: 600, color: 'white' }}>{article.grade}</div>
-        </Grid>
-        <div style={{ marginTop: '2rem' }}>
+        <div style={{ marginTop: '1rem' }}>
           <Markdown>
             {article.content}
           </Markdown>
