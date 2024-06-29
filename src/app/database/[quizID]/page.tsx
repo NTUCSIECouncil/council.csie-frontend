@@ -10,13 +10,24 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
 import PortraitIcon from '@mui/icons-material/Portrait';
+import { UserAuth } from '@/context/AuthContext';
+import { type UUID } from 'crypto';
 
 interface Params {
   quizID: string;
 };
 
+interface Quiz {
+  _id?: UUID;
+  title: string;
+  course: string;
+  semester: string;
+  download_link: string;
+}
+
 // const Page: FC<{ params: { quizID: string } }> = ({ params }) => {
 const Page: FC<{ params: Params }> = ({ params }) => {
+  const { request } = UserAuth();
   const [src, setSrc] = useState<null | string>(null);
   const [title, setTitle] = useState<string>('title');
   const [course, setCourse] = useState<string>('course');
@@ -25,9 +36,17 @@ const Page: FC<{ params: Params }> = ({ params }) => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch('https://mk8d.wang.works/report.pdf');
-      if (res.ok) {
-        setSrc(URL.createObjectURL(await res.blob()));
+      if (request !== undefined) {
+        const res = await request('/api/quizzes/00000004-0001-0000-0000-000000000000');
+        if (res === null) {
+          throw Error('request error');
+        } else if (!res.ok) {
+          throw Error('status code error');
+        } else {
+          const result = (await res.json()).result as Quiz;
+          setSrc(result.download_link);
+          console.log(result.download_link);
+        }
       }
     })().catch(err => { console.error(err); });
   }, []);
