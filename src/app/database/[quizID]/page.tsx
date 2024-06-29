@@ -1,6 +1,15 @@
 'use client';
 import { type FC, useState, useEffect } from 'react';
-import styles from '@/styles/database.module.css';
+import '@/styles/globals.css';
+import styles from './styles.module.css';
+import Stack from '@mui/material/Stack';
+import Link from 'next/link';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import ImageIcon from '@mui/icons-material/Image';
+import PortraitIcon from '@mui/icons-material/Portrait';
 
 interface Params {
   quizID: string;
@@ -9,6 +18,10 @@ interface Params {
 // const Page: FC<{ params: { quizID: string } }> = ({ params }) => {
 const Page: FC<{ params: Params }> = ({ params }) => {
   const [src, setSrc] = useState<null | string>(null);
+  const [title, setTitle] = useState<string>('title');
+  const [course, setCourse] = useState<string>('course');
+  const [semester, setSemester] = useState<string>('semester');
+  const [author, setAuthor] = useState<string>('author');
 
   useEffect(() => {
     (async () => {
@@ -19,21 +32,66 @@ const Page: FC<{ params: Params }> = ({ params }) => {
     })().catch(err => { console.error(err); });
   }, []);
 
+  console.log(params.quizID);
+
   return (
-    <center style={{ height: '50vh' }}>
-      {
-        // 'My Post: ' + params.quizID
-      }
-      {
-        src === null
-          ? (
-              'loading'
-            )
-          : (
-            <iframe src={src} height="100%" width="60%" />
-            )
-      }
-    </center>
+    <section className={styles.all}>
+      <section className={styles.title}>
+        {course + ' - ' + title}
+      </section>
+      <Stack direction="row" className={styles.attributes}>
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <PortraitIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText
+            primary="Author"
+            secondary={author}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <ImageIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText
+            primary="Course"
+            secondary={course}
+          />
+        </ListItem>
+        {/* <ListItem>
+          <ListItemAvatar>
+            <Avatar>
+              <BeachAccessIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Vacation" secondary="July 20, 2014" />
+        </ListItem> */}
+      </Stack>
+      <div className={styles.content}>
+        <div className={styles.open_in_new_tab_footnote}>
+          <Link
+            href="https://mk8d.wang.works/report.pdf"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Click here to open the file in a new tab.
+          </Link>
+        </div>
+        {
+          src === null
+            ? (
+                'loading'
+              )
+            : (
+              <iframe src={src} height="100%" width="100%" />
+              )
+        }
+      </div>
+    </section>
   );
 };
 
