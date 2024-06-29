@@ -1,5 +1,5 @@
 import { type FC, type ReactNode, useContext, createContext, useState, useEffect, useCallback } from 'react';
-import { onAuthStateChanged, GoogleAuthProvider, signInWithRedirect, signOut, updateProfile, type User } from 'firebase/auth';
+import { onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut, updateProfile, type User } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase';
 
 interface customRequestInit extends RequestInit {
@@ -29,6 +29,7 @@ export const AuthContextProvider: FC<{ children: ReactNode }> =
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       (async () => {
+        setUserLoaded(true);
         if (currentUser == null) {
           setUser(null);
           return;
@@ -52,8 +53,6 @@ export const AuthContextProvider: FC<{ children: ReactNode }> =
 
         if (res.ok) setUser(currentUser);
         else console.error('auth error');
-
-        setUserLoaded(true);
       })().catch(err => { console.error(err); });
     });
     // console.log(user);
@@ -70,7 +69,7 @@ On mobile devices, use Chrome or Safari instead.
 請**勿**使用應用程式內建瀏覽器登入，如 IG、FB 或 LINE。Google Oauth 拒絕來自不安全瀏覽器的連線。
 若為行動裝置，請在 Chrome 或 Safari 上登入。
     `.trim())) {
-      await signInWithRedirect(auth, provider);
+      await signInWithPopup(auth, provider);
       window.location.reload();
     }
   };

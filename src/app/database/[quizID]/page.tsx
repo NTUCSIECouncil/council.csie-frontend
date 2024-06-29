@@ -56,7 +56,7 @@ const Page: FC<{ params: Params }> = ({ params }) => {
       setRequestFail(true);
       console.error(err);
     });
-  }, []);
+  }, [params.quizID, request]);
 
   console.log(params.quizID);
 

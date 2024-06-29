@@ -12,6 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const playfairDisplay = Playfair_Display({
   weight: '800',
@@ -89,50 +90,51 @@ const NavBar: FC = () => {
             </Button>
           ))}
         </Box>
-        <Box m={2} sx={{ flexGrow: 0 }}>
-          {user === null
-            ? (
-              <Button onClick={() => { handlePromise(signIn); }}>
-                Login
-              </Button>
-              )
-            : (
-              <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
-                  <Button
-                    onClick={handleOpenUserMenu}
-                    sx={{ p: 0 }}
-                    disabled={!userLoaded}
+        <Box m={2} sx={{ flexGrow: 0, my: 'auto' }}>
+          {!userLoaded
+            ? <CircularProgress style={{ width: 28, height: 28 }} />
+            : user === null
+              ? (
+                <Button onClick={() => { handlePromise(signIn); }}>
+                  Login
+                </Button>
+                )
+              : (
+                <Box sx={{ flexGrow: 0 }}>
+                  <Tooltip title="Open settings">
+                    <Button
+                      onClick={handleOpenUserMenu}
+                      sx={{ p: 0 }}
+                    >
+                      {user.displayName}
+                    </Button>
+                  </Tooltip>
+                  <Menu
+                    sx={{ mt: '45px' }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right'
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right'
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
                   >
-                    {user.displayName}
-                  </Button>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  {
-                    // settings.map((setting) => (
-                    <MenuItem onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" onClick={() => { handlePromise(logOut); }}>Logout</Typography>
-                    </MenuItem>
-                    // ))
-                  }
-                </Menu>
-              </Box>
-              )}
+                    {
+                      // settings.map((setting) => (
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center" onClick={() => { handlePromise(logOut); }}>Logout</Typography>
+                      </MenuItem>
+                      // ))
+                    }
+                  </Menu>
+                </Box>
+                )}
         </Box>
       </Toolbar>
     </AppBar>
