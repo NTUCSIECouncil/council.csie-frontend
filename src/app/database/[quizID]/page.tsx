@@ -78,7 +78,7 @@ const Page: FC<{ params: Params }> = ({ params }) => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            Click here to open the file in an new tab.
+            Click here to open the file in a new tab.
           </Link>
         </div>
         {
