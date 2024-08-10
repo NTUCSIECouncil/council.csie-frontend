@@ -1,3 +1,4 @@
+'use client';
 import { type FC, type ReactNode, useContext, createContext, useState, useEffect, useCallback } from 'react';
 import { onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut, updateProfile, type User } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase';

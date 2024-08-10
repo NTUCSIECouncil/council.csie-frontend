@@ -1,10 +1,18 @@
-'use client';
 import '@/styles/globals.css';
 import '@/styles/color.css';
 import NavBar from '@/components/NavBar';
 import { AuthContextProvider } from '@/context/AuthContext';
 import { type FC, type ReactNode } from 'react';
 import { Roboto } from 'next/font/google';
+import { type Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | CSIE Council',
+    default: 'CSIE Council'
+  },
+  description: 'The database of NTU CSIE.'
+};
 
 const roboto = Roboto({
   weight: '400',

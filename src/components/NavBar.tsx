@@ -1,3 +1,4 @@
+'use client';
 import { type FC, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { UserAuth } from '@/context/AuthContext';
