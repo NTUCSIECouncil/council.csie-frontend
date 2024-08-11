@@ -1,8 +1,14 @@
 import SearchIcon from '@mui/icons-material/Search';
 
-const Search = ({ placeholder }: { placeholder: string }): JSX.Element => {
+const Search = ({
+  placeholder,
+  className
+}: {
+  placeholder: string;
+  className?: string;
+}): JSX.Element => {
   return (
-    <div className="relative flex flex-1 flex-shrink-0">
+    <div className={`relative ${className}`}>
       <label className="sr-only">Search</label>
       <input
         className="

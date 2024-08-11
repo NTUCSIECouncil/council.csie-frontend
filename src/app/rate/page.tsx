@@ -6,6 +6,7 @@ import FullScreen from '@/components/FullScreen';
 import { useRouter } from 'next/navigation';
 import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Search from '@/ui/search';
+import Filters from './filters';
 
 interface ParamType {
   grade?: string;
@@ -20,7 +21,7 @@ type TagType = Record<string, {
 
 function submitSearch (router: AppRouterInstance, grade: string, category: string, keyword: string, tags: any): void {
   const searchUrl = '/rate/filterResults';
-  const params: ParamType = { };
+  const params: ParamType = {};
 
   if (grade !== 'all') { params.grade = grade; }
   if (category !== 'all') { params.category = category; }
@@ -65,43 +66,25 @@ const Page: FC = () => {
     <FullScreen className={styles.bodyRate}>
       <Image className={styles.background} src="/building.jpg" width="1000" height="1000" alt="background" />
       <p className="text-5xl font-bold my-4 tracking-widest">課程評價網</p>
-      <form action={() => { submitSearch(router, grade, category, keyword, availableTags); }}>
-        <div className="w-96 my-2">
-          <Search placeholder="輸入關鍵字" />
+      <form
+        action={() => { submitSearch(router, grade, category, keyword, availableTags); }}
+        className="w-[500px] flex flex-col items-center"
+      >
+        <Search className="my-2 w-full" placeholder="輸入關鍵字" />
+        <div>
+          <div className="flex items-center gap-2 my-2">
+            <p className="text-lg">篩選：</p>
+            <Filters />
+          </div>
+          <div className="flex items-center gap-2 my-2">
+            <p className="text-lg">標籤：</p>
+          </div>
         </div>
       </form>
       <div className={styles.wrap}>
         <p className={styles.word}>
-          篩選：&nbsp;&nbsp;&nbsp;
-          <select
-            defaultValue={grade}
-            id="selectGrade"
-            className={styles.selectBox}
-            onChange={(e) => { setGrade(e.target.value); }}
-          >
-            <option value="all">年級</option>
-            <option value="freshman">大一</option>
-            <option value="sophomore">大二</option>
-            <option value="junior">大三</option>
-            <option value="senior">大四</option>
-          </select>
-          &nbsp; &nbsp;
-          <select
-            defaultValue={category}
-            id="selectType"
-            className={styles.selectBox}
-            onChange={(e) => { setCategory(e.target.value); }}
-          >
-            <option value="all">分類</option>
-            <option value="required">大學部必修</option>
-            <option value="select">大學部選修</option>
-            <option value="cs">資工所</option>
-            <option value="network">網媒所</option>
-          </select>
-        </p>
-        <p className={styles.word}>
           TAG：&nbsp;&nbsp;&nbsp;
-          { Object.keys(availableTags).map((tag, idx) => (
+          {Object.keys(availableTags).map((tag, idx) => (
             <button
               key={idx}
               onClick={(e) => { flipTag((availableTags)[tag].state); }}
