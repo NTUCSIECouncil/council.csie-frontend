@@ -1,5 +1,5 @@
 import '@/styles/globals.css';
-import NavBar from '@/ui/NavBar';
+import NavBar from '@/ui/nav-bar';
 import { AuthContextProvider } from '@/context/AuthContext';
 import { type FC, type ReactNode } from 'react';
 import { type Metadata } from 'next';
