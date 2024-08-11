@@ -5,6 +5,7 @@ import styles from '@/styles/rate.module.css';
 import FullScreen from '@/components/FullScreen';
 import { useRouter } from 'next/navigation';
 import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import Search from '@/ui/search';
 
 interface ParamType {
   grade?: string;
@@ -67,12 +68,11 @@ const Page: FC = () => {
       {/* the following link is for the search icon of the search bar */}
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
       {/* <div className={styles.courseLayout}> */}
-      <div className="searchWrap">
-        <input type="text" className="searchBox" placeholder="關鍵字搜尋" onChange={(e) => { setKeyword(e.target.value); }} />
-        <button type="submit" className="searchButton" onClick={() => { submitSearch(router, grade, category, keyword, availableTags); }}>
-          <i className="fa fa-search"></i>
-        </button>
-      </div>
+      <form action={() => { submitSearch(router, grade, category, keyword, availableTags); }}>
+        <div className="w-96">
+          <Search placeholder="輸入關鍵字" />
+        </div>
+      </form>
       <div className={styles.wrap}>
         <p className={styles.word}>
           篩選：&nbsp;&nbsp;&nbsp;
