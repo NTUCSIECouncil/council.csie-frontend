@@ -1,6 +1,6 @@
 import { type FC } from 'react';
-import NavCards from '@/ui/home/nav-cards';
-import Background from '@/ui/home/background';
+import NavCards from '@/app/(home)/nav-cards';
+import Background from '@/app/(home)/background';
 
 const Page: FC = () => {
   return (
