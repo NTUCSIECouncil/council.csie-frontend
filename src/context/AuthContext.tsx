@@ -53,7 +53,10 @@ export const AuthContextProvider: FC<{ children: ReactNode }> =
         }
 
         if (res.ok) setUser(currentUser);
-        else console.error('auth error');
+        else {
+          console.error('auth error');
+          console.error(res);
+        }
       })().catch(err => { console.error(err); });
     });
     // console.log(user);

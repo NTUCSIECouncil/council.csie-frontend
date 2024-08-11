@@ -1,7 +1,6 @@
-body {
-  margin: 0;
-  background-color: var(--background);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Title for Subpages */
 .title {
