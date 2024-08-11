@@ -4,12 +4,12 @@ import building from '@public/building.jpg';
 const Background = (): JSX.Element => {
   return (
     <Image
-      alt="Der Tian Hall"
+      alt="Background(Der Tian Hall)."
       src={building}
       placeholder="blur"
       quality={100}
       fill
-      className="bg-cover"
+      className="object-cover -z-50 brightness-[80%]"
     />
   );
 };
