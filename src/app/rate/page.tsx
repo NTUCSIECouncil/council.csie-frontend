@@ -64,12 +64,9 @@ const Page: FC = () => {
   return (
     <FullScreen className={styles.bodyRate}>
       <Image className={styles.background} src="/building.jpg" width="1000" height="1000" alt="background" />
-      <h1 className="title">課程評價網</h1>
-      {/* the following link is for the search icon of the search bar */}
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-      {/* <div className={styles.courseLayout}> */}
+      <p className="text-5xl font-bold my-4 tracking-widest">課程評價網</p>
       <form action={() => { submitSearch(router, grade, category, keyword, availableTags); }}>
-        <div className="w-96">
+        <div className="w-96 my-2">
           <Search placeholder="輸入關鍵字" />
         </div>
       </form>
