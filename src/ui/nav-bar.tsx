@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import CircularProgress from '@mui/material/CircularProgress';
 import { playfairDisplay } from '@/ui/fonts';
 
-const NavBar: FC = () => {
+const NavBar = (): JSX.Element => {
   const { user, userLoaded, signIn, logOut } = UserAuth();
 
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -35,7 +35,7 @@ const NavBar: FC = () => {
 
   return (
     <>
-      <nav className="bg-black">
+      <nav className="bg-black sticky top-0">
         <div className="flex flex-wrap items-center justify-between mx-auto">
           <div className="flex items-center h-16 text-white font-bold">
             <Link
