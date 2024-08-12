@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import CourseBlock from './course-block';
 import Search from '@/ui/search';
 import Filters from '@/ui/filters';
@@ -13,7 +14,7 @@ interface articleProps {
 }
 
 // Temporary function
-async function fakeFetch (url: string): Promise<articleProps[]> {
+async function fakeFetch(url: string): Promise<articleProps[]> {
   const articles = [{
     _id: '0',
     title: '普通物理學',
@@ -73,13 +74,17 @@ const Page = async ({
       <main className="w-3/5">
         <div className="flex flex-col gap-3">
           {articles.map((article) => (
-            <CourseBlock
-              title={article.title}
-              lecturer={article.lecturer}
-              tags={article.tags}
-              content={article.content.length > 280 ? `${article.content.substring(0, 280)} [...]` : article.content}
+            <Link
+              href={`/rate/articles/${article._id}`}
               key={article._id}
-            />
+            >
+              <CourseBlock
+                title={article.title}
+                lecturer={article.lecturer}
+                tags={article.tags}
+                content={article.content.length > 280 ? `${article.content.substring(0, 280)} [...]` : article.content}
+              />
+            </Link>
           ))}
         </div>
       </main>
