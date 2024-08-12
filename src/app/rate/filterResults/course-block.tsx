@@ -12,7 +12,7 @@ const CourseBlock = ({
   content: string;
 }): JSX.Element => {
   return (
-    <div className="flex flex-col w-full rounded-lg bg-gray-800 py-4 px-6">
+    <div className="flex flex-col w-full rounded-lg bg-gray-800 py-4 px-6 hover:bg-opacity-75">
       <div className="flex justify-between w-full">
         <p className="font-bold text-xl">{title}</p>
         <p className="font-semibold text-lg">{lecturer}</p>
