@@ -1,12 +1,10 @@
 'use client';
 import React, { useState, type FC } from 'react';
-import Image from 'next/image';
-import styles from '@/styles/rate.module.css';
-import FullScreen from '@/components/FullScreen';
 import { useRouter } from 'next/navigation';
 import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Search from '@/ui/search';
 import Filters from './filters';
+import Background from './background';
 
 interface ParamType {
   grade?: string;
@@ -14,74 +12,75 @@ interface ParamType {
   keyword?: string;
   tags?: string[];
 };
-type TagType = Record<string, {
-  name: string;
-  state: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
-}>;
+// type TagType = Record<string, {
+//   name: string;
+//   state: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
+// }>;
 
-function submitSearch (router: AppRouterInstance, grade: string, category: string, keyword: string, tags: any): void {
+function submitSearch (router: AppRouterInstance, formData: FormData): void {
   const searchUrl = '/rate/filterResults';
   const params: ParamType = {};
 
-  if (grade !== 'all') { params.grade = grade; }
-  if (category !== 'all') { params.category = category; }
-  if (keyword !== '') { params.keyword = keyword; }
+  // Something needs to be implemented at the backend.
 
-  const chosenTags = [];
-  for (const k in tags) {
-    if (tags[k].state[0] === true) { chosenTags.push(k); }
-  }
-  if (chosenTags.length > 0) {
-    params.tags = chosenTags;
-  }
+  // const chosenTags = [];
+  // for (const k in tags) {
+  //   if (tags[k].state[0] === true) { chosenTags.push(k); }
+  // }
+  // if (chosenTags.length > 0) {
+  //   params.tags = chosenTags;
+  // }
 
   router.push(searchUrl + '?' + (new URLSearchParams(params as URLSearchParams)).toString());
 }
 
 const Page: FC = () => {
   const router = useRouter();
-  const [grade, setGrade] = useState('all');
-  const [category, setCategory] = useState('all');
-  const [keyword, setKeyword] = useState('');
-  const availableTags: TagType = {
-    tax: {
-      name: '計程',
-      state: useState(false)
-    },
-    hard: {
-      name: '超硬',
-      state: useState(false)
-    },
-    hw: {
-      name: '作業永遠寫不完',
-      state: useState(false)
-    }
-  };
+  // const [grade, setGrade] = useState('all');
+  // const [category, setCategory] = useState('all');
+  // const [keyword, setKeyword] = useState('');
+  // const availableTags: TagType = {
+  //   tax: {
+  //     name: '計程',
+  //     state: useState(false)
+  //   },
+  //   hard: {
+  //     name: '超硬',
+  //     state: useState(false)
+  //   },
+  //   hw: {
+  //     name: '作業永遠寫不完',
+  //     state: useState(false)
+  //   }
+  // };
 
-  const flipTag = (state: [boolean, React.Dispatch<React.SetStateAction<boolean>>]): void => {
-    state[1](!state[0]);
-  };
+  // const flipTag = (state: [boolean, React.Dispatch<React.SetStateAction<boolean>>]): void => {
+  //   state[1](!state[0]);
+  // };
 
   return (
-    <FullScreen className={styles.bodyRate}>
-      <Image className={styles.background} src="/building.jpg" width="1000" height="1000" alt="background" />
-      <p className="text-5xl font-bold my-4 tracking-widest">課程評價網</p>
-      <form
-        action={() => { submitSearch(router, grade, category, keyword, availableTags); }}
-        className="w-[500px] flex flex-col items-center"
-      >
-        <Search className="my-2 w-full" placeholder="輸入關鍵字" />
-        <div>
-          <div className="flex items-center gap-2 my-2">
-            <p className="text-lg">篩選：</p>
-            <Filters />
+    <main className="flex flex-1 justify-center items-center">
+      <div>
+        <Background />
+        <p className="text-5xl font-bold my-4 tracking-widest text-center">課程評價網</p>
+        <form
+          action={submitSearch.bind(null, router)}
+          className="w-[500px] flex flex-col items-center"
+        >
+          <Search className="my-2 w-full" placeholder="輸入關鍵字" />
+          <div>
+            <div className="flex items-center gap-2 my-2">
+              <p className="text-lg">篩選：</p>
+              <Filters />
+            </div>
+            {/* <div className="flex items-center gap-2 my-2">
+              <p className="text-lg">標籤：</p>
+              感覺做成搜尋的比較好，不知道 DCard 怎麼運作的
+            </div> */}
           </div>
-          <div className="flex items-center gap-2 my-2">
-            <p className="text-lg">標籤：</p>
-          </div>
-        </div>
-      </form>
-      <div className={styles.wrap}>
+        </form>
+      </div>
+      {/* <div className={styles.wrap}>
         <p className={styles.word}>
           TAG：&nbsp;&nbsp;&nbsp;
           {Object.keys(availableTags).map((tag, idx) => (
@@ -96,8 +95,8 @@ const Page: FC = () => {
             </button>
           ))}
         </p>
-      </div>
-    </FullScreen>
+      </div> */}
+    </main>
   );
 };
 

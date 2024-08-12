@@ -1,7 +1,6 @@
 import '@/styles/globals.css';
 import NavBar from '@/ui/nav-bar';
 import { AuthContextProvider } from '@/context/AuthContext';
-import { type FC, type ReactNode } from 'react';
 import { type Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,15 +11,13 @@ export const metadata: Metadata = {
   description: 'The database of NTU CSIE.'
 };
 
-const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
+const RootLayout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <html lang="en">
-      <body className="text-[#d4d2d5] bg-[#1c1c29]">
+      <body className="text-[#d4d2d5] bg-[#1c1c29] flex flex-col min-h-screen">
         <AuthContextProvider>
           <NavBar />
-          <div>
-            {children}
-          </div>
+          {children}
         </AuthContextProvider>
       </body>
     </html>
