@@ -1,5 +1,4 @@
 'use client';
-import React, { useState, type FC } from 'react';
 import { useRouter } from 'next/navigation';
 import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import Search from '@/ui/search';
@@ -34,7 +33,7 @@ function submitSearch (router: AppRouterInstance, formData: FormData): void {
   router.push(searchUrl + '?' + (new URLSearchParams(params as URLSearchParams)).toString());
 }
 
-const Page: FC = () => {
+const Page = (): JSX.Element => {
   const router = useRouter();
   // const [grade, setGrade] = useState('all');
   // const [category, setCategory] = useState('all');
@@ -60,8 +59,8 @@ const Page: FC = () => {
 
   return (
     <main className="flex flex-1 justify-center items-center">
+      <Background />
       <div>
-        <Background />
         <p className="text-5xl font-bold my-4 tracking-widest text-center">課程評價網</p>
         <form
           action={submitSearch.bind(null, router)}
