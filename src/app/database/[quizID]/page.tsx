@@ -10,7 +10,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
 import PortraitIcon from '@mui/icons-material/Portrait';
-import { UserAuth } from '@/context/AuthContext';
+import { UserAuth } from '@/context/auth-context';
 import { type UUID } from 'crypto';
 import { notFound } from 'next/navigation';
 

@@ -1,11 +1,6 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import styles from '@/styles/rate.module.css';
-import FullScreen from '@/components/FullScreen';
-import { Grid } from '@mui/material';
-
 import Markdown from 'react-markdown';
-import { UserAuth } from '@/context/AuthContext';
+import { UserAuth } from '@/context/auth-context';
+import Tag from '@/ui/tag';
 
 /*
 interface Article {
@@ -22,17 +17,14 @@ interface Article {
 }
 */
 
-interface Params {
-  articleId: string;
-};
-
-const Article: React.FC<{ params: Params }> = ({ params }) => {
-  const [article, setArticle] = useState<any | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
+const Page = async ({ params }: {
+  params: {
+    articleId: string;
+  };
+}): Promise<JSX.Element> => {
   const { request } = UserAuth();
 
+  const response = await request(`/api/articles/${params.articleId}`);
   useEffect(() => {
     const fetchArticle = async (): Promise<void> => {
       // fetch API according to $articleId
@@ -91,33 +83,33 @@ const Article: React.FC<{ params: Params }> = ({ params }) => {
   const titleTags = [grade].concat(article.categories as string[]);
 
   return (
-    <FullScreen className={styles.articlePage}>
-      <div className={styles.articleTitle}>
-        <div style={{ fontSize: '32px', fontWeight: 600, color: 'white', verticalAlign: 'middle' }}>
-          { article.title }
+    <main className="flex flex-col items-center">
+      <div className="w-full max-w-5xl m-4">
+        <div className="w-full flex justify-between items-end my-2 px-4">
+          <p className="font-bold text-5xl">{article.title}</p>
+          <p className="font text-2xl">{article.lecturer}</p>
         </div>
-        <div className={styles.tagWrap}>
-          { titleTags.map((tag) => <button className={styles.courseTag} key={tag}>{tag}</button>) }
-        </div>
-        <div style={{ fontSize: '28px', fontWeight: 600, color: 'white', verticalAlign: 'middle' }}>
-          { article.lecturer }
-        </div>
-      </div>
-      <hr style={{ width: '65%' }} />
-      <div className={styles.bodyArticle} style={{ fontSize: '28px', color: 'white' }}>
-        <Grid container direction="row" gap="1rem" alignItems="end">
-          <div className={styles.categoryTags}>
-            { article.tag.map((tag) => <button className={styles.articleTag} key={tag}>{tag}</button>) }
+        <hr className="w-full border-gray-500 border-t-4" />
+        <div className="w-full flex gap-3 justify-end my-2">
+          <div className="flex gap-1 items-center">
+            {titleTags.map((tag) => (
+              <Tag content={tag} key={tag} />
+            ))}
           </div>
-        </Grid>
-        <div style={{ marginTop: '1rem' }}>
+          <div className="flex gap-1 items-center">
+            {article.tag.map((tag) => (
+              <Tag content={tag} key={tag} />
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col items-start">
           <Markdown>
             {article.content}
           </Markdown>
         </div>
       </div>
-    </FullScreen>
+    </main>
   );
 };
 
-export default Article;
+export default Page;

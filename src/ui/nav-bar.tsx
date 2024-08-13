@@ -1,7 +1,7 @@
 'use client';
 import { type FC, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { UserAuth } from '@/context/AuthContext';
+import { UserAuth } from '@/context/auth-context';
 
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -13,7 +13,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { playfairDisplay } from '@/ui/fonts';
 
 const NavBar = (): JSX.Element => {
-  const { user, userLoaded, signIn, logOut } = UserAuth();
+  const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
 
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -55,9 +55,9 @@ const NavBar = (): JSX.Element => {
             ))}
           </div>
           <div className="px-4 self-center">
-            {!userLoaded
+            {!isUserLoaded
               ? <CircularProgress style={{ width: 28, height: 28 }} />
-              : user === null
+              : currentUser === null
                 ? (
                   <button
                     className="block h-12 rounded hover:text-blue-500"
@@ -73,7 +73,7 @@ const NavBar = (): JSX.Element => {
                         onClick={handleOpenUserMenu}
                         sx={{ p: 0 }}
                       >
-                        {user.displayName}
+                        {currentUser.displayName}
                       </Button>
                     </Tooltip>
                     <Menu
