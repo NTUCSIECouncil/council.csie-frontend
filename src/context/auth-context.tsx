@@ -3,7 +3,7 @@ import { useContext, createContext, useState, useEffect, useCallback } from 'rea
 import { onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut, type User } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase';
 
-interface customRequestInit extends RequestInit {
+interface CustomRequestInit extends RequestInit {
   auth?: boolean;
 };
 
@@ -12,14 +12,22 @@ interface AuthContextProps {
   isUserLoaded: boolean;
   signIn: () => Promise<void>;
   logOut: () => Promise<void>;
-  request?: (url: string, { auth, headers, ...options }?: customRequestInit) => Promise<Response | null>;
+  request: (url: string, request: CustomRequestInit) => Promise<Response | null>;
 };
 
 const AuthContext = createContext<AuthContextProps>({
   currentUser: null,
   isUserLoaded: false,
   signIn: async () => { },
-  logOut: async () => { }
+  logOut: async () => { },
+  request: async (url: string, request: RequestInit): Promise<Response | null> => {
+    try {
+      return await fetch(url, request);
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
 });
 
 export const AuthContextProvider = ({
@@ -87,7 +95,7 @@ On mobile devices, use Chrome or Safari instead.
     auth = true,
     headers = {},
     ...options
-  }: customRequestInit = {}): Promise<Response | null> => {
+  }: CustomRequestInit): Promise<Response | null> => {
     try {
       const realHeaders = new Headers(headers);
       if (isUserLoaded && currentUser !== null && auth) {
