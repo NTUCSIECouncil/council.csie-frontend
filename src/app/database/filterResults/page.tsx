@@ -3,7 +3,6 @@
 // import Link from 'next/link';
 'use client';
 import { styled, alpha } from '@mui/material/styles';
-import { type FC } from 'react';
 import styles from '@/styles/database.module.css';
 import BasicTable from './ResultTable';
 import InputBase from '@mui/material/InputBase';
@@ -51,7 +50,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   }
 }));
 
-const Page: FC = () => {
+const Page = (): JSX.Element => {
   return (
     <main className={styles.body}>
       <div className={styles.resultLayout}>
