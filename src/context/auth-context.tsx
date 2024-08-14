@@ -2,17 +2,14 @@
 import { useContext, createContext, useState, useEffect, useCallback } from 'react';
 import { onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut, type User } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase';
-
-interface CustomRequestInit extends RequestInit {
-  auth?: boolean;
-};
+import { type AuthRequestInit, type AuthRequest } from '@/types/auth-request';
 
 interface AuthContextProps {
   currentUser: User | null;
   isUserLoaded: boolean;
   signIn: () => Promise<void>;
   logOut: () => Promise<void>;
-  request: (url: string, request?: CustomRequestInit) => Promise<Response | null>;
+  request: AuthRequest;
 };
 
 const AuthContext = createContext<AuthContextProps>({
@@ -95,7 +92,7 @@ On mobile devices, use Chrome or Safari instead.
     auth = true,
     headers = {},
     ...options
-  }: CustomRequestInit = {}): Promise<Response | null> => {
+  }: AuthRequestInit = {}): Promise<Response | null> => {
     try {
       const realHeaders = new Headers(headers);
       if (isUserLoaded && currentUser !== null && auth) {
