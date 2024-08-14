@@ -1,6 +1,7 @@
 import Markdown from 'react-markdown';
 import Tag from '@/ui/tag';
 import { headers } from 'next/headers';
+import { notFound } from 'next/navigation';
 
 interface ArticleProp {
   title: string;
@@ -25,7 +26,8 @@ const Article = async ({
   const protocol = process?.env.NODE_ENV === 'development' ? 'http' : 'https';
   const response = await fetch(`${protocol}://${host}/api/articles/${articleId}`, { cache: 'force-cache' });
   console.log(response);
-  if (response === null || !response.ok) {
+  if (!response.ok) {
+    if (response.status === 404) notFound();
     throw new Error('Failed to fetch response');
   }
   const res = await response.json();
