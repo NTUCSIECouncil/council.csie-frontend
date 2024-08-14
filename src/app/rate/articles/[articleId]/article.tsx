@@ -22,8 +22,8 @@ const Article = async ({
 }): Promise<JSX.Element> => {
   const host = headers().get('host');
   console.log(host);
-  const protocal = process?.env.NODE_ENV === 'development' ? 'http' : 'https';
-  const response = await fetch(`${protocal}://${host}/api/articles/${articleId}`, { cache: 'force-cache' });
+  const protocol = process?.env.NODE_ENV === 'development' ? 'http' : 'https';
+  const response = await fetch(`${protocol}://${host}/api/articles/${articleId}`, { cache: 'force-cache' });
   console.log(response);
   if (response === null || !response.ok) {
     throw new Error('Failed to fetch response');
