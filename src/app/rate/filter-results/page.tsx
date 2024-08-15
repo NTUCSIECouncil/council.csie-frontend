@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import CourseBlock from './course-block';
-import Search from '@/ui/search';
-import Filters from '@/ui/filters';
+import Search from '@/components/search';
+import Filters from '@/components/filters';
 
 interface articleProps {
   _id: string;

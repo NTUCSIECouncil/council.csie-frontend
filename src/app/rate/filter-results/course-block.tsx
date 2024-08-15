@@ -1,4 +1,4 @@
-import Tag from '@/ui/tag';
+import Tag from '@/components/tag';
 
 const CourseBlock = ({
   title,

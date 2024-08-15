@@ -1,5 +1,5 @@
-import NavCards from '@/app/(home)/nav-cards';
-import Background from '@/app/(home)/background';
+import NavCards from './nav-cards';
+import Background from './background';
 
 const Page = (): JSX.Element => {
   return (

@@ -1,8 +1,8 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import Search from '@/ui/search';
-import Filters from '../../ui/filters';
+import Search from '@/components/search';
+import Filters from '../../components/filters';
 import Background from './background';
 
 function submitSearch (router: AppRouterInstance, formData: FormData): void {

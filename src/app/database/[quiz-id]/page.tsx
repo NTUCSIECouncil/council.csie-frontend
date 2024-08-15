@@ -2,7 +2,7 @@ import Link from 'next/link';
 import PortraitIcon from '@mui/icons-material/Portrait';
 import { type UUID } from 'crypto';
 import { notFound } from 'next/navigation';
-import InformationBock from '@/ui/information-block';
+import InformationBock from '@/components/information-block';
 import { APIFetch } from '@/lib/api-fetch';
 
 interface QuizProp {

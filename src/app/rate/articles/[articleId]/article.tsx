@@ -1,5 +1,5 @@
 import Markdown from 'react-markdown';
-import Tag from '@/ui/tag';
+import Tag from '@/components/tag';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 import { APIFetch } from '@/lib/api-fetch';

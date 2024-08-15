@@ -1,4 +1,4 @@
-import { DropdownSelect } from '@/ui/filter-buttons';
+import { DropdownSelect } from '@/components/filter-buttons';
 
 const Filters = (): JSX.Element => {
   const filters = [

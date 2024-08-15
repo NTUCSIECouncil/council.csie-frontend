@@ -1,5 +1,5 @@
-import '@/ui/globals.css';
-import NavBar from '@/ui/nav-bar';
+import '@/components/globals.css';
+import NavBar from '@/components/nav-bar';
 import { AuthContextProvider } from '@/lib/context/auth-context';
 import { type Metadata } from 'next';
 

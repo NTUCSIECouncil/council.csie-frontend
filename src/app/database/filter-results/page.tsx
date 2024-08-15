@@ -2,7 +2,7 @@
 // import Image from 'next/image';
 // import Link from 'next/link';
 import ResultTable from './ResultTable';
-import Search from '@/ui/search';
+import Search from '@/components/search';
 
 const Page = (): JSX.Element => {
   return (
