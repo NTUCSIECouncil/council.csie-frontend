@@ -14,7 +14,7 @@ interface articleProps {
 }
 
 // Temporary function
-async function fakeFetch(url: string): Promise<articleProps[]> {
+async function fakeFetch (url: string): Promise<articleProps[]> {
   const articles = [{
     _id: '0',
     title: '普通物理學',
