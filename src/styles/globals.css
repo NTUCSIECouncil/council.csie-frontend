@@ -45,7 +45,7 @@
   color: #5c5b65;
   font-size: 17px;
   line-height: 55px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .tag {
@@ -64,4 +64,8 @@
 }
 .MuiListItemText-secondary {
   color: var(--text)
+}
+
+th {
+  font-weight: inherit;
 }

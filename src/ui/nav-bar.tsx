@@ -35,7 +35,7 @@ const NavBar = (): JSX.Element => {
 
   return (
     <>
-      <nav className="bg-black sticky top-0">
+      <nav className="bg-black sticky top-0 z-30">
         <div className="flex flex-wrap items-center justify-between mx-auto">
           <div className="flex items-center h-16 text-white font-bold">
             <Link
