@@ -6,7 +6,7 @@ import Filters from '../../components/filters';
 import Background from './background';
 
 function submitSearch (router: AppRouterInstance, formData: FormData): void {
-  router.push('/database/filterResults');
+  router.push('/database/filter-results');
 }
 
 const Page = (): JSX.Element => {

@@ -17,7 +17,7 @@ interface ParamType {
 // }>;
 
 function submitSearch (router: AppRouterInstance, formData: FormData): void {
-  const searchUrl = '/rate/filterResults';
+  const searchUrl = '/rate/filter-results';
   const params: ParamType = {};
 
   // Something needs to be implemented at the backend.
