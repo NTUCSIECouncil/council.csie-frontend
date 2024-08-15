@@ -1,9 +1,8 @@
-import { type FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import buildingImage from '@public/building_original.jpg';
 
-const Page: FC = () => {
+const Page = (): JSX.Element => {
   return (
     <main className="m-auto md:w-2/3">
       <h1 className="text-6xl font-bold text-center py-4">德田生活</h1>
