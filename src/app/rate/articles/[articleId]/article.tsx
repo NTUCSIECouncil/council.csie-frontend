@@ -2,6 +2,7 @@ import Markdown from 'react-markdown';
 import Tag from '@/ui/tag';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
+import { APIFetch } from '@/lib/api-fetch';
 
 interface ArticleProp {
   title: string;
@@ -21,10 +22,7 @@ const Article = async ({
 }: {
   articleId: string;
 }): Promise<JSX.Element> => {
-  const host = headers().get('host');
-  console.log(host);
-  const protocol = process?.env.NODE_ENV === 'development' ? 'http' : 'https';
-  const response = await fetch(`${protocol}://${host}/api/articles/${articleId}`, { cache: 'force-cache' });
+  const response = await APIFetch(`/api/articles/${articleId}`, { cache: 'force-cache' });
   console.log(response);
   if (!response.ok) {
     if (response.status === 404) notFound();
