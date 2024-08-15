@@ -2,7 +2,7 @@
 import { useContext, createContext, useState, useEffect, useCallback } from 'react';
 import { onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut, type User } from 'firebase/auth';
 import { auth } from '@/lib/firebase/firebase';
-import { type AuthRequestInit, type AuthRequest } from '@/types/auth-request';
+import { type AuthRequestInit, type AuthRequest } from '@/lib/types/auth-request';
 
 interface AuthContextProps {
   currentUser: User | null;

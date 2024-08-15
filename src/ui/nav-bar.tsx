@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { UserAuth } from '@/context/auth-context';
+import { UserAuth } from '@/lib/context/auth-context';
 
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
