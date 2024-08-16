@@ -9,9 +9,9 @@ const Filters = (): JSX.Element => {
         { value: 'freshman', description: '大一' },
         { value: 'sophomore', description: '大二' },
         { value: 'junior', description: '大三' },
-        { value: 'senior', description: '大四' }
+        { value: 'senior', description: '大四' },
       ],
-      defaultValue: 'all'
+      defaultValue: 'all',
     },
     {
       key: 'requiredOrOptionalCourses',
@@ -20,15 +20,15 @@ const Filters = (): JSX.Element => {
         { value: 'required', description: '大學部必修' },
         { value: 'optional', description: '大學部選修' },
         { value: 'cs', description: '資工所' },
-        { value: 'network', description: '網媒所' }
+        { value: 'network', description: '網媒所' },
       ],
-      defaultValue: 'all'
-    }
+      defaultValue: 'all',
+    },
   ];
 
   return (
     <>
-      {filters.map((filter) => (
+      {filters.map(filter => (
         <DropdownSelect
           key={filter.key}
           choices={filter.choices}

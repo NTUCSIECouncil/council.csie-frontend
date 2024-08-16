@@ -6,9 +6,9 @@ import { type Metadata } from 'next';
 export const metadata: Metadata = {
   title: {
     template: '%s | CSIE Council',
-    default: 'CSIE Council'
+    default: 'CSIE Council',
   },
-  description: 'The database of NTU CSIE.'
+  description: 'The database of NTU CSIE.',
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }): JSX.Element => {

@@ -14,7 +14,7 @@ interface QuizProp {
 }
 
 const Page = async ({
-  params
+  params,
 }: {
   params: { quizID: string };
 }): Promise<JSX.Element> => {

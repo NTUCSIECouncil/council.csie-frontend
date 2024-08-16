@@ -1,11 +1,11 @@
 export const DropdownSelect = ({
   choices,
-  defaultValue: defaultChoice
+  defaultValue: defaultChoice,
 }: {
-  choices: Array<{
+  choices: {
     value: string;
     description: string;
-  }>;
+  }[];
   defaultValue: string;
 }): JSX.Element => {
   return (
@@ -23,7 +23,7 @@ export const DropdownSelect = ({
           {defaultChoice}
         </option>
       )} */}
-      {choices.map((choice) => (
+      {choices.map(choice => (
         <option key={choice.value} value={choice.value}>
           {choice.description}
         </option>

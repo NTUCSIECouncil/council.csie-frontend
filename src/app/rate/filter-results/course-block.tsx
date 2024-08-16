@@ -4,7 +4,7 @@ const CourseBlock = ({
   title,
   lecturer,
   tags,
-  content
+  content,
 }: {
   title: string;
   lecturer: string;
@@ -20,7 +20,7 @@ const CourseBlock = ({
       <hr className="w-full my-2 border-gray-500 border-t-2" />
       <p className="w-full">{content}</p>
       <div className="flex w-full justify-end gap-2">
-        {tags?.map((tag) => (
+        {tags?.map(tag => (
           <Tag content={tag} key={tag} />
         ))}
       </div>

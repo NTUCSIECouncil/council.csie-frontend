@@ -30,7 +30,7 @@ const NavBar = (): JSX.Element => {
     { name: '課程資料庫', link: '/database' }];
 
   const handlePromise = (promiseFunction: () => Promise<void>): void => {
-    promiseFunction().then().catch(() => "I don't want to do anything.");
+    promiseFunction().then().catch(() => 'I don\'t want to do anything.');
   };
 
   return (
@@ -44,7 +44,7 @@ const NavBar = (): JSX.Element => {
             >
               NTU CSIE
             </Link>
-            {pages.map((page) => (
+            {pages.map(page => (
               <Link
                 key={page.name}
                 href={page.link}
@@ -59,48 +59,48 @@ const NavBar = (): JSX.Element => {
               ? <CircularProgress style={{ width: 28, height: 28 }} />
               : currentUser === null
                 ? (
-                  <button
-                    className="block h-12 rounded hover:text-blue-500"
-                    onClick={() => { handlePromise(signIn); }}
-                  >
-                    Login
-                  </button>
+                    <button
+                      className="block h-12 rounded hover:text-blue-500"
+                      onClick={() => { handlePromise(signIn); }}
+                    >
+                      Login
+                    </button>
                   )
                 : (
-                  <Box sx={{ flexGrow: 0 }}>
-                    <Tooltip title="Open settings">
-                      <Button
-                        onClick={handleOpenUserMenu}
-                        sx={{ p: 0 }}
+                    <Box sx={{ flexGrow: 0 }}>
+                      <Tooltip title="Open settings">
+                        <Button
+                          onClick={handleOpenUserMenu}
+                          sx={{ p: 0 }}
+                        >
+                          {currentUser.displayName}
+                        </Button>
+                      </Tooltip>
+                      <Menu
+                        sx={{ mt: '45px' }}
+                        id="menu-appbar"
+                        anchorEl={anchorElUser}
+                        anchorOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                        }}
+                        open={Boolean(anchorElUser)}
+                        onClose={handleCloseUserMenu}
                       >
-                        {currentUser.displayName}
-                      </Button>
-                    </Tooltip>
-                    <Menu
-                      sx={{ mt: '45px' }}
-                      id="menu-appbar"
-                      anchorEl={anchorElUser}
-                      anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right'
-                      }}
-                      keepMounted
-                      transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right'
-                      }}
-                      open={Boolean(anchorElUser)}
-                      onClose={handleCloseUserMenu}
-                    >
-                      {
+                        {
                         // settings.map((setting) => (
-                        <MenuItem onClick={handleCloseUserMenu}>
-                          <Typography textAlign="center" onClick={() => { handlePromise(logOut); }}>Logout</Typography>
-                        </MenuItem>
+                          <MenuItem onClick={handleCloseUserMenu}>
+                            <Typography textAlign="center" onClick={() => { handlePromise(logOut); }}>Logout</Typography>
+                          </MenuItem>
                         // ))
-                      }
-                    </Menu>
-                  </Box>
+                        }
+                      </Menu>
+                    </Box>
                   )}
           </div>
         </div>

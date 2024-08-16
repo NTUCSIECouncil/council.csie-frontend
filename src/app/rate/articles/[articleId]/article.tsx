@@ -18,7 +18,7 @@ interface ArticleProp {
 }
 
 const Article = async ({
-  articleId
+  articleId,
 }: {
   articleId: string;
 }): Promise<JSX.Element> => {
@@ -44,12 +44,12 @@ const Article = async ({
       <hr className="w-full border-gray-500 border-t-4" />
       <div className="w-full flex gap-3 justify-end my-2">
         <div className="flex gap-1 items-center">
-          {titleTags.map((tag) => (
+          {titleTags.map(tag => (
             <Tag content={tag} key={tag} />
           ))}
         </div>
         <div className="flex gap-1 items-center">
-          {article.tag?.map((tag) => (
+          {article.tag.map(tag => (
             <Tag content={tag} key={tag} />
           ))}
         </div>

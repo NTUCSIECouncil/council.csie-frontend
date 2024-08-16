@@ -1,5 +1,5 @@
 const Tag = ({
-  content
+  content,
 }: {
   content: string;
 }): JSX.Element => {

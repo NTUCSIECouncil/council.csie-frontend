@@ -2,7 +2,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const Search = ({
   placeholder,
-  className
+  className,
 }: {
   placeholder: string;
   className?: string;

@@ -10,7 +10,7 @@ interface AuthContextProps {
   signIn: () => Promise<void>;
   logOut: () => Promise<void>;
   request: AuthRequest;
-};
+}
 
 const AuthContext = createContext<AuthContextProps>({
   currentUser: null,
@@ -20,15 +20,16 @@ const AuthContext = createContext<AuthContextProps>({
   request: async (url: string, request: RequestInit = {}): Promise<Response | null> => {
     try {
       return await fetch(url, request);
-    } catch (error) {
+    }
+    catch (error) {
       console.log(error);
       return null;
     }
-  }
+  },
 });
 
 export const AuthContextProvider = ({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }): JSX.Element => {
@@ -39,26 +40,27 @@ export const AuthContextProvider = ({
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser === null) {
         setCurrentUser(null);
-      } else {
+      }
+      else {
         (async () => {
-          let res = await fetch(`/api/users/${currentUser?.uid}`, {
+          let res = await fetch(`/api/users/${currentUser.uid}`, {
             headers: {
-              Authorization: `Bearer ${await currentUser.getIdToken()}`
-            }
+              Authorization: `Bearer ${await currentUser.getIdToken()}`,
+            },
           });
 
           // If user is not currently exist in server DB, request to create it
           if (res.status === 404) {
-            res = await fetch(`/api/users/${currentUser?.uid}`, {
+            res = await fetch(`/api/users/${currentUser.uid}`, {
               method: 'PUT',
               headers: {
-                Authorization: `Bearer ${await currentUser.getIdToken()}`
-              }
+                Authorization: `Bearer ${await currentUser.getIdToken()}`,
+              },
             });
           }
 
           if (res.ok) setCurrentUser(currentUser);
-        })().catch(err => {
+        })().catch((err) => {
           console.error('auth error');
           console.error(err);
         });
@@ -100,10 +102,11 @@ On mobile devices, use Chrome or Safari instead.
         // headers.Authorization = `Bearer ${await user.getIdToken()}`;
       }
       const newOptions: RequestInit = {
-        headers: realHeaders, ...options
+        headers: realHeaders, ...options,
       };
       return await fetch(url, newOptions);
-    } catch (error) {
+    }
+    catch (error) {
       console.log(error);
       return null;
     }
@@ -115,7 +118,7 @@ On mobile devices, use Chrome or Safari instead.
       isUserLoaded,
       signIn,
       logOut,
-      request
+      request,
     }}
     >
       {children}

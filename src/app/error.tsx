@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Error = ({
   error,
-  reset
+  reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;

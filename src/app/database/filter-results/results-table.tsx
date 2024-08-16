@@ -11,7 +11,7 @@ interface Course {
   downloadLink: string;
 }
 
-function createCourse (
+function createCourse(
   _id: UUID,
   title: string,
   course: string,
@@ -29,10 +29,10 @@ const rows = [
   createCourse('fake-0-0-0-4', '嗨伊', '我是誰我在哪', '48763', 'https://example.com'),
   createCourse('fake-0-0-0-5', 'Owo', '計算機程式設計', '111-1', 'https://example.com'),
   createCourse('fake-0-0-0-6', '呱呱呱', '自動機與形式語言', '112-1', 'https://example.com'),
-  createCourse('fake-0-0-0-7', '窩不吱到', '資料結構與演算法', '112-2', 'https://example.com')
+  createCourse('fake-0-0-0-7', '窩不吱到', '資料結構與演算法', '112-2', 'https://example.com'),
 ];
 
-export default function ResultTable (): JSX.Element {
+export default function ResultTable(): JSX.Element {
   // I think this page can be implemented with instantaneously searching, i.e. show result without pressing Enter.
   return (
     <div className="relative overflow-x-auto shadow-xl rounded-lg my-2">

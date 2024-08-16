@@ -1,7 +1,7 @@
 const InformationBock = ({
   avatar,
   primary,
-  secondary
+  secondary,
 }: {
   avatar?: JSX.Element;
   primary: string;

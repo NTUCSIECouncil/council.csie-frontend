@@ -13,7 +13,7 @@ const firebaseConfig = {
   storageBucket: 'csie-council.appspot.com',
   messagingSenderId: '640380827898',
   appId: '1:640380827898:web:620c099b3e4b59a689b143',
-  measurementId: 'G-G71P9B1FSD'
+  measurementId: 'G-G71P9B1FSD',
 };
 
 // Initialize Firebase
