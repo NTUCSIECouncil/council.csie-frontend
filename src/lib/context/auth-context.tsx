@@ -20,8 +20,7 @@ const AuthContext = createContext<AuthContextProps>({
   request: async (url: string, request: RequestInit = {}): Promise<Response | null> => {
     try {
       return await fetch(url, request);
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
       return null;
     }
@@ -40,8 +39,7 @@ export const AuthContextProvider = ({
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser === null) {
         setCurrentUser(null);
-      }
-      else {
+      } else {
         (async () => {
           let res = await fetch(`/api/users/${currentUser.uid}`, {
             headers: {
@@ -105,8 +103,7 @@ On mobile devices, use Chrome or Safari instead.
         headers: realHeaders, ...options,
       };
       return await fetch(url, newOptions);
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
       return null;
     }
