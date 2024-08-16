@@ -92,7 +92,7 @@ const Page: FC = () => {
     fakeFetch(url).then((articles) => {
       setSearchResult(articles);
     }).catch(() => { console.log('Error on fetch :('); });
-  }, [searchParams]);
+  }, [searchParams, tagString]);
 
   return (
     <div className={styles.bodyFilter}>
