@@ -1,33 +1,23 @@
-'use client';
-import '@/styles/globals.css';
-import '@/styles/color.css';
-import NavBar from '@/components/NavBar';
-import { AuthContextProvider } from '@/context/AuthContext';
-import { type FC, type ReactNode } from 'react';
-import { Roboto } from 'next/font/google';
+import '@/components/globals.css';
+import NavBar from '@/components/nav-bar';
+import { AuthContextProvider } from '@/lib/context/auth-context';
+import { type Metadata } from 'next';
 
-const roboto = Roboto({
-  weight: '400',
-  subsets: ['latin']
-});
+export const metadata: Metadata = {
+  title: {
+    template: '%s | CSIE Council',
+    default: 'CSIE Council',
+  },
+  description: 'The database of NTU CSIE.',
+};
 
-const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
+const RootLayout = ({ children }: { children: React.ReactNode }): JSX.Element => {
   return (
     <html lang="en">
-      <body
-        {...{
-          ...roboto,
-          style: {
-            ...roboto.style,
-            backgroundColor: 'var(--background)'
-          }
-        }}
-      >
+      <body className="text-[#d4d2d5] bg-[#1c1c29] flex flex-col min-h-screen">
         <AuthContextProvider>
           <NavBar />
-          <div>
-            {children}
-          </div>
+          {children}
         </AuthContextProvider>
       </body>
     </html>

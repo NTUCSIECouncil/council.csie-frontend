@@ -1,57 +1,40 @@
 'use client';
-// import Search from '@/app/ui/search';
-// import Image from 'next/image';
-import { type FC } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import styles from '@/styles/database.module.css';
-import FullScreen from '@/components/FullScreen';
+import { useRouter } from 'next/navigation';
+import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import Search from '@/components/search';
+import Filters from '../../components/filters';
+import Background from './background';
 
-const Page: FC = () => {
+function submitSearch(router: AppRouterInstance, formData: FormData): void {
+  router.push('/database/filter-results');
+}
+
+const Page = (): JSX.Element => {
+  const router = useRouter();
+
   return (
-    <FullScreen className={styles.bodyDB}>
-      <Image className={styles.background} src="/building.jpg" width="1000" height="1000" alt="background" />
-      <h1 className="title"> 課程資料庫</h1>
-      {/* the following link is for the search icon of the search bar */}
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-      {/* <div className={styles.courseLayout}> */}
-      <div className="searchWrap">
-        <input type="text" className="searchBox" placeholder="關鍵字搜尋" />
-        <Link href="/database/filterResults">
-          <button type="submit" className="searchButton">
-            <i className="fa fa-search"></i>
-          </button>
-        </Link>
+    <main className="flex flex-1 justify-center items-center">
+      <Background />
+      <div>
+        <p className="text-5xl font-bold my-4 tracking-widest text-center">課程資料庫</p>
+        <form
+          action={submitSearch.bind(null, router)}
+          className="w-[500px] flex flex-col items-center"
+        >
+          <Search className="my-2 w-full" placeholder="輸入關鍵字" />
+          <div>
+            <div className="flex items-center gap-2 my-2">
+              <p className="text-lg">篩選：</p>
+              <Filters />
+            </div>
+            {/* <div className="flex items-center gap-2 my-2">
+              <p className="text-lg">標籤：</p>
+              感覺做成搜尋的比較好，不知道 DCard 怎麼運作的
+            </div> */}
+          </div>
+        </form>
       </div>
-      <div className={styles.wrap}>
-        <p className={styles.word}>
-          篩選：&nbsp;&nbsp;&nbsp;
-          <select
-            defaultValue="all"
-            id="selectGrade"
-            className={styles.selectBox}
-          >
-            <option value="all">年級</option>
-            <option value="freshman">大一</option>
-            <option value="sophomore">大二</option>
-            <option value="junior">大三</option>
-            <option value="senior">大四</option>
-          </select>
-          &nbsp; &nbsp;
-          <select defaultValue="all" id="selectType" className={styles.selectBox}>
-            <option value="all">分類</option>
-            <option value="require">必修</option>
-            <option value="select">選修</option>
-          </select>
-        </p>
-        <p className={styles.word}>
-          TAG：&nbsp;&nbsp;&nbsp;
-          <Link href="/tagged/taxi" className="tag">計程</Link>
-          <Link href="/tagged/hard" className="tag">超硬</Link>
-          <Link href="/tagged/hw" className="tag">作業永遠寫不完</Link>
-        </p>
-      </div>
-    </FullScreen>
+    </main>
   );
 };
 
