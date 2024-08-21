@@ -29,7 +29,7 @@ const Article = async ({
     throw new Error('Failed to fetch response');
   }
   const res = await response.json();
-  const article: ArticleProp = res.result;
+  const article: ArticleProp = res.data;
   console.log(article);
 
   // grade should be stored as string in the database.

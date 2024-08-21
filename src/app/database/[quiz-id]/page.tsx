@@ -26,7 +26,7 @@ const Page = async ({
     throw new Error('Failed to fetch response');
   }
   const res = await response.json();
-  const quiz: QuizProp = res.result;
+  const quiz: QuizProp = res.data;
 
   return (
     <main className="flex flex-1 flex-col items-center">
