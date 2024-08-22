@@ -50,7 +50,7 @@ export const AuthContextProvider = ({
           // If user is not currently exist in server DB, request to create it
           if (res.status === 404) {
             res = await fetch(`/api/users/${currentUser.uid}`, {
-              method: 'PUT',
+              method: 'POST',
               headers: {
                 Authorization: `Bearer ${await currentUser.getIdToken()}`,
               },
