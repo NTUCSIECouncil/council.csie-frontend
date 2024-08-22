@@ -1,5 +1,5 @@
-import Article from './article';
 import { Suspense } from 'react';
+import Article from './article';
 
 const Page = async ({ params }: {
   params: {

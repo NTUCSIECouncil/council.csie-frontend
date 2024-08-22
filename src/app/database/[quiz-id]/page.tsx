@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import PortraitIcon from '@mui/icons-material/Portrait';
 import { type UUID } from 'crypto';
+import PortraitIcon from '@mui/icons-material/Portrait';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import InformationBock from '@/components/information-block';
 import { APIFetch } from '@/lib/api-fetch';

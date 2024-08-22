@@ -1,9 +1,9 @@
 'use client';
-import { useRouter } from 'next/navigation';
 import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { useRouter } from 'next/navigation';
 import Search from '@/components/search';
-import Filters from './filters';
 import Background from './background';
+import Filters from './filters';
 
 interface ParamType {
   grade?: string;

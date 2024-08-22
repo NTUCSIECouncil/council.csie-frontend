@@ -1,16 +1,16 @@
 'use client';
-import { useState } from 'react';
-import Link from 'next/link';
-import { UserAuth } from '@/lib/context/auth-context';
 
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import CircularProgress from '@mui/material/CircularProgress';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import Link from 'next/link';
+import { useState } from 'react';
 import { playfairDisplay } from '@/components/fonts';
+import { UserAuth } from '@/lib/context/auth-context';
 
 const NavBar = (): JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();

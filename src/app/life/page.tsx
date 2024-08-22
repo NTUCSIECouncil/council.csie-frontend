@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import buildingImage from '@public/building_original.jpg';
 
 const Page = (): JSX.Element => {

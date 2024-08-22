@@ -1,5 +1,5 @@
-import LinkIcon from '@mui/icons-material/Link';
 import { type UUID } from 'crypto';
+import LinkIcon from '@mui/icons-material/Link';
 import Link from 'next/link';
 // import Grow from '@mui/material/Grow';
 
@@ -16,7 +16,7 @@ function createCourse(
   title: string,
   course: string,
   semester: string,
-  downloadLink: string
+  downloadLink: string,
 ): Course {
   return { _id, title, course, semester, downloadLink };
 }

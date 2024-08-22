@@ -1,8 +1,8 @@
 // import Search from '@/app/ui/search';
 // import Image from 'next/image';
 // import Link from 'next/link';
-import ResultTable from './results-table';
 import Search from '@/components/search';
+import ResultTable from './results-table';
 
 const Page = (): JSX.Element => {
   return (

@@ -1,5 +1,5 @@
-import NavCards from './nav-cards';
 import Background from './background';
+import NavCards from './nav-cards';
 
 const Page = (): JSX.Element => {
   return (

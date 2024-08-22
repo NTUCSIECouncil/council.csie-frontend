@@ -1,6 +1,6 @@
 'use client';
-import { useRouter } from 'next/navigation';
 import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { useRouter } from 'next/navigation';
 import Search from '@/components/search';
 import Filters from '../../components/filters';
 import Background from './background';
