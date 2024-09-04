@@ -1,16 +1,10 @@
 'use client';
 
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { useState } from 'react';
 import { playfairDisplay } from '@/components/fonts';
 import { UserAuth } from '@/lib/context/auth-context';
+import ReactLoading from 'react-loading';
 
 const NavBar = (): JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
@@ -56,7 +50,7 @@ const NavBar = (): JSX.Element => {
           </div>
           <div className="px-4 self-center">
             {!isUserLoaded
-              ? <CircularProgress style={{ width: 28, height: 28 }} />
+              ? <ReactLoading type="spin" color="#fff" height={28} width={28} />
               : currentUser === null
                 ? (
                     <button
@@ -67,40 +61,16 @@ const NavBar = (): JSX.Element => {
                     </button>
                   )
                 : (
-                    <Box sx={{ flexGrow: 0 }}>
-                      <Tooltip title="Open settings">
-                        <Button
-                          onClick={handleOpenUserMenu}
-                          sx={{ p: 0 }}
-                        >
-                          {currentUser.displayName}
-                        </Button>
-                      </Tooltip>
-                      <Menu
-                        sx={{ mt: '45px' }}
-                        id="menu-appbar"
-                        anchorEl={anchorElUser}
-                        anchorOrigin={{
-                          vertical: 'top',
-                          horizontal: 'right',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                          vertical: 'top',
-                          horizontal: 'right',
-                        }}
-                        open={Boolean(anchorElUser)}
-                        onClose={handleCloseUserMenu}
-                      >
-                        {
-                        // settings.map((setting) => (
-                          <MenuItem onClick={handleCloseUserMenu}>
-                            <Typography textAlign="center" onClick={() => { handlePromise(logOut); }}>Logout</Typography>
-                          </MenuItem>
-                        // ))
-                        }
-                      </Menu>
-                    </Box>
+                    <div className="grow-0">
+                      <details className="dropdown">
+                        <div className="tooltip tooltip-bottom" data-tip="Open settings">
+                          <summary className="btn m-1">{currentUser.displayName}</summary>
+                        </div>
+                        <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                          <li><div className="prone text-center" onClick={() => { handlePromise(logOut); }}>Logout</div></li>
+                        </ul>
+                      </details>
+                    </div>
                   )}
           </div>
         </div>

@@ -8,7 +8,7 @@ const Background = (): JSX.Element => {
       src={building}
       placeholder="blur"
       // quality={100}
-      className="object-cover -z-50 w-1/4 min-w-96 h-full absolute left-0 top-0"
+      className="object-cover w-1/4 min-w-96 h-full absolute left-0 top-0"
     />
   );
 };

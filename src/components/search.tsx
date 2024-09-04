@@ -1,4 +1,4 @@
-import SearchIcon from '@mui/icons-material/Search';
+import { FaSearch } from "react-icons/fa";
 
 const Search = ({
   placeholder,
@@ -18,7 +18,7 @@ const Search = ({
         type="search"
         placeholder={placeholder}
       />
-      <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+      <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
     </div>
   );
 };

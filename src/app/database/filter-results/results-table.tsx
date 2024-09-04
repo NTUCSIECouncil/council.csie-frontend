@@ -1,7 +1,6 @@
 import { type UUID } from 'crypto';
-import LinkIcon from '@mui/icons-material/Link';
 import Link from 'next/link';
-// import Grow from '@mui/material/Grow';
+import { IoMdLink } from "react-icons/io";
 
 interface Course {
   _id: UUID;
@@ -56,7 +55,7 @@ export default function ResultTable(): JSX.Element {
                 <Link
                   href={row.downloadLink}
                 >
-                  <LinkIcon className="text-blue-500" />
+                  <IoMdLink className="text-blue-500" />
                 </Link>
               </td>
             </tr>

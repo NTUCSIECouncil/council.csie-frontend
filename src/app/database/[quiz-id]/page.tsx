@@ -1,5 +1,5 @@
 import { type UUID } from 'crypto';
-import PortraitIcon from '@mui/icons-material/Portrait';
+import { FaPortrait } from "react-icons/fa";
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import InformationBock from '@/components/information-block';
@@ -36,7 +36,7 @@ const Page = async ({
         </p>
         <div className="flex justify-between">
           <InformationBock
-            avatar={<PortraitIcon />}
+            avatar={<FaPortrait />}
             primary="Author"
             secondary="author"
           />

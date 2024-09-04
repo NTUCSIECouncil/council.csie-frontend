@@ -9,7 +9,7 @@ const Background = (): JSX.Element => {
       placeholder="blur"
       // quality={100}
       fill
-      className="object-cover -z-50 brightness-[80%]"
+      className="object-cover brightness-[80%]"
     />
   );
 };
