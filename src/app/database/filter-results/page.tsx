@@ -4,7 +4,7 @@
 import Search from '@/components/search';
 import ResultTable from './results-table';
 
-const Page = (): JSX.Element => {
+const Page = (): React.JSX.Element => {
   return (
     <main className="mx-auto w-4/5 min-w-96 mt-4">
       <Search

@@ -1,7 +1,7 @@
 import { type UUID } from 'crypto';
-import { FaPortrait } from "react-icons/fa";
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { FaPortrait } from 'react-icons/fa';
 import InformationBock from '@/components/information-block';
 import { APIFetch } from '@/lib/api-fetch';
 
@@ -17,7 +17,7 @@ const Page = async ({
   params,
 }: {
   params: { quizID: string };
-}): Promise<JSX.Element> => {
+}): Promise<React.JSX.Element> => {
   // test url: 00000004-0001-0000-0000-000000000000
 
   const response = await APIFetch(`/api/quizzes/${params.quizID}`, { cache: 'force-cache' });

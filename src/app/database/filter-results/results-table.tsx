@@ -1,6 +1,6 @@
 import { type UUID } from 'crypto';
 import Link from 'next/link';
-import { IoMdLink } from "react-icons/io";
+import { IoMdLink } from 'react-icons/io';
 
 interface Course {
   _id: UUID;
@@ -31,7 +31,7 @@ const rows = [
   createCourse('fake-0-0-0-7', '窩不吱到', '資料結構與演算法', '112-2', 'https://example.com'),
 ];
 
-export default function ResultTable(): JSX.Element {
+export default function ResultTable(): React.JSX.Element {
   // I think this page can be implemented with instantaneously searching, i.e. show result without pressing Enter.
   return (
     <div className="relative overflow-x-auto shadow-xl rounded-lg my-2">

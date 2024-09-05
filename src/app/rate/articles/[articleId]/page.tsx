@@ -5,7 +5,7 @@ const Page = async ({ params }: {
   params: {
     articleId: string;
   };
-}): Promise<JSX.Element> => {
+}): Promise<React.JSX.Element> => {
   // const { request } = UserAuth();
 
   return (

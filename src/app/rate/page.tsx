@@ -33,7 +33,7 @@ function submitSearch(router: AppRouterInstance, formData: FormData): void {
   router.push(searchUrl + '?' + (new URLSearchParams(params as URLSearchParams)).toString());
 }
 
-const Page = (): JSX.Element => {
+const Page = (): React.JSX.Element => {
   const router = useRouter();
   // const [grade, setGrade] = useState('all');
   // const [category, setCategory] = useState('all');

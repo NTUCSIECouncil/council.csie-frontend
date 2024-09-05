@@ -1,6 +1,6 @@
 import { DropdownSelect } from '@/components/filter-buttons';
 
-const Filters = (): JSX.Element => {
+const Filters = (): React.JSX.Element => {
   const filters = [
     {
       key: 'grade',

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: 'The database of NTU CSIE.',
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }): JSX.Element => {
+const RootLayout = ({ children }: { children: React.ReactNode }): React.JSX.Element => {
   return (
     <html lang="en">
       <body className="text-[#d4d2d5] bg-[#1c1c29] flex flex-col min-h-screen">

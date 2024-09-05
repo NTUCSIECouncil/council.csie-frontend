@@ -10,7 +10,7 @@ const CourseBlock = ({
   lecturer: string;
   tags?: string[];
   content: string;
-}): JSX.Element => {
+}): React.JSX.Element => {
   return (
     <div className="flex flex-col w-full rounded-lg bg-gray-800 py-4 px-6 hover:bg-opacity-75">
       <div className="flex justify-between w-full">

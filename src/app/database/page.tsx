@@ -9,7 +9,7 @@ function submitSearch(router: AppRouterInstance, formData: FormData): void {
   router.push('/database/filter-results');
 }
 
-const Page = (): JSX.Element => {
+const Page = (): React.JSX.Element => {
   const router = useRouter();
 
   return (

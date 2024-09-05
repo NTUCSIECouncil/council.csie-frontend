@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import ReactLoading from 'react-loading';
 import { playfairDisplay } from '@/components/fonts';
 import { UserAuth } from '@/lib/context/auth-context';
-import ReactLoading from 'react-loading';
 
-const NavBar = (): JSX.Element => {
+const NavBar = (): React.JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
 
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);

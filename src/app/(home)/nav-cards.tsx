@@ -20,7 +20,7 @@ const pages = [
   },
 ];
 
-const NavCards = (): JSX.Element => {
+const NavCards = (): React.JSX.Element => {
   return (
     <div className="flex items-start justify-center gap-4">
       {pages.map((page) => {

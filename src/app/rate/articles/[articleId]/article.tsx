@@ -21,7 +21,7 @@ const Article = async ({
   articleId,
 }: {
   articleId: string;
-}): Promise<JSX.Element> => {
+}): Promise<React.JSX.Element> => {
   const response = await APIFetch(`/api/articles/${articleId}`, { cache: 'force-cache' });
   console.log(response);
   if (!response.ok) {

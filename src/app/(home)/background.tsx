@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import building from '@public/building.jpg';
 
-const Background = (): JSX.Element => {
+const Background = (): React.JSX.Element => {
   return (
     <Image
       alt="Background(Der Tian Hall)."

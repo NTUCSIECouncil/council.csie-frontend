@@ -9,7 +9,7 @@ const Error = ({
 }: {
   error: Error & { digest?: string };
   reset: () => void;
-}): JSX.Element => {
+}): React.JSX.Element => {
   useEffect(() => {
     // Optionally log the error to an error reporting service
     console.error(error);

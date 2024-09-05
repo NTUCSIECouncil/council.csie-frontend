@@ -3,10 +3,10 @@ const InformationBock = ({
   primary,
   secondary,
 }: {
-  avatar?: JSX.Element;
+  avatar?: React.JSX.Element;
   primary: string;
   secondary?: string;
-}): JSX.Element => {
+}): React.JSX.Element => {
   return (
     <div className="flex items-center px-3 py-2 gap-4">
       {avatar}

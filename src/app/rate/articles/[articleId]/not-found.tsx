@@ -1,7 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 
-const NotFound = (): JSX.Element => {
+const NotFound = (): React.JSX.Element => {
   const router = useRouter();
   return (
     <main className="flex flex-1 flex-col items-center justify-center gap-2">

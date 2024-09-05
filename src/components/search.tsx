@@ -1,4 +1,4 @@
-import { FaSearch } from "react-icons/fa";
+import { FaSearch } from 'react-icons/fa';
 
 const Search = ({
   placeholder,
@@ -6,7 +6,7 @@ const Search = ({
 }: {
   placeholder: string;
   className?: string;
-}): JSX.Element => {
+}): React.JSX.Element => {
   return (
     <div className={`relative ${className}`}>
       <label className="sr-only">Search</label>

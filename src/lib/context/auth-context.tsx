@@ -31,7 +31,7 @@ export const AuthContextProvider = ({
   children,
 }: {
   children: React.ReactNode;
-}): JSX.Element => {
+}): React.JSX.Element => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isUserLoaded, setIsUserLoaded] = useState<boolean>(false);
 

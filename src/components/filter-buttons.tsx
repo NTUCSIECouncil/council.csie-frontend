@@ -7,7 +7,7 @@ export const DropdownSelect = ({
     description: string;
   }[];
   defaultValue: string;
-}): JSX.Element => {
+}): React.JSX.Element => {
   return (
     <select
       className="
