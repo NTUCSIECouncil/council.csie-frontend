@@ -16,7 +16,7 @@ interface ParamType {
 //   state: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
 // }>;
 
-function submitSearch(router: AppRouterInstance, formData: FormData): void {
+function submitSearch(router: AppRouterInstance, _formData: FormData): void {
   const searchUrl = '/rate/filter-results';
   const params: ParamType = {};
 

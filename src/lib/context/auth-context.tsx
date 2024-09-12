@@ -15,8 +15,8 @@ interface AuthContextProps {
 const AuthContext = createContext<AuthContextProps>({
   currentUser: null,
   isUserLoaded: false,
-  signIn: async () => { },
-  logOut: async () => { },
+  signIn: () => new Promise<void>(() => { return; }),
+  logOut: () => new Promise<void>(() => { return; }),
   request: async (url: string, request: RequestInit = {}): Promise<Response | null> => {
     try {
       return await fetch(url, request);
@@ -58,7 +58,7 @@ export const AuthContextProvider = ({
           }
 
           if (res.ok) setCurrentUser(currentUser);
-        })().catch((err) => {
+        })().catch((err: unknown) => {
           console.error('auth error');
           console.error(err);
         });

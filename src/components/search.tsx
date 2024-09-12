@@ -8,7 +8,7 @@ const Search = ({
   className?: string;
 }): React.JSX.Element => {
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${className ?? ''}`}>
       <label className="sr-only">Search</label>
       <input
         className="

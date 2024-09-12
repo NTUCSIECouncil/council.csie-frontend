@@ -1,8 +1,11 @@
-import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
 import Tag from '@/components/tag';
 import { APIFetch } from '@/lib/api-fetch';
+
+interface ArticleResponse {
+  data: ArticleProp;
+}
 
 interface ArticleProp {
   title: string;
@@ -28,7 +31,7 @@ const Article = async ({
     if (response.status === 404) notFound();
     throw new Error('Failed to fetch response');
   }
-  const res = await response.json();
+  const res = await response.json() as ArticleResponse;
   const article: ArticleProp = res.data;
   console.log(article);
 

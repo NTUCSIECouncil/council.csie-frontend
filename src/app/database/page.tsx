@@ -5,7 +5,7 @@ import Search from '@/components/search';
 import Filters from '../../components/filters';
 import Background from './background';
 
-function submitSearch(router: AppRouterInstance, formData: FormData): void {
+function submitSearch(router: AppRouterInstance, _formData: FormData): void {
   router.push('/database/filter-results');
 }
 

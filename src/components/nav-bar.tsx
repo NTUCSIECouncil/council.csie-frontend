@@ -9,13 +9,13 @@ import { UserAuth } from '@/lib/context/auth-context';
 const NavBar = (): React.JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
 
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const [_anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>): void => {
+  const _handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseUserMenu = (): void => {
+  const _handleCloseUserMenu = (): void => {
     setAnchorElUser(null);
   };
 

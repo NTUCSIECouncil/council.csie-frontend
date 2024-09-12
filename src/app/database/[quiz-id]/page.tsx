@@ -5,6 +5,10 @@ import { FaPortrait } from 'react-icons/fa';
 import InformationBock from '@/components/information-block';
 import { APIFetch } from '@/lib/api-fetch';
 
+interface QuizResponse {
+  data: QuizProp;
+}
+
 interface QuizProp {
   _id?: UUID;
   title: string;
@@ -25,7 +29,7 @@ const Page = async ({
     if (response.status === 404) notFound();
     throw new Error('Failed to fetch response');
   }
-  const res = await response.json();
+  const res: QuizResponse = await response.json() as QuizResponse;
   const quiz: QuizProp = res.data;
 
   return (

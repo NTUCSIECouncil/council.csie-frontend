@@ -1,11 +1,11 @@
 import { Suspense } from 'react';
 import Article from './article';
 
-const Page = async ({ params }: {
+const Page = ({ params }: {
   params: {
     articleId: string;
   };
-}): Promise<React.JSX.Element> => {
+}): React.JSX.Element => {
   // const { request } = UserAuth();
 
   return (

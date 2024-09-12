@@ -14,7 +14,7 @@ interface articleProps {
 }
 
 // Temporary function
-async function fakeFetch(url: string): Promise<articleProps[]> {
+async function fakeFetch(_url: string): Promise<articleProps[]> {
   const articles = [{
     _id: '0',
     title: '普通物理學',
@@ -34,7 +34,7 @@ async function fakeFetch(url: string): Promise<articleProps[]> {
     content: '劉邦鋒教授的計算機程式課程是一門嚴苛但深具挑戰性的課程。他以嚴謹的態度和高要求著稱，對學生的學習態度和成果要求嚴格。在課堂上，他經常提出複雜且具有挑戰性的編程任務，要求學生深入理解課程內容並能夠獨立解決問題。他對代碼質量和風格的要求也非常高，鼓勵學生不斷改進和優化自己的編程技能。雖然劉教授的課程給予了學生豐富的知識和實踐經驗，但也常常讓學生感到壓力重重。他的嚴苛態度可能會挑戰學生的自我要求和學習動力，但同時也激勵他們不斷努力提高自己。總的來說，劉邦鋒教授的計算機程式課程雖然嚴苛，但對於學生的專業成長和職業發展具有重要的促進作用。',
   },
   ];
-  return await new Promise((resolve, reject) => {
+  return await new Promise((resolve, _reject) => {
     resolve(articles);
   });
 }

@@ -45,7 +45,7 @@ export default function ResultTable(): React.JSX.Element {
           </tr>
         </thead>
         <tbody className="">
-          {rows.map((row, index) => (
+          {rows.map((row, _index) => (
             // <Grow in={showTable} timeout={500 * index} key={index}>
             <tr key={row._id} className="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
               <th className="px-6 py-1 text-white font-medium whitespace-nowrap">{row.title}</th>
