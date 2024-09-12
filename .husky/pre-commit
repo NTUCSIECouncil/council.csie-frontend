@@ -1,1 +1,1 @@
-echo 'npm run lint to be added'
+npx lint-staged
