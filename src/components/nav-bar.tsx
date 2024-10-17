@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import ReactLoading from 'react-loading';
-import { playfairDisplay } from '@/components/fonts';
 import { UserAuth } from '@/lib/context/auth-context';
+import { playfairDisplay } from '@/lib/fonts';
 
 const NavBar = (): React.JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
