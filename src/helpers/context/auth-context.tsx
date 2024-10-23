@@ -1,8 +1,8 @@
 'use client';
 import { GoogleAuthProvider, type User, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { auth } from '@/lib/firebase/firebase';
-import { type AuthRequest, type AuthRequestInit } from '@/lib/types/auth-request';
+import { auth } from '@/helpers/firebase/firebase';
+import { type AuthRequest, type AuthRequestInit } from '@/helpers/types/auth-request';
 
 interface AuthContextProps {
   currentUser: User | null;

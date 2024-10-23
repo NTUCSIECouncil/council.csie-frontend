@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Search from '@/components/search';
-import { renderFilter } from '@/helper/filter';
+import { renderFilter } from '@/helpers/filter';
 import CourseBlock from './course-block';
 
 interface articleProps {

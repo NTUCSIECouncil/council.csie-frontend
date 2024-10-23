@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import ReactLoading from 'react-loading';
-import { UserAuth } from '@/lib/context/auth-context';
-import { playfairDisplay } from '@/lib/fonts';
+import { UserAuth } from '@/helpers/context/auth-context';
+import { playfairDisplay } from '@/helpers/fonts';
 
 const NavBar = (): React.JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
@@ -61,15 +61,15 @@ const NavBar = (): React.JSX.Element => {
                     </button>
                   )
                 : (
-                    <div className="grow-0">
-                      <details className="dropdown">
-                        <div className="tooltip tooltip-bottom" data-tip="Open settings">
-                          <summary className="btn m-1">{currentUser.displayName}</summary>
+                    <div className="dropdown">
+                      <div tabIndex={0} className="btn rounded-none">
+                        <div className="prone text-center tooltip tooltip-bottom" data-tip="Open settings">
+                          {currentUser.displayName}
                         </div>
-                        <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                          <li><div className="prone text-center" onClick={() => { handlePromise(logOut); }}>Logout</div></li>
-                        </ul>
-                      </details>
+                      </div>
+                      <ul tabIndex={0} className="dropdown-content menu p-0 mt-1 inset-x-0 bg-base-100">
+                        <li><div className="prone text-center" onClick={() => { handlePromise(logOut); }}>Logout</div></li>
+                      </ul>
                     </div>
                   )}
           </div>

@@ -2,7 +2,7 @@
 import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useRouter } from 'next/navigation';
 import Search from '@/components/search';
-import { renderFilter } from '@/helper/filter';
+import { renderFilter } from '@/helpers/filter';
 import Background from './background';
 
 function submitSearch(router: AppRouterInstance, _formData: FormData): void {

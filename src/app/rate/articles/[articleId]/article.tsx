@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
 import Tag from '@/components/tag';
-import { APIFetch } from '@/lib/api-fetch';
+import { APIFetch } from '@/helpers/api-fetch';
 
 interface ArticleResponse {
   data: ArticleProp;

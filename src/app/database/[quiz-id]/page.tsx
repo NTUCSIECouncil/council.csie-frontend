@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FaPortrait } from 'react-icons/fa';
 import InformationBock from '@/components/information-block';
-import { APIFetch } from '@/lib/api-fetch';
+import { APIFetch } from '@/helpers/api-fetch';
 
 interface QuizResponse {
   data: QuizProp;
