@@ -53,12 +53,11 @@ const NavBar = (): React.JSX.Element => {
               ? <ReactLoading type="spin" color="#fff" height={28} width={28} />
               : currentUser === null
                 ? (
-                    <button
-                      className="block h-12 rounded hover:text-blue-500"
-                      onClick={() => { handlePromise(signIn); }}
-                    >
-                      Login
-                    </button>
+                    <div className="btn rounded-none">
+                      <div className="prone text-center" onClick={() => { handlePromise(signIn); }}>
+                        Login
+                      </div>
+                    </div>
                   )
                 : (
                     <div className="dropdown">
