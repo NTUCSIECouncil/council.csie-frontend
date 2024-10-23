@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Filters from '@/components/filters';
 import Search from '@/components/search';
+import { renderFilter } from '@/helper/filter';
 import CourseBlock from './course-block';
 
 interface articleProps {
@@ -67,7 +67,8 @@ const Page = async ({
           <Search className="my-2 w-full" placeholder="輸入關鍵字" />
           <div className="flex items-center gap-2 my-2 mx-10 text-sm">
             <p className="text-base">篩選：</p>
-            <Filters />
+            { renderFilter('courseGrade') }
+            { renderFilter('courseType') }
           </div>
         </form>
       </div>

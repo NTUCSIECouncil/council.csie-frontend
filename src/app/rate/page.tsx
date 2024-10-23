@@ -2,8 +2,8 @@
 import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useRouter } from 'next/navigation';
 import Search from '@/components/search';
+import { renderFilter } from '@/helper/filter';
 import Background from './background';
-import Filters from './filters';
 
 interface ParamType {
   grade?: string;
@@ -70,7 +70,8 @@ const Page = (): React.JSX.Element => {
           <div>
             <div className="flex items-center gap-2 my-2">
               <p className="text-lg">篩選：</p>
-              <Filters />
+              { renderFilter('courseGrade') }
+              { renderFilter('courseType') }
             </div>
             {/* <div className="flex items-center gap-2 my-2">
               <p className="text-lg">標籤：</p>
