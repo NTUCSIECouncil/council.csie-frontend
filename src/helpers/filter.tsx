@@ -1,7 +1,7 @@
 import DropdownSelect from '@/components/filter-buttons';
 import { FILTER_OPTIONS, type FilterOptionKeys } from '@/helpers/constants';
 
-export const renderFilter = (key: FilterOptionKeys) => {
+export const renderFilter = (key: FilterOptionKeys, name: string) => {
   return (
     <DropdownSelect
       key={FILTER_OPTIONS[key].key}
@@ -9,6 +9,7 @@ export const renderFilter = (key: FilterOptionKeys) => {
       defaultValue={
         FILTER_OPTIONS[key].defaultValue
       }
+      name={name}
     />
   );
 };

@@ -10,7 +10,7 @@ export const FILTER_OPTIONS = {
   courseGrade: {
     key: 'grade',
     choices: [
-      { value: 'all', description: '年級' },
+      { value: '', description: '年級' },
       { value: 'freshman', description: '大一' },
       { value: 'sophomore', description: '大二' },
       { value: 'junior', description: '大三' },
@@ -21,12 +21,12 @@ export const FILTER_OPTIONS = {
   courseType: {
     key: 'requiredOrOptionalCourses',
     choices: [
-      { value: 'all', description: '必選修類別' },
+      { value: '', description: '必選修類別' },
       { value: 'required', description: '大學部必修' },
       { value: 'optional', description: '大學部選修' },
       { value: 'cs', description: '資工所' },
       { value: 'network', description: '網媒所' },
     ],
-    defaultValue: 'all',
+    defaultValue: '',
   },
 } as const satisfies Record<FilterOptionKeys, FilterOption>;

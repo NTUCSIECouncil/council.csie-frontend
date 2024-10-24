@@ -1,4 +1,4 @@
-// Fetch from the server-side
+'use server';
 
 const BACKEND_URL = 'http://localhost:3010';
 

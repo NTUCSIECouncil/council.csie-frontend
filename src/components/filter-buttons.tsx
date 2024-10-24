@@ -1,12 +1,14 @@
 const DropdownSelect = ({
   choices,
   defaultValue: defaultChoice,
+  name,
 }: {
   choices: {
     value: string;
     description: string;
   }[];
   defaultValue: string;
+  name: string;
 }): React.JSX.Element => {
   return (
     <select
@@ -16,6 +18,7 @@ const DropdownSelect = ({
         font-medium
         border
       "
+      name={name}
       defaultValue={defaultChoice}
     >
       {/* {!choices.includes(defaultChoice) && (

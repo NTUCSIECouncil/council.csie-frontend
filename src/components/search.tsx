@@ -16,6 +16,7 @@ const Search = ({
             border-gray-200 placeholder:text-gray-500 bg-black bg-opacity-50
           "
         type="search"
+        name="keyword"
         placeholder={placeholder}
       />
       <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
