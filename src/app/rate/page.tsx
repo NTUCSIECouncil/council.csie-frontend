@@ -11,10 +11,6 @@ interface ParamType {
   keyword?: string;
   tags?: string[];
 }
-// type TagType = Record<string, {
-//   name: string;
-//   state: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
-// }>;
 
 function submitSearch(router: AppRouterInstance, _formData: FormData): void {
   const searchUrl = '/rate/filter-results';
@@ -35,27 +31,6 @@ function submitSearch(router: AppRouterInstance, _formData: FormData): void {
 
 const Page = (): React.JSX.Element => {
   const router = useRouter();
-  // const [grade, setGrade] = useState('all');
-  // const [category, setCategory] = useState('all');
-  // const [keyword, setKeyword] = useState('');
-  // const availableTags: TagType = {
-  //   tax: {
-  //     name: '計程',
-  //     state: useState(false)
-  //   },
-  //   hard: {
-  //     name: '超硬',
-  //     state: useState(false)
-  //   },
-  //   hw: {
-  //     name: '作業永遠寫不完',
-  //     state: useState(false)
-  //   }
-  // };
-
-  // const flipTag = (state: [boolean, React.Dispatch<React.SetStateAction<boolean>>]): void => {
-  //   state[1](!state[0]);
-  // };
 
   return (
     <main className="flex flex-1 justify-center items-center">

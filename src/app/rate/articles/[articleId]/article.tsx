@@ -1,23 +1,11 @@
 import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
+import PreviousPageButton from '@/components/previous-page-button';
 import Tag from '@/components/tag';
-import { APIFetch } from '@/helpers/api-fetch';
+import serverFetch from '@/utils/server-fetch';
 
 interface ArticleResponse {
-  data: ArticleProp;
-}
-
-interface ArticleProp {
-  title: string;
-  lecturer: string;
-  tag: string[];
-  semester?: string;
-  grade: string;
-  categories: string[];
-  content: string;
-  creator: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  item: Article;
 }
 
 const Article = async ({
@@ -25,21 +13,26 @@ const Article = async ({
 }: {
   articleId: string;
 }): Promise<React.JSX.Element> => {
-  const response = await APIFetch(`/api/articles/${articleId}`, { cache: 'force-cache' });
-  console.log(response);
-  if (!response.ok) {
-    if (response.status === 404) notFound();
+  const res = await serverFetch(`/api/articles/${articleId}`, { cache: 'force-cache' });
+  if (!res.ok) {
+    if (res.status === 404) notFound();
     throw new Error('Failed to fetch response');
   }
-  const res = await response.json() as ArticleResponse;
-  const article: ArticleProp = res.data;
-  console.log(article);
+  const articleRes = await res.json() as ArticleResponse;
+  const article = articleRes.item;
 
   // grade should be stored as string in the database.
-  const titleTags = [article.grade].concat(article.categories);
+  const titleTags: string[] = [];
+  if (article.grade != null)
+    titleTags.push(article.grade.toString());
+  if (article.categories) {
+    for (const category of article.categories)
+      titleTags.push(category);
+  }
 
   return (
     <>
+      <PreviousPageButton />
       <div className="w-full flex justify-between items-end my-2 px-4">
         <p className="font-bold text-5xl">{article.title}</p>
         <p className="font text-2xl">{article.lecturer}</p>
@@ -47,12 +40,12 @@ const Article = async ({
       <hr className="w-full border-gray-500 border-t-4" />
       <div className="w-full flex gap-3 justify-end my-2">
         <div className="flex gap-1 items-center">
-          {titleTags.map(tag => (
+          {titleTags.map(tag => tag && (
             <Tag content={tag} key={tag} />
           ))}
         </div>
         <div className="flex gap-1 items-center">
-          {article.tag.map(tag => (
+          {article.tag?.map(tag => tag && (
             <Tag content={tag} key={tag} />
           ))}
         </div>
