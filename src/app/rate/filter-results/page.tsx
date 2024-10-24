@@ -21,7 +21,7 @@ const Page = async ({
 
   const SEARCH_API_ENDPOINT = '/api/articles/search';
   const url = `${SEARCH_API_ENDPOINT}?${query}`;
-  const res = await serverFetch(url);
+  const res = await serverFetch(url, { cache: 'no-store' });
   if (res.status != 200)
     throw Error('Unknown error');
   const articles = (await res.json()) as ArticleResponse;
