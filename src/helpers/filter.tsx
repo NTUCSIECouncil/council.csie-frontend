@@ -1,4 +1,4 @@
-import { DropdownSelect } from '@/components/filter-buttons';
+import DropdownSelect from '@/components/filter-buttons';
 import { FILTER_OPTIONS, type FilterOptionKeys } from '@/helpers/constants';
 
 export const renderFilter = (key: FilterOptionKeys) => {

@@ -1,4 +1,4 @@
-export const DropdownSelect = ({
+const DropdownSelect = ({
   choices,
   defaultValue: defaultChoice,
 }: {
@@ -31,3 +31,5 @@ export const DropdownSelect = ({
     </select>
   );
 };
+
+export default DropdownSelect;
