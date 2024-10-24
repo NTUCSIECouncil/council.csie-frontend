@@ -1,4 +1,4 @@
-type FilterOptionKeys = 'courseGrade' | 'courseType';
+export type FilterOptionKeys = 'courseGrade' | 'courseType';
 
 interface FilterOption {
   key: string;
@@ -6,7 +6,7 @@ interface FilterOption {
   defaultValue: string;
 }
 
-const FILTER_OPTIONS = {
+export const FILTER_OPTIONS = {
   courseGrade: {
     key: 'grade',
     choices: [
@@ -30,6 +30,3 @@ const FILTER_OPTIONS = {
     defaultValue: 'all',
   },
 } as const satisfies Record<FilterOptionKeys, FilterOption>;
-
-export type { FilterOptionKeys };
-export { FILTER_OPTIONS };
