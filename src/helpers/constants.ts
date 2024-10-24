@@ -1,4 +1,4 @@
-export type FilterOptionKeys = 'courseGrade' | 'courseType';
+export type FilterOptionKeys = 'courseGrade' | 'courseCategory';
 
 interface FilterOption {
   key: string;
@@ -18,7 +18,7 @@ export const FILTER_OPTIONS = {
     ],
     defaultValue: 'all',
   },
-  courseType: {
+  courseCategory: {
     key: 'requiredOrOptionalCourses',
     choices: [
       { value: '', description: '必選修類別' },

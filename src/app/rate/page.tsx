@@ -22,7 +22,7 @@ const Page = (): React.JSX.Element => {
             <div className="flex items-center gap-2 my-2">
               <p className="text-lg">篩選：</p>
               { renderFilter('courseGrade', 'grade') }
-              { renderFilter('courseType', 'type') }
+              { renderFilter('courseCategory', 'type') }
             </div>
             {/* <div className="flex items-center gap-2 my-2">
               <p className="text-lg">標籤：</p>

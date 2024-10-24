@@ -16,15 +16,23 @@ const Page = async ({
   searchParams?: {
     keyword?: string;
     page?: string;
+    grade?: string;
+    category?: string;
   };
 }): Promise<React.JSX.Element> => {
   const keyword = searchParams?.keyword ?? '';
   const currentPage = Number(searchParams?.page ?? '0');
+  const grade = searchParams?.grade ?? '';
+  const category = searchParams?.category ?? '';
   const limit = 10;
 
   const queryParams = new URLSearchParams();
   if (keyword !== '')
     queryParams.append('keyword', keyword);
+  if (keyword !== '')
+    queryParams.append('grade', grade);
+  if (keyword !== '')
+    queryParams.append('type', category);
   if (currentPage !== 0)
     queryParams.append('offset', (currentPage * limit).toString());
 
@@ -42,7 +50,7 @@ const Page = async ({
           <div className="flex items-center gap-2 my-2 mx-10 text-sm">
             <p className="text-base">篩選：</p>
             { renderFilter('courseGrade', 'grade') }
-            { renderFilter('courseType', 'type') }
+            { renderFilter('courseCategory', 'type') }
           </div>
         </form>
       </div>
