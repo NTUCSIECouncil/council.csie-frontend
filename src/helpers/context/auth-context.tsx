@@ -2,7 +2,12 @@
 import { GoogleAuthProvider, type User, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { auth } from '@/helpers/firebase/firebase';
-import { type AuthRequest, type AuthRequestInit } from '@/helpers/types/auth-request';
+
+interface AuthRequestInit extends RequestInit {
+  auth?: boolean;
+}
+
+type AuthRequest = (url: string, request?: AuthRequestInit) => Promise<Response | null>;
 
 interface AuthContextProps {
   currentUser: User | null;
