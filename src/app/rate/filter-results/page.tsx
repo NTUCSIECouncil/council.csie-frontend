@@ -29,9 +29,9 @@ const Page = async ({
   const queryParams = new URLSearchParams();
   if (keyword !== '')
     queryParams.append('keyword', keyword);
-  if (keyword !== '')
+  if (grade !== '')
     queryParams.append('grade', grade);
-  if (keyword !== '')
+  if (category !== '')
     queryParams.append('type', category);
   if (currentPage !== 0)
     queryParams.append('offset', (currentPage * limit).toString());
