@@ -15,7 +15,7 @@ const Page = (): React.JSX.Element => {
   return (
     <main className="flex flex-1 justify-center items-center">
       <Background />
-      <div>
+      <div className="relative">
         <p className="text-5xl font-bold my-4 tracking-widest text-center">課程資料庫</p>
         <form
           action={submitSearch.bind(null, router)}
