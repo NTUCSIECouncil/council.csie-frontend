@@ -18,6 +18,12 @@ const pages = [
     description: '考古題資料庫。',
     lastUpdateTime: new Date('August 11, 2024 08:57:00'),
   },
+  {
+    name: '教授訪談',
+    href: '/interview',
+    description: '系上教授訪談。',
+    lastUpdateTime: new Date('August 11, 2024 08:57:00'),
+  },
 ];
 
 const NavCards = (): React.JSX.Element => {

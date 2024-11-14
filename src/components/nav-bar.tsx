@@ -21,7 +21,8 @@ const NavBar = (): React.JSX.Element => {
 
   const pages = [{ name: '德田生活', link: '/life' },
     { name: '課程評價網', link: '/rate' },
-    { name: '課程資料庫', link: '/database' }];
+    { name: '課程資料庫', link: '/database' },
+    { name: '教授訪談', link: '/interview' }];
 
   const handlePromise = (promiseFunction: () => Promise<void>): void => {
     promiseFunction().then().catch(() => 'I don\'t want to do anything.');
