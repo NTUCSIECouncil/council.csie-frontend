@@ -27,14 +27,14 @@ function createCourse(
 }
 
 const rows = [
-  createCourse('fake-0-0-0-0', '00000003-0003-0000-0000-000000000000', '計算機程式設計', 3, 'Bruh1', '111-1', 'https://example.com', 'https://example.com'),
-  createCourse('fake-0-0-0-1', '00000003-0003-0000-0000-000000000001', '自動機與形式語言', 3, 'Bruh2', '112-1', 'https://example.com', 'https://example.com'),
-  createCourse('fake-0-0-0-2', '00000003-0003-0000-0000-000000000002', '資料結構與演算法', 3, 'Bruh3', '112-2', 'https://example.com', 'https://example.com'),
-  createCourse('fake-0-0-0-3', '00000003-0003-0000-0000-000000000003', '計算機程式設計', 3, 'Bruh4', '111-1', 'https://example.com', 'https://example.com'),
-  createCourse('fake-0-0-0-4', '00000003-0003-0000-0000-000000000004', '我是誰我在哪', 4, 'Bruh5', '48763', 'https://example.com', 'https://example.com'),
+  createCourse('fake-0-0-0-0', '00000003-0003-0000-0000-000000000000', '普通生物學', 3, 'Bruh1', '111-1', 'https://example.com', 'https://example.com'),
+  createCourse('fake-0-0-0-1', '00000003-0003-0000-0000-000000000001', '微積分', 4, 'Bruh2', '112-1', 'https://example.com', 'https://example.com'),
+  createCourse('fake-0-0-0-2', '00000003-0003-0000-0000-000000000002', '物理學概論', 3, 'Bruh3', '112-2', 'https://example.com', 'https://example.com'),
+  createCourse('fake-0-0-0-3', '00000003-0003-0000-0000-000000000003', '現代文學', 3, 'Bruh4', '111-1', 'https://example.com', 'https://example.com'),
+  createCourse('fake-0-0-0-4', '00000003-0003-0000-0000-000000000004', '程式設計基礎', 3, 'Bruh5', '48763', 'https://example.com', 'https://example.com'),
   createCourse('fake-0-0-0-5', '00000003-0003-0000-0000-000000000005', '計算機程式設計', 3, 'Bruh6', '111-1', 'https://example.com', 'https://example.com'),
-  createCourse('fake-0-0-0-6', '00000003-0003-0000-0000-000000000006', '自動機與形式語言', 3, 'Bruh7', '112-1', 'https://example.com', 'https://example.com'),
-  createCourse('fake-0-0-0-7', '00000003-0003-0000-0000-000000000007', '資料結構與演算法', 3, 'Bruh8', '112-2', 'https://example.com', 'https://example.com'),
+  createCourse('fake-0-0-0-6', '00000003-0003-0000-0000-000000000006', '人工智慧導論', 3, 'Bruh7', '112-1', 'https://example.com', 'https://example.com'),
+  createCourse('fake-0-0-0-7', '00000003-0003-0000-0000-000000000007', '社會學基礎', 3, 'Bruh8', '112-2', 'https://example.com', 'https://example.com'),
 ];
 
 export default function ResultTable(): React.JSX.Element {

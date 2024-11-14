@@ -4,6 +4,7 @@
 'use server';
 import Search from '@/components/search';
 // import serverFetch from '@/utils/server-fetch';
+import searchRedirectServer from '@/helpers/search-redirect-server';
 import ResultTable from './results-table';
 
 const Page = ({
@@ -21,7 +22,6 @@ const Page = ({
   const currentPage = Number(searchParams?.offset ?? '0');
   const limit = Number(searchParams?.limit ?? 10);
 
-  console.log(course, keyword);
   const queryParams = new URLSearchParams();
   if (keyword !== '')
     queryParams.append('keyword', keyword);
@@ -29,7 +29,6 @@ const Page = ({
     queryParams.append('course', course);
   if (currentPage !== 0)
     queryParams.append('offset', (currentPage * limit).toString());
-  console.log(queryParams);
 
   // TODO: Connect with the correct API that searches Courses with keyword
   // const url = `/api/quizzes/search?${queryParams.toString()}`;
@@ -39,10 +38,12 @@ const Page = ({
 
   return (
     <main className="mx-auto w-4/5 min-w-96 mt-4">
-      <Search
-        placeholder="輸入關鍵字"
-        className="my-4"
-      />
+      <form action={searchRedirectServer('/database/filter-results')} className="items-center">
+        <Search
+          placeholder="輸入關鍵字"
+          className="my-4"
+        />
+      </form>
       <div className="mx-5">
         <p className="text-xl">查詢結果</p>
         <ResultTable />
