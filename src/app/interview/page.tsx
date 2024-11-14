@@ -19,9 +19,9 @@ interface TeacherInfo {
 const Page = (): React.JSX.Element => {
   const router = useRouter();
 
-  const handleButtonClick = (url: string, imageUrl: string) => {
+  const handleButtonClick = (url: string) => {
     if (url) {
-      router.push(`/interview/${url}?image=${encodeURIComponent(imageUrl)}`);
+      router.push(`/interview/${url}`);
     }
   };
 
@@ -104,8 +104,8 @@ const Page = (): React.JSX.Element => {
                   {teacher.links.map((link, linkIndex) => (
                     <button
                       key={linkIndex}
-                      onClick={() => { handleButtonClick(link.url, teacher.image); }}
-                      className="bg-violet-500 hover:bg-violet-300 text-white font-bold px-3 py-1 rounded-full mx-2 mb-2 transition-colors duration-300"
+                      onClick={() => { handleButtonClick(link.url); }}
+                      className="bg-violet-500 hover:bg-violet-800 text-white px-3 py-1 rounded-full mr-2 mb-2 transition-colors duration-300"
                     >
                       {link.label}
                     </button>
