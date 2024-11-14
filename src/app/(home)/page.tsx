@@ -5,7 +5,7 @@ const Page = (): React.JSX.Element => {
   return (
     <>
       <Background />
-      <main className="pt-32">
+      <main className="pt-0">
         <NavCards />
       </main>
     </>
