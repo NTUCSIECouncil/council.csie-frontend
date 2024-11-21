@@ -1,4 +1,4 @@
-export type FilterOptionKeys = 'courseGrade' | 'courseCategory';
+export type FilterOptionKeys = 'courseGrade' | 'courseCategory' | 'searchCriteria';
 
 interface FilterOption {
   key: string;
@@ -28,5 +28,13 @@ export const FILTER_OPTIONS = {
       { value: 'network', description: '網媒所' },
     ],
     defaultValue: '',
+  },
+  searchCriteria: {
+    key: 'searchby',
+    choices: [
+      { value: 'courseName', description: '課程名稱' },
+      { value: 'teacher', description: '授課教師' },
+    ],
+    defaultValue: 'courseName',
   },
 } as const satisfies Record<FilterOptionKeys, FilterOption>;

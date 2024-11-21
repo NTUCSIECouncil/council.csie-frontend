@@ -47,7 +47,9 @@ const Page = async ({
       <div className="w-3/5">
         <form action={searchRedirectServer('/rate/filter-results')} className="items-center">
           <Search className="my-2 w-full" placeholder="輸入關鍵字" />
-          <div className="flex items-center gap-2 my-2 mx-10 text-sm">
+          <div className="flex items-center gap-3 my-4 mx-10 text-sm">
+            <p className="text-base">搜尋依據：</p>
+            { renderFilter('searchCriteria', 'grade') }
             <p className="text-base">篩選：</p>
             { renderFilter('courseGrade', 'grade') }
             { renderFilter('courseCategory', 'type') }
