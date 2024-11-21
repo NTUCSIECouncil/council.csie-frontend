@@ -1,0 +1,672 @@
+[
+  {
+    "category": "Cj_lin",
+    "chin_name": "林智仁",
+    "eng_name": "Chih-Jen Lin",
+    "lab": "Machine Learning Lab",
+    "tags": [
+      "ML",
+      "Optimization"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Cj_lin.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Cj_lin.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Sd_lin",
+    "chin_name": "林守德",
+    "eng_name": "Shou-De Lin",
+    "lab": "Machine Discovery and Social Network Mining Lab",
+    "tags": [
+      "AI",
+      "ML"
+    ],
+    "links": [
+      {
+        "url": "2021-05-04-Sd_lin.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "St_chen",
+    "chin_name": "陳尚澤",
+    "eng_name": "Shang-Tse Chen",
+    "lab": "Machine Learning and Security",
+    "tags": [
+      "AI",
+      "ML"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-St_chen.md",
+        "label": "2020"
+      }
+    ]
+  },
+  {
+    "category": "Cs_fuh",
+    "chin_name": "傅楸善",
+    "eng_name": "Chiou-Shann Fuh",
+    "lab": "Digital Camera and Computer Vision Lab",
+    "tags": [
+      "CV",
+      "DIP"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Cs_fuh.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Cs_fuh.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Sh_hung",
+    "chin_name": "洪士灝",
+    "eng_name": "Shih-Hao Hung",
+    "lab": "Performance, Application and Security Lab",
+    "tags": [
+      "System",
+      "Optimization",
+      "Computing",
+      "Security"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Sh_hung.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Sh_hung.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Cs_shih",
+    "chin_name": "施吉昇",
+    "eng_name": "Chi-Sheng Shih",
+    "lab": "Embedded System and Wireless Networking Lab",
+    "tags": [
+      "System",
+      "Optimization"
+    ],
+    "links": [
+      {
+        "url": "2021-05-04-Cs_shih.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Cw_lin",
+    "chin_name": "林忠緯",
+    "eng_name": "Chung-Wei Lin",
+    "lab": "Cyber-Physical Systems Lab",
+    "tags": [
+      "Security",
+      "System"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Cw_lin.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Cw_lin.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Pf_liu",
+    "chin_name": "劉邦鋒",
+    "eng_name": "Pangfeng Liu",
+    "lab": "Parallel and Distributed Processing Lab",
+    "tags": [
+      "Computing",
+      "ML",
+      "System"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Pf_liu.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Pf_liu.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Tony_tan",
+    "chin_name": "陳偉松",
+    "eng_name": "Tony Tan",
+    "lab": "Logic and database lab",
+    "tags": [
+      "Logic&Automata"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Tony_tan.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Tony_tan.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "J_hsiang",
+    "chin_name": "項潔",
+    "eng_name": "Jieh Hsiang",
+    "lab": "Automated Reasoning Laboratory",
+    "tags": []
+  },
+  {
+    "category": "Tw_kuo",
+    "chin_name": "郭大維",
+    "eng_name": "Tei-Wei Kuo",
+    "lab": "Embedded System and Wireless Networking Lab",
+    "tags": [
+      "System",
+      "IoT",
+      "Computing"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Tw_kuo.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Tw_kuo.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Ac_pang",
+    "chin_name": "逄愛君",
+    "eng_name": "Ai-Chun Pang",
+    "lab": "Embedded System and Wireless Networking Lab",
+    "tags": [
+      "Network",
+      "Computing",
+      "AI",
+      "IoT"
+    ],
+    "links": [
+      {
+        "url": "2021-05-04-Ac_pang.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Ht_lin",
+    "chin_name": "林軒田",
+    "eng_name": "Hsuan-Tien Lin",
+    "lab": "Computational Learning Lab",
+    "tags": [
+      "AI",
+      "ML"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Ht_lin.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Ht_lin.md",
+        "label": "2021"
+      },
+      {
+        "url": "2023-04-26-Ht_lin.md",
+        "label": "2023"
+      }
+    ]
+  },
+  {
+    "category": "Yn_chen",
+    "chin_name": "陳縕儂",
+    "eng_name": "Yun-Nung Chen",
+    "lab": "Machine Intelligence and Understanding",
+    "tags": [
+      "AI",
+      "ML",
+      "NLP"
+    ],
+    "links": [
+      {
+        "url": "2021-05-04-Yn_chen.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Yp_hung",
+    "chin_name": "洪一平",
+    "eng_name": "Yi-Ping Hung",
+    "lab": "Image and Vision Lab",
+    "tags": [
+      "CV",
+      "VR&AR",
+      "AI",
+      "Blockchain"
+    ],
+    "links": [
+      {
+        "url": "2022-06-28-Yp_hung.md",
+        "label": "2022"
+      }
+    ]
+  },
+  {
+    "category": "Yh_li",
+    "chin_name": "李彥寰",
+    "eng_name": "Yen-Huan Li",
+    "lab": "Lab for Learning Theory and Optimization Methods",
+    "tags": [
+      "ML",
+      "Optimization"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Yh_li.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Yh_li.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Cs_chen",
+    "chin_name": "陳祝嵩",
+    "eng_name": "Chu-Song Chen",
+    "lab": "AI Application and Integration (AI^2) Lab",
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "links": [
+      {
+        "url": "2022-06-28-Cs_chen.md",
+        "label": "2022"
+      }
+    ]
+  },
+  {
+    "category": "Hh_chen",
+    "chin_name": "陳信希",
+    "eng_name": "Hsin-Hsi Chen",
+    "lab": "Natural Language Processing Lab",
+    "tags": [
+      "NLP",
+      "FinTech",
+      "IR",
+      "eHealth"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Hh_chen.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Hh_chen.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Cl_yang",
+    "chin_name": "楊佳玲",
+    "eng_name": "Chia-Lin Yang",
+    "lab": "Embedded Computing Lab",
+    "tags": [
+      "System",
+      "ML",
+      "IoT"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Cl_yang.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Cl_yang.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Cw_hsueh",
+    "chin_name": "薛智文",
+    "eng_name": "Chih-Wen Hsueh",
+    "lab": "Embedded System and Wireless Networking Lab",
+    "tags": [
+      "System",
+      "Blockchain",
+      "FinTech"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Cw_hsueh.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Cw_hsueh.md",
+        "label": "2021"
+      },
+      {
+        "url": "2022-06-28-Cw_hsueh.md",
+        "label": "2022"
+      },
+      {
+        "url": "2023-04-21-Cw_hsueh.md",
+        "label": "2023"
+      }
+    ]
+  },
+  {
+    "category": "Yy_chuang",
+    "chin_name": "莊永裕",
+    "eng_name": "Yung-Yu Chuang",
+    "lab": "Communication and Multimedia Lab",
+    "tags": [
+      "CV",
+      "Graphics"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Yy_chuang.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Yy_chuang.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Lp_cheng",
+    "chin_name": "鄭龍磻",
+    "eng_name": "Lung-Pan Cheng",
+    "lab": "Human Computer Interaction Lab",
+    "tags": [
+      "HCI",
+      "VR&AR"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Lp_cheng.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Lp_cheng.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "P_lin",
+    "chin_name": "林風",
+    "eng_name": "Phone Lin",
+    "lab": "Mobile Communication Networking Lab",
+    "tags": [
+      "IoT",
+      "Network",
+      "System"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-P_lin.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-P_lin.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Yj_hsu",
+    "chin_name": "許永真",
+    "eng_name": "Jane Yung-Jen Hsu",
+    "lab": "Intelligent Agents Lab",
+    "tags": [
+      "AI",
+      "eHealth",
+      "NLP"
+    ],
+    "links": [
+      {
+        "url": "2021-05-04-Yj_hsu.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Cf_chou",
+    "chin_name": "周承復",
+    "eng_name": "Cheng-Fu Chou",
+    "lab": "Communication and Multimedia Lab",
+    "tags": [
+      "Network",
+      "ML",
+      "Graphics",
+      "System"
+    ],
+    "links": [
+      {
+        "url": "2021-05-04-Cf_chou.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Lc_fu",
+    "chin_name": "傅立成",
+    "eng_name": "Li-Chen Fu",
+    "lab": "Intelligent Robotics and Automation Lab",
+    "tags": [
+      "CV",
+      "VR&AR",
+      "Robot",
+      "eHealth"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Lc_fu.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Lc_fu.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Hc_hsiao",
+    "chin_name": "蕭旭君",
+    "eng_name": "Hsu-Chun Hsiao",
+    "lab": "Network Security Lab",
+    "tags": [
+      "Security"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Hc_hsiao.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Hc_hsiao.md",
+        "label": "2021"
+      },
+      {
+        "url": "2023-04-21-Hc_hsiao.md",
+        "label": "2023"
+      }
+    ]
+  },
+  {
+    "category": "Yf_tseng",
+    "chin_name": "曾宇鳳",
+    "eng_name": "Yu-Feng Tseng",
+    "lab": "Bioinformatics and Cheminformatics Lab",
+    "tags": [
+      "ML",
+      "eHealth"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Yf_tseng.md",
+        "label": "2020"
+      },
+      {
+        "url": "2021-05-04-Yf_tseng.md",
+        "label": "2021"
+      }
+    ]
+  },
+  {
+    "category": "Rf_chang",
+    "chin_name": "張瑞峰",
+    "eng_name": "Ruey-Feng Chang",
+    "lab": "Medical Image Processing Lab",
+    "tags": [
+      "eHealth",
+      "CV",
+      "DIP",
+      "ML",
+      "AI"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Rf_chang.md",
+        "label": "2020"
+      }
+    ]
+  },
+  {
+    "category": "Mike_chen",
+    "chin_name": "陳彥仰",
+    "eng_name": "Mike Y. Chen",
+    "lab": "Human Computer Interaction Lab",
+    "tags": [
+      "ML",
+      "HCI",
+      "AR&VR",
+      "AI"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Mike_chen.md",
+        "label": "2020"
+      }
+    ]
+  },
+  {
+    "category": "Hm_tsai",
+    "chin_name": "蔡欣穆",
+    "eng_name": "Hsin-Mu Tsai",
+    "lab": "Mobile and Vehicular Network Lab",
+    "tags": [
+      "ML",
+      "Light",
+      "Network",
+      "AI"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Hm_tsai.md",
+        "label": "2020"
+      },
+      {
+        "url": "2023-10-20-Hm_tsai.md",
+        "label": "2023"
+      }
+    ]
+  },
+  {
+    "category": "Pj_cheng",
+    "chin_name": "鄭卜壬",
+    "eng_name": "Pu-Jen Cheng",
+    "lab": "Web Mining and Information Retrieval Lab",
+    "tags": [
+      "IR",
+      "ML",
+      "AI"
+    ],
+    "links": [
+      {
+        "url": "2020-08-05-Pj_cheng.md",
+        "label": "2020"
+      }
+    ]
+  },
+  {
+    "category": "Sw_liao",
+    "chin_name": "廖世偉",
+    "eng_name": "Shih-Wei Liao",
+    "lab": "A Blockchain Consensus Lab",
+    "tags": [
+      "Blockchain",
+      "FinTech",
+      "AI"
+    ],
+    "links": [
+      {
+        "url": "2022-06-28-Sw_liao.md",
+        "label": "2022"
+      }
+    ]
+  },
+  {
+    "category": "Sw_li",
+    "chin_name": "黎士瑋",
+    "eng_name": "Shih-Wei Li",
+    "lab": "Security and Software Systems Lab",
+    "tags": [
+      "System",
+      "Security"
+    ],
+    "links": [
+      {
+        "url": "2022-06-28-Sw_li.md",
+        "label": "2022"
+      },
+      {
+        "url": "2023-04-21-Sw_li.md",
+        "label": "2023"
+      }
+    ]
+  },
+  {
+    "category": "Km_chao",
+    "chin_name": "趙坤茂",
+    "eng_name": "Kun-Mao Chao",
+    "lab": "Algorithms & Computational Biology Laboratory",
+    "tags": [],
+    "links": [
+      {
+        "url": "2023-04-27-Km_chao.md",
+        "label": "2023"
+      }
+    ]
+  }
+]

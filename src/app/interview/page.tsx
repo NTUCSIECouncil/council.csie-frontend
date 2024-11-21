@@ -1,20 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-
-interface Link {
-  url: string;
-  label: string;
-}
-
-interface TeacherInfo {
-  image: string;
-  nameZh: string;
-  nameEn: string;
-  labName: string;
-  links: Link[];
-  tags: string[];
-}
+import professors from '@public/professors.json';
 
 const Page = (): React.JSX.Element => {
   const router = useRouter();
@@ -25,83 +12,28 @@ const Page = (): React.JSX.Element => {
     }
   };
 
-  const data: TeacherInfo[] = [
-    {
-      image: '/teacher_img/Ht_lin.png',
-      nameZh: '林軒田',
-      nameEn: 'Hsuan-Tien Lin',
-      labName: 'Computational Learning Lab',
-      links: [
-        { url: '2023-04-26-Ht_lin.md', label: '2021' },
-        { url: '2023-04-26-Ht_lin.md', label: '2022' },
-        { url: '2023-04-26-Ht_lin.md', label: '2023' },
-      ],
-      tags: ['AI', 'ML'],
-    },
-    {
-      image: '/teacher_img/Ht_lin.png',
-      nameZh: '林軒田1',
-      nameEn: 'Hsuan-Tien Lin',
-      labName: 'Computational Learning Lab',
-      links: [
-        { url: '2023-04-26-Ht_lin.md', label: '2023' },
-      ],
-      tags: ['Logic&Automata'],
-    },
-    {
-      image: '/teacher_img/Ht_lin.png',
-      nameZh: '林軒田2',
-      nameEn: 'Hsuan-Tien Lin',
-      labName: 'Computational Learning Lab',
-      links: [
-        { url: '2023-04-26-Ht_lin.md', label: '2023' },
-      ],
-      tags: ['System', 'Optimization', 'Computing', 'Security'],
-    },
-    {
-      image: '/teacher_img/Ht_lin.png',
-      nameZh: '林軒田3',
-      nameEn: 'Hsuan-Tien Lin',
-      labName: 'Computational Learning Lab',
-      links: [
-        { url: '2023-04-26-Ht_lin.md', label: '2023' },
-      ],
-      tags: ['eHealth', 'CV', 'DIP', 'ML', 'AI'],
-    },
-    {
-      image: '/teacher_img/Ht_lin.png',
-      nameZh: '林軒田4',
-      nameEn: 'Hsuan-Tien Lin',
-      labName: 'Computational Learning Lab',
-      links: [
-        { url: '2023-04-26-Ht_lin.md', label: '2023' },
-      ],
-      tags: [],
-    },
-  ];
-
   return (
-    <div className="flex justify-center mt-12">
+    <div className="flex justify-center mt-12 mb-16">
       <div className="w-full max-w-6xl">
         <div className="grid grid-cols-4 gap-4">
-          {data.map((teacher, index) => (
+          {professors.map((teacher, index) => (
             <div
               key={index}
               className="bg-white/10 hover:bg-white/15 rounded-2xl"
             >
               <div className="flex flex-col items-center p-4">
                 <Image
-                  alt={teacher.nameEn}
-                  src={teacher.image}
+                  alt={teacher.eng_name}
+                  src={`/teacher_img/${teacher.category}.png`}
                   width={128}
                   height={128}
                   className="w-32 h-32 mb-2 rounded-full"
                 />
-                <h3 className="text-white text-lg font-bold text-center">{teacher.nameZh}</h3>
-                <p className="text-white font-bold text-center">{teacher.nameEn}</p>
-                <p className="text-gray-400 text-sm text-center uppercase">{teacher.labName}</p>
+                <h3 className="text-white text-lg font-bold text-center">{teacher.chin_name}</h3>
+                <p className="text-white font-bold text-center">{teacher.eng_name}</p>
+                <p className="text-gray-400 text-sm text-center uppercase">{teacher.lab}</p>
                 <div className="mt-2 flex flex-wrap justify-center">
-                  {teacher.links.map((link, linkIndex) => (
+                  {teacher.links?.map((link, linkIndex) => (
                     <button
                       key={linkIndex}
                       onClick={() => { handleButtonClick(link.url); }}
