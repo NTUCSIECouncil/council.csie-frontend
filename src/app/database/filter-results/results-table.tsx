@@ -41,43 +41,39 @@ export default function ResultTable(): React.JSX.Element {
   // I think this page can be implemented with instantaneously searching, i.e. show result without pressing Enter.
   return (
     <div className="relative overflow-x-auto shadow-xl rounded-lg my-2">
-      <table className="w-full text-gray-400 text-left">
-        <thead className="font-bold bg-gray-700">
-          <tr>
-            <th scope="col" className="px-6 py-2">課名</th>
-            <th scope="col" className="px-6 py-2">學期</th>
-            <th scope="col" className="px-6 py-2">學分數</th>
-            <th scope="col" className="px-6 py-2">授課教師</th>
-            <th scope="col" className="px-6 py-2">考古題</th>
-            <th scope="col" className="px-6 py-2">評價網</th>
+      <table className="w-full text-white-400 text-center font-medium ">
+        <thead className="font-bold">
+          <tr className="border-b-2 mb-2">
+            <th scope="col" className="px-6 py-3">課名</th>
+            <th scope="col" className="px-6 py-3">學期</th>
+            <th scope="col" className="px-6 py-3">學分數</th>
+            <th scope="col" className="px-6 py-3">授課教師</th>
+            <th scope="col" className="px-6 py-3">考古題</th>
+            <th scope="col" className="px-6 py-3">評價網</th>
           </tr>
         </thead>
         <tbody className="">
           {rows.map((row, _index) => (
             // <Grow in={showTable} timeout={500 * index} key={index}>
-            <tr key={row._id} className="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
-              <th className="px-6 py-1 text-white font-medium whitespace-nowrap">
+            <tr key={row._id} className="hover:bg-gray-600">
+              <th className="px-6 py-3 whitespace-nowrap">
+                {row.title}
+              </th>
+              <td className="px-6 py-3">{row.semester}</td>
+              <td className="px-6 py-3">{row.credit}</td>
+              <td className="px-6 py-3">{row.lecturer}</td>
+              <td className="px-6 py-3">
                 <Link
                   href={`/database/course?course=${row.course}`}
                 >
-                  {row.title}
-                </Link>
-              </th>
-              <td className="px-6 py-1">{row.semester}</td>
-              <td className="px-6 py-1">{row.credit}</td>
-              <td className="px-6 py-1">{row.lecturer}</td>
-              <td className="px-6 py-1">
-                <Link
-                  href={row.pastQuiz}
-                >
-                  <IoMdLink className="text-blue-500" />
+                  <IoMdLink className="text-xl text-white m-auto -rotate-45" />
                 </Link>
               </td>
-              <td className="px-6 py-1">
+              <td className="px-6 py-3">
                 <Link
                   href={row.pastQuiz}
                 >
-                  <IoMdLink className="text-blue-500" />
+                  <IoMdLink className="text-xl text-white m-auto -rotate-45" />
                 </Link>
               </td>
             </tr>

@@ -40,10 +40,10 @@ const Page = async ({
       <div className="w-full max-w-5xl m-4 pt-2">
         <Suspense>
           <div className="w-full flex items-end my-2 px-4">
-            <p className="font-bold text-5xl mr-2">{title}</p>
+            <p className="font-bold text-5xl mr-3">{title}</p>
             <p className="ond-bold text-3xl">的歷屆考古題</p>
           </div>
-          <hr className="w-full border-gray-500 border-t-4" />
+          <hr className="w-full border-gray-500 border-t-4 my-3" />
           <div className="w-full flex flex-around flex-wrap pt-6">
             {ret.items.map(quiz => (
               <Link

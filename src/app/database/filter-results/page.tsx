@@ -45,7 +45,7 @@ const Page = ({
         />
       </form>
       <div className="mx-5">
-        <p className="text-xl">查詢結果</p>
+        <p className="text-2xl font-bold">查詢結果</p>
         <ResultTable />
       </div>
     </main>
