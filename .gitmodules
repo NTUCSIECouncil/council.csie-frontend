@@ -1,4 +1,4 @@
 [submodule "src/posts"]
 	path = src/posts
 	url = git@github.com:NTUCSIECouncil/council.csie-interview.git
-  branch = main
+	branch = main
