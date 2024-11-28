@@ -49,10 +49,10 @@ const Page = async ({
           <Search className="my-2 w-full" placeholder="輸入關鍵字" />
           <div className="flex items-center gap-3 my-4 mx-10 text-sm">
             <p className="text-base">搜尋依據：</p>
-            { renderFilter('searchCriteria', 'grade') }
+            { renderFilter('searchCriteria', 'searchby') }
             <p className="text-base">篩選：</p>
             { renderFilter('courseGrade', 'grade') }
-            { renderFilter('courseCategory', 'type') }
+            { renderFilter('courseCategory', 'categories') }
           </div>
         </form>
       </div>

@@ -19,7 +19,9 @@ const Page = (): React.JSX.Element => {
         >
           <Search className="my-2 w-full" placeholder="輸入關鍵字" />
           <div>
-            <div className="flex items-center gap-2 my-2">
+            <div className="flex items-center gap-4 my-4">
+              <p className="text-base">搜尋依據：</p>
+              { renderFilter('searchCriteria', 'searchby') }
               <p className="text-lg">篩選：</p>
               { renderFilter('courseGrade', 'grade') }
               { renderFilter('courseCategory', 'type') }
