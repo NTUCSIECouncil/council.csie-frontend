@@ -70,8 +70,8 @@ const NavBar = (): React.JSX.Element => {
                   </div>
                 )
               : (
-                  <div className="dropdown">
-                    <div tabIndex={0} className="btn text-white px-4 py-2 bg-gray-700 hover:bg-gray-600 transition-colors border-0">
+                  <div className="dropdown dropdown-hover">
+                    <div tabIndex={0} role="button" className="btn text-white px-4 py-2 bg-gray-700 hover:bg-gray-600 transition-colors border-0">
                       <div
                         className="prone text-center tooltip tooltip-bottom inline-flex items-center"
                         data-tip="Open settings"
@@ -82,7 +82,7 @@ const NavBar = (): React.JSX.Element => {
                     </div>
                     <ul
                       tabIndex={0}
-                      className="dropdown-content menu p-2 mt-1 inset-x-0 bg-gray-800 text-white rounded shadow-lg"
+                      className="dropdown-content menu p-2 inset-x-0 bg-gray-800 text-white rounded shadow-lg"
                     >
                       <li>
                         <div
