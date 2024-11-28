@@ -5,6 +5,7 @@
 import Search from '@/components/search';
 // import serverFetch from '@/utils/server-fetch';
 import searchRedirectServer from '@/helpers/search-redirect-server';
+import Background from './background';
 import ResultTable from './results-table';
 
 const Page = ({
@@ -37,18 +38,21 @@ const Page = ({
   //   throw Error('Unknown error');
 
   return (
-    <main className="mx-auto w-4/5 min-w-96 mt-4">
-      <form action={searchRedirectServer('/database/filter-results')} className="items-center">
-        <Search
-          placeholder="輸入關鍵字"
-          className="my-4"
-        />
-      </form>
-      <div className="mx-5">
-        <p className="text-2xl font-bold">查詢結果</p>
-        <ResultTable />
-      </div>
-    </main>
+    <div className="h-full">
+      <Background />
+      <main className="mx-auto w-4/5 min-w-96 mt-4">
+        <form action={searchRedirectServer('/database/filter-results')} className="items-center">
+          <Search
+            placeholder="輸入關鍵字"
+            className="my-4"
+          />
+        </form>
+        <div className="mx-5">
+          <p className="text-2xl font-bold">查詢結果</p>
+          <ResultTable />
+        </div>
+      </main>
+    </div>
   );
 };
 

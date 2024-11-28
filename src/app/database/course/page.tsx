@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { IoMdLink } from 'react-icons/io';
 import serverFetch from '@/utils/server-fetch';
+import Background from '../filter-results/background';
 
 interface QuizResponse {
   items: Quiz[];
@@ -37,6 +38,7 @@ const Page = async ({
 
   return (
     <main className="flex flex-col items-center">
+      <Background />
       <div className="w-full max-w-5xl m-4 pt-2">
         <Suspense>
           <div className="w-full flex items-end my-2 px-4">
