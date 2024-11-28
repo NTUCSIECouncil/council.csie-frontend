@@ -43,7 +43,7 @@ const Page = async ({
   const articles = (await res.json()) as ArticleResponse;
 
   return (
-    <div className="flex flex-col gap-4 items-center mt-8">
+    <div className="flex flex-col gap-4 items-center mt-8 w-full">
       <div className="w-3/5">
         <form action={searchRedirectServer('/rate/filter-results')} className="items-center">
           <Search className="my-2 w-full" placeholder="輸入關鍵字" />
