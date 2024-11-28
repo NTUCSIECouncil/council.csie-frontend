@@ -9,7 +9,7 @@ const Page = ({ params }: {
   // const { request } = UserAuth();
 
   return (
-    <main className="flex flex-col items-center">
+    <main className="flex flex-col items-center w-3/5">
       <div className="w-full max-w-5xl m-4">
         <Suspense>
           <Article

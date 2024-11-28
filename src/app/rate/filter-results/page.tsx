@@ -43,8 +43,8 @@ const Page = async ({
   const articles = (await res.json()) as ArticleResponse;
 
   return (
-    <div className="flex flex-col gap-4 items-center mt-8 w-full">
-      <div className="w-3/5">
+    <main className="flex flex-col gap-4 items-center mt-8 w-3/5">
+      <div className="w-full">
         <form action={searchRedirectServer('/rate/filter-results')} className="items-center">
           <Search className="my-2 w-full" placeholder="輸入關鍵字" initialValue={keyword} />
           <div className="flex items-center gap-2 my-2 mx-10 text-sm">
@@ -54,7 +54,7 @@ const Page = async ({
           </div>
         </form>
       </div>
-      <main className="w-3/5">
+      <div className="w-full">
         <div className="flex flex-col gap-3">
           {articles.items.map(article => (
             <Link
@@ -70,8 +70,8 @@ const Page = async ({
             </Link>
           ))}
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 };
 
