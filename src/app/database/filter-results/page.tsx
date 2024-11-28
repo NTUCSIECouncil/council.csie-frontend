@@ -2,7 +2,7 @@
 // import Image from 'next/image';
 // import Link from 'next/link';
 'use server';
-import Search from '@/components/search';
+import SmallSearch from '@/components/small-search';
 // import serverFetch from '@/utils/server-fetch';
 import searchRedirectServer from '@/helpers/search-redirect-server';
 import Background from './background';
@@ -41,14 +41,14 @@ const Page = ({
     <div className="h-full">
       <Background />
       <main className="mx-auto w-4/5 min-w-96 mt-4">
-        <form action={searchRedirectServer('/database/filter-results')} className="items-center">
-          <Search
+        <form action={searchRedirectServer('/database/filter-results')} className="flex items-center justify-between mx-7">
+          <p className="text-4xl font-bold">查詢結果</p>
+          <SmallSearch
             placeholder="輸入關鍵字"
-            className="my-4"
+            className="my-4 w-[13rem]"
           />
         </form>
-        <div className="mx-5">
-          <p className="text-2xl font-bold">查詢結果</p>
+        <div className="mx-5 mt-5">
           <ResultTable />
         </div>
       </main>
