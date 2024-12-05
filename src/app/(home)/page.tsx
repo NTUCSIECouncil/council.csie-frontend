@@ -5,8 +5,10 @@ const Page = (): React.JSX.Element => {
   return (
     <>
       <Background />
-      <main className="pt-0">
-        <NavCards />
+      <main className="relative z-10 pt-24">
+        <div className="container mx-auto px-4">
+          <NavCards />
+        </div>
       </main>
     </>
   );
