@@ -74,7 +74,6 @@ const NavBar = (): React.JSX.Element => {
                     <div tabIndex={0} role="button" className="btn text-white px-4 py-2 bg-gray-700 hover:bg-gray-600 transition-colors border-0">
                       <div
                         className="prone text-center tooltip tooltip-bottom inline-flex items-center"
-                        data-tip="Open settings"
                       >
                         <FaUser className="fill-current w-4 h-4 mr-2" />
                         {currentUser.displayName}
