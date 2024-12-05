@@ -36,7 +36,7 @@ const NavBar = (): React.JSX.Element => {
         <div className="flex items-center">
           <Link
             href="/"
-            className={`${playfairDisplay.className} text-4xl text-white font-bold pl-4 pr-16`}
+            className={`${playfairDisplay.className} text-4xl text-white font-bold pl-4 pr-16 transition-transform duration-300 ease-in-out hover:scale-110`}
           >
             NTU CSIE
           </Link>
@@ -46,7 +46,7 @@ const NavBar = (): React.JSX.Element => {
               <Link
                 key={page.name}
                 href={page.link}
-                className="text-white text-xl hover:text-gray-400 transition-colors"
+                className="text-white text-xl hover:text-gray-400 transition-colors duration-200"
               >
                 {page.name}
               </Link>
@@ -59,7 +59,7 @@ const NavBar = (): React.JSX.Element => {
             ? <ReactLoading type="spin" color="#fff" height={28} width={28} />
             : currentUser === null
               ? (
-                  <div className="btn text-white px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 transition-colors border-0">
+                  <div className="btn text-white px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0">
                     <div
                       className="prone text-center tooltip tooltip-bottom inline-flex items-center"
                       onClick={() => { handlePromise(signIn); }}
@@ -71,7 +71,7 @@ const NavBar = (): React.JSX.Element => {
                 )
               : (
                   <div className="dropdown dropdown-hover">
-                    <div tabIndex={0} role="button" className="btn text-white px-4 py-2 bg-gray-700 hover:bg-gray-600 transition-colors border-0">
+                    <div tabIndex={0} role="button" className="btn text-white px-4 py-2 bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0">
                       <div
                         className="prone text-center tooltip tooltip-bottom inline-flex items-center"
                       >
@@ -81,7 +81,7 @@ const NavBar = (): React.JSX.Element => {
                     </div>
                     <ul
                       tabIndex={0}
-                      className="dropdown-content menu p-2 inset-x-0 bg-gray-800 text-white rounded shadow-lg"
+                      className="dropdown-content menu p-2 inset-x-0 bg-gray-800 text-white rounded shadow-lg transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100"
                     >
                       <li>
                         <div
