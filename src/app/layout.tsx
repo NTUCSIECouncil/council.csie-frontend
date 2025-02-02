@@ -1,5 +1,6 @@
 import { type Metadata } from 'next';
 import './globals.css';
+import Footer from '@/components/footer';
 import NavBar from '@/components/nav-bar';
 import { AuthContextProvider } from '@/helpers/context/auth-context';
 
@@ -17,7 +18,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }): React.JSX.Elem
       <body className="text-[#d4d2d5] bg-[#1c1c29] flex flex-col min-h-screen">
         <AuthContextProvider>
           <NavBar />
-          {children}
+          <div className="flex-grow flex justify-center items-center">
+            {children}
+          </div>
+          <Footer />
         </AuthContextProvider>
       </body>
     </html>
