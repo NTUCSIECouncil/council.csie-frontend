@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import professors from '@public/professors.json';
+import professors from '@public/interview/professors.json';
 
 const Page = (): React.JSX.Element => {
   const router = useRouter();
@@ -33,7 +33,7 @@ const Page = (): React.JSX.Element => {
               <div className="flex flex-col items-center p-4">
                 <Image
                   alt={teacher.eng_name}
-                  src={`/teacher_img/${teacher.category}.png`}
+                  src={`/interview/posts/teacher_img/${teacher.category}.png`}
                   width={128}
                   height={128}
                   className="w-32 h-32 mb-2 rounded-full"
