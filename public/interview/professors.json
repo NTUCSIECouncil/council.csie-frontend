@@ -668,5 +668,20 @@
         "label": "2023"
       }
     ]
+  },
+  {
+    "category": "JL_Wu",
+    "chin_name": "吳家麟",
+    "eng_name": "Ja-Ling Wu",
+    "lab": "Communication and Multimedia Lab",
+    "tags": [],
+    "expertise(I don't know how tags are generated)": [
+      "Digital Signal Processing",
+      "Data Compression",
+      "Multimedia System",
+      "Error-Correcting Codes"
+    ],
+    "links": [
+    ]
   }
 ]
