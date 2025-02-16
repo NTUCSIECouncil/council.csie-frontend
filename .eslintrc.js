@@ -59,7 +59,7 @@ module.exports = {
     '@typescript-eslint/no-empty-object-type': ['error', { allowInterfaces: 'with-single-extends' }],
     '@typescript-eslint/use-unknown-in-catch-callback-variable': 'off',
     '@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
-
+    
     'import/order': ['warn', {
       groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
       alphabetize: { order: 'asc' },

@@ -1,26 +1,25 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import professors from '@public/interview/professors.json';
 
 const Page = (): React.JSX.Element => {
-  // const router = useRouter();
+  const router = useRouter();
 
-  // const handleButtonClick = (url: string) => {
-  //   if (url) {
-  //     // md file url: YYYY-MM-DD-category.md
-  //     const regex = /^(\d{4})-\d{2}-\d{2}-(.+)\.md$/;
-  //     const match = regex.exec(url);
-  //     if (match) {
-  //       const year = match[1];
-  //       // const file = match[2];
-  //       router.push(`/interview/${year}/${url}`);
-  //     } else {
-  //       console.error('Invalid URL format:', url);
-  //     }
-  //   }
-  // };
+  const handleButtonClick = (url: string) => {
+    if (url) {
+      // md file url: YYYY-MM-DD-category.md
+      const regex = /^(\d{4})-\d{2}-\d{2}-(.+)\.md$/;
+      const match = regex.exec(url);
+      if (match) {
+        const year = match[1];
+        const file = match[2];
+        router.push(`/interview/${year}/${file}`);
+      } else {
+        console.error('Invalid URL format:', url);
+      }
+    }
+  };
 
   return (
     <div className="flex justify-center mt-12 mb-16">
@@ -44,13 +43,13 @@ const Page = (): React.JSX.Element => {
                 <p className="text-gray-400 text-sm text-center uppercase">{teacher.lab}</p>
                 <div className="mt-2 flex flex-wrap justify-center">
                   {teacher.links?.map((link, linkIndex) => (
-                    <Link
+                    <button
                       key={linkIndex}
-                      href={`/interview/${link.label}/${link.url}`}
+                      onClick={() => { handleButtonClick(link.url); }}
                       className="bg-violet-500 hover:bg-violet-800 text-white px-3 py-1 rounded-full mr-2 mb-2 transition-colors duration-300"
                     >
                       {link.label}
-                    </Link>
+                    </button>
                   ))}
                 </div>
                 <div className="flex items-center w-full">
