@@ -2,6 +2,7 @@
   "extends": "@tsconfig/next/tsconfig.json",
 
   "compilerOptions": {
+    "resolveJsonModule": true,
     "target": "ES2023",
     "paths": {
       "@/*": ["./src/*"],
