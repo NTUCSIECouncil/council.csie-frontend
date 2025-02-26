@@ -42,8 +42,8 @@ const Page = ({ params }: PageProps) => {
           <Image
             alt="Teacher Image"
             src={`/teacher_img/${frontMatter.category}.png`}
-            width={256}
-            height={256}
+            height={128}
+            width={128}
             className="w-64 h-64 rounded-full absolute top-8 right-12 m-4"
           />
         )}

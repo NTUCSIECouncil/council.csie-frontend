@@ -8,8 +8,8 @@ const Page = (): React.JSX.Element => {
 
   const handleButtonClick = (url: string) => {
     if (url) {
-      // md file url: YYYY-MM-DD-category.md
-      const regex = /^(\d{4})-\d{2}-\d{2}-(.+)\.md$/;
+      // md file url: YYYY-MM-DD-category.md OR YYYY-category.md
+      const regex = /^(\d{4})-(.+)\.md$/;
       const match = regex.exec(url);
       if (match) {
         const year = match[1];
