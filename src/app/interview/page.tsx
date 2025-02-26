@@ -33,7 +33,7 @@ const Page = (): React.JSX.Element => {
               <div className="flex flex-col items-center p-4">
                 <Image
                   alt={teacher.eng_name}
-                  src={`/interview/posts/teacher_img/${teacher.category}.png`}
+                  src={`/teacher_img/${teacher.category}.png`}
                   width={128}
                   height={128}
                   className="w-32 h-32 mb-2 rounded-full"
