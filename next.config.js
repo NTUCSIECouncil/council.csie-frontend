@@ -8,6 +8,15 @@ const nextConfig = {
         },
       ]
     },
+    async redirects() {
+      return [
+        {
+          source: '/(life|rate|database)/:path*',
+          destination: '/',
+          permanent: true,
+        },
+      ]
+    }
 }
 
 module.exports = nextConfig
