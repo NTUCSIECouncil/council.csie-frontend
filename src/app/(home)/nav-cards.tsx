@@ -29,7 +29,7 @@ const NavCardInner = ({ page }: { page: NavPageType }): React.JSX.Element => (
 
 const NavCards = (): React.JSX.Element => {
   return (
-    <div className="flex flex-wrap justify-center gap-10">
+    <div className="flex flex-wrap justify-center gap-10 flex-nowrap">
       {pages.map((page) => {
         return page.disable
           ? (
