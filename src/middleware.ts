@@ -5,7 +5,7 @@ export function middleware(req: NextRequest) {
   const { ua } = userAgent(req);
 
   if (/iP(hone|ad|od)/.test(ua) || ua.includes('Android')) {
-    return NextResponse.redirect('/old_council');
+    return NextResponse.redirect('https://council.csie.ntu.edu.tw/old_council');
   }
 }
 
