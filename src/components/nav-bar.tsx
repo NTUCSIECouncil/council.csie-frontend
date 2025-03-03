@@ -6,6 +6,9 @@ import { FaUser } from 'react-icons/fa6';
 import ReactLoading from 'react-loading';
 import { UserAuth } from '@/helpers/context/auth-context';
 import { playfairDisplay } from '@/helpers/fonts';
+import { navPages } from '@/utils/constants';
+
+const pages = navPages;
 
 const NavBar = (): React.JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
@@ -18,13 +21,6 @@ const NavBar = (): React.JSX.Element => {
   const _handleCloseUserMenu = (): void => {
     setAnchorElUser(null);
   };
-
-  const pages = [
-    { name: '德田生活', link: '/life' },
-    { name: '課程評價網', link: '/rate' },
-    { name: '課程資料庫', link: '/database' },
-    { name: '教授訪談', link: '/interview' },
-  ];
 
   const handlePromise = (promiseFunction: () => Promise<void>): void => {
     promiseFunction().then().catch(() => 'I don\'t want to do anything.');
@@ -42,15 +38,17 @@ const NavBar = (): React.JSX.Element => {
           </Link>
 
           <div className="hidden md:flex items-center space-x-6">
-            {pages.map(page => (
-              <Link
-                key={page.name}
-                href={page.link}
-                className="text-white text-xl hover:text-gray-400 transition-colors duration-200"
-              >
-                {page.name}
-              </Link>
-            ))}
+            {pages.map(page => page.disable
+              ? <div key={page.name} className="text-white text-xl opacity-50">{page.name}</div>
+              : (
+                  <Link
+                    key={page.name}
+                    href={page.href}
+                    className="text-white text-xl hover:text-gray-400 transition-colors duration-200"
+                  >
+                    {page.name}
+                  </Link>
+                ))}
           </div>
         </div>
 
