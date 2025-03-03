@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import Image from 'next/image';
 import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 interface FrontMatter {
   title: string;
@@ -47,7 +48,8 @@ const Page = ({ params }: PageProps) => {
             className="w-64 h-64 rounded-full absolute top-8 right-12 m-4"
           />
         )}
-        <Markdown className="relative z-10">{content}</Markdown>
+        {/* rehypePlugins={[rehypeRaw]} is used to render raw HTML in markdown */}
+        <Markdown className="relative z-10" rehypePlugins={[rehypeRaw]}>{content}</Markdown>
       </div>
     );
   } catch (_) {
