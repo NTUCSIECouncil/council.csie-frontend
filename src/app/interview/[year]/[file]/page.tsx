@@ -45,7 +45,7 @@ const Page = ({ params }: PageProps) => {
             src={`/teacher_img/${frontMatter.category}.png`}
             height={128}
             width={128}
-            className="w-64 h-64 rounded-full absolute top-8 right-12 m-4"
+            className="w-32 h-32 md:w-64 md:h-64 rounded-full absolute top-8 right-12 m-4"
           />
         )}
         {/* rehypePlugins={[rehypeRaw]} is used to render raw HTML in markdown */}

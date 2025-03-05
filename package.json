@@ -8,6 +8,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
     "autoprefixer": "^10.4.20",
     "eslint-import-resolver-typescript": "^3.6.3",
     "firebase": "^10.7.1",
