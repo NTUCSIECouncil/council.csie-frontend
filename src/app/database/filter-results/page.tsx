@@ -3,7 +3,7 @@
 // import Link from 'next/link';
 'use server';
 import SmallSearch from '@/components/small-search';
-import serverFetch from '@/utils/server-fetch';
+// import serverFetch from '@/utils/server-fetch';
 import searchRedirectServer from '@/helpers/search-redirect-server';
 import Background from './background';
 import ResultTable from './results-table';
