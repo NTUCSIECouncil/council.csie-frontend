@@ -37,13 +37,13 @@ const Page = async ({
   const title: string = ret.items[0].title;
 
   return (
-    <main className="flex flex-col items-center">
+    <main className="flex flex-col items-center self-start">
       <Background />
       <div className="w-full max-w-5xl m-4 pt-2">
         <Suspense>
           <div className="w-full flex items-end my-2 px-4">
-            <p className="font-bold text-5xl mr-3">{title}</p>
-            <p className="ond-bold text-3xl">的歷屆考古題</p>
+            <p className="font-bold md:text-4xl xl:text-5xl text-3xl mr-3">{title}</p>
+            <p className="ond-bold md:text-2xl xl:text-3xl text-xl ">的歷屆考古題</p>
           </div>
           <hr className="w-full border-gray-500 border-t-4 my-3" />
           <div className="w-full flex flex-around flex-wrap pt-6">
@@ -53,8 +53,8 @@ const Page = async ({
                 href={quiz.downloadLink}
               >
                 <div className="flex flex-row gap-1 items-center">
-                  <p className="font-bold text-2xl white">{quiz.semester}</p>
-                  <IoMdLink className="text-2xl text-white -rotate-45" />
+                  <p className="font-bold xl:text-2xl text-xl white">{quiz.semester}</p>
+                  <IoMdLink className="xl:text-2xl text-xl text-white -rotate-45" />
                 </div>
               </Link>
             ))}
