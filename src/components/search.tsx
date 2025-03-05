@@ -1,12 +1,19 @@
+'use client';
+
+import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 const Search = ({
   placeholder,
   className,
+  initialValue = '',
 }: {
   placeholder: string;
   className?: string;
+  initialValue?: string;
 }): React.JSX.Element => {
+  const [value, setValue] = useState(initialValue);
+
   return (
     <div className={className ? `relative ${className}` : 'relative '}>
       <label className="sr-only">Search</label>
@@ -18,6 +25,8 @@ const Search = ({
         type="search"
         name="keyword"
         placeholder={placeholder}
+        value={value}
+        onChange={(e) => { setValue(e.target.value); }}
       />
       <button className="absolute block aspect-square right-0 top-1/2 transform -translate-y-1/2 h-full bg-slate-200 flex" type="submit">
         <FaSearch className="text-3xl text-[#1c1c29] self-center mx-auto" />
