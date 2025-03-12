@@ -15,7 +15,7 @@ const Page = (): React.JSX.Element => {
   return (
     <main className="m-auto md:w-2/3">
       <h1 className="text-5xl font-bold text-center py-12">德田生活</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 pb-12">
         {sections.map((section, index) => (
           <Link
             href={section.href}
@@ -26,7 +26,7 @@ const Page = (): React.JSX.Element => {
               alt="Background(Der Tian Hall)."
               src={buildingImage}
               placeholder="blur"
-              className="w-32 h-32 mb-4 self-start"
+              className="w-64 h-64 mb-4 self-start p-1"
             />
             <h2 className="text-xl font-bold self-start">{section.title}</h2>
             <p className="text-sm text-text-secondary mt-2">
