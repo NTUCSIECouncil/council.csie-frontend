@@ -40,7 +40,7 @@ const rows = [
 export default function ResultTable(): React.JSX.Element {
   // I think this page can be implemented with instantaneously searching, i.e. show result without pressing Enter.
   return (
-    <div className="relative overflow-x-auto my-2">
+    <div className="relative overflow-x-auto my-2 no-scrollbar">
       <table className="w-full text-white-400 text-center font-medium">
         <thead className="font-bold">
           <tr className="border-b-2 mb-2">

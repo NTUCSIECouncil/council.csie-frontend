@@ -18,23 +18,23 @@ const Page = ({
     course?: UUID;
   };
 }) => {
-  const keyword = searchParams?.keyword ?? '';
+  const name = searchParams?.keyword ?? '';
   const course = searchParams?.course ?? '';
   const currentPage = Number(searchParams?.offset ?? '0');
   const limit = Number(searchParams?.limit ?? 10);
 
   const queryParams = new URLSearchParams();
-  if (keyword !== '')
-    queryParams.append('keyword', keyword);
+  if (name !== '')
+    queryParams.append('name', name);
   if (course !== '')
     queryParams.append('course', course);
   if (currentPage !== 0)
     queryParams.append('offset', (currentPage * limit).toString());
 
   // TODO: Connect with the correct API that searches Courses with keyword
-  const url = `/api/courses/search?${queryParams.toString()}`;
+  // const url = `/api/courses/search?${queryParams.toString()}`;
   // const res = await serverFetch(url, { cache: 'no-store' });
-  // console.log(res.status)
+  // console.log(res)
   // if (res.status != 200)
   //   throw Error('Unknown error');
 
@@ -42,14 +42,14 @@ const Page = ({
     <div className="h-full w-full">
       <Background />
       <main className="mx-auto w-4/5 min-w-96 mt-4">
-        <form action={searchRedirectServer('/database/filter-results')} className="flex items-center justify-between mx-7">
+        <form action={searchRedirectServer('/database/filter-results')} className="flex items-center justify-between xl:mx-7 mx-4">
           <p className="xl:text-4xl text-3xl font-bold">查詢結果</p>
           <SmallSearch
             placeholder="輸入關鍵字"
             className="my-4 xl:w-[13rem] w-[10rem]"
           />
         </form>
-        <div className="mx-5 mt-5 mb-10">
+        <div className="xl:mx-5 mt-5 mb-10">
           <ResultTable />
         </div>
       </main>
