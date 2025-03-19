@@ -3,7 +3,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { sidebar } from '@/helpers/sidebar';
-import professors from '@/posts/professors.json';
+// import professors from '@/posts/professors.json';
 
 const Page = (): React.JSX.Element => {
   const router = useRouter();
