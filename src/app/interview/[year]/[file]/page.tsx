@@ -11,13 +11,14 @@ interface FrontMatter {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     year: string;
     file: string;
-  };
+  }>;
 }
 
-const Page = ({ params }: PageProps) => {
+const Page = async (props: PageProps) => {
+  const params = await props.params;
   const { year, file } = params;
 
   const postsDir = path.join(process.cwd(), 'src', 'posts', '_posts', year);

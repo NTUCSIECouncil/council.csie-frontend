@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { FaUser } from 'react-icons/fa6';
-import ReactLoading from 'react-loading';
 import { UserAuth } from '@/helpers/context/auth-context';
 import { playfairDisplay } from '@/helpers/fonts';
 import { navPages } from '@/utils/constants';
@@ -54,7 +53,7 @@ const NavBar = (): React.JSX.Element => {
 
         <div className="flex items-center space-x-4">
           {!isUserLoaded
-            ? <ReactLoading type="spin" color="#fff" height={28} width={28} />
+            ? <span className="loading loading-spinner loading-lg" />
             : currentUser === null
               ? (
                   <div className="btn text-white px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0">

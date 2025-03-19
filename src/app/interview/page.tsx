@@ -65,7 +65,7 @@ const Page = (): React.JSX.Element => {
                       <MenuButton className="inline-flex justify-center gap-x-1.5 bg-violet-500 hover:bg-violet-800 text-white px-6 py-1 rounded-2xl">
                         Interviews
                         <svg className="ml-1 -mr-1 size-6 text-white" viewBox="0 0 20 20" fill="currentColor" data-slot="icon">
-                          <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                          <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
                         </svg>
                       </MenuButton>
                     </div>
