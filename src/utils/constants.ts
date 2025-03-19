@@ -35,3 +35,35 @@ export const navPages: NavPageType[] = [
     disable: false,
   },
 ];
+
+export interface LifeMenuType {
+  name: string;
+  href: string;
+}
+
+export const lifeMenu = [
+  {
+    name: '教授及幹事訪談',
+    href: '/life/professor-interviews',
+  },
+  {
+    name: '系學會',
+    href: '/life/student-association',
+  },
+  {
+    name: '系館空間',
+    href: '/life/building-space',
+  },
+  {
+    name: '課程資訊',
+    href: '/life/course-info',
+  },
+  {
+    name: '生活資訊',
+    href: '/life/life-info',
+  },
+  {
+    name: 'NASA',
+    href: '/life/nasa',
+  },
+];
