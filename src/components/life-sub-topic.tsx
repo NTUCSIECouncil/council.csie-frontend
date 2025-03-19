@@ -1,6 +1,6 @@
 const LifeSubTopic = ({
   content,
-  textSize = "text-2xl",
+  textSize = 'text-2xl',
 }: {
   content: string;
   textSize?: string;
