@@ -1,4 +1,4 @@
-const LifeCourseTopic = ({
+const LifeTopic = ({
   topic,
   subtopic,
   lecturer,
@@ -24,4 +24,4 @@ const LifeCourseTopic = ({
   );
 };
 
-export default LifeCourseTopic;
+export default LifeTopic;
