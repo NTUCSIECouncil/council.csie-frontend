@@ -5,7 +5,7 @@ import buildingImage from '@public/building_original.jpg';
 const Page = (): React.JSX.Element => {
   const sections = [
     { title: '教授及幹事訪談', href: '/' },
-    { title: '系學會', href: '/' },
+    { title: '系學會', href: '/life/council' },
     { title: '系館空間', href: '/' },
     { title: '課程資訊', href: '/' },
     { title: '生活資訊', href: '/life/information/internet' },

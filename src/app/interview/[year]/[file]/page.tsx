@@ -38,18 +38,33 @@ const Page = ({ params }: PageProps) => {
     const frontMatter = frontMatterData as FrontMatter;
 
     return (
-      <div className="prose container max-w-screen-lg mx-auto m-12 p-12 rounded-2xl bg-white/15 text-white/70 relative">
-        {frontMatter.category && (
-          <Image
-            alt="Teacher Image"
-            src={`/teacher_img/${frontMatter.category}.png`}
-            height={128}
-            width={128}
-            className="w-32 h-32 md:w-64 md:h-64 rounded-full absolute top-8 right-12 m-4"
-          />
-        )}
+      <div className="prose container max-w-screen-lg mx-auto px-6 md:m-12 md:p-12 md:rounded-2xl bg-white/15 text-white/70 relative">
+        {/* Desktop */}
+        <div className="hidden md:flex">
+          {frontMatter.category && (
+            <Image
+              alt="Teacher Image"
+              src={`/teacher_img/${frontMatter.category}.png`}
+              height={128}
+              width={128}
+              className="object-cover object-top w-48 h-48 rounded-full absolute top-8 right-12 m-4"
+            />
+          )}
+        </div>
+        {/* Mobile */}
+        <div className="md:hidden">
+          {frontMatter.category && (
+            <Image
+              alt="Teacher Image"
+              src={`/teacher_img/${frontMatter.category}.png`}
+              height={128}
+              width={128}
+              className="object-cover object-top w-full aspect-square"
+            />
+          )}
+        </div>
         {/* rehypePlugins={[rehypeRaw]} is used to render raw HTML in markdown */}
-        <Markdown className="relative z-10" rehypePlugins={[rehypeRaw]}>{content}</Markdown>
+        <Markdown className="relative z-10 break-words" rehypePlugins={[rehypeRaw]}>{content}</Markdown>
       </div>
     );
   } catch (_) {

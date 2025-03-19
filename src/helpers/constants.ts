@@ -49,7 +49,10 @@ export const SIDEBAR_OPTIONS = {
   },
   lifeCouncil: {
     choices: [
-      { value: '', description: '' },
+      { value: '/life/council/leader', description: '會長的話' },
+      { value: '/life/council/departments', description: '各部會介紹' },
+      { value: '/life/council/teams', description: '各系隊介紹' },
+      { value: '/life/council/activities', description: '系上活動' },
     ],
   },
   lifeSpace: {
