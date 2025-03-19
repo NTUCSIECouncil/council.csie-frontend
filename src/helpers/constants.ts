@@ -30,3 +30,41 @@ export const FILTER_OPTIONS = {
     defaultValue: '',
   },
 } as const satisfies Record<FilterOptionKeys, FilterOption>;
+
+export type SidebarOptionKeys = 'lifeInterview' | 'lifeCouncil' | 'lifeSpace' | 'lifeCourse' | 'lifeInformation';
+
+interface SidebarOption {
+  choices: { value: string; description: string }[];
+}
+
+export const SIDEBAR_OPTIONS = {
+  lifeInterview: {
+    choices: [
+      { value: '/', description: '陳祝嵩教授' },
+      { value: '/', description: '洪士灝教授' },
+      { value: '/', description: '陳縕儂教授' },
+      { value: '/', description: '劉邦鋒教授' },
+      { value: '/', description: '周承滿幹事' },
+    ],
+  },
+  lifeCouncil: {
+    choices: [
+      { value: '', description: '' },
+    ],
+  },
+  lifeSpace: {
+    choices: [
+      { value: '', description: '' },
+    ],
+  },
+  lifeCourse: {
+    choices: [
+      { value: '', description: '' },
+    ],
+  },
+  lifeInformation: {
+    choices: [
+      { value: '', description: '' },
+    ],
+  },
+} as const satisfies Record<SidebarOptionKeys, SidebarOption>;
