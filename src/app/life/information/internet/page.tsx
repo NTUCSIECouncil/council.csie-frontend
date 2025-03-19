@@ -1,6 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import DividerBar from '@/components/divider-bar';
+import LifeCourseContent from '@/components/life-course-content';
+import LifeCourseTopic from '@/components/life-topic';
 import contentData from './content.json';
 
 interface ContentItem {
@@ -19,16 +21,19 @@ const Page = (): React.JSX.Element => {
   }, [selectedTab]);
 
   return (
-    <div className="relative">
-      <div className="fixed top-28 left-1/2 -translate-x-1/2 w-full max-w-5xl bg-[#1c1c29] z-50 border-b border-[#d4d2d5]">
+    <div className="mx-auto w-4/5 md:w-2/3 self-start">
+      <div className="sticky top-20 left-0 w-full max-w-5xl bg-[#1c1c29] z-50 border-b border-[#d4d2d5]">
         <DividerBar items={items} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
       </div>
+      {/* <div className="fixed top-20 left-1/2 -translate-x-1/2 w-full max-w-5xl bg-[#1c1c29] z-50 border-b border-[#d4d2d5]">
+        <DividerBar items={items} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+      </div> */}
 
-      <div className="fixed top-40 left-1/2 -translate-x-1/2 mt-2 bg-[#212332] p-6 rounded-lg max-w-5xl w-full">
+      <div className="flex flex-col items-start gap-2 py-[28px]">
         {subtitles.map((item, index) => (
-          <div key={index} className="mt-4">
-            <h3 className="text-[#d4d2d5] text-xl font-bold">{item.subtitle}</h3>
-            <p className="text-white mt-2 whitespace-pre-line">{item.content}</p>
+          <div key={index}>
+            <LifeCourseTopic topic={item.subtitle} />
+            <LifeCourseContent content={item.content} />
           </div>
         ))}
       </div>

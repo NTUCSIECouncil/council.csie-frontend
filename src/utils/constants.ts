@@ -9,8 +9,8 @@ export interface NavPageType {
 export const navPages: NavPageType[] = [
   {
     name: '德田生活',
-    // href: '/life',
-    href: '/life/information',
+    href: '/life',
+    // href: '/life/information',
     description: '德田館是資工社畜的家，每當考試前夕，總是聚集許多捲捲人，通宵在新館把所有人捲爆。',
     disable: false,
   },
