@@ -44,15 +44,13 @@ const Page = async ({
 
   return (
     <main className="flex flex-col gap-4 items-center mt-8 w-3/5">
-      <div className="w-full">
-        <form action={searchRedirectServer('/rate/filter-results')} className="items-center">
+      <div className="w-full flex items-center gap-4">
+        <form action={searchRedirectServer('/rate/filter-results')} className="flex-1">
           <Search className="my-2 w-full" placeholder="輸入關鍵字" initialValue={keyword} />
-          <div className="flex items-center gap-2 my-2 mx-10 text-sm">
-            <p className="text-base">篩選：</p>
-            { renderFilter('courseGrade', 'grade') }
-            { renderFilter('courseCategory', 'type') }
-          </div>
         </form>
+        <div className="flex items-center gap-2 my-2 text-sm">
+          { renderFilter('courseCategory', 'type') }
+        </div>
       </div>
       <div className="w-full">
         <div className="flex flex-col gap-3">
