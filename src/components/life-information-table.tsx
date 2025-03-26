@@ -10,7 +10,7 @@ const InformTable = ({
       <thead>
         <tr>
           {table[0].map((content, index) => (
-            <th key={index} className="p-3 border border-2 border-gray-400 bg-white bg-opacity-10">{content}</th>
+            <th key={index} className="p-3 border border-2 border-gray-400 bg-white bg-opacity-10" style={{ whiteSpace: 'pre-line' }}>{content}</th>
           ))}
         </tr>
       </thead>

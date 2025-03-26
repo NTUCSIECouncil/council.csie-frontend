@@ -105,7 +105,7 @@
                 "subtitle": "電子郵件",
                 "content": "電子郵件將會是未來大學非常重要的聯絡方式。不論是學校資訊傳遞，還是想詢問教授加簽事宜、乃至期末考考試方式等，經常都是透過電子郵件進行溝通。請務必養成每天收信的好習慣，以免漏失重要資訊。若原先沒有此習慣，可以參考筆者把電子郵件設為瀏覽器預設開啟網頁，幫助自己每日開啟電腦時就可以瀏覽信件。",
                 "table": [
-                    ["", "NTU Mail", "NTU Gmail (Google Workspace)", "CSIE Mail (Google Workspace)"],
+                    ["", "NTU Mail", "NTU Gmail\n(Google Workspace)", "CSIE Mail\n(Google Workspace)"],
                     ["Email", "b13902xxx@ntu.edu.tw", "b13902xxx@g.ntu.edu.tw", "b13902xxx@csie.ntu.edu.tw"],
                     ["帳號密碼", "計中帳密", "計中 Google Workspace 帳密", "系上工作站帳密"],
                     ["用途", "全校性郵件服務，包含各種校務、課務資訊、甚至是校長賀卡等，並且是 NTU COOL 預設的通知信箱。", "無特別用途", "系上專屬郵件服務，包含系上服務維修更動、相關活動資訊、系館封館等訊息。"],
