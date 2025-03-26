@@ -67,7 +67,8 @@
                     ["CA certificate", "不進行驗證", "不進行驗證", "不進行驗證"],
                     ["Phase 2\nauthentication", "MSCHAPv2", "MSCHAPv2", "MSCHAPv2\n(No EAP)"],
                     ["優先順序", "其次", "最不優先", "最優先"]
-                ]
+                ],
+                "tldr": "初次使用網路時，請特別注意預設選項是否符合以上設定。Android 手機連網時，請勾選「顯示進階選項」以進行設定。"
             }
         ]
     },

@@ -4,6 +4,7 @@ import DividerBar from '@/components/divider-bar';
 import LifeCourseContent from '@/components/life-course-content';
 import InformTable from '@/components/life-information-table';
 import LifeLink from '@/components/life-link';
+import TLDR from '@/components/life-tldr';
 import LifeTopic from '@/components/life-topic';
 import { sidebar } from '@/helpers/sidebar';
 import contentData from './content.json';
@@ -17,6 +18,7 @@ interface ContentItem {
   subtitle?: string;
   content?: string;
   table?: string[][];
+  tldr?: string;
   links?: LinkItem[];
 }
 
@@ -50,6 +52,11 @@ const Page = (): React.JSX.Element => {
             {item.table && (
               <div className="mt-4">
                 <InformTable table={item.table} />
+              </div>
+            )}
+            {item.tldr && (
+              <div className="mt-4">
+                <TLDR content={item.tldr} />
               </div>
             )}
             {item.links && (
