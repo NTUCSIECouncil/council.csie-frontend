@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import DividerBar from '@/components/divider-bar';
 import LifeCourseContent from '@/components/life-course-content';
+import InformTable from '@/components/life-information-table';
 import LifeLink from '@/components/life-link';
 import LifeTopic from '@/components/life-topic';
 import { sidebar } from '@/helpers/sidebar';
@@ -15,6 +16,7 @@ interface LinkItem {
 interface ContentItem {
   subtitle?: string;
   content?: string;
+  table?: string[][];
   links?: LinkItem[];
 }
 
@@ -36,14 +38,19 @@ const Page = (): React.JSX.Element => {
         <DividerBar items={items} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
       </div>
 
-      <div className="flex flex-col items-start gap-2 pt-4 pb-8">
+      <div className="flex flex-col items-start gap-2 pb-8">
         {subtitles.map((item, index) => (
           <div key={index}>
             {item.subtitle && (
-              <LifeTopic topic={item.subtitle} />
+              <div className="mt-4">
+                <LifeTopic topic={item.subtitle} />
+              </div>
             )}
-            {item.content && (
-              <LifeCourseContent content={item.content} />
+            {item.content && <LifeCourseContent content={item.content} />}
+            {item.table && (
+              <div className="mt-4">
+                <InformTable table={item.table} />
+              </div>
             )}
             {item.links && (
               <div className="mt-4">

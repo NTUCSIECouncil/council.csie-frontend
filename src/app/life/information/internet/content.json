@@ -56,6 +56,18 @@
                         "href": "https://sites.google.com/a/csie.ntu.edu.tw/ta221/%E5%85%AC%E5%91%8A/%E9%87%8D%E8%A6%81-%E5%8F%B0%E5%A4%A7%E8%B3%87%E5%B7%A5%E7%B3%BB%E9%A4%A8%E7%B6%B2%E8%B7%AF%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%92%87%E6%AD%A5"
                     }
                 ]
+            },
+            {
+                "subtitle": "Cheat Sheet",
+                "table": [
+                    ["網路", "ntu-peap", "eduroam", "csie & csie-5G"],
+                    ["帳號", "計中帳號", "b12902xxx@eduroam.ntu.edu.tw", "b12902xxx"],
+                    ["密碼", "計中密碼", "至計中網站設定", "系上工作站密碼"],
+                    ["EAP method", "Protected EAP\n(PEAP)", "Protected EAP\n(PEAP)", "TTLS"],
+                    ["CA certificate", "不進行驗證", "不進行驗證", "不進行驗證"],
+                    ["Phase 2\nauthentication", "MSCHAPv2", "MSCHAPv2", "MSCHAPv2\n(No EAP)"],
+                    ["優先順序", "其次", "最不優先", "最優先"]
+                ]
             }
         ]
     },
@@ -64,6 +76,11 @@
             {
                 "subtitle": "系上工作站",
                 "content": "在系館二樓的機房裡有許多很大很強的電腦，可以透過網路連線進去，讓他幫你跑一些程式運算。這些電腦不僅效能比一般的強大許多，除了維護以外更基本上是常駐開機，可以拿來跑一些需要花費長時間、運算繁重的程式。不過如果要執行一些可能會吃太多資源的程式時，記得從使用狀態的頁面來確保自己沒有把工作站搞爆喔！",
+                "table": [
+                    ["", "Url", "用途"],
+                    ["Linux", "ws1.csie.ntu.edu.tw\nws2.csie.ntu.edu.tw\n...\nws7.csie.ntu.edu.tw", "教學或研究上短期需要大量運算的程式。"],
+                    ["Meow", "meow1.csie.ntu.edu.tw\nmeow2.csie.ntu.edu.tw", "meow1 有 2 張 RTX 3090，\nmeow2 有 4 張 GTX 1080 Ti  加 4 張 RTX 2080 Ti，\n可以拿來跑機器學習或其他顯卡加速的程式。"]
+                ],
                 "links": [
                     {
                         "name": "連線教學",
@@ -85,13 +102,35 @@
         "subtitles": [
             {
                 "subtitle": "電子郵件",
-                "content": "電子郵件將會是未來大學非常重要的聯絡方式。不論是學校資訊傳遞，還是想詢問教授加簽事宜、乃至期末考考試方式等，經常都是透過電子郵件進行溝通。請務必養成每天收信的好習慣，以免漏失重要資訊。若原先沒有此習慣，可以參考筆者把電子郵件設為瀏覽器預設開啟網頁，幫助自己每日開啟電腦時就可以瀏覽信件。"
+                "content": "電子郵件將會是未來大學非常重要的聯絡方式。不論是學校資訊傳遞，還是想詢問教授加簽事宜、乃至期末考考試方式等，經常都是透過電子郵件進行溝通。請務必養成每天收信的好習慣，以免漏失重要資訊。若原先沒有此習慣，可以參考筆者把電子郵件設為瀏覽器預設開啟網頁，幫助自己每日開啟電腦時就可以瀏覽信件。",
+                "table": [
+                    ["", "NTU Mail", "NTU Gmail (Google Workspace)", "CSIE Mail (Google Workspace)"],
+                    ["Email", "b13902xxx@ntu.edu.tw", "b13902xxx@g.ntu.edu.tw", "b13902xxx@csie.ntu.edu.tw"],
+                    ["帳號密碼", "計中帳密", "計中 Google Workspace 帳密", "系上工作站帳密"],
+                    ["用途", "全校性郵件服務，包含各種校務、課務資訊、甚至是校長賀卡等，並且是 NTU COOL 預設的通知信箱。", "無特別用途", "系上專屬郵件服務，包含系上服務維修更動、相關活動資訊、系館封館等訊息。"],
+                    ["其他", "網站上的 ntu webmail 不太方便，可以將 ntu mail 綁到其他 mail 上一起收信。", "", "與同學用 Google Meets 開會時，若用 CSIE 帳號即可不需主辦者同意自動加入。"],
+                    ["容量", "2GB", "20GB（計入雲端硬碟）", "50GB（計入雲端硬碟）"]
+                ]
             },
             {
-                "subtitle": "雲端硬碟"
+                "subtitle": "雲端硬碟",
+                "table": [
+                    ["", "NTU Space", "計中 Google WorkSpace", "CSIE Google Workspace"],
+                    ["帳號密碼", "計中帳密", "計中 Google Workspace 帳密", "系上工作站帳密"],
+                    ["容量", "15 GB", "20 GB", "50 GB"],
+                    ["來源", "ASUS Cloud", "Google Drive", "Google Drive"]
+                ]
             },
             {
                 "subtitle": "影印服務",
+                "table": [
+                    ["", "計中", "系上"],
+                    ["位置", "計中一樓電腦教室", "系館二樓機房旁"],
+                    ["影印金", "每學期 100 元、可累加", "每學期 500 元、不累加、可轉帳"],
+                    ["影印價格", "黑白單面 1 元、雙面 1.5 元\n彩色單面 5 元、雙面 7.5元", "每張紙 2 元"],
+                    ["服務", "影印、掃描、大圖輸出等", "列印"],
+                    ["注意事項", "電腦曾經很不好用，雖然有經過更新，但抱怨文依然屢見不鮮。", "檔名盡量使用英文數字、使用中文或符號有機會出問題。使用時需連接系上網路或使用 VPN"]
+                ],
                 "links": [
                     {
                         "name": "計中影印",
@@ -109,6 +148,14 @@
         "subtitles": [
             {
                 "subtitle": "其他計中服務",
+                "table": [
+                    ["", "介紹"],
+                    ["NTU VDI", "遠端操作計中的雲端電腦，使用許多付費授權軟體例如 MATLAB、SPSS 等。"],
+                    ["NTU VPN", "讓你即使不在臺大也能連進來，使用許多限定學校 IP 的資源，例如圖書資料庫等。"],
+                    ["校園授權軟體", "在臺大的網路底下（或透過 VPN 連進來），登入計中帳號後即可免費下載許多授權軟體，\n例如 Office、windows 10 等。"],
+                    ["NTU 個人網頁", "建立自己寫的網頁，但只能放 html。"],
+                    ["更多資訊", "去找吧！計中把所有的財寶都放在那裡了！"]
+                ],
                 "links": [
                     {
                         "name": "NTU VDI",
@@ -134,13 +181,19 @@
             },
             {
                 "subtitle": "其他系上服務",
+                "table": [
+                    ["", "介紹"],
+                    ["CSIE VPN", "讓你即使不在德田館也能連進來！"],
+                    ["csie guest", "創建 csie guest 的 WiFi 帳號，像是辦活動時可以提供給系外參與者。"],
+                    ["CSIE 個人網頁", "建立自己寫的網頁，還可以放 php 喔！"]
+                ],
                 "links": [
                     {
                         "name": "CSIE VPN",
                         "href": ""
                     },
                     {
-                        "name": "CSIE guest",
+                        "name": "csie guest",
                         "href": "https://esystem.csie.ntu.edu.tw/login?to=aHR0cHM6Ly9lc3lzdGVtLmNzaWUubnR1LmVkdS50dy9uYWxhYi9ndWVzdHBh%0Ac3M%3D%0A"
                     },
                     {
