@@ -8,7 +8,7 @@ const Drawer = ({
   }[];
 }): React.JSX.Element => {
   return (
-    <div className="drawer absolute top-20 left-0">
+    <div className="drawer absolute top-20 left-0 z-20">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <label htmlFor="my-drawer" className="btn gray-900 border-gray-500 border-2"><FaBars></FaBars></label>
