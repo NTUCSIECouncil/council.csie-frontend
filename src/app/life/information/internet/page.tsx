@@ -2,13 +2,20 @@
 import React, { useEffect, useState } from 'react';
 import DividerBar from '@/components/divider-bar';
 import LifeCourseContent from '@/components/life-course-content';
+import LifeLink from '@/components/life-link';
 import LifeTopic from '@/components/life-topic';
 import { sidebar } from '@/helpers/sidebar';
 import contentData from './content.json';
 
+interface LinkItem {
+  name: string;
+  href: string;
+}
+
 interface ContentItem {
-  subtitle: string;
-  content: string;
+  subtitle?: string;
+  content?: string;
+  links?: LinkItem[];
 }
 
 const Page = (): React.JSX.Element => {
@@ -32,8 +39,21 @@ const Page = (): React.JSX.Element => {
       <div className="flex flex-col items-start gap-2 pt-4 pb-8">
         {subtitles.map((item, index) => (
           <div key={index}>
-            <LifeTopic topic={item.subtitle} />
-            <LifeCourseContent content={item.content} />
+            {item.subtitle && (
+              <LifeTopic topic={item.subtitle} />
+            )}
+            {item.content && (
+              <LifeCourseContent content={item.content} />
+            )}
+            {item.links && (
+              <div className="mt-4">
+                {item.links.map((link, linkIndex) => (
+                  <span key={linkIndex} className="mr-2">
+                    <LifeLink content={link.name} href={link.href} />
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>

@@ -7,7 +7,13 @@
             },
             {
                 "subtitle": "計中 Google Workspace",
-                "content": "Google Workspace（原 G suite）是一套雲端生產力工具，有跟教育機構合作，提供每個機關總計 100 TB 的雲端空間。而計中與系上皆有設置各自的 Google Workspace 服務，目前分別配給每個人 20 GB 與 50 GB 的空間，是讀者可以好好運用的資訊服務。\n其中計中的 Google Workspace 需要手動開啟才能使用。帳號是 b13902xxx@g.ntu.edu.tw，密碼則是開啟後自行修改。"
+                "content": "Google Workspace（原 G suite）是一套雲端生產力工具，有跟教育機構合作，提供每個機關總計 100 TB 的雲端空間。而計中與系上皆有設置各自的 Google Workspace 服務，目前分別配給每個人 20 GB 與 50 GB 的空間，是讀者可以好好運用的資訊服務。\n其中計中的 Google Workspace 需要手動開啟才能使用。帳號是 b13902xxx@g.ntu.edu.tw，密碼則是開啟後自行修改。",
+                "links": [
+                    {
+                        "name": "計中 Google Workspace 申請網站",
+                        "href": "https://web4.cc.ntu.edu.tw/p/s/login3/p1.php"
+                    }
+                ]
             },
             {
                 "subtitle": "資訊系",
@@ -19,63 +25,133 @@
         "subtitles": [
             {
                 "subtitle": "ntu_peap",
-                "content": "台大校園內常駐「ntu_peap」、「NTU」兩個無線網路識別碼（SSID），NTU 每次使用都需要重新登入，十分麻煩，且相對不安全，不推薦使用。計中推薦使用的 ntu_peap 這個網路使用計中帳號密碼登入後，即可在全校建築物內使用。"
+                "content": "台大校園內常駐「ntu_peap」、「NTU」兩個無線網路識別碼（SSID），NTU 每次使用都需要重新登入，十分麻煩，且相對不安全，不推薦使用。計中推薦使用的 ntu_peap 這個網路使用計中帳號密碼登入後，即可在全校建築物內使用。",
+                "links": [
+                    {
+                        "name": "ntu_peap 計中介紹",
+                        "href": "https://www.cc.ntu.edu.tw/chinese/spotlight/2014/a103003.asp"
+                    }
+                ]
             },
             {
                 "subtitle": "eduroam",
-                "content": "全名 education roaming，學術漫遊網路。旨在建立國際間教育及科學研究機構的無線網路漫遊計畫。只要到計中申請一組帳號密碼，就可以在國際間所有參與合作的學術機構使用該網路。"
+                "content": "全名 education roaming，學術漫遊網路。旨在建立國際間教育及科學研究機構的無線網路漫遊計畫。只要到計中申請一組帳號密碼，就可以在國際間所有參與合作的學術機構使用該網路。",
+                "links": [
+                    {
+                        "name": "eduroam 計中介紹",
+                        "href": "https://www.cc.ntu.edu.tw/chinese/spotlight/2015/a104030.asp"
+                    },
+                    {
+                        "name": "eduroam 密碼設定",
+                        "href": "https://web4.cc.ntu.edu.tw/p/s/login3/p1.php"
+                    }
+                ]
             },
             {
                 "subtitle": "csie & csie-5G",
-                "content": "若想在德田館享受最舒適的網路體驗，則可以使用系上提供的 csie 及 csie-5G 網路服務，登入方式為系上工作站帳號密碼。網路頻段分為 2.4GHz 及 5GHz 兩種，其中 2.4GHz 覆蓋範圍大，但網速較慢；5GHz 則是範圍相對小，但網速更快。csie 支援 2.4GHz 頻段，而 csie-5G 則支援 5GHz 頻段。不管是 csie、csie-5G 在速度與穩定上都勝過 NTU, ntu_peap。\n系上網管團隊建議優先連接 csie，只有在訊號穩定且有較高網速需求時再使用 csie-5G。至於計中提供的 ntu 及 ntu_peap 則在系上網路無法使用時再考慮使用。"
+                "content": "若想在德田館享受最舒適的網路體驗，則可以使用系上提供的 csie 及 csie-5G 網路服務，登入方式為系上工作站帳號密碼。網路頻段分為 2.4GHz 及 5GHz 兩種，其中 2.4GHz 覆蓋範圍大，但網速較慢；5GHz 則是範圍相對小，但網速更快。csie 支援 2.4GHz 頻段，而 csie-5G 則支援 5GHz 頻段。不管是 csie、csie-5G 在速度與穩定上都勝過 NTU, ntu_peap。\n系上網管團隊建議優先連接 csie，只有在訊號穩定且有較高網速需求時再使用 csie-5G。至於計中提供的 ntu 及 ntu_peap 則在系上網路無法使用時再考慮使用。",
+                "links": [
+                    {
+                        "name": "csie_wifi NALAB介紹",
+                        "href": "https://sites.google.com/a/csie.ntu.edu.tw/ta221/%E5%85%AC%E5%91%8A/%E9%87%8D%E8%A6%81-%E5%8F%B0%E5%A4%A7%E8%B3%87%E5%B7%A5%E7%B3%BB%E9%A4%A8%E7%B6%B2%E8%B7%AF%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%92%87%E6%AD%A5"
+                    }
+                ]
             }
         ]
     },
     "系上工作站": {
         "subtitles": [
             {
-                "subtitle": "臺大計算機及資訊網路中心",
-                "content": "臺大計算機及資訊網路中心（簡稱計中）負責臺大校內大多數網路相關服務，而每位同學都會有一個計中提供的帳號密碼。帳號固定是同學的學號（b13902xxx），密碼則是八月中啟用後自行修改。使用範圍基本上涵蓋校內所有網路處理的資訊，包含 NTU COOL、連網服務、學生信箱、選課系統、成績查詢等等。"
-            },
-            {
-                "subtitle": "計中 Google Workspace",
-                "content": "Google Workspace（原 G suite）是一套雲端生產力工具，有跟教育機構合作，提供每個機關總計 100 TB 的雲端空間。而計中與系上皆有設置各自的 Google Workspace 服務，目前分別配給每個人 20 GB 與 50 GB 的空間，是讀者可以好好運用的資訊服務。\n其中計中的 Google Workspace 需要手動開啟才能使用。帳號是 b13902xxx@g.ntu.edu.tw，密碼則是開啟後自行修改。"
-            },
-            {
-                "subtitle": "資訊系",
-                "content": "畢竟是資訊工程學系，單單計中的服務怎麼足夠同學的日常所需呢？\n因此系上有提供更多系內專屬的網路與資訊相關服務，使用的是系上額外提供的帳號密碼。約在九月初，系上的 NASA 團隊將寄一信件到計中提供的 NTU Mail，裡頭是團隊為每位同學設置的「系上工作站」帳號密碼。此組帳號密碼將使用於系上提供的各種服務，一樣更改預設密碼後即可順利啟用囉！"
+                "subtitle": "系上工作站",
+                "content": "在系館二樓的機房裡有許多很大很強的電腦，可以透過網路連線進去，讓他幫你跑一些程式運算。這些電腦不僅效能比一般的強大許多，除了維護以外更基本上是常駐開機，可以拿來跑一些需要花費長時間、運算繁重的程式。不過如果要執行一些可能會吃太多資源的程式時，記得從使用狀態的頁面來確保自己沒有把工作站搞爆喔！",
+                "links": [
+                    {
+                        "name": "連線教學",
+                        "href": "https://wslab.csie.ntu.edu.tw/workstation/SSH_tutorial.html"
+                    },
+                    {
+                        "name": "使用規範",
+                        "href": "https://wslab.csie.ntu.edu.tw/workstation/computation_and_usage_rules.html"
+                    },
+                    {
+                        "name": "使用狀態",
+                        "href": "https://monitor.csie.ntu.edu.tw/"
+                    }
+                ]
             }
         ]
     },
     "常用資訊服務": {
         "subtitles": [
             {
-                "subtitle": "臺大計算機及資訊網路中心",
-                "content": "臺大計算機及資訊網路中心（簡稱計中）負責臺大校內大多數網路相關服務，而每位同學都會有一個計中提供的帳號密碼。帳號固定是同學的學號（b13902xxx），密碼則是八月中啟用後自行修改。使用範圍基本上涵蓋校內所有網路處理的資訊，包含 NTU COOL、連網服務、學生信箱、選課系統、成績查詢等等。"
+                "subtitle": "電子郵件",
+                "content": "電子郵件將會是未來大學非常重要的聯絡方式。不論是學校資訊傳遞，還是想詢問教授加簽事宜、乃至期末考考試方式等，經常都是透過電子郵件進行溝通。請務必養成每天收信的好習慣，以免漏失重要資訊。若原先沒有此習慣，可以參考筆者把電子郵件設為瀏覽器預設開啟網頁，幫助自己每日開啟電腦時就可以瀏覽信件。"
             },
             {
-                "subtitle": "計中 Google Workspace",
-                "content": "Google Workspace（原 G suite）是一套雲端生產力工具，有跟教育機構合作，提供每個機關總計 100 TB 的雲端空間。而計中與系上皆有設置各自的 Google Workspace 服務，目前分別配給每個人 20 GB 與 50 GB 的空間，是讀者可以好好運用的資訊服務。\n其中計中的 Google Workspace 需要手動開啟才能使用。帳號是 b13902xxx@g.ntu.edu.tw，密碼則是開啟後自行修改。"
+                "subtitle": "雲端硬碟"
             },
             {
-                "subtitle": "資訊系",
-                "content": "畢竟是資訊工程學系，單單計中的服務怎麼足夠同學的日常所需呢？\n因此系上有提供更多系內專屬的網路與資訊相關服務，使用的是系上額外提供的帳號密碼。約在九月初，系上的 NASA 團隊將寄一信件到計中提供的 NTU Mail，裡頭是團隊為每位同學設置的「系上工作站」帳號密碼。此組帳號密碼將使用於系上提供的各種服務，一樣更改預設密碼後即可順利啟用囉！"
+                "subtitle": "影印服務",
+                "links": [
+                    {
+                        "name": "計中影印",
+                        "href": "https://www.cc.ntu.edu.tw/chinese/epaper/0054/20200920_5402.html"
+                    },
+                    {
+                        "name": "系上影印",
+                        "href": "https://printing.csie.ntu.edu.tw/user"
+                    }
+                ]
             }
         ]
     },
     "其他資訊服務": {
         "subtitles": [
             {
-                "subtitle": "臺大計算機及資訊網路中心",
-                "content": "臺大計算機及資訊網路中心（簡稱計中）負責臺大校內大多數網路相關服務，而每位同學都會有一個計中提供的帳號密碼。帳號固定是同學的學號（b13902xxx），密碼則是八月中啟用後自行修改。使用範圍基本上涵蓋校內所有網路處理的資訊，包含 NTU COOL、連網服務、學生信箱、選課系統、成績查詢等等。"
+                "subtitle": "其他計中服務",
+                "links": [
+                    {
+                        "name": "NTU VDI",
+                        "href": "https://www.cc.ntu.edu.tw/chinese/spotlight/2016/a105031.asp"
+                    },
+                    {
+                        "name": "NTU VPN",
+                        "href": "https://ccnet.ntu.edu.tw/vpn/for-windows.html"
+                    },
+                    {
+                        "name": "校園授權軟體",
+                        "href": "https://download.cc.ntu.edu.tw/"
+                    },
+                    {
+                        "name": "NTU 個人網頁",
+                        "href": "https://www.cc.ntu.edu.tw/chinese/services/serv_i01.asp"
+                    },
+                    {
+                        "name": "更多資訊",
+                        "href": "https://www.cc.ntu.edu.tw/chinese/services/services.asp"
+                    }
+                ]
             },
             {
-                "subtitle": "計中 Google Workspace",
-                "content": "Google Workspace（原 G suite）是一套雲端生產力工具，有跟教育機構合作，提供每個機關總計 100 TB 的雲端空間。而計中與系上皆有設置各自的 Google Workspace 服務，目前分別配給每個人 20 GB 與 50 GB 的空間，是讀者可以好好運用的資訊服務。\n其中計中的 Google Workspace 需要手動開啟才能使用。帳號是 b13902xxx@g.ntu.edu.tw，密碼則是開啟後自行修改。"
-            },
-            {
-                "subtitle": "資訊系",
-                "content": "畢竟是資訊工程學系，單單計中的服務怎麼足夠同學的日常所需呢？\n因此系上有提供更多系內專屬的網路與資訊相關服務，使用的是系上額外提供的帳號密碼。約在九月初，系上的 NASA 團隊將寄一信件到計中提供的 NTU Mail，裡頭是團隊為每位同學設置的「系上工作站」帳號密碼。此組帳號密碼將使用於系上提供的各種服務，一樣更改預設密碼後即可順利啟用囉！"
+                "subtitle": "其他系上服務",
+                "links": [
+                    {
+                        "name": "CSIE VPN",
+                        "href": ""
+                    },
+                    {
+                        "name": "CSIE guest",
+                        "href": "https://esystem.csie.ntu.edu.tw/login?to=aHR0cHM6Ly9lc3lzdGVtLmNzaWUubnR1LmVkdS50dy9uYWxhYi9ndWVzdHBh%0Ac3M%3D%0A"
+                    },
+                    {
+                        "name": "CSIE 個人網頁",
+                        "href": "https://wslab.csie.ntu.edu.tw/service/homepage.html"
+                    },
+                    {
+                        "name": "DNS Server",
+                        "href": "https://csie.org/"
+                    }
+                ]
             }
         ]
     }
