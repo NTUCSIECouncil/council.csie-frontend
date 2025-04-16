@@ -1,11 +1,68 @@
-import { sidebar } from '@/helpers/sidebar';
+import LifeSubTopic from '@/components/life-sub-topic';
 import LifeTopic from '@/components/life-topic';
+import { sidebar } from '@/helpers/sidebar';
 
 const Page = (): React.JSX.Element => {
   return (
-    <main className="m-auto md:w-2/3">
-      {sidebar('lifeCouncil')}
-      <LifeTopic topic="各部會介紹" />
+    <main className="m-auto flex flex-row w-[80%] mt-12">
+      {sidebar('lifeCouncil', '各部會介紹')}
+      <div className="ml-8 md:max-w-4xl">
+        <LifeTopic topic="各部會介紹" />
+        <div className="mb-8">
+          <LifeSubTopic content="活動部" comment="部長：賴亮昕" />
+          <div className="whitespace-pre-line text-lg mt-4">
+            活動部主要負責舉辦各項娛樂活動，讓你們的大學生活增添更多色彩！有大迎新、資訊週、野台、系烤……，可以讓你們認識志同道合的朋友，也可以秀出深藏不露的才藝。每個活動都非～常好玩，大家記得多多參加！
+          </div>
+        </div>
+        <div className="mb-8">
+          <LifeSubTopic content="學術部" comment="部長：洪銘德、賴昭勳、段蓉杉" />
+          <div className="whitespace-pre-line text-lg mt-4">
+            {`我們負責系上學術相關的活動，像是上學期的前瞻工作坊、下學期的新生盃 ICPC 與台清交程式競賽。前瞻工作坊中，我們除了會介紹資訊系學生的求生工具、指令，還會帶領大家接觸到更進階的主題，強化在系上的生活品質；新生盃 ICPC 則是會讓大家一起組隊切磋、體驗程式競賽 （玩氣球） 的樂趣。不論你是菜鳥還是電神都相當推薦這些活動！
+
+            同時我們在活動中也會準備許多獎品、點心，快來一起和學術部一起吃吃喝喝玩玩樂樂、蛻變為工具人完全體吧！最後，你們現在正在閱讀的新生手冊也是由學術部的大二部員們主編製作的哦！非常歡迎大家明年一起加入學術部`}
+          </div>
+        </div>
+        <div className="mb-8">
+          <LifeSubTopic content="事務部" comment="部長：許崴棠" />
+          <div className="whitespace-pre-line text-lg mt-4">
+            事務部負責管理大家在地下室的活動空間，其中包含了所有年級的休息區、兩間自習室、兩張桌球桌、工具間、桌遊室和系櫃，我們會定期打掃這些區域來提供大家一個舒適的環境，但還是請各位維持垃圾不要亂丟、工具間的物品用完之後要回歸原位、拿出來的桌遊要還回去桌遊室的好習慣，還有請記得每個年級在地下室的位置，要是亂跑的話可能會被學長們罵喔～
+          </div>
+        </div>
+        <div className="mb-8">
+          <LifeSubTopic content="美宣部" comment="部長：笪瑜庭" />
+          <div className="whitespace-pre-line text-lg mt-4">
+            美宣部負責在各種活動的幕後製作美美的圖和道具，例如你手上的新生手冊的封面、活動粉專的 logo 設計、資訊週的招牌打卡板等等。你畫出來的大作會是活動的門面，而且基本上工作都是在活動之前完成，又因為活動會輪流由不同的人負責，所以可以非常彈性地安排做事時間。我們對美術能力、風格流派沒有任何限制，願意做事的最大（雖然也沒有多少事），歡迎所有人參加！
+          </div>
+        </div>
+        <div className="mb-8">
+          <LifeSubTopic content="宣傳部" comment="部長：劉軒齊" />
+          <div className="whitespace-pre-line text-lg mt-4">
+            {`宣傳部主要負責抽獎活動及工商宣傳的文案撰寫、系上活動的攝影、粉專管理以及抽獎獎品的管理與發送。
+            
+            提供展現創意、琢磨文筆與接洽他人的機會，此外許多職務需要和公關部進行合作，可以順帶培養團隊合作的能力。
+            
+            部員會成為各活動的宣傳長，帶領招工到的成員們進行上述工作，體驗無情工作發派機的純真快樂。`}
+          </div>
+        </div>
+        <div className="mb-8">
+          <LifeSubTopic content="公關部" comment="部長：江承穎" />
+          <div className="whitespace-pre-line text-lg mt-4">
+            {`公關部主要負責系上各⼤活動的贊助合作接洽，包含廠商聯絡、與其他校系聯繫等等。
+
+              系學會公關部部員會成為各活動公關⻑帶領大家一起籌措資金，歡迎大家在活動招工時加入公關部，除了可以學到資⼯系課程中學不到的書信禮儀、拜訪技巧，還有機會可以認識⼀些企業的⼈！
+
+              公關部需要經常和宣傳部及活動部合作，可以和系上同學有更多的交流～`}
+          </div>
+        </div>
+        <div className="mb-8">
+          <LifeSubTopic content="體育部" comment="部長：蘇伯全" />
+          <div className="whitespace-pre-line text-lg mt-4">
+            {`體育部最主要負責的工作為舉辦大資盃、北資盃、以及電資嘉年華等體育競賽。其中電資嘉年華是我們與電機系一同舉辦的交流競賽，主要在下學期舉行，項目不僅有各項體育活動，更包含電競甚至麻將，而大資盃更是每年寒假由全國各大學資訊相關科系輪流舉辦的體育盛典！
+
+              只要你有興趣，相信各個系隊都會十分歡迎你的加入，在系隊的大家庭裡不只能找到志同道合一起切磋成長的隊友，在學業和未來的大學生活中一定也能成為你的最佳夥伴，一同在系上發光發熱！`}
+          </div>
+        </div>
+      </div>
     </main>
   );
 };
