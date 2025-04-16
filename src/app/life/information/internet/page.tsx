@@ -33,43 +33,45 @@ const Page = (): React.JSX.Element => {
   }, [selectedTab]);
 
   return (
-    <div className="mx-auto w-4/5 md:w-2/3 self-start">
-      {sidebar('lifeInformation')}
+    <div className="m-auto flex flex-row w-[80%] mt-12">
+      {sidebar('lifeInformation', '網路與資訊服務')}
 
-      <div className="sticky top-20 left-0 w-full max-w-5xl bg-[#1c1c29] border-b border-[#d4d2d5]">
-        <DividerBar items={items} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-      </div>
+      <div className="ml-8 md:max-w-4xl">
+        <div className="sticky top-20">
+          <DividerBar items={items} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+        </div>
 
-      <div className="flex flex-col items-start gap-2 pb-8">
-        {subtitles.map((item, index) => (
-          <div key={index}>
-            {item.subtitle && (
-              <div className="mt-4">
-                <LifeTopic topic={item.subtitle} />
-              </div>
-            )}
-            {item.content && <LifeCourseContent content={item.content} />}
-            {item.table && (
-              <div className="mt-4">
-                <InformTable table={item.table} />
-              </div>
-            )}
-            {item.tldr && (
-              <div className="mt-4">
-                <TLDR content={item.tldr} />
-              </div>
-            )}
-            {item.links && (
-              <div className="mt-4">
-                {item.links.map((link, linkIndex) => (
-                  <span key={linkIndex} className="mr-2">
-                    <LifeLink content={link.name} href={link.href} />
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
+        <div className="flex flex-col items-start pb-8">
+          {subtitles.map((item, index) => (
+            <div key={index}>
+              {item.subtitle && (
+                <div className="mt-4">
+                  <LifeTopic topic={item.subtitle} />
+                </div>
+              )}
+              {item.content && <LifeCourseContent content={item.content} />}
+              {item.table && (
+                <div className="mt-4">
+                  <InformTable table={item.table} />
+                </div>
+              )}
+              {item.tldr && (
+                <div className="mt-4">
+                  <TLDR content={item.tldr} />
+                </div>
+              )}
+              {item.links && (
+                <div className="mt-4">
+                  {item.links.map((link, linkIndex) => (
+                    <span key={linkIndex} className="mr-2">
+                      <LifeLink content={link.name} href={link.href} />
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
