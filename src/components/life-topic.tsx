@@ -1,3 +1,4 @@
+import Image from 'next/image';
 const LifeTopic = ({
   topic,
   subtopic,
@@ -23,8 +24,10 @@ const LifeTopic = ({
 }): React.JSX.Element => {
   return (
     <>
-      <h1 className={`${topicSize} font-bold py-2`}>{topic}</h1>
-      <div className="h-6 w-full -mt-6 bg-slate-600"></div>
+      <div>
+        <h1 className={`${topicSize} font-bold py-2 z-10`}>{topic}</h1>
+        <div className="h-8 w-full -mt-8 bg-slate-600"></div>
+      </div>
       {subtopic && (
         <h2 className={`${subtopicSize} font-bold py-1 text-[#BBB9BD]`}>{subtopic}</h2>
       )}
@@ -71,10 +74,12 @@ const LifeTopic = ({
       </p>
       {image && (
         <div className="absolute right-0 top-0">
-          <img
+          <Image
+            alt="Teacher Image"
             src={image}
-            alt="教授圖片"
-            className="w-28 h-42 object-cover rounded-lg shadow-lg"
+            height={128}
+            width={128}
+            className="object-cover object-top w-36 h-36 rounded-full"
           />
         </div>
       )}

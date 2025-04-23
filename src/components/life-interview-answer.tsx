@@ -4,7 +4,7 @@ const LifeInterviewAnswer = ({
   content: string;
 }): React.JSX.Element => {
   return (
-    <p className="text-xl">{content}</p>
+    <p className="text-xl/8 mb-4">{content}</p>
   );
 };
 
