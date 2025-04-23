@@ -8,7 +8,7 @@ const Page = (): React.JSX.Element => {
     { title: '系學會', href: '/life/council' },
     { title: '系館空間', href: '/' },
     { title: '課程資訊', href: '/life/course' },
-    { title: '生活資訊', href: '/' },
+    { title: '生活資訊', href: '/life/information/internet' },
     { title: 'NASA', href: '/' },
   ];
 

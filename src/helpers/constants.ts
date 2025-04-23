@@ -67,7 +67,11 @@ export const SIDEBAR_OPTIONS = {
   },
   lifeInformation: {
     choices: [
-      { value: '', description: '' },
+      { value: '/life/information/internet', description: '系館空間介紹' },
+      { value: '/life/information/internet', description: '網路與資訊服務' },
+      { value: '/life/information/internet', description: '美食地圖' },
+      { value: '/life/information/counsel', description: '輔導資源' },
+      { value: '/life/information/others', description: '雜項' },
     ],
   },
 } as const satisfies Record<SidebarOptionKeys, SidebarOption>;

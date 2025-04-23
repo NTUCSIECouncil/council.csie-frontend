@@ -4,7 +4,7 @@ const LifeSubTopic = ({
   content: string;
 }): React.JSX.Element => {
   return (
-    <p className="font-bold text-xl">{content}</p>
+    <p className="text-xl" style={{ whiteSpace: 'pre-line' }}>{content}</p>
   );
 };
 
