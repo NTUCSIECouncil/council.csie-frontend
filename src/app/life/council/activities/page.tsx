@@ -1,6 +1,6 @@
+import LifeEvent from '@/components/life-activities-event';
 import LifeSubTopic from '@/components/life-sub-topic';
 import LifeTopic from '@/components/life-topic';
-import LifeEvent from '@/components/life-activities-event';
 import { sidebar } from '@/helpers/sidebar';
 
 const Page = (): React.JSX.Element => {
