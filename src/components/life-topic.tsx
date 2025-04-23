@@ -73,7 +73,7 @@ const LifeTopic = ({
         )}
       </p>
       {image && (
-        <div className="absolute right-0 top-0">
+        <div className="hidden md:flex absolute right-0 top-0">
           <Image
             alt="Teacher Image"
             src={image}
