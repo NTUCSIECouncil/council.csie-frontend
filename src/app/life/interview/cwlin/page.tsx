@@ -7,9 +7,9 @@ import { sidebar } from '@/helpers/sidebar';
 
 const Page = (): React.JSX.Element => {
   return (
-    <main className="mx-auto w-4/5 md:w-2/3 my-10 self-start">
+    <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeInterview', '林忠緯教授')}
-      <div className="relative flex flex-col items-start gap-2 py-4">
+      <div className="relative flex flex-col items-start gap-2 py-4 ml-8 md:max-w-4xl">
         <LifeTopic topic="林忠緯教授" mailto="cwlin@csie.ntu.edu.tw" website="https://www.csie.ntu.edu.tw/~cwlin/" author_interview="林天行、王政祺、毛翊蓁" image="/professors/cwlin.jpg" />
 
         <LifeSubTopic textSize="text-xl" content="教授認為資訊系的學生要如何才能發展出不同於其他領域的專業？" />

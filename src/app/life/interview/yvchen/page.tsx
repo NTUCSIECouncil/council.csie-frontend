@@ -7,9 +7,9 @@ import { sidebar } from '@/helpers/sidebar';
 
 const Page = (): React.JSX.Element => {
   return (
-    <main className="mx-auto w-4/5 md:w-2/3 my-10 self-start">
+    <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeInterview', '陳縕儂教授')}
-      <div className="relative flex flex-col items-start gap-2 py-4">
+      <div className="relative flex flex-col items-start gap-2 py-4 ml-8 md:max-w-4xl">
         <LifeTopic topic="陳縕儂教授" mailto="yvchen@csie.ntu.edu.tw" website="https://www.csie.ntu.edu.tw/~yvchen/" author_interview="王政祺、毛翊蓁、林天行" image="/professors/yvchen.jpg" />
 
         <LifeSubTopic textSize="text-xl" content="資訊系的學生除了資訊能力以外還需要具備什麼軟實力？" />

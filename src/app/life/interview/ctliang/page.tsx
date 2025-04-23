@@ -7,9 +7,9 @@ import { sidebar } from '@/helpers/sidebar';
 
 const Page = (): React.JSX.Element => {
   return (
-    <main className="mx-auto w-4/5 md:w-2/3 my-10 self-start">
+    <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeInterview', '梁啟德教授')}
-      <div className="relative flex flex-col items-start gap-2 py-4">
+      <div className="relative flex flex-col items-start gap-2 py-4 ml-8 md:max-w-4xl">
         <LifeTopic topic="梁啟德教授" mailto="ctliang@phys.ntu.edu.tw" website="https://web.phys.ntu.edu.tw/semi/ceos/general.htm" author_interview="曹紹洵、陳泰穎、廖禹喬" image="/professors/ctliang.jpg" />
 
         <LifeSubTopic textSize="text-xl" content="教授認為高中跟大學的學習環境跟方向有什麼樣的差異，該如何調整自己的學習方法因應這些變化？" />

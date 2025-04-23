@@ -7,9 +7,9 @@ import { sidebar } from '@/helpers/sidebar';
 
 const Page = (): React.JSX.Element => {
   return (
-    <main className="mx-auto w-4/5 md:w-2/3 my-10 self-start">
+    <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeInterview', '周承滿幹事')}
-      <div className="relative flex flex-col items-start gap-2 py-4">
+      <div className="relative flex flex-col items-start gap-2 py-4 ml-8 md:max-w-4xl">
         <LifeTopic topic="周承滿幹事" mailto="cmchou@csie.ntu.edu.tw" website="https://www.facebook.com/man.man.1848" author_interview="王政祺、毛翊蓁、林天行" image="/professors/cmchou.jpg" />
 
         <LifeSubTopic textSize="text-xl" content="通常新生可能會碰到什麼問題？可以如何面對並克服？" />

@@ -7,9 +7,9 @@ import { sidebar } from '@/helpers/sidebar';
 
 const Page = (): React.JSX.Element => {
   return (
-    <main className="mx-auto w-4/5 md:w-2/3 my-10 self-start">
+    <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeInterview', '劉邦鋒教授')}
-      <div className="relative flex flex-col items-start gap-2 py-4">
+      <div className="relative flex flex-col items-start gap-2 py-4 ml-8 md:max-w-4xl">
         <LifeTopic topic="劉邦鋒教授" mailto="pangfeng@csie.ntu.edu.tw" website="https://sites.google.com/view/pangfengliu/home" author_interview="曾顯恩、林方綺、王品翔" image="/professors/pangfeng.jpg" />
 
         <LifeSubTopic textSize="text-xl" content="身為許多大一生應該都蠻怕的計算機程式設計的教授，請問能給尚未入學的學生一點建議，讓他們能提早習慣、準備即將面臨的考驗嗎？" />
