@@ -24,6 +24,7 @@ const LifeTopic = ({
   return (
     <>
       <h1 className={`${topicSize} font-bold py-2`}>{topic}</h1>
+      <div className="h-6 w-full -mt-6 bg-slate-600"></div>
       {subtopic && (
         <h2 className={`${subtopicSize} font-bold py-1 text-[#BBB9BD]`}>{subtopic}</h2>
       )}
