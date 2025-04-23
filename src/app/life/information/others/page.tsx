@@ -44,7 +44,7 @@ const Page = (): React.JSX.Element => {
     <div className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeInformation', '雜項')}
 
-      <div className="ml-8 md:max-w-4xl">
+      <div className="ml-8 w-full">
         <div className="sticky top-20">
           <DividerBar items={items} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         </div>
