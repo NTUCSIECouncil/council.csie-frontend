@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 interface MapPoint {
@@ -17,43 +18,38 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
   const [activePoint, setActivePoint] = useState<MapPoint | null>(null);
   const [hoveredTitle, setHoveredTitle] = useState<string | null>(null);
 
-  return (
-    <div className="relative flex w-full justify-center">
-      <svg className="relative rounded-lg w-[80%] h-auto z-0" viewBox="0 0 1414 2000">
-        <image href={imageUrl} width="1414" height="2000" />
+  const mapWidth = 1414;
+  const mapHeight = 2000;
 
-        {points.map(point => (
-          <g key={point.title}>
-            <circle
-              cx={point.cx}
-              cy={point.cy}
-              r="10"
-              fill="#1c1c29"
-              className="cursor-pointer"
-              onClick={() => { setActivePoint(point); }}
-              onMouseEnter={() => { setHoveredTitle(point.title); }}
-              onMouseLeave={() => { setHoveredTitle(null); }}
-            />
-            {hoveredTitle === point.title && (
-              <text
-                x={point.cx + 20}
-                y={point.cy}
-                fontSize="xx-large"
-                fill="black"
-                alignmentBaseline="middle"
-                className="pointer-events-none"
-              >
-                {point.title}
-              </text>
-            )}
-          </g>
-        ))}
-      </svg>
+  return (
+    <div className="relative flex w-[80%] mx-auto justify-center">
+      <Image src={imageUrl} alt="map" width={mapWidth} height={mapHeight} className="w-full h-auto rounded-lg" />
+
+      {points.map(point => (
+        <div
+          key={point.title}
+          className="absolute w-3 h-3 rounded-full bg-[#1c1c29]"
+          style={{
+            left: `${((point.cx / mapWidth) * 100).toFixed(2)}%`,
+            top: `${((point.cy / mapHeight) * 100).toFixed(2)}%`,
+            transform: 'translate(-50%, -50%)',
+          }}
+          onMouseEnter={() => { setHoveredTitle(point.title); }}
+          onMouseLeave={() => { setHoveredTitle(null); }}
+          onClick={() => { setActivePoint(point); }}
+        >
+          {hoveredTitle === point.title && (
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1c1c29] text-white text-sm rounded px-2 py-1 whitespace-nowrap">
+              {point.title}
+            </div>
+          )}
+        </div>
+      ))}
 
       {activePoint && (
         <div className="fixed top-1/3">
           <div className="absolute left-1/2 -translate-x-1/2 z-20">
-            <div className="relative w-[30rem] bg-[#858484] p-6 rounded-xl">
+            <div className="relative w-[30rem] bg-[#858484] p-4 rounded-xl">
               <button
                 className="absolute top-6 right-6 text-white text-2xl hover:text-[#1c1c29]"
                 onClick={() => { setActivePoint(null); }}
