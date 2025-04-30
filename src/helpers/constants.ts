@@ -59,7 +59,21 @@ export const SIDEBAR_OPTIONS = {
   },
   lifeCourse: {
     choices: [
-      { value: '', description: '' },
+      { value: '/life/course/0', description: '計算機程式設計' },
+      { value: '/life/course/1', description: '微積分 1/2/3/4 （傅班）' },
+      { value: '/life/course/2', description: '微積分 1/2/3/4 （蔡班）' },
+      { value: '/life/course/3', description: '微積分 1/2/3/4 （余班）' },
+      { value: '/life/course/4', description: '普通物理學甲' },
+      { value: '/life/course/5', description: '普通生物學丙' },
+      { value: '/life/course/6', description: '普通物理學乙' },
+      { value: '/life/course/7', description: '普通化學丙' },
+      { value: '/life/course/8', description: '計算機概論（單班）' },
+      { value: '/life/course/9', description: '計算機概論（雙班）' },
+      { value: '/life/course/10', description: '資料結構與演算法' },
+      { value: '/life/course/11', description: '網路管理與系統管理' },
+      { value: '/life/course/12', description: '離散數學（呂）' },
+      { value: '/life/course/13', description: '離散數學（陳）' },
+      { value: '/life/course/14', description: '探索學分' },
     ],
   },
   lifeInformation: {
