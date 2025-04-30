@@ -47,7 +47,7 @@ export const SIDEBAR_OPTIONS = {
       { value: '/life/interview/cmchou', description: '周承滿幹事' },
       { value: '/life/interview/cwlin', description: '林忠緯教授' },
       { value: '/life/interview/pjcheng', description: '鄭卜壬教授' },
-      { value: '/life/interview/cmchou', description: '莊永裕教授' },
+      { value: '/life/interview/cyy', description: '莊永裕教授' },
       { value: '/life/interview/hsinmu', description: '蔡欣穆教授' },
       { value: '/life/interview/sehuang', description: '黃上恩教授' },
       // { value: '/ctliang', description: '梁啟德教授' },
