@@ -28,7 +28,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
       {points.map(point => (
         <div
           key={point.title}
-          className="absolute w-3 h-3 rounded-full bg-[#1c1c29]"
+          className="absolute w-4 h-4 rounded-[4px] bg-slate-400 hover:bg-[#1c1c29]"
           style={{
             left: `${((point.cx / mapWidth) * 100).toFixed(2)}%`,
             top: `${((point.cy / mapHeight) * 100).toFixed(2)}%`,
@@ -39,14 +39,14 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
           onClick={() => { setActivePoint(point); }}
         >
           {hoveredTitle === point.title && (
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#1c1c29] text-white text-sm rounded px-2 py-1 whitespace-nowrap">
+            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-white text-sm bg-[#1c1c29] rounded px-2 py-1 whitespace-nowrap">
               {point.title}
             </div>
           )}
         </div>
       ))}
 
-      {activePoint && (
+      {activePoint?.description && (
         <div className="fixed top-1/3">
           <div className="absolute left-1/2 -translate-x-1/2 z-20">
             <div className="relative w-[30rem] bg-[#858484] p-4 rounded-xl">
