@@ -6,7 +6,7 @@ const List = ({
   return (
     <div>
       <ul className="list-disc list-outside translate-x-4">
-        {list.map((it, index) => <li key={index} className="font-bold text-xl">{it}</li>)}
+        {list.map((it, index) => <li key={index} className="text-xl/8 text-justify">{it}</li>)}
       </ul>
     </div>
   );

@@ -40,16 +40,25 @@ interface SidebarOption {
 export const SIDEBAR_OPTIONS = {
   lifeInterview: {
     choices: [
-      { value: '/', description: '陳祝嵩教授' },
-      { value: '/', description: '洪士灝教授' },
-      { value: '/', description: '陳縕儂教授' },
-      { value: '/', description: '劉邦鋒教授' },
-      { value: '/', description: '周承滿幹事' },
+      { value: '/life/interview/chusong', description: '陳祝嵩教授' },
+      { value: '/life/interview/hungsh', description: '洪士灝教授' },
+      { value: '/life/interview/yvchen', description: '陳縕儂教授' },
+      { value: '/life/interview/pangfeng', description: '劉邦鋒教授' },
+      { value: '/life/interview/cmchou', description: '周承滿幹事' },
+      { value: '/life/interview/cwlin', description: '林忠緯教授' },
+      { value: '/life/interview/pjcheng', description: '鄭卜壬教授' },
+      { value: '/life/interview/cyy', description: '莊永裕教授' },
+      { value: '/life/interview/hsinmu', description: '蔡欣穆教授' },
+      { value: '/life/interview/sehuang', description: '黃上恩教授' },
+      // { value: '/ctliang', description: '梁啟德教授' },
     ],
   },
   lifeCouncil: {
     choices: [
-      { value: '', description: '' },
+      { value: '/life/council/leader', description: '會長的話' },
+      { value: '/life/council/departments', description: '各部會介紹' },
+      { value: '/life/council/teams', description: '各系隊介紹' },
+      { value: '/life/council/activities', description: '系上活動' },
     ],
   },
   lifeSpace: {
@@ -78,7 +87,11 @@ export const SIDEBAR_OPTIONS = {
   },
   lifeInformation: {
     choices: [
-      { value: '', description: '' },
+      { value: '/life/information/internet', description: '系館空間介紹' },
+      { value: '/life/information/internet', description: '網路與資訊服務' },
+      { value: '/life/information/internet', description: '美食地圖' },
+      { value: '/life/information/counsel', description: '輔導資源' },
+      { value: '/life/information/others', description: '雜項' },
     ],
   },
 } as const satisfies Record<SidebarOptionKeys, SidebarOption>;

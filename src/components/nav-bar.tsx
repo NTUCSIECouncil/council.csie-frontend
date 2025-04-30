@@ -27,7 +27,7 @@ const NavBar = (): React.JSX.Element => {
   };
 
   return (
-    <nav className="bg-gray-800 sticky top-0 z-30 shadow-md py-4 backdrop-blur-lg bg-opacity-30">
+    <nav className="bg-gray-800 sticky top-0 z-50 shadow-md py-4 backdrop-blur-lg bg-opacity-30">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <Link
