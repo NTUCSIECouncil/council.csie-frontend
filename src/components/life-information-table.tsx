@@ -6,7 +6,7 @@ const InformTable = ({
   table: string[][];
 }): React.JSX.Element => {
   return (
-    <table className="w-full text-xl border-collapse border border-gray-400">
+    <table className="w-full min-w-[600px] text-xl border-collapse border border-gray-400">
       <thead>
         <tr>
           {table[0].map((content, index) => (

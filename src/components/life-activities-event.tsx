@@ -12,11 +12,11 @@ const LifeEvent = ({ title, description, image }: LifeEventProps): React.JSX.Ele
       <div className="bg-white text-[#1c1c29] text-2xl py-1 px-3 font-extrabold rounded-xl my-2 w-fit">
         {title}
       </div>
-      <div className="flex flex-col md:flex-row gap-6 mt-4">
-        <div className="whitespace-pre-line text-lg md:flex-1">
+      <div className="flex flex-col lg:flex-row gap-6 mt-4">
+        <div className="whitespace-pre-line text-lg md:flex-1 text-justify">
           {description}
         </div>
-        <div className="flex justify-center md:justify-end md:w-[320px]">
+        <div className="flex justify-center lg:justify-end lg:w-[320px]">
           <img
             src={image}
             className="rounded-xl object-cover max-w-full h-auto self-center"
