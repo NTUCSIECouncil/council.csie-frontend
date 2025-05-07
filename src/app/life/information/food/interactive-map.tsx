@@ -28,19 +28,18 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
     { label: '可作為定位地標', color: 'bg-[#d4d2d5]', cx: 110, cy: 360 },
   ];
 
-  const getLabelPositionClass = (point: MapPoint
-  ) => {
+  const getLabelStyle = (point: MapPoint): React.CSSProperties => {
     const offset = point.fixed ? '5' : '6';
     switch (point.fixed) {
       case 'top':
-        return `bottom-${offset} left-1/2 -translate-x-1/2`;
+        return { bottom: `calc(100% + ${offset}px)`, left: '50%', transform: 'translateX(-50%)' };
       case 'bottom':
-        return `top-${offset} left-1/2 -translate-x-1/2`;
+        return { top: `calc(100% + ${offset}px)`, left: '50%', transform: 'translateX(-50%)' };
       case 'left':
-        return `right-${offset} top-1/2 -translate-y-1/2 whitespace-nowrap`;
+        return { right: `calc(100% + ${offset}px)`, top: '50%', transform: 'translateY(-50%)' };
       case 'right':
       default:
-        return `left-${offset} top-1/2 -translate-y-1/2 whitespace-nowrap`;
+        return { left: `calc(100% + ${offset}px)`, top: '50%', transform: 'translateY(-50%)' };
     }
   };
 
@@ -83,8 +82,10 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
         >
           {(point.fixed ?? hoveredTitle === point.title) && (
             <div
-              className={`absolute ${getLabelPositionClass(point)}
-              ${point.fixed ? 'text-xs text-[#1c1c29]' : 'text-sm text-white bg-[#1c1c29] rounded px-2 py-1'}`}
+              className={`absolute
+                ${point.fixed ? 'text-xs text-[#1c1c29]' : 'text-sm text-white bg-[#1c1c29] rounded px-2 py-1'}
+                ${point.fixed === 'top' || point.fixed === 'bottom' ? '' : 'whitespace-nowrap'}`}
+              style={getLabelStyle(point)}
             >
               {point.title}
             </div>
