@@ -16,19 +16,19 @@ interface Article {
 
 interface Course {
   _id: UUID;
-  title: string;
-  semester?: string;
-  credit: number;
+  curriculum: string;
   lecturer: string;
-  pastQuiz?: string; // link to course's past quiz page
-  ratings?: string; // link to course's rating page
+  class?: string;
+  names: string[];
+  credit: number;
+  categories: string[];
 }
 interface Quiz {
   _id: UUID;
-  title: string;
   course: UUID;
+  uploarder: UUID;
   semester: string;
-  downloadLink: string;
+  session: string;
 }
 
 interface User {
