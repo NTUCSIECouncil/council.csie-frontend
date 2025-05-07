@@ -16,8 +16,9 @@ const DividerBar = ({
             onClick={() => { setSelectedTab(item); }}
             className={`relative flex-1 text-center pb-1 transition-all ${
               selectedTab === item
-                ? 'text-white after:content-[""] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-2px] after:w-[75%] after:h-1 after:bg-[#d4d2d5] after:rounded-full'
-                : 'text-gray-400 hover:text-white'
+                ? 'text-white after:content-[""] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-2px] after:w-[75%] after:h-1 after:bg-[#d4d2d5] after:rounded-full after:origin-center after:scale-x-100 after:transition-transform after:duration-300'
+                : 'text-gray-400 hover:text-white after:content-[""] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-2px] after:w-[75%] after:h-1 after:bg-[#d4d2d5] after:rounded-full after:origin-center after:scale-x-0 after:transition-transform after:duration-300'
+
             }`}
           >
             {item}
