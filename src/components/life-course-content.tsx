@@ -1,0 +1,11 @@
+const LifeSubTopic = ({
+  content,
+}: {
+  content: string;
+}): React.JSX.Element => {
+  return (
+    <p className="text-xl/8 text-justify" style={{ whiteSpace: 'pre-line' }}>{content}</p>
+  );
+};
+
+export default LifeSubTopic;
