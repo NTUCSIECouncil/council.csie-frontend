@@ -88,7 +88,7 @@ const Page = (): React.JSX.Element => {
               {item.links && (
                 <div className="mt-4">
                   {item.links.map((link, linkIndex) => (
-                    <span key={linkIndex} className="mr-2">
+                    <span key={linkIndex} className="mr-2 inline-block pb-4">
                       <LifeLink content={link.name} href={link.href} />
                     </span>
                   ))}

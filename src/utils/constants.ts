@@ -43,6 +43,33 @@ export const navPages: NavPageType[] = [
   },
 ];
 
+export const lifePages: NavPageType[] = [
+  {
+    name: '教授及幹事訪談',
+    href: '/life/interview',
+    description: '新生手冊',
+    disable: false,
+  },
+  {
+    name: '系學會',
+    href: '/life/council',
+    description: '新生手冊',
+    disable: false,
+  },
+  {
+    name: '課程資訊',
+    href: '/life/course/0',
+    description: '新生手冊',
+    disable: false,
+  },
+  {
+    name: '生活資訊',
+    href: '/life/information/internet',
+    description: '新生手冊',
+    disable: false,
+  },
+];
+
 export const sidePages: SidePageType[] = [
   {
     name: '德田生活',

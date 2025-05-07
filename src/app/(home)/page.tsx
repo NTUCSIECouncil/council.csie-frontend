@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { navPages } from '@/utils/constants';
 import building from '@public/building.jpg';
-import NavCards from './nav-cards';
+import NavCards from '../../components/nav-cards';
 
 const Page = (): React.JSX.Element => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,7 +49,7 @@ const Page = (): React.JSX.Element => {
 
         <div className="relative z-10 pt-40 pb-80">
           <div className="container mx-auto px-4">
-            <NavCards />
+            <NavCards pages={navPages} />
           </div>
         </div>
       </div>
