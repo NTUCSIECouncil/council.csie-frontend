@@ -3,41 +3,51 @@
 // import Link from 'next/link';
 'use server';
 import SmallSearch from '@/components/small-search';
-// import serverFetch from '@/utils/server-fetch';
 import searchRedirectServer from '@/helpers/search-redirect-server';
+import serverFetch from '@/utils/server-fetch';
 import Background from './background';
 import ResultTable from './results-table';
 
-const Page = ({
+interface CourseResponse {
+  courses: Course[];
+  meta: {
+    total: number;
+    offset: number;
+    limit: number;
+  };
+}
+
+const Page = async ({
   searchParams,
 }: {
   searchParams?: {
     keyword?: string;
     limit?: number;
     offset?: number;
-    course?: UUID;
+    categories?: string[];
   };
 }) => {
-  const name = searchParams?.keyword ?? '';
-  const course = searchParams?.course ?? '';
-  const currentPage = Number(searchParams?.offset ?? '0');
+  const keyword = searchParams?.keyword ?? '';
+  const categories = searchParams?.categories ?? '';
+  const offset = Number(searchParams?.offset ?? '0');
   const limit = Number(searchParams?.limit ?? 10);
 
   const queryParams = new URLSearchParams();
-  if (name !== '')
-    queryParams.append('name', name);
-  if (course !== '')
-    queryParams.append('course', course);
-  if (currentPage !== 0)
-    queryParams.append('offset', (currentPage * limit).toString());
+  if (keyword !== '')
+    queryParams.append('keyword', keyword);
+  if (categories !== '')
+    queryParams.append('course', categories.toString());
+  if (offset !== 0)
+    queryParams.append('offset', offset.toString());
+  if (limit !== 0)
+    queryParams.append('limit', limit.toString());
 
-  // TODO: Connect with the correct API that searches Courses with keyword
-  // const url = `/api/courses/search?${queryParams.toString()}`;
-  // const res = await serverFetch(url, { cache: 'no-store' });
-  // console.log(res)
-  // if (res.status != 200)
-  //   throw Error('Unknown error');
-
+  const url = `/api/courses/search?${queryParams.toString()}`;
+  const res = await serverFetch(url, { cache: 'no-store' });
+  if (res.status != 200)
+    throw Error('Unknown error');
+  const ret = await res.json() as CourseResponse;
+  const rows = ret.courses;
   return (
     <div className="h-full w-full">
       <Background />
@@ -50,7 +60,7 @@ const Page = ({
           />
         </form>
         <div className="xl:mx-5 mt-5 mb-10">
-          <ResultTable />
+          <ResultTable rows={rows} />
         </div>
       </main>
     </div>
