@@ -29,15 +29,15 @@ const NavBar = (): React.JSX.Element => {
 
   return (
     <nav className="bg-gray-800 sticky top-0 z-50 shadow-md py-4 backdrop-blur-lg bg-opacity-30">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center">
-          <Link
-            href="/"
-            className={`${playfairDisplay.className} text-4xl text-white font-bold pl-4 pr-16 transition-transform duration-300 ease-in-out hover:scale-110`}
-          >
-            NTU CSIE
-          </Link>
-          <div className="md:hidden pl-4 pr-16">
+      <div className="container mx-auto flex flex-row justify-between items-center">
+        <Link
+          href="/"
+          className={`${playfairDisplay.className} flex-auto text-4xl text-white font-bold pl-4 transition-transform duration-300 ease-in-out hover:scale-110`}
+        >
+          NTU CSIE
+        </Link>
+        <div className="flex-auto items-center">
+          <div className="md:hidden px-4">
             <Menu as="div" className="relative inline-block text-left">
               <div>
                 <MenuButton className="inline-flex items-center justify-center text-white px-3 py-2 rounded-2xl backdrop-blur-md">
