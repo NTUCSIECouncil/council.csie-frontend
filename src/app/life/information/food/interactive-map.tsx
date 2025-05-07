@@ -28,7 +28,8 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
       {points.map(point => (
         <div
           key={point.title}
-          className="absolute w-4 h-4 rounded-[4px] bg-slate-400 hover:bg-[#1c1c29]"
+          className={`absolute w-4 h-4 rounded-[4px] hover:bg-[#1c1c29]
+            ${point.description ? 'bg-slate-400' : 'bg-[#d4d2d5]'}`}
           style={{
             left: `${((point.cx / mapWidth) * 100).toFixed(2)}%`,
             top: `${((point.cy / mapHeight) * 100).toFixed(2)}%`,
