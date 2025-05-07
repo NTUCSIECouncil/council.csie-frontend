@@ -35,10 +35,10 @@ const Page = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center">
-        <main className="relative z-10 flex flex-col items-center justify-center h-screen -mt-16">
-          <h1 className="text-5xl font-bold">雞塊是帥潮</h1>
-          <p className="text-lg mt-6">
-            身為資工系學生，今天又是羨慕帥潮的一天
+        <main className="relative z-10 flex flex-col items-center justify-center h-screen -mt-16 text-center">
+          <div className="text-6xl font-bold font-serif">CSIE Council</div>
+          <p className="text-2xl mt-6 font-mono italic">
+            在 0 與 1 之間，我們編織未來
           </p>
         </main>
         <div className="grid grid-cols-2 z-10 px-20">
