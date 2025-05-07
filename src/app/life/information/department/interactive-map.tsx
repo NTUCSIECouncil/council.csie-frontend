@@ -23,25 +23,20 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl, width
 
   return (
     <div className="flex flex-col items-center w-full px-4">
-      {' '}
-      {/* 主容器改為 flex-col */}
-      {/* 地圖區域 */}
       <div className="relative w-full md:w-[80%] lg:w-[70%] max-w-[1000px] mx-auto mb-8">
-        {' '}
-        {/* 限制最大寬度並增加底部間距 */}
         <Image
           src={imageUrl}
           alt="Interactive Map"
           width={width}
           height={height}
-          className="w-full h-auto rounded-lg shadow-lg"
-          priority // 如果地圖是 LCP 元素，考慮加上 priority
+          className="w-full h-auto rounded-lg shadow-lg grayscale"
+          priority
         />
 
         {points.map(point => (
           <div
             key={point.title}
-            className="absolute w-4 h-4 rounded-[4px] bg-blue-500 hover:bg-blue-700 cursor-pointer ring-2 ring-white/70 hover:ring-blue-300 transition-all duration-150"
+            className="absolute w-3 h-3 rounded-full bg-indigo-400 hover:bg-indigo-600 cursor-pointer ring-2 ring-white/70 hover:ring-indigo-300 transition-all duration-150"
             style={{
               left: `${((point.cx / width) * 100).toFixed(3)}%`,
               top: `${((point.cy / height) * 100).toFixed(3)}%`,
@@ -58,11 +53,10 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl, width
                   absolute top-1/2 -translate-y-1/2
                   text-white text-xs bg-[#1c1c29] rounded px-2 py-1
                   whitespace-nowrap shadow-md
-                  transition-all duration-150 ease-in-out {/* 可選：增加一點過渡效果 */}
-                  
+                  transition-all duration-150 ease-in-out
                   ${point.tooltipOnLeft
-                ? 'right-full mr-2' // 如果 tooltipOnLeft 為 true，顯示在左邊
-                : 'left-full ml-2' // 否則，預設顯示在右邊
+                ? 'right-full mr-2'
+                : 'left-full ml-2'
               }
                 `}
               >
@@ -73,7 +67,6 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl, width
         ))}
       </div>
 
-      {/* 資訊顯示區域 (地圖下方) */}
       <div className="w-full md:w-[80%] lg:w-[70%] max-w-[1000px] mx-auto p-6 bg-gray-50 rounded-lg shadow-lg">
         {activePoint
           ? (
