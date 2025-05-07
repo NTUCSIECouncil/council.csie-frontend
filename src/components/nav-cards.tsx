@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-import { type NavPageType, navPages } from '@/utils/constants';
-
-const pages = navPages;
+import { type NavPageType } from '@/utils/constants';
 
 const NavCardInner = ({ page }: { page: NavPageType }): React.JSX.Element => (
   <>
@@ -27,9 +25,9 @@ const NavCardInner = ({ page }: { page: NavPageType }): React.JSX.Element => (
   </>
 );
 
-const NavCards = (): React.JSX.Element => {
+const NavCards = ({ pages }: { pages: NavPageType[] }): React.JSX.Element => {
   return (
-    <div className="flex flex-wrap justify-center gap-10 flex-nowrap">
+    <div className="flex flex-wrap justify-center gap-10">
       {pages.map((page) => {
         return page.disable
           ? (

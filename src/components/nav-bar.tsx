@@ -7,9 +7,9 @@ import { FaUser } from 'react-icons/fa6';
 import ReactLoading from 'react-loading';
 import { UserAuth } from '@/helpers/context/auth-context';
 import { playfairDisplay } from '@/helpers/fonts';
-import { navPages } from '@/utils/constants';
+import { homePages } from '@/utils/constants';
 
-const pages = navPages;
+const pages = homePages;
 
 const NavBar = (): React.JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
