@@ -6,6 +6,7 @@ interface MapPoint {
   title: string;
   cx: number;
   cy: number;
+  fixed?: string;
   description?: string;
 }
 
@@ -21,15 +22,56 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
   const mapWidth = 1414;
   const mapHeight = 2000;
 
+  const legendItems = [
+    { label: '點擊查看詳細介紹', color: 'bg-slate-600', cx: 110, cy: 240 },
+    { label: '移動滑鼠查看店名', color: 'bg-slate-400', cx: 110, cy: 300 },
+    { label: '可作為定位地標', color: 'bg-[#d4d2d5]', cx: 110, cy: 360 },
+  ];
+
+  const getLabelPositionClass = (point: MapPoint
+  ) => {
+    const offset = point.fixed ? '5' : '6';
+    switch (point.fixed) {
+      case 'top':
+        return `bottom-${offset} left-1/2 -translate-x-1/2`;
+      case 'bottom':
+        return `top-${offset} left-1/2 -translate-x-1/2`;
+      case 'left':
+        return `right-${offset} top-1/2 -translate-y-1/2 whitespace-nowrap`;
+      case 'right':
+      default:
+        return `left-${offset} top-1/2 -translate-y-1/2 whitespace-nowrap`;
+    }
+  };
+
   return (
     <div className="relative flex w-[80%] mx-auto justify-center">
       <Image src={imageUrl} alt="map" width={mapWidth} height={mapHeight} className="w-full h-auto rounded-lg" />
 
+      {legendItems.map(legend => (
+        <div
+          key={legend.label}
+          className={`absolute w-4 h-4 rounded-[4px] ${legend.color}`}
+          style={{
+            left: `${((legend.cx / mapWidth) * 100).toFixed(2)}%`,
+            top: `${((legend.cy / mapHeight) * 100).toFixed(2)}%`,
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          <div
+            className="absolute left-5 top-1/2 -translate-y-1/2 whitespace-nowrap text-xs text-[#1c1c29]"
+          >
+            {legend.label}
+          </div>
+        </div>
+      ))}
+
       {points.map(point => (
         <div
           key={point.title}
-          className={`absolute w-4 h-4 rounded-[4px] hover:bg-[#1c1c29]
-            ${point.description ? 'bg-slate-400' : 'bg-[#d4d2d5]'}`}
+          className={`absolute w-4 h-4 rounded-[4px]
+            ${point.description ? 'bg-slate-600' : point.fixed ? 'bg-[#d4d2d5]' : 'bg-slate-400'}
+            ${point.fixed ? '' : 'hover:bg-[#1c1c29]'}`}
           style={{
             left: `${((point.cx / mapWidth) * 100).toFixed(2)}%`,
             top: `${((point.cy / mapHeight) * 100).toFixed(2)}%`,
@@ -39,8 +81,11 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
           onMouseLeave={() => { setHoveredTitle(null); }}
           onClick={() => { setActivePoint(point); }}
         >
-          {hoveredTitle === point.title && (
-            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-white text-sm bg-[#1c1c29] rounded px-2 py-1 whitespace-nowrap">
+          {(point.fixed ?? hoveredTitle === point.title) && (
+            <div
+              className={`absolute ${getLabelPositionClass(point)}
+              ${point.fixed ? 'text-xs text-[#1c1c29]' : 'text-sm text-white bg-[#1c1c29] rounded px-2 py-1'}`}
+            >
               {point.title}
             </div>
           )}
