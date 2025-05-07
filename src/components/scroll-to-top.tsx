@@ -1,6 +1,6 @@
 'use client';
-import { FaArrowUp } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
+import { FaArrowUp } from 'react-icons/fa6';
 
 const ScrollToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
