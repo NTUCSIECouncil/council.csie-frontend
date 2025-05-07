@@ -1,0 +1,69 @@
+'use client';
+import Image from 'next/image';
+import React, { useState } from 'react';
+
+interface MapPoint {
+  title: string;
+  cx: number;
+  cy: number;
+  description?: string;
+}
+
+interface InteractiveMapProps {
+  points: MapPoint[];
+  imageUrl: string;
+}
+
+const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => {
+  const [activePoint, setActivePoint] = useState<MapPoint | null>(null);
+  const [hoveredTitle, setHoveredTitle] = useState<string | null>(null);
+
+  const mapWidth = 1414;
+  const mapHeight = 2000;
+
+  return (
+    <div className="relative flex w-[80%] mx-auto justify-center">
+      <Image src={imageUrl} alt="map" width={mapWidth} height={mapHeight} className="w-full h-auto rounded-lg" />
+
+      {points.map(point => (
+        <div
+          key={point.title}
+          className="absolute w-4 h-4 rounded-[4px] bg-slate-400 hover:bg-[#1c1c29]"
+          style={{
+            left: `${((point.cx / mapWidth) * 100).toFixed(2)}%`,
+            top: `${((point.cy / mapHeight) * 100).toFixed(2)}%`,
+            transform: 'translate(-50%, -50%)',
+          }}
+          onMouseEnter={() => { setHoveredTitle(point.title); }}
+          onMouseLeave={() => { setHoveredTitle(null); }}
+          onClick={() => { setActivePoint(point); }}
+        >
+          {hoveredTitle === point.title && (
+            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-white text-sm bg-[#1c1c29] rounded px-2 py-1 whitespace-nowrap">
+              {point.title}
+            </div>
+          )}
+        </div>
+      ))}
+
+      {activePoint?.description && (
+        <div className="fixed top-1/3">
+          <div className="absolute left-1/2 -translate-x-1/2 z-20">
+            <div className="relative w-[30rem] bg-[#858484] p-4 rounded-xl">
+              <button
+                className="absolute top-6 right-6 text-white text-2xl hover:text-[#1c1c29]"
+                onClick={() => { setActivePoint(null); }}
+              >
+                ✕
+              </button>
+              <h3 className="w-fit font-bold text-[#1c1c29] bg-[#d4d2d5] rounded-lg text-2xl px-2 my-2">{activePoint.title}</h3>
+              <p className="text-white text-lg">{activePoint.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default InteractiveMap;
