@@ -1,3 +1,12 @@
+export interface HomePageType {
+  name: string;
+  href: string;
+  description: string;
+  lastUpdateTime?: Date;
+  disable: boolean;
+  gif: string;
+}
+
 export interface NavPageType {
   name: string;
   href: string;
@@ -12,13 +21,14 @@ export interface SidePageType {
   disable: boolean;
 }
 
-export const navPages: NavPageType[] = [
+export const homePages: HomePageType[] = [
   {
     name: '德田生活',
     href: '/life',
     // href: '/life/information',
     description: '德田館是資工社畜的家，每當考試前夕，總是聚集許多捲捲人，通宵在新館把所有人捲爆。',
     disable: false,
+    gif: '/activities/azalea.png',
   },
   {
     name: '課程評價網',
@@ -26,6 +36,7 @@ export const navPages: NavPageType[] = [
     description: '歷年課程的回饋與評價，可以在選課前參考參考。',
     // lastUpdateTime: new Date('August 11, 2024 08:57:00'),
     disable: false,
+    gif: '/activities/bbq.png',
   },
   {
     name: '課程資料庫',
@@ -33,6 +44,7 @@ export const navPages: NavPageType[] = [
     description: '考古題資料庫。',
     // lastUpdateTime: new Date('August 11, 2024 08:57:00'),
     disable: false,
+    gif: '/activities/camp.png',
   },
   {
     name: '教授訪談',
@@ -40,6 +52,7 @@ export const navPages: NavPageType[] = [
     description: '系上教授訪談。',
     lastUpdateTime: new Date('August 11, 2024 08:57:00'),
     disable: false,
+    gif: '/activities/chicken.png',
   },
 ];
 
