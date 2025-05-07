@@ -28,7 +28,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
     { label: '可作為定位地標', color: 'bg-[#d4d2d5]', cx: 110, cy: 360 },
   ];
 
-  const getLabelStyle = (point: MapPoint): React.CSSProperties => {
+  const getLabelPositionStyle = (point: MapPoint): React.CSSProperties => {
     const offset = point.fixed ? '5' : '6';
     switch (point.fixed) {
       case 'top':
@@ -85,7 +85,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
               className={`absolute
                 ${point.fixed ? 'text-xs text-[#1c1c29]' : 'text-sm text-white bg-[#1c1c29] rounded px-2 py-1'}
                 ${point.fixed === 'top' || point.fixed === 'bottom' ? '' : 'whitespace-nowrap'}`}
-              style={getLabelStyle(point)}
+              style={getLabelPositionStyle(point)}
             >
               {point.title}
             </div>
