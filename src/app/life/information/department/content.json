@@ -1,0 +1,160 @@
+{
+  "B1":{
+    "width": 757,
+    "height": 524,
+    "points":[
+      {
+        "title": "舊館地下室",
+        "cx": 380,
+        "cy": 450,
+        "description": "進入系館，從右邊樓梯下去後便是舊館地下室，也是系上的公共空間。同學們可以在這裡聊天、吃飯、搓牌、討論功課，還可以騎著迷你腳踏車流竄？！",
+        "pointImageUrl": "/department/B1/oldbuilding.png",
+        "tooltipOnLeft": true
+      },
+      {
+        "title": "大一區",
+        "cx": 300,
+        "cy": 480,
+        "description": "走下樓梯的正前方便是大一區。牆上畫著一隻可愛的海龜，沙發十分舒服。",
+        "pointImageUrl": "/department/B1/freshman.png"
+      },
+      {
+        "title": "三角洲",
+        "cx": 420,
+        "cy": 460,
+        "description": "樓梯的右手邊有一塊三角形的區域，裡面會堆放系隊的球具。如果遇到下雨，也可以將雨傘打開放在這裡，只是要小心不要擋到樓梯，不然會影響出入。",
+        "pointImageUrl": "/department/B1/delta.png"
+      },
+      {
+        "title": "零度空間",
+        "cx": 420,
+        "cy": 400,
+        "description": "三角洲旁的小房間是大四的區域，據說是因為走入零度空間🎵會覺得冷氣很冷而得名的。櫃子上有許多流浪書籍可供閱讀。",
+        "pointImageUrl": "/department/B1/senior.png"
+      },
+      {
+        "title": "桌遊間",
+        "cx": 255,
+        "cy": 485,
+        "description": "最靠近大一區的小房間。除了有許多有趣的桌遊可以玩之外，也有電動麻將桌！但是使用完畢一定要歸位喔！桌遊也不可以帶出系館！",
+        "pointImageUrl": "/department/B1/boardgame.png"
+      },
+      {
+        "title": "工具間",
+        "cx": 255,
+        "cy": 450,
+        "description": "在桌遊間的隔壁。裡面有各式各樣千奇百怪的工具以及材料，製作系上活動的海報與道具時都用得上，如果個人有需要的話也都可以取用，使用後按照標記歸位便可！",
+        "pointImageUrl": "/department/B1/tool.png"
+      },
+      {
+        "title": "水族箱",
+        "cx": 255,
+        "cy": 390,
+        "description": "在工具間的右面是大三區，牆上有一面單面玻璃窗，所以被稱為水族箱。這面玻璃窗從外面看起來就像鏡子一樣，未來如果要練習表演也可以利用這面鏡子。",
+        "pointImageUrl": "/department/B1/junior.png"
+      },
+      {
+        "title": "販賣機",
+        "cx": 320,
+        "cy": 320,
+        "description": "如果在系館讀書讀累了/聊天聊到口渴，可以來販賣機投個飲料輕鬆一下，就算沒有帶零錢也可以用悠遊卡付款！要小心用零錢可能會被吃掉…",
+        "pointImageUrl": "/department/B1/vending.png",
+        "tooltipOnLeft": true
+      },
+      {
+        "title": "中柱",
+        "cx": 345,
+        "cy": 425,
+        "description": "矗立在舊館地下室中央的定海神針，有時會有助教出沒在此處。期中與期末時中柱會放置歐趴糖，希望大家吃了糖果考試都能順利 ALL PASS！",
+        "pointImageUrl": "/department/B1/pillar.png"
+      },
+      {
+        "title": "大二區",
+        "cx": 377,
+        "cy": 340,
+        "description": "走下樓梯後的右手邊便是大二區，沙發上有可愛的鯊鯊跟鵝 (?!",
+        "pointImageUrl": "/department/B1/sophomore.png",
+        "tooltipOnLeft": true
+      },
+      {
+        "title": "桌球桌一",
+        "cx": 200,
+        "cy": 300,
+        "description": "系館樓下有兩張桌球桌，一張在新館門口，一張在販賣機左邊。旁邊桌上就有球具可以使用，使用完畢記得歸位！",
+        "pointImageUrl": "/department/B1/tabletennis.png"
+      }
+      ,
+      {
+        "title": "桌球桌二",
+        "cx": 440,
+        "cy": 340,
+        "description": "系館樓下有兩張桌球桌，一張在新館門口，一張在販賣機左邊。旁邊桌上就有球具可以使用，使用完畢記得歸位！",
+        "pointImageUrl": "/department/B1/tabletennis.png"
+      },
+      {
+        "title": "新館地下室",
+        "cx": 550,
+        "cy": 250,
+        "description": "新館地下室是讀書的好地方，這裡可以進行一些小聲的討論，但不能夠大聲喧譁，如果需要完全安靜的讀書環境可以改到裡新自習～",
+        "pointImageUrl": "/department/B1/newbuilding.png"
+      },
+      {
+        "title": "裡新",
+        "cx": 550,
+        "cy": 450,
+        "description": "新館地下室分割出的某個小空間，這裡的座位之間有隔板，每個座位底下也都有網路孔與插座，非常適合自習。在裡新需要保持安靜，若是有講話的需要則可以到新館或舊館。",
+        "pointImageUrl": "/department/B1/insidenew.png"
+      },
+      {
+        "title": "系櫃-I",
+        "cx": 220,
+        "cy": 230,
+        "description": "如果有繳交系學會費，大學四年便能在系上擁有專屬的櫃子。每個櫃子都可以設定密碼鎖，因此不必擔心安全性的問題。",
+        "pointImageUrl": "/department/B1/locker.png"
+      },
+      {
+        "title": "系櫃-II",
+        "cx": 180,
+        "cy": 330,
+        "description": "如果有繳交系學會費，大學四年便能在系上擁有專屬的櫃子。每個櫃子都可以設定密碼鎖，因此不必擔心安全性的問題。",
+        "pointImageUrl": "/department/B1/locker.png"
+      },
+      {
+        "title": "系櫃-III",
+        "cx": 440,
+        "cy": 320,
+        "description": "如果有繳交系學會費，大學四年便能在系上擁有專屬的櫃子。每個櫃子都可以設定密碼鎖，因此不必擔心安全性的問題。",
+        "pointImageUrl": "/department/B1/locker.png"
+      },
+      {
+        "title": "系櫃-IV",
+        "cx": 550,
+        "cy": 370,
+        "description": "如果有繳交系學會費，大學四年便能在系上擁有專屬的櫃子。每個櫃子都可以設定密碼鎖，因此不必擔心安全性的問題。",
+        "pointImageUrl": "/department/B1/locker.png"
+      },
+      {
+        "title": "系櫃-V",
+        "cx": 610,
+        "cy": 300,
+        "description": "如果有繳交系學會費，大學四年便能在系上擁有專屬的櫃子。每個櫃子都可以設定密碼鎖，因此不必擔心安全性的問題。",
+        "pointImageUrl": "/department/B1/locker.png"
+      },
+      {
+        "title": "系櫃-VI",
+        "cx": 610,
+        "cy": 120,
+        "description": "如果有繳交系學會費，大學四年便能在系上擁有專屬的櫃子。每個櫃子都可以設定密碼鎖，因此不必擔心安全性的問題。",
+        "pointImageUrl": "/department/B1/locker.png"
+      },
+      {
+        "title": "中庭",
+        "cx": 380,
+        "cy": 210,
+        "description": "中庭是系館的露天廣場，下雨天經過會需要撐傘。大家會在這裡排練系上活動的表演，不過由於一旁就是自習室，因此要注意音量。",
+        "pointImageUrl": "/department/B1/atrium.png"
+      }
+    ]
+  }
+}
+    
