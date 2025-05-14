@@ -8,9 +8,9 @@ import InteractiveMap from './interactive-map';
 const Page = (): React.JSX.Element => {
   const sections = [
     { title: '德田地下室', points: MapPoints.B1.points, map: '/B1.jpg', width: MapPoints.B1.width, height: MapPoints.B1.height },
-    { title: '德田一樓', points: null, map: '' },
-    { title: '德田二樓', points: null, map: '' },
-    { title: '學新館', points: null, map: '' },
+    { title: '德田一樓', points: MapPoints.First.points, map: '/1F.png', width: MapPoints.First.width, height: MapPoints.First.height },
+    { title: '德田二樓', points: MapPoints.Second.points, map: '/2F.png', width: MapPoints.Second.width, height: MapPoints.Second.height },
+    { title: '學新館', points: MapPoints.MK.points, map: '/MK.png', width: MapPoints.MK.width, height: MapPoints.MK.height },
   ];
 
   const tabTitles = sections.map(section => section.title);
