@@ -60,25 +60,25 @@ export const lifePages: NavPageType[] = [
   {
     name: '教授及幹事訪談',
     href: '/life/interview',
-    description: '新生手冊',
+    description: '資工系師長對新生的建議與期許。',
     disable: false,
   },
   {
     name: '系學會',
     href: '/life/council',
-    description: '新生手冊',
+    description: '資工系學會介紹，可以了解各部會的職責、舉辦的活動、以及運動系隊等等。',
     disable: false,
   },
   {
     name: '課程資訊',
     href: '/life/course/0',
-    description: '新生手冊',
+    description: '大一必修及適合大一的部分系選修介紹，可以了解上課方式與內容。',
     disable: false,
   },
   {
     name: '生活資訊',
     href: '/life/information/internet',
-    description: '新生手冊',
+    description: '介紹資工系學生日常生活會接觸到的各種資源，包含系館空間、網路服務、輔導資源、附近美食等等。',
     disable: false,
   },
 ];
