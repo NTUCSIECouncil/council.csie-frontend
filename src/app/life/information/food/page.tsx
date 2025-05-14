@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import DividerBar from '@/components/divider-bar';
+import LifeCourseContent from '@/components/life-course-content';
 import { sidebar } from '@/helpers/sidebar';
 import MapPoints from './118-restaurant.json';
 import InteractiveMap from './interactive-map';
@@ -26,9 +27,13 @@ const Page = (): React.JSX.Element => {
         </div>
 
         <div className="flex flex-col items-start pt-4">
-          {selectedSection?.points != null && (
-            <InteractiveMap points={selectedSection.points} imageUrl={selectedSection.map} />
-          )}
+          {selectedSection?.points != null
+            ? (
+                <InteractiveMap points={selectedSection.points} imageUrl={selectedSection.map} />
+              )
+            : (
+                <LifeCourseContent content="敬請期待" />
+              )}
         </div>
       </div>
     </div>
