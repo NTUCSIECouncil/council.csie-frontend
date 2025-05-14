@@ -21,6 +21,12 @@ const Page = () => {
     return () => { window.removeEventListener('scroll', handleScroll); };
   }, []);
 
+  // Prevent window not defined error
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <>
       <div className="fixed inset-0 z-0">
@@ -57,7 +63,7 @@ const Page = () => {
           </div>
           <div className="relative">
             <div className="fixed top-1/2 right-1/4 transform -translate-y-1/2">
-              { scrollPosition > (window.innerHeight * 0.75) && (
+              {isClient && scrollPosition > (window.innerHeight * 0.75) && (
                 <Image
                   alt={homePages[activeIndex - 1].name}
                   src={homePages[activeIndex - 1].gif}
@@ -65,7 +71,7 @@ const Page = () => {
                   height={128}
                   className="w-64 h-48"
                 />
-              ) }
+              )}
             </div>
           </div>
         </div>
