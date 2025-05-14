@@ -99,7 +99,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl, width
               </div>
             )
           : (
-              <div className="w-[800px]">
+              <div className="text-center py-8">
                 <div className="text-gray-500 text-lg py-8 text-center">點擊地圖上的標點以查看詳細資訊。</div>
               </div>
             )}
