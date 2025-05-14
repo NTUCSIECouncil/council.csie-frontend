@@ -31,7 +31,7 @@ const NavCards = ({ pages }: { pages: NavPageType[] }): React.JSX.Element => {
       {pages.map((page) => {
         return page.disable
           ? (
-              <div key={page.name} className="w-72 h-96 flex flex-col justify-between px-4 py-8 rounded-2xl bg-white/10 shadow-lg backdrop-brightness-50">
+              <div key={page.name} className="w-72 h-48 flex flex-col justify-between px-4 py-8 rounded-2xl bg-white/10 shadow-lg backdrop-brightness-50">
                 <NavCardInner page={page} />
               </div>
             )
@@ -39,7 +39,7 @@ const NavCards = ({ pages }: { pages: NavPageType[] }): React.JSX.Element => {
               <Link
                 key={page.name}
                 href={page.href}
-                className="w-72 h-96 flex flex-col justify-between px-4 py-8 rounded-2xl bg-white/10 shadow-lg backdrop-blur-[15px] hover:shadow-2xl transform transition-all duration-300 ease-in-out hover:scale-105"
+                className="w-72 h-48 flex flex-col justify-between px-4 py-8 rounded-2xl bg-white/10 shadow-lg backdrop-blur-[15px] hover:shadow-2xl transform transition-all duration-300 ease-in-out hover:scale-105"
               >
                 <NavCardInner page={page} />
               </Link>

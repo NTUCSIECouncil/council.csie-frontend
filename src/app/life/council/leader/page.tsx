@@ -5,7 +5,7 @@ const Page = (): React.JSX.Element => {
   return (
     <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeCouncil', '會長的話')}
-      <div className="ml-8 md:max-w-4xl">
+      <div className="lg:ml-8 lg:max-w-4xl">
         <LifeTopic topic="會長的話" subtopic="系學會會長：鄭允臻" subtopicSize="text-2xl" />
         <div className="whitespace-pre-line text-lg mt-4 text-justify">
           {`哈囉各位！我是第 47 屆臺大資訊工程系學生會會長鄭允臻！從今以後，系上對你們的稱呼會是「B13」，代表著你們是113年入學的，那我在這裏代表系上所有學長姊們，一起歡迎各位 B13 的到來～

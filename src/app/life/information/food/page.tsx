@@ -1,7 +1,7 @@
 'use client';
-import React, { useState } from 'react';
 import DividerBar from '@/components/divider-bar';
 import { sidebar } from '@/helpers/sidebar';
+import React, { useState } from 'react';
 import MapPoints from './118-restaurant.json';
 import InteractiveMap from './interactive-map';
 
@@ -20,7 +20,7 @@ const Page = (): React.JSX.Element => {
     <div className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeInformation', '美食地圖')}
 
-      <div className="ml-8 w-full">
+      <div className="lg:ml-8 lg:pr-8 lg:max-w-4xl">
         <div className="sticky top-20 z-10">
           <DividerBar items={tabTitles} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         </div>
