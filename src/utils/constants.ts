@@ -77,7 +77,7 @@ export const lifePages: NavPageType[] = [
   },
   {
     name: '生活資訊',
-    href: '/life/information/internet',
+    href: '/life/information/facility',
     description: '介紹資工系學生日常生活會接觸到的各種資源，包含系館空間、網路服務、輔導資源、附近美食等等。',
     disable: false,
   },
