@@ -67,7 +67,7 @@ const Page = ({
   return (
     <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeCourse', sidebarLinks[courseID])}
-      <div className="lg:ml-8 lg:max-w-4xl mb-10 self-start">
+      <div className="lg:ml-8 lg:max-w-4xl mb-10 self-start shrink-0 w-full">
         <div className="flex flex-col items-start gap-2 py-4">
           {(() => {
             return data[courseID].map((segment) => {
