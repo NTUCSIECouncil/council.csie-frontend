@@ -5,7 +5,7 @@ import { renderFilter } from '@/helpers/filter';
 import searchRedirectServer from '@/helpers/search-redirect-server';
 import { type Article } from '@/types/backend';
 import serverFetch from '@/utils/server-fetch';
-import CourseBlock from './course-block';
+import ArticleBlock from './article-block';
 
 interface ArticleResponse {
   articles: Article[];
@@ -55,11 +55,11 @@ const Page = async ({
               href={`/rate/articles/${article._id}`}
               key={article._id}
             >
-              <CourseBlock
+              <ArticleBlock
                 title={article.title}
                 lecturer=""
                 tag={undefined}
-                content={undefined}
+                id={article._id}
               />
             </Link>
           ))}
