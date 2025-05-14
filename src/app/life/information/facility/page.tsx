@@ -1,16 +1,16 @@
 'use client';
-import React, { useState } from 'react';
 import DividerBar from '@/components/divider-bar';
 import { sidebar } from '@/helpers/sidebar';
+import React, { useState } from 'react';
 import MapPoints from './content.json';
 import InteractiveMap from './interactive-map';
 
 const Page = (): React.JSX.Element => {
   const sections = [
     { title: '德田地下室', points: MapPoints.B1.points, map: '/B1.jpg', width: MapPoints.B1.width, height: MapPoints.B1.height },
-    { title: '德田一樓', points: null, map: '' },
-    { title: '德田二樓', points: null, map: '' },
-    { title: '學新館', points: null, map: '' },
+    { title: '德田一樓', points: MapPoints.First.points, map: '/1F.png', width: MapPoints.First.width, height: MapPoints.First.height },
+    { title: '德田二樓', points: MapPoints.Second.points, map: '/2F.png', width: MapPoints.Second.width, height: MapPoints.Second.height },
+    { title: '學新館', points: MapPoints.MK.points, map: '/MK.png', width: MapPoints.MK.width, height: MapPoints.MK.height },
   ];
 
   const tabTitles = sections.map(section => section.title);
@@ -21,7 +21,7 @@ const Page = (): React.JSX.Element => {
     <div className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeInformation', '系館空間介紹')}
 
-      <div className="ml-8 w-full">
+      <div className="w-[80%] lg:ml-8 lg:pr-8 lg:max-w-4xl">
         <div className="sticky top-20 z-10">
           <DividerBar items={tabTitles} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         </div>

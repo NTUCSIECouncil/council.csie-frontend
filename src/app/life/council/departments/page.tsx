@@ -6,7 +6,7 @@ const Page = (): React.JSX.Element => {
   return (
     <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeCouncil', '各部會介紹')}
-      <div className="ml-8 md:max-w-4xl">
+      <div className="lg:ml-8 lg:max-w-4xl">
         <LifeTopic topic="各部會介紹" />
         <div className="mb-8">
           <LifeSubTopic content="活動部" comment="部長：賴亮昕" />

@@ -23,7 +23,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl, width
 
   return (
     <div className="flex flex-col items-center w-full px-4">
-      <div className="relative w-full md:w-[80%] lg:w-[70%] max-w-[1000px] mx-auto mb-8">
+      <div className="relative w-full max-w-[1000px] mx-auto mb-8">
         <Image
           src={imageUrl}
           alt="Interactive Map"
@@ -36,7 +36,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl, width
         {points.map(point => (
           <div
             key={point.title}
-            className="absolute w-3 h-3 rounded-full bg-indigo-400 hover:bg-indigo-600 cursor-pointer ring-2 ring-white/70 hover:ring-indigo-300 transition-all duration-150"
+            className="absolute w-5 h-5 rounded-full bg-indigo-400 hover:bg-indigo-600 cursor-pointer ring-2 ring-white/70 hover:ring-indigo-300 transition-all duration-150"
             style={{
               left: `${((point.cx / width) * 100).toFixed(3)}%`,
               top: `${((point.cy / height) * 100).toFixed(3)}%`,
@@ -67,7 +67,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl, width
         ))}
       </div>
 
-      <div className="w-full md:w-[80%] lg:w-[70%] max-w-[1000px] mx-auto p-6 bg-gray-50 rounded-lg shadow-lg">
+      <div className="w-full max-w-[1000px] mx-auto p-6 bg-gray-50 rounded-lg shadow-lg mb-8">
         {activePoint
           ? (
               <div className="flex flex-col md:flex-row gap-6">
@@ -78,7 +78,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl, width
                       alt={activePoint.title}
                       width={400}
                       height={300}
-                      className="w-full h-auto object-cover rounded-md shadow"
+                      className="w-[400px] h-auto object-cover rounded-md shadow"
                     />
                   </div>
                 )}
@@ -100,7 +100,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl, width
             )
           : (
               <div className="text-center py-8">
-                <p className="text-gray-500 text-lg">點擊地圖上的標點以查看詳細資訊。</p>
+                <div className="text-gray-500 text-lg py-8 text-center">點擊地圖上的標點以查看詳細資訊。</div>
               </div>
             )}
       </div>
