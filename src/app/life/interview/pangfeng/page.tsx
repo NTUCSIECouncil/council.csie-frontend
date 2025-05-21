@@ -2,6 +2,7 @@ import React from 'react';
 import LifeInterviewAnswer from '@/components/life-interview-answer';
 import LifeSubTopic from '@/components/life-sub-topic';
 import LifeTopic from '@/components/life-topic';
+import LifeLink from '@/components/life-link';
 import { sidebar } from '@/helpers/sidebar';
 import rawData from '../content.json';
 
@@ -18,6 +19,15 @@ const Page = (): React.JSX.Element => {
             {(item.answers).map((ans, idx) => (
               <LifeInterviewAnswer key={idx}>{ans}</LifeInterviewAnswer>
             ))}
+            {item.links && (
+              <div className="mt-4">
+                {item.links.map((link, linkIndex) => (
+                  <span key={linkIndex} className="mr-2 inline-block pb-4">
+                    <LifeLink content={link.name} href={link.href} />
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
