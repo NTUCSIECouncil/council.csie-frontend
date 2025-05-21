@@ -6,7 +6,7 @@ const LifeLink = ({
   href: string;
 }): React.JSX.Element => {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="text-nowrap py-1 px-4 rounded-xl bg-[#a167a5] bg-opacity-70 text-white hover:bg-[#a689b1] text-sm md:text-lg">{content}</a>
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-nowrap py-1 px-4 rounded-xl bg-[#a167a5]/70 text-white hover:bg-[#a689b1] text-sm md:text-lg">{content}</a>
   );
 };
 
