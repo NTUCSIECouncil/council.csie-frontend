@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import { FaPlus } from 'react-icons/fa6';
+import { FaPen } from 'react-icons/fa6';
 
 const Search = ({
   placeholder,
@@ -46,7 +46,7 @@ const Search = ({
           className="group absolute aspect-square right-0 top-1/2 transform origin-center -translate-y-1/2 translate-x-24 h-full
           scale-90 hover:scale-100 hover:rounded-md transition-all duration-300 ease-in-out bg-slate-200 flex rounded-2xl"
         >
-          <FaPlus className="group-hover:rotate-180 transition-all duration-300 ease-in-out text-3xl text-[#1c1c29] self-center mx-auto" />
+          <FaPen className="transition-all duration-300 ease-in-out text-3xl text-[#1c1c29] self-center mx-auto" />
         </button>
       )}
     </div>
