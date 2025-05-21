@@ -94,7 +94,7 @@ const Page = async (
                             href={website[0]}
                             key={index}
                           >
-                            <div className="w-full h-16 flex items-center justify-center gap-1 rounded-lg bg-card transition-transform duration-300 hover:scale-[1.02]">
+                            <div className="w-full h-16 flex items-center justify-center gap-1 rounded-lg bg-[#3a3b46] transition-transform duration-300 hover:scale-[1.02]">
                               <IoMdLink className="text-white text-xl -rotate-45" />
                               <p className="font-bold text-lg">{website[1]}</p>
                             </div>

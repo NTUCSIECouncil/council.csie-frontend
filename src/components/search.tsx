@@ -19,8 +19,8 @@ const Search = ({
       <label className="sr-only">Search</label>
       <input
         className="
-            block w-full border py-4 px-4 outline-2 font-semibold text-xl
-            border-white-200 border-4 placeholder:text-gray-500 bg-[#1c1c29] bg-opacity-50 active:outline-none focus:outline-none
+            block w-full border py-4 px-4 outline-hidden font-semibold text-xl
+            border-white-200 border-4 placeholder:text-gray-500 bg-[#1c1c29]/50
           "
         type="search"
         name="keyword"
