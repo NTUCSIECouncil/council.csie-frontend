@@ -11,7 +11,6 @@ const compat = new FlatCompat({
 
 export default tseslint.config(
   {
-    files: ['src/**/*.ts'],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -36,7 +35,7 @@ export default tseslint.config(
       ...tseslint.configs.strictTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
       importPlugin.flatConfigs.typescript,
-      ...compat.config({ extends: ['next/core-web-vitals'] }),
+      ...compat.config({ extends: ['next/core-web-vitals', 'next/typescript'] }),
 
       stylistic.configs.customize({
         semi: true,
