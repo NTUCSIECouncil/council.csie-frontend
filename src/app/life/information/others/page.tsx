@@ -1,4 +1,5 @@
 'use client';
+import React, { useEffect, useState } from 'react';
 import DividerBar from '@/components/divider-bar';
 import LifeCourseContent from '@/components/life-course-content';
 import InformTable from '@/components/life-information-table';
@@ -7,7 +8,6 @@ import LifeSubTopic from '@/components/life-sub-topic';
 import TLDR from '@/components/life-tldr';
 import LifeTopic from '@/components/life-topic';
 import { sidebar } from '@/helpers/sidebar';
-import React, { useEffect, useState } from 'react';
 import contentData from './content.json';
 
 interface LinkItem {

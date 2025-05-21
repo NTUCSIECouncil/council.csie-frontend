@@ -1,8 +1,8 @@
 'use client';
+import React, { useState } from 'react';
 import DividerBar from '@/components/divider-bar';
 import LifeCourseContent from '@/components/life-course-content';
 import { sidebar } from '@/helpers/sidebar';
-import React, { useState } from 'react';
 import MapPoints from './118-restaurant.json';
 import InteractiveMap from './interactive-map';
 
