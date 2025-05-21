@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 interface LifeEventProps {
@@ -16,10 +17,12 @@ const LifeEvent = ({ title, description, image }: LifeEventProps): React.JSX.Ele
         <div className="whitespace-pre-line text-lg md:flex-1 text-justify">
           {description}
         </div>
-        <div className="flex justify-center lg:justify-end lg:w-[320px]">
-          <img
+        <div className="relative md:w-[320px] aspect-4/3 shrink-0">
+          <Image
             src={image}
-            className="rounded-xl object-cover max-w-full h-auto self-center"
+            alt=""
+            fill
+            className="rounded-xl object-cover"
           />
         </div>
       </div>

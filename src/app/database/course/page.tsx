@@ -20,15 +20,16 @@ interface CourseResponse {
   course: Course;
 }
 
-const Page = async ({
-  searchParams,
-}: {
-  searchParams?: {
-    course: UUID;
-    offset?: number;
-    limit?: number;
-  };
-}): Promise<React.JSX.Element> => {
+const Page = async (
+  props: {
+    searchParams?: Promise<{
+      course: UUID;
+      offset?: number;
+      limit?: number;
+    }>;
+  }
+): Promise<React.JSX.Element> => {
+  const searchParams = await props.searchParams;
   const course = searchParams?.course ?? '';
   const currentPage = Number(searchParams?.offset ?? '0');
   const limit = Number(searchParams?.limit ?? 10);

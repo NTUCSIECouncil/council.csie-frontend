@@ -24,12 +24,12 @@ const LifeTopic = ({
 }): React.JSX.Element => {
   return (
     <>
-      <div>
-        <h1 className={`text-3xl md:${topicSize} text-justify font-bold py-2 z-10`}>{topic}</h1>
-        <div className="h-8 w-0 md:w-full -mt-8 bg-slate-600"></div>
-      </div>
+      <h1 className={`relative inline-block text-3xl md:${topicSize} text-justify font-bold py-2 z-10`}>
+        {topic}
+        <span className="absolute left-2 -right-2 bottom-1 h-6 -z-10 bg-slate-600" />
+      </h1>
       {subtopic && (
-        <h2 className={`${subtopicSize} font-bold py-1 text-[#BBB9BD]`}>{subtopic}</h2>
+        <h2 className={`${subtopicSize} font-bold py-1 text-[#BBB9BD] uppercase`}>{subtopic}</h2>
       )}
       <p className="font-bold mb-2">
         {lecturer && (
@@ -49,7 +49,7 @@ const LifeTopic = ({
         {mailto && (
           <>
             ✉️：
-            <a href={`mailto:${mailto}`} className="font-bold underline">
+            <a href={`mailto:${mailto}`} className="font-bold underline break-all">
               {mailto}
             </a>
             <br />
@@ -58,7 +58,7 @@ const LifeTopic = ({
         {website && (
           <>
             🌐：
-            <a href={website} className="font-bold underline">
+            <a href={website} className="font-bold underline break-all">
               {website}
             </a>
             <br />

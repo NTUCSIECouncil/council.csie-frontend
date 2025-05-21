@@ -18,16 +18,17 @@ interface CourseResponse {
   };
 }
 
-const Page = async ({
-  searchParams,
-}: {
-  searchParams?: {
-    keyword?: string;
-    limit?: number;
-    offset?: number;
-    categories?: string[];
-  };
-}) => {
+const Page = async (
+  params: {
+    searchParams?: Promise<{
+      keyword?: string;
+      limit?: number;
+      offset?: number;
+      categories?: string[];
+    }>;
+  }
+) => {
+  const searchParams = await params.searchParams;
   const keyword = searchParams?.keyword ?? '';
   const categories = searchParams?.categories ?? '';
   const offset = Number(searchParams?.offset ?? '0');
@@ -57,7 +58,7 @@ const Page = async ({
           <p className="xl:text-4xl text-3xl font-bold">查詢結果</p>
           <SmallSearch
             placeholder="輸入關鍵字"
-            className="my-4 xl:w-[13rem] w-[10rem]"
+            className="my-4 xl:w-52 w-40"
           />
         </form>
         <div className="xl:mx-5 mt-5 mb-10">

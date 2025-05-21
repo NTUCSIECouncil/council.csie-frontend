@@ -55,7 +55,7 @@ const Page = (): React.JSX.Element => {
                   <div className="flex flex-col w-full">
                     <h3 className="text-white text-lg font-bold text-center">{teacher.chin_name}</h3>
                     <p className="text-white font-bold text-center">{teacher.eng_name}</p>
-                    <p className="text-gray-400 text-sm text-center uppercase">{teacher.lab}</p>
+                    <p className="text-gray-400 text-sm text-center text-balance uppercase">{teacher.lab}</p>
                   </div>
                   <div className="mt-2 flex flex-wrap justify-center w-full">
                     <div className="flex flex-wrap justify-center">
@@ -63,7 +63,7 @@ const Page = (): React.JSX.Element => {
                         <button
                           key={linkIndex}
                           onClick={() => { handleButtonClick(link.url); }}
-                          className="bg-violet-500 hover:bg-violet-800 text-white px-3 py-1 rounded-full md:mr-2 mb-2 transition-colors duration-300"
+                          className=" bg-slate-500 hover:bg-indigo-400 text-white px-3 py-1 rounded-full md:mr-2 mb-2 transition-colors duration-300"
                         >
                           {link.label}
                         </button>
@@ -73,9 +73,9 @@ const Page = (): React.JSX.Element => {
                 </div>
                 <div className="hidden">
                   <div className="flex items-center w-full">
-                    <div className="flex-grow border-t border-gray-500"></div>
+                    <div className="grow border-t border-gray-500"></div>
                     <span className="px-2 text-gray-500 italic text-xs">tags</span>
-                    <div className="flex-grow border-t border-gray-500"></div>
+                    <div className="grow border-t border-gray-500"></div>
                   </div>
                   <div className="mt-2 flex flex-wrap md:justify-center">
                     {teacher.tags.map((tag, tagIndex) => (
@@ -107,7 +107,7 @@ const Page = (): React.JSX.Element => {
                           <MenuButton className="inline-flex justify-center gap-x-1.5 bg-violet-500 hover:bg-violet-800 text-white px-4 py-1 rounded-2xl">
                             Interviews
                             <svg className="ml-1 -mr-1 size-6 text-white" viewBox="0 0 20 20" fill="currentColor" data-slot="icon">
-                              <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                              <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
                             </svg>
                           </MenuButton>
                         </div>

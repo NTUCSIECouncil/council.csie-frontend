@@ -56,8 +56,8 @@ export const SIDEBAR_OPTIONS = {
   lifeCouncil: {
     choices: [
       { value: '/life/council/leader', description: '會長的話' },
-      { value: '/life/council/departments', description: '各部會介紹' },
-      { value: '/life/council/teams', description: '各系隊介紹' },
+      { value: '/life/council/departments', description: '部會介紹' },
+      { value: '/life/council/teams', description: '系隊介紹' },
       { value: '/life/council/activities', description: '系上活動' },
     ],
   },
@@ -87,7 +87,7 @@ export const SIDEBAR_OPTIONS = {
   },
   lifeInformation: {
     choices: [
-      { value: '/life/information/internet', description: '系館空間介紹' },
+      { value: '/life/information/facility', description: '系館空間介紹' },
       { value: '/life/information/internet', description: '網路與資訊服務' },
       { value: '/life/information/food', description: '美食地圖' },
       { value: '/life/information/counsel', description: '輔導資源' },

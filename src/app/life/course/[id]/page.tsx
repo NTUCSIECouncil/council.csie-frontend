@@ -58,16 +58,17 @@ const sidebarLinks = [
   '探索學分',
 ];
 
-const Page = ({
-  params,
-}: {
-  params: { id: string };
-}): React.JSX.Element => {
+const Page = async (
+  param: {
+    params: Promise<{ id: string }>;
+  }
+): Promise<React.JSX.Element> => {
+  const params = await param.params;
   const courseID = Number(params.id);
   return (
     <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeCourse', sidebarLinks[courseID])}
-      <div className="ml-8 md:max-w-4xl mb-10 self-start">
+      <div className="xl:ml-8 xl:max-w-[min(56rem,73%)] mb-10 self-start shrink-0 w-full">
         <div className="flex flex-col items-start gap-2 py-4">
           {(() => {
             return data[courseID].map((segment) => {
