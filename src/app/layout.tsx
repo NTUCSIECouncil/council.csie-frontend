@@ -2,6 +2,7 @@ import { type Metadata } from 'next';
 import './globals.css';
 import Footer from '@/components/footer';
 import NavBar from '@/components/nav-bar';
+import ScrollToTopButton from '@/components/scroll-to-top';
 import { AuthContextProvider } from '@/helpers/context/auth-context';
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }): React.JSX.Elem
           <div className="flex-grow flex justify-center items-center">
             {children}
           </div>
+          <ScrollToTopButton />
           <Footer />
         </AuthContextProvider>
       </body>
