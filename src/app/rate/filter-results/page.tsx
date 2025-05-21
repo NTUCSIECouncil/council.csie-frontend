@@ -30,7 +30,13 @@ const Page = async ({
   const keyword = searchParams?.keyword ?? '';
   const currentPage = Number(searchParams?.offset ?? '0') / limit;
 
-  const url = `/api/articles/search?${searchParams?.toString() ?? ''}`;
+  const queryParams = new URLSearchParams();
+  queryParams.append('keyword', keyword);
+  queryParams.append('limit', limit.toString());
+  if (searchParams?.offset)
+    queryParams.append('offset', searchParams.offset);
+
+  const url = `/api/articles/search?${queryParams.toString()}`;
   const res = await serverFetch(url, { cache: 'no-store' });
   if (res.status != 200)
     throw Error('Unknown error');
