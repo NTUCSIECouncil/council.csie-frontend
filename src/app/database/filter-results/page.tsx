@@ -17,16 +17,17 @@ interface CourseResponse {
   };
 }
 
-const Page = async ({
-  searchParams,
-}: {
-  searchParams?: {
-    keyword?: string;
-    limit?: number;
-    offset?: number;
-    categories?: string[];
-  };
-}) => {
+const Page = async (
+  params: {
+    searchParams?: Promise<{
+      keyword?: string;
+      limit?: number;
+      offset?: number;
+      categories?: string[];
+    }>;
+  }
+) => {
+  const searchParams = await params.searchParams;
   const keyword = searchParams?.keyword ?? '';
   const categories = searchParams?.categories ?? '';
   const offset = Number(searchParams?.offset ?? '0');

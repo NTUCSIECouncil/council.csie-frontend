@@ -10,16 +10,17 @@ interface ArticleResponse {
   items: Article[];
 }
 
-const Page = async ({
-  searchParams,
-}: {
-  searchParams?: {
-    keyword?: string;
-    page?: string;
-    grade?: string;
-    category?: string;
-  };
-}): Promise<React.JSX.Element> => {
+const Page = async (
+  props: {
+    searchParams?: Promise<{
+      keyword?: string;
+      page?: string;
+      grade?: string;
+      category?: string;
+    }>;
+  }
+): Promise<React.JSX.Element> => {
+  const searchParams = await props.searchParams;
   const keyword = searchParams?.keyword ?? '';
   const currentPage = Number(searchParams?.page ?? '0');
   const grade = searchParams?.grade ?? '';

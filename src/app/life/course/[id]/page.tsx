@@ -58,11 +58,12 @@ const sidebarLinks = [
   '探索學分',
 ];
 
-const Page = ({
-  params,
-}: {
-  params: { id: string };
-}): React.JSX.Element => {
+const Page = async (
+  param: {
+    params: Promise<{ id: string }>;
+  }
+): Promise<React.JSX.Element> => {
+  const params = await param.params;
   const courseID = Number(params.id);
   return (
     <main className="m-auto flex flex-row w-[80%] mt-12">

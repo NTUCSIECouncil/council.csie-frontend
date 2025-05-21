@@ -17,11 +17,12 @@ interface QuizProp {
   download_link: string;
 }
 
-const Page = async ({
-  params,
-}: {
-  params: { quizID: string };
-}): Promise<React.JSX.Element> => {
+const Page = async (
+  props: {
+    params: Promise<{ quizID: string }>;
+  }
+): Promise<React.JSX.Element> => {
+  const params = await props.params;
   // test url: 00000004-0001-0000-0000-000000000000
 
   const response = await APIFetch(`/api/quizzes/${params.quizID}`, { cache: 'force-cache' });
