@@ -39,7 +39,7 @@ const Page = async (props: PageProps) => {
     const frontMatter = frontMatterData as FrontMatter;
 
     return (
-      <div className="prose container max-w-screen-lg mx-auto px-6 md:m-12 md:p-12 md:rounded-2xl bg-white/15 text-white/70 relative">
+      <div className="prose container max-w-(--breakpoint-lg) mx-auto px-6 md:m-12 md:p-12 md:rounded-2xl bg-white/15 text-white/70 relative">
         {/* Desktop */}
         <div className="hidden md:flex">
           {frontMatter.category && (
@@ -65,7 +65,9 @@ const Page = async (props: PageProps) => {
           )}
         </div>
         {/* rehypePlugins={[rehypeRaw]} is used to render raw HTML in markdown */}
-        <Markdown className="relative z-10 break-words" rehypePlugins={[rehypeRaw]}>{content}</Markdown>
+        <div className="relative z-10 break-words">
+          <Markdown rehypePlugins={[rehypeRaw]}>{content}</Markdown>
+        </div>
       </div>
     );
   } catch (_) {

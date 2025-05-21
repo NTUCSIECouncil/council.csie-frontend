@@ -3,45 +3,38 @@ import Link from 'next/link';
 import Search from '@/components/search';
 import { renderFilter } from '@/helpers/filter';
 import searchRedirectServer from '@/helpers/search-redirect-server';
+import { type Article } from '@/types/backend';
 import serverFetch from '@/utils/server-fetch';
-import CourseBlock from './course-block';
+import ArticleBlock from './article-block';
 
 interface ArticleResponse {
-  items: Article[];
+  articles: Article[];
+  meta: {
+    total: number;
+    offset: number;
+    limit: number;
+  };
 }
 
-const Page = async (
-  props: {
-    searchParams?: Promise<{
-      keyword?: string;
-      page?: string;
-      grade?: string;
-      category?: string;
-    }>;
-  }
-): Promise<React.JSX.Element> => {
-  const searchParams = await props.searchParams;
-  const keyword = searchParams?.keyword ?? '';
-  const currentPage = Number(searchParams?.page ?? '0');
-  const grade = searchParams?.grade ?? '';
-  const category = searchParams?.category ?? '';
+const Page = async ({
+  searchParams,
+}: {
+  searchParams?: {
+    categories?: string;
+    keyword?: string;
+    offset?: string;
+    tags?: string;
+  };
+}): Promise<React.JSX.Element> => {
   const limit = 10;
+  const keyword = searchParams?.keyword ?? '';
+  const currentPage = Number(searchParams?.offset ?? '0') / limit;
 
-  const queryParams = new URLSearchParams();
-  if (keyword !== '')
-    queryParams.append('keyword', keyword);
-  if (grade !== '')
-    queryParams.append('grade', grade);
-  if (category !== '')
-    queryParams.append('type', category);
-  if (currentPage !== 0)
-    queryParams.append('offset', (currentPage * limit).toString());
-
-  const url = `/api/articles/search?${queryParams.toString()}`;
+  const url = `/api/articles/search?${searchParams?.toString() ?? ''}`;
   const res = await serverFetch(url, { cache: 'no-store' });
   if (res.status != 200)
     throw Error('Unknown error');
-  const articles = (await res.json()) as ArticleResponse;
+  const filterResult = (await res.json()) as ArticleResponse;
 
   return (
     <main className="flex flex-col gap-4 items-center mt-8 w-3/5">
@@ -50,23 +43,23 @@ const Page = async (
           <Search className="my-2 w-full" placeholder="輸入關鍵字" initialValue={keyword} />
           <div className="flex items-center gap-2 my-2 mx-10 text-sm">
             <p className="text-base">篩選：</p>
-            { renderFilter('courseGrade', 'grade') }
-            { renderFilter('courseCategory', 'type') }
+            {renderFilter('courseGrade', 'grade')}
+            {renderFilter('courseCategory', 'type')}
           </div>
         </form>
       </div>
       <div className="w-full">
         <div className="flex flex-col gap-3">
-          {articles.items.map(article => (
+          {filterResult.articles.map(article => (
             <Link
               href={`/rate/articles/${article._id}`}
               key={article._id}
             >
-              <CourseBlock
+              <ArticleBlock
                 title={article.title}
-                lecturer={article.lecturer}
-                tag={article.tag}
-                content={article.content}
+                lecturer=""
+                tag={undefined}
+                id={article._id}
               />
             </Link>
           ))}

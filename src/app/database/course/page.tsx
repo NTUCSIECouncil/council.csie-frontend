@@ -1,7 +1,9 @@
+import { type UUID } from 'crypto';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import { IoMdLink } from 'react-icons/io';
+import { type Course, type Quiz } from '@/types/backend';
 import serverFetch from '@/utils/server-fetch';
 import Background from '../filter-results/background';
 

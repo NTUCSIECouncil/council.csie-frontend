@@ -17,7 +17,7 @@ const LifeEvent = ({ title, description, image }: LifeEventProps): React.JSX.Ele
         <div className="whitespace-pre-line text-lg md:flex-1 text-justify">
           {description}
         </div>
-        <div className="relative md:w-[320px] aspect-[4/3] flex-shrink-0">
+        <div className="relative md:w-[320px] aspect-4/3 shrink-0">
           <Image
             src={image}
             alt=""

@@ -35,7 +35,7 @@ const Page = () => {
           src={building}
           layout="fill"
           objectFit="cover"
-          className="brightness-[75%]"
+          className="brightness-75"
           quality={90}
         />
       </div>

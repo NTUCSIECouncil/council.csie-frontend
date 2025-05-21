@@ -73,9 +73,9 @@ const Page = (): React.JSX.Element => {
                 </div>
                 <div className="hidden">
                   <div className="flex items-center w-full">
-                    <div className="flex-grow border-t border-gray-500"></div>
+                    <div className="grow border-t border-gray-500"></div>
                     <span className="px-2 text-gray-500 italic text-xs">tags</span>
-                    <div className="flex-grow border-t border-gray-500"></div>
+                    <div className="grow border-t border-gray-500"></div>
                   </div>
                   <div className="mt-2 flex flex-wrap md:justify-center">
                     {teacher.tags.map((tag, tagIndex) => (

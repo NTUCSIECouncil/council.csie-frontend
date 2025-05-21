@@ -4,6 +4,7 @@
 'use server';
 import SmallSearch from '@/components/small-search';
 import searchRedirectServer from '@/helpers/search-redirect-server';
+import { type Course } from '@/types/backend';
 import serverFetch from '@/utils/server-fetch';
 import Background from './background';
 import ResultTable from './results-table';
@@ -57,7 +58,7 @@ const Page = async (
           <p className="xl:text-4xl text-3xl font-bold">查詢結果</p>
           <SmallSearch
             placeholder="輸入關鍵字"
-            className="my-4 xl:w-[13rem] w-[10rem]"
+            className="my-4 xl:w-52 w-40"
           />
         </form>
         <div className="xl:mx-5 mt-5 mb-10">

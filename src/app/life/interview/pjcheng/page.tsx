@@ -1,8 +1,8 @@
+import React from 'react';
 import LifeInterviewAnswer from '@/components/life-interview-answer';
 import LifeSubTopic from '@/components/life-sub-topic';
 import LifeTopic from '@/components/life-topic';
 import { sidebar } from '@/helpers/sidebar';
-import React from 'react';
 import rawData from '../content.json';
 
 const Page = (): React.JSX.Element => {
