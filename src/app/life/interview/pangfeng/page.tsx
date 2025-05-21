@@ -10,7 +10,7 @@ const Page = (): React.JSX.Element => {
   return (
     <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeInterview', info.title)}
-      <div className="relative flex flex-col items-start gap-2 py-4 md:ml-8 md:pr-8 md:md:max-w-4xl">
+      <div className="relative flex flex-col items-start gap-2 py-4 md:ml-8 md:pr-8 md:md:max-w-4xl lg:w-[80%]">
         <LifeTopic topic={info.title} mailto={info.mailto} website={info.website} author_interview={info.author} image={info.image} />
         {info.content.map((item, index) => (
           <div key={index}>
