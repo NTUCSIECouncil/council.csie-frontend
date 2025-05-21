@@ -1,3 +1,19 @@
+export type TabItem =
+  | { type: 'text'; label: string }
+  | { type: 'image'; icon: string; alt: string };
+
+export interface CommentLink {
+  label: string;
+  href: string;
+}
+
+export interface CommentItem {
+  title: string;
+  content: string | CommentLink;
+}
+
+export type CommentType = CommentItem | CommentItem[];
+
 export interface NavPageType {
   name: string;
   href: string;
