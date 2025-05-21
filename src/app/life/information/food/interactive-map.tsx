@@ -95,9 +95,9 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
         ))}
 
         {activePoint?.description && (
-          <div className="fixed top-1/3 w-full">
-            <div className="fixed left-1/2 -translate-x-1/2 z-30 w-[85%] max-w-[30rem] lg:absolute">
-              <div className="relative flex flex-col bg-[#858484] p-4 rounded-xl max-h-[33vh]">
+          <div className="fixed top-1/3 w-full z-30">
+            <div className="fixed left-1/2 -translate-x-1/2 w-[85%] max-w-[30rem] lg:absolute">
+              <div className="relative flex flex-col bg-[#858484] p-4 rounded-xl max-h-[50vh]">
                 <button
                   className="absolute top-6 right-6 text-white text-2xl hover:text-[#1c1c29]"
                   onClick={() => { setActivePoint(null); }}
