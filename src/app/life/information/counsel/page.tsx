@@ -44,7 +44,7 @@ const Page = (): React.JSX.Element => {
       {sidebar('lifeInformation', '輔導資源')}
 
       <div className="w-full shrink-0 lg:w-[80%] lg:shrink lg:ml-8 lg:max-w-4xl">
-        <div className="sticky top-20">
+        <div className="sticky top-18 z-10">
           <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         </div>
 

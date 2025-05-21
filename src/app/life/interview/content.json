@@ -627,7 +627,13 @@
       {
         "subtopic": "身為許多大一生應該都蠻怕的計算機程式設計的教授，請問能給尚未入學的學生一點建議，讓他們能提早習慣、準備即將面臨的考驗嗎？",
         "answers": [
-          "我提醒你們，這門課滿重要的，沒學好的話系統程式都不知道要學什麼。關於這門課，這裡寫得很清楚了。"
+          "我提醒你們，這門課滿重要的，沒學好的話系統程式都不知道要學什麼。關於這門課，這裡寫得很清楚了"
+        ],
+        "links": [
+          {
+            "name": "劉邦鋒教授給大一新生的信",
+            "href": "https://docs.google.com/document/d/1zg3HWT8DvJ06T-P80Bwip2_zpn_P-M92u5uaMrawtAo/edit?fbclid=IwAR03GXTxWM3i7tt8Tbe6lxW_Wu7ZBDKlIxB5QQKs766V9EmzHB-GBD31QB8"
+          }
         ]
       },
       {
