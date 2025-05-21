@@ -10,7 +10,7 @@ const Footer = (): React.JSX.Element => {
   ];
 
   return (
-    <footer className="relative z-30 bg-gradient-to-r from-gray-900 to-black text-white py-5">
+    <footer className="relative z-30 bg-linear-to-r from-gray-900 to-black text-white py-5">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         <div className="flex flex-col items-center md:items-start mb-4 md:mb-0">
           <h2 className="text-xl font-semibold">NTU CSIE Council</h2>

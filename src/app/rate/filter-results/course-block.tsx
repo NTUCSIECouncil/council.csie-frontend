@@ -11,8 +11,7 @@ const CourseBlock = ({
   tag?: string[];
   content?: string;
 }): React.JSX.Element => {
-  if (content == null)
-    content = '';
+  content ??= '';
   if (content.length > 280)
     content = content.substring(0, 280) + '[...]';
 

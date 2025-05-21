@@ -12,7 +12,7 @@ const Page = (): React.JSX.Element => {
           src={building}
           layout="fill"
           objectFit="cover"
-          className="transition-all duration-1000 blur-md brightness-[75%]"
+          className="transition-all duration-1000 blur-md brightness-75"
           quality={90}
         />
       </div>

@@ -73,7 +73,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl, width
           ? (
               <div className="flex flex-col md:flex-row gap-6">
                 {activePoint.pointImageUrl && (
-                  <div className="md:w-1/3 flex-shrink-0">
+                  <div className="md:w-1/3 shrink-0">
                     <Image
                       src={activePoint.pointImageUrl}
                       alt={activePoint.title}

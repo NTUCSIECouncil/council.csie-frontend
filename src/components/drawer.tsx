@@ -56,7 +56,7 @@ const Drawer = ({ choices, selected }: Props): React.JSX.Element => {
             ref={listRef}
             className="menu flex-nowrap overflow-y-scroll backdrop-blur-xl bg-opacity-30
                        xl:bg-base-200 text-base-content p-4 font-bold text-xl
-                       xl:border-2 xl:rounded-2xl w-64 h-[100%] xl:h-[70%]"
+                       xl:border-2 xl:rounded-2xl w-64 h-full xl:h-[70%]"
           >
 
             <li className="mt-20 xl:mt-0 invisible" />

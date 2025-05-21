@@ -8,8 +8,8 @@ const Background = (): React.JSX.Element => {
       src={building}
       layout="fill"
       objectFit="cover"
-      className="brightness-[75%]"
-      // className="brightness-[75%] filter blur-[1px]"
+      className="brightness-75"
+      // className="brightness-75 filter blur-[1px]"
       quality={90}
     />
   );
