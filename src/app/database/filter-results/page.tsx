@@ -4,6 +4,7 @@
 'use server';
 import SmallSearch from '@/components/small-search';
 import searchRedirectServer from '@/helpers/search-redirect-server';
+import { type Course } from '@/types/backend';
 import serverFetch from '@/utils/server-fetch';
 import Background from './background';
 import ResultTable from './results-table';

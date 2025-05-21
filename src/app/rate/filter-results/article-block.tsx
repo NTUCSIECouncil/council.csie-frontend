@@ -1,20 +1,22 @@
+import { type UUID } from 'crypto';
 import Tag from '@/components/tag';
+import serverFetch from '@/utils/server-fetch';
 
-const CourseBlock = ({
+const ArticleBlock = async ({
   title,
   lecturer,
   tag,
-  content,
+  id,
 }: {
   title: string;
   lecturer: string;
   tag?: string[];
-  content?: string;
-}): React.JSX.Element => {
-  if (content == null)
-    content = '';
-  if (content.length > 280)
-    content = content.substring(0, 280) + '[...]';
+  id?: UUID;
+}): Promise<React.JSX.Element> => {
+  const url = '/api/articles/' + (id?.toString() ?? 'unknown') + '/file';
+  const res = await serverFetch(url, { cache: 'no-store' });
+
+  const content = await res.text();
 
   return (
     <div className="flex flex-col w-full rounded-lg bg-gray-800 py-4 px-6 hover:bg-opacity-75">
@@ -33,4 +35,4 @@ const CourseBlock = ({
   );
 };
 
-export default CourseBlock;
+export default ArticleBlock;

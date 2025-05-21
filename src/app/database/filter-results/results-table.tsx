@@ -1,6 +1,7 @@
 import { type UUID } from 'crypto';
 import Link from 'next/link';
 import { IoMdLink } from 'react-icons/io';
+import { type Course } from '@/types/backend';
 
 export default function ResultTable({ rows }: { rows: Course[] }): React.JSX.Element {
   // I think this page can be implemented with instantaneously searching, i.e. show result without pressing Enter.
