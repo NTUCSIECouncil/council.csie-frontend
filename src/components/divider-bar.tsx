@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { TabItem } from '@/utils/constants';
+import { type TabItem } from '@/utils/constants';
 
 interface DividerBarProps {
   items: TabItem[];
