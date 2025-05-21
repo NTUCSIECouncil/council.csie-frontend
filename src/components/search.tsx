@@ -22,7 +22,7 @@ const Search = ({
       <label className="sr-only">Search</label>
       <input
         className="
-            block w-full py-4 px-4 outline-2 font-semibold text-xl
+            block w-full py-4 px-4 outline-2 font-semibold text-xl rounded-2xl
             border-white-200 border-4 placeholder:text-gray-500 bg-[#1c1c29] bg-opacity-50 active:outline-none focus:outline-none
           "
         type="search"
@@ -34,7 +34,7 @@ const Search = ({
         }}
       />
       <button
-        className="absolute aspect-square right-0 top-1/2 transform -translate-y-1/2 h-full bg-slate-200 flex"
+        className="absolute aspect-square right-0 top-1/2 transform -translate-y-1/2 h-full bg-slate-200 flex rounded-r-2xl"
         type="submit"
       >
         <FaSearch className="text-3xl text-[#1c1c29] self-center mx-auto" />
