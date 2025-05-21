@@ -65,17 +65,13 @@ const Drawer = ({ choices, selected }: Props): React.JSX.Element => {
               <li key={choice.value}>
                 <Link
                   href={choice.value}
-                  legacyBehavior
+                  className={
+                    selected === choice.description
+                      ? 'justify-center bg-gray-700 text-white text-center border-b-2'
+                      : 'justify-center text-center hover:text-white'
+                  }
                 >
-                  <a
-                    className={
-                      selected === choice.description
-                        ? 'justify-center bg-gray-700 text-white text-center border-b-2'
-                        : 'justify-center text-center hover:text-white'
-                    }
-                  >
-                    {choice.description}
-                  </a>
+                  {choice.description}
                 </Link>
               </li>
             ))}
