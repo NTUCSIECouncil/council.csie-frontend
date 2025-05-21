@@ -8,6 +8,7 @@ interface MapPoint {
   cy: number;
   description?: string;
   pointImageUrl?: string;
+  tooltipOnLeft?: boolean;
 }
 
 interface InteractiveMapProps {

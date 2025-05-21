@@ -19,6 +19,7 @@ export interface SidePageType {
   href: string;
   description: string;
   disable: boolean;
+  lastUpdateTime?: Date;
 }
 
 export const homePages: HomePageType[] = [
