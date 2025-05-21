@@ -36,7 +36,7 @@ const Page = (): React.JSX.Element => {
       {sidebar('lifeCouncil', '系隊介紹')}
       <div className="ml-8 md:max-w-4xl">
         <LifeTopic topic="系隊介紹" />
-        <div className="sticky top-20">
+        <div className="sticky top-18">
           <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         </div>
         {content && (
