@@ -9,7 +9,7 @@ interface LifeEventProps {
 
 const LifeEvent = ({ title, description, image }: LifeEventProps): React.JSX.Element => {
   return (
-    <div className="mb-8">
+    <div className="mb-10 mt-10">
       <div className="bg-white text-[#1c1c29] text-2xl py-1 px-3 font-extrabold rounded-xl my-2 w-fit">
         {title}
       </div>

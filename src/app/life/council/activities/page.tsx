@@ -13,7 +13,7 @@ const typedEvents: LifeEventItem[] = lifeEvents.activities as LifeEventItem[];
 
 const Page = (): React.JSX.Element => {
   return (
-    <main className="m-auto flex flex-row w-[80%] mt-12">
+    <main className="m-auto flex flex-row w-[80%] mt-10 mb-10">
       {sidebar('lifeCouncil', '系上活動')}
       <div className="lg:ml-8 lg:max-w-4xl">
         <LifeTopic topic="系上活動" />

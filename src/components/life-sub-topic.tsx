@@ -19,7 +19,7 @@ const LifeSubTopic = ({
   return (
     <div>
       <div
-        className={`w-fit bg-white text-[#1c1c29] ${textSize} py-1 px-3 font-extrabold rounded-xl my-4`}
+        className={`w-fit bg-white text-[#1c1c29] ${textSize} py-1 px-3 font-extrabold rounded-xl my-4 mt-5`}
       >
         {content}
       </div>

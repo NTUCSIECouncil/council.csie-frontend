@@ -4,16 +4,9 @@ import DividerBar from '@/components/divider-bar';
 import LifeSubTopic from '@/components/life-sub-topic';
 import LifeTopic from '@/components/life-topic';
 import { sidebar } from '@/helpers/sidebar';
+import { type CommentItem } from '@/utils/constants';
 import lifeTeams from './life-council-teams.json' assert { type: 'json' };
 
-interface CommentLink {
-  label: string;
-  href: string;
-}
-interface CommentItem {
-  title: string;
-  content: string | CommentLink;
-}
 interface TeamItem {
   name: string;
   comment: CommentItem[];
@@ -39,7 +32,7 @@ const Page = (): React.JSX.Element => {
   }, [selectedTab]);
 
   return (
-    <div className="m-auto flex flex-row w-[80%] mt-12">
+    <div className="m-auto flex flex-row w-[80%] mt-10 mb-10">
       {sidebar('lifeCouncil', '系隊介紹')}
       <div className="ml-8 md:max-w-4xl">
         <LifeTopic topic="系隊介紹" />

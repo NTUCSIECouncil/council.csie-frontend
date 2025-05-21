@@ -1,4 +1,5 @@
 'use client';
+import React, { useEffect, useState } from 'react';
 import DividerBar from '@/components/divider-bar';
 import LifeCourseContent from '@/components/life-course-content';
 import InformTable from '@/components/life-information-table';
@@ -6,7 +7,6 @@ import LifeLink from '@/components/life-link';
 import TLDR from '@/components/life-tldr';
 import LifeTopic from '@/components/life-topic';
 import { sidebar } from '@/helpers/sidebar';
-import React, { useEffect, useState } from 'react';
 import contentData from './content.json';
 
 interface LinkItem {
@@ -21,6 +21,12 @@ interface ContentItem {
   tldr?: string;
   links?: LinkItem[];
 }
+
+const tabItems = Object.keys(contentData).map(key => ({
+  key,
+  label: key,
+  type: 'text' as const,
+}));
 
 const Page = (): React.JSX.Element => {
   const items = ['帳號密碼', '無線網路', '系上工作站', '常用資訊服務', '其他資訊服務'];
@@ -38,7 +44,7 @@ const Page = (): React.JSX.Element => {
 
       <div className="w-full shrink-0 lg:w-[80%] lg:shrink lg:ml-8 lg:max-w-4xl">
         <div className="sticky top-20">
-          <DividerBar items={items} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+          <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         </div>
 
         <div className="flex flex-col items-start pb-8">

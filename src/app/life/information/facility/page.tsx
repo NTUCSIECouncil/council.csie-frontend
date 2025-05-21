@@ -1,20 +1,25 @@
 'use client';
+import React, { useState } from 'react';
 import DividerBar from '@/components/divider-bar';
 import { sidebar } from '@/helpers/sidebar';
-import React, { useState } from 'react';
 import MapPoints from './content.json';
 import InteractiveMap from './interactive-map';
 
-const Page = (): React.JSX.Element => {
-  const sections = [
-    { title: '德田地下室', points: MapPoints.B1.points, map: '/B1.jpg', width: MapPoints.B1.width, height: MapPoints.B1.height },
-    { title: '德田一樓', points: MapPoints.First.points, map: '/1F.png', width: MapPoints.First.width, height: MapPoints.First.height },
-    { title: '德田二樓', points: MapPoints.Second.points, map: '/2F.png', width: MapPoints.Second.width, height: MapPoints.Second.height },
-    { title: '學新館', points: MapPoints.MK.points, map: '/MK.png', width: MapPoints.MK.width, height: MapPoints.MK.height },
-  ];
+const sections = [
+  { title: '德田地下室', points: MapPoints.B1.points, map: '/B1.jpg', width: MapPoints.B1.width, height: MapPoints.B1.height },
+  { title: '德田一樓', points: MapPoints.First.points, map: '/1F.png', width: MapPoints.First.width, height: MapPoints.First.height },
+  { title: '德田二樓', points: MapPoints.Second.points, map: '/2F.png', width: MapPoints.Second.width, height: MapPoints.Second.height },
+  { title: '學新館', points: MapPoints.MK.points, map: '/MK.png', width: MapPoints.MK.width, height: MapPoints.MK.height },
+];
 
-  const tabTitles = sections.map(section => section.title);
-  const [selectedTab, setSelectedTab] = useState(tabTitles[0]);
+const tabItems = sections.map(section => ({
+  key: section.title,
+  label: section.title,
+  type: 'text' as const,
+}));
+
+const Page = (): React.JSX.Element => {
+  const [selectedTab, setSelectedTab] = useState(tabItems[0].key);
   const selectedSection = sections.find(section => section.title === selectedTab);
 
   return (
@@ -23,7 +28,7 @@ const Page = (): React.JSX.Element => {
 
       <div className="w-full shrink-0 lg:w-[80%] lg:shrink lg:ml-8 lg:max-w-4xl">
         <div className="sticky top-20 z-10">
-          <DividerBar items={tabTitles} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+          <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         </div>
 
         <div className="flex flex-col items-start pt-4">
