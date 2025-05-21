@@ -1,4 +1,5 @@
-import type { Config } from 'tailwindcss'
+import typography from '@tailwindcss/typography';
+import { type Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -26,8 +27,7 @@ const config: Config = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    require('daisyui'),
+    typography,
   ],
-}
-export default config
+};
+export default config;

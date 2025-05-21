@@ -40,7 +40,7 @@ const Drawer = ({ choices, selected }: Props): React.JSX.Element => {
         <div className="drawer-content flex xl:hidden">
           <label
             htmlFor="my-drawer"
-            className="btn gray-900 border-gray-500 border-2 hover:bg-slate-600"
+            className="btn gray-900 border-gray-500 border-2 rounded-lg hover:bg-slate-600"
           >
             <FaBars />
           </label>
@@ -54,9 +54,9 @@ const Drawer = ({ choices, selected }: Props): React.JSX.Element => {
           />
           <ul
             ref={listRef}
-            className="menu flex-nowrap overflow-y-scroll backdrop-blur-xl bg-opacity-30
-                       xl:bg-base-200 text-base-content p-4 font-bold text-xl
-                       xl:border-2 xl:rounded-2xl w-64 h-full xl:h-[70%]"
+            className="menu overflow-y-auto flex-nowrap backdrop-blur-xl bg-opacity-30 space-y-2
+                       xl:bg-white/5 p-4 font-bold text-xl
+                       xl:border-2 xl:rounded-2xl flex flex-col w-64 h-screen xl:h-2/3"
           >
 
             <li className="mt-20 xl:mt-0 invisible" />
@@ -67,8 +67,8 @@ const Drawer = ({ choices, selected }: Props): React.JSX.Element => {
                   href={choice.value}
                   className={
                     selected === choice.description
-                      ? 'justify-center bg-gray-700 text-white text-center border-b-2'
-                      : 'justify-center text-center hover:text-white'
+                      ? 'bg-gray-700 text-white py-1 px-2 border-b-2 rounded-xl block text-center'
+                      : 'hover:text-white py-1 px-2 block text-center'
                   }
                 >
                   {choice.description}
