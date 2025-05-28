@@ -24,7 +24,7 @@ const Page = async (props: PageProps) => {
   const postsDir = path.join(process.cwd(), 'src', 'posts', '_posts', year);
   const files = fs.readdirSync(postsDir);
   const markdownFile = files.find(filename =>
-    filename.endsWith(`-${file}.md`)
+    filename.endsWith(`-${file}.md`),
   );
 
   if (!markdownFile) {
