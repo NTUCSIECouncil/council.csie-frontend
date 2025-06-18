@@ -17,7 +17,7 @@ const Page = (): React.JSX.Element => {
   return (
     <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeCouncil', '部會介紹')}
-      <div className="ml-8 md:max-w-4xl">
+      <div className="xl:ml-8 xl:max-w-[min(56rem,73%)] lg:max-w-4xl">
         <LifeTopic topic="部會介紹" />
         {depts.map((dept, idx) => (
           <div key={idx} className="mb-8">

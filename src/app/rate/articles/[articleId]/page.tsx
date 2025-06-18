@@ -6,7 +6,7 @@ const Page = async (
     params: Promise<{
       articleId: string;
     }>;
-  }
+  },
 ): Promise<React.JSX.Element> => {
   const params = await props.params;
   // const { request } = UserAuth();

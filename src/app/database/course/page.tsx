@@ -27,7 +27,7 @@ const Page = async (
       offset?: number;
       limit?: number;
     }>;
-  }
+  },
 ): Promise<React.JSX.Element> => {
   const searchParams = await props.searchParams;
   const course = searchParams?.course ?? '';

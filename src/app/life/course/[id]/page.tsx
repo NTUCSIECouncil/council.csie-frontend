@@ -61,7 +61,7 @@ const sidebarLinks = [
 const Page = async (
   param: {
     params: Promise<{ id: string }>;
-  }
+  },
 ): Promise<React.JSX.Element> => {
   const params = await param.params;
   const courseID = Number(params.id);

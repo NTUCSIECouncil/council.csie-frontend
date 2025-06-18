@@ -26,7 +26,7 @@ const Page = async (
       offset?: number;
       categories?: string[];
     }>;
-  }
+  },
 ) => {
   const searchParams = await params.searchParams;
   const keyword = searchParams?.keyword ?? '';

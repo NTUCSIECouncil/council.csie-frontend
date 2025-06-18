@@ -1,8 +1,8 @@
 import React from 'react';
 import LifeInterviewAnswer from '@/components/life-interview-answer';
+import LifeLink from '@/components/life-link';
 import LifeSubTopic from '@/components/life-sub-topic';
 import LifeTopic from '@/components/life-topic';
-import LifeLink from '@/components/life-link';
 import { sidebar } from '@/helpers/sidebar';
 import rawData from '../content.json';
 
