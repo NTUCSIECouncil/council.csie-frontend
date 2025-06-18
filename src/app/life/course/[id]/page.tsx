@@ -56,7 +56,7 @@ const Page = async (
                     return <List key={index} list={block.content as string[]} />;
                   case 'links':
                     return (
-                      <div className="grid xl:grid-cols-2 grid-cols-1 gap-3 w-full">
+                      <div key={index} className="grid xl:grid-cols-2 grid-cols-1 gap-3 w-full">
                         {
                           (block.content as string[][]).map((website: string[], index: number) => (
                             <Link
