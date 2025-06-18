@@ -42,7 +42,7 @@ const Page = async (
         <div className="flex flex-col items-start gap-2 py-4">
           <LifeCourseTopic topic={courseData.topic.topic} subtopic={courseData.topic.subtopic ?? ''} lecturer={courseData.topic.lecturer ?? ''} author={courseData.topic.author} />
           {courseData.subtopics.map(subtopic => (
-            <div key={subtopic.topicName}>
+            <div key={subtopic.topicName} className="w-full">
               <LifeSubTopic content={subtopic.topicName} />
               {subtopic.blocks.map((block, index) => {
                 switch (block.layout) {
