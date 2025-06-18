@@ -9,37 +9,6 @@ import TLDR from '@/components/life-tldr';
 import LifeCourseTopic from '@/components/life-topic';
 import { sidebar } from '@/helpers/sidebar';
 
-interface TopicSegment {
-  topic: string;
-  subtopic: string;
-  lecturer: string;
-  author: string;
-}
-
-interface ContentSegment {
-  content: string;
-}
-
-interface SubtopicSegment {
-  content: string;
-}
-
-interface TableSegment {
-  table: string[][];
-}
-
-interface TLDRSegment {
-  content: string;
-}
-
-interface ListSegment {
-  list: string[];
-}
-
-interface LinkSegment {
-  links: string[][];
-}
-
 const sidebarLinks = [
   '計算機程式設計',
   '微積分 1/2/3/4 （傅班）',
@@ -61,51 +30,52 @@ const sidebarLinks = [
 const Page = async (
   param: {
     params: Promise<{ id: string }>;
-  }
+  },
 ): Promise<React.JSX.Element> => {
   const params = await param.params;
   const courseID = Number(params.id);
+  const courseData = data[courseID];
   return (
     <main className="m-auto flex flex-row w-[80%] mt-12">
       {sidebar('lifeCourse', sidebarLinks[courseID])}
       <div className="xl:ml-8 xl:max-w-[min(56rem,73%)] mb-10 self-start shrink-0 w-full">
         <div className="flex flex-col items-start gap-2 py-4">
-          {(() => {
-            return data[courseID].map((segment) => {
-              switch (segment.tag) {
-                case 'topic':
-                  return <LifeCourseTopic topic={(segment as TopicSegment).topic} subtopic={(segment as TopicSegment).subtopic} lecturer={(segment as TopicSegment).lecturer} author={(segment as TopicSegment).author} />;
-                case 'subtopic':
-                  return <LifeSubTopic content={(segment as SubtopicSegment).content} />;
-                case 'content':
-                  return <LifeCourseContent content={(segment as ContentSegment).content} />;
-                case 'table':
-                  return <Table table={(segment as TableSegment).table} />;
-                case 'tldr':
-                  return <TLDR content={(segment as TLDRSegment).content} />;
-                case 'list':
-                  return <List list={(segment as ListSegment).list} />;
-                case 'links':
-                  return (
-                    <div className="grid xl:grid-cols-2 grid-cols-1 gap-3 w-full">
-                      {
-                        (segment as LinkSegment).links.map((website: string[], index: number) => (
-                          <Link
-                            href={website[0]}
-                            key={index}
-                          >
-                            <div className="w-full h-16 flex items-center justify-center gap-1 rounded-lg bg-[#3a3b46] transition-transform duration-300 hover:scale-[1.02]">
-                              <IoMdLink className="text-white text-xl -rotate-45" />
-                              <p className="font-bold text-lg">{website[1]}</p>
-                            </div>
-                          </Link>
-                        ))
-                      }
-                    </div>
-                  );
-              }
-            });
-          })()}
+          <LifeCourseTopic topic={courseData.topic.topic} subtopic={courseData.topic.subtopic ?? ''} lecturer={courseData.topic.lecturer ?? ''} author={courseData.topic.author} />
+          {courseData.subtopics.map(subtopic => (
+            <div key={subtopic.topicName}>
+              <LifeSubTopic content={subtopic.topicName} />
+              {subtopic.blocks.map((block, index) => {
+                switch (block.layout) {
+                  case 'content':
+                    return <LifeCourseContent key={index} content={block.content as string} />;
+                  case 'table':
+                    return <Table key={index} table={block.content as string[][]} />;
+                  case 'tldr':
+                    return <TLDR key={index} content={block.content as string} />;
+                  case 'list':
+                    return <List key={index} list={block.content as string[]} />;
+                  case 'links':
+                    return (
+                      <div className="grid xl:grid-cols-2 grid-cols-1 gap-3 w-full">
+                        {
+                          (block.content as string[][]).map((website: string[], index: number) => (
+                            <Link
+                              href={website[0]}
+                              key={index}
+                            >
+                              <div className="w-full h-16 flex items-center justify-center gap-1 rounded-lg bg-[#3a3b46] transition-transform duration-300 hover:scale-[1.02]">
+                                <IoMdLink className="text-white text-xl -rotate-45" />
+                                <p className="font-bold text-lg">{website[1]}</p>
+                              </div>
+                            </Link>
+                          ))
+                        }
+                      </div>
+                    );
+                }
+              })}
+            </div>
+          ))}
         </div>
       </div>
     </main>
