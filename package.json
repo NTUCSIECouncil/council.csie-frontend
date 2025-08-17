@@ -7,7 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "type-check": "tsc -b",
+    "type-check": "tsc --noEmit --strict",
     "prepare": "husky"
   },
   "dependencies": {
