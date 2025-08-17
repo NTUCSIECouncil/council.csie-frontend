@@ -1,10 +1,13 @@
 {
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "prebuild": "node copy_teacher_img.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc -b",
     "prepare": "husky"
   },
   "dependencies": {
@@ -20,7 +23,8 @@
     "react-icons": "^5.3.0",
     "react-markdown": "^10.1.0",
     "rehype-raw": "^7.0.0",
-    "sharp": "^0.34.2"
+    "sharp": "^0.34.2",
+    "zod": "^3.25.67"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^4.2.0",
@@ -31,19 +35,14 @@
     "@types/react": "^19.0.11",
     "@types/react-dom": "^19.0.4",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
-    "@typescript-eslint/parser": "^8.1.0",
+    "@typescript-eslint/parser": "^8.39.1",
     "daisyui": "^5.0.35",
     "eslint": "^9.27.0",
     "eslint-config-next": "^15.3.2",
-    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-import": "^2.32.0",
     "husky": "^9.1.6",
-    "lint-staged": "^16.0.0",
     "tailwindcss": "^4.1.7",
     "typescript": "^5",
     "typescript-eslint": "^8.32.1"
-  },
-  "lint-staged": {
-    "*.ts": "eslint",
-    "*.tsx": "eslint"
   }
 }

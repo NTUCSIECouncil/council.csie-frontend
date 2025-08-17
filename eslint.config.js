@@ -1,13 +1,11 @@
-import eslint from '@eslint/js'
-import tseslint from 'typescript-eslint'
-import importPlugin from 'eslint-plugin-import'
-import stylistic from '@stylistic/eslint-plugin'
-import { FlatCompat } from '@eslint/eslintrc'
-
+import { FlatCompat } from '@eslint/eslintrc';
+import eslint from '@eslint/js';
+import stylistic from '@stylistic/eslint-plugin';
+import tseslint from 'typescript-eslint';
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
-})
+});
 
 export default tseslint.config(
   {
@@ -34,26 +32,16 @@ export default tseslint.config(
       eslint.configs.recommended,
       ...tseslint.configs.strictTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
-      importPlugin.flatConfigs.typescript,
       ...compat.config({ extends: ['next/core-web-vitals', 'next/typescript'] }),
 
       stylistic.configs.customize({
         semi: true,
-        braceStyle: '1tbs'
+        braceStyle: '1tbs',
       }),
     ],
     rules: {
       'sort-imports': ['warn', { ignoreDeclarationSort: true }],
 
-      '@typescript-eslint/no-unused-vars': ['warn', {
-        "args": "all",
-        "argsIgnorePattern": "^_",
-        "caughtErrors": "all",
-        "caughtErrorsIgnorePattern": "^_",
-        "destructuredArrayIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        "ignoreRestSiblings": true
-      }],
       '@typescript-eslint/no-empty-object-type': ['error', { allowInterfaces: 'with-single-extends' }],
       '@typescript-eslint/use-unknown-in-catch-callback-variable': 'off',
       '@typescript-eslint/consistent-type-imports': ['warn', { fixStyle: 'inline-type-imports' }],
@@ -69,5 +57,5 @@ export default tseslint.config(
 
       '@stylistic/max-statements-per-line': 'off',
     },
-  }
-)
+  },
+);
