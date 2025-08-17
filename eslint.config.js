@@ -7,16 +7,35 @@ const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
 });
 
+// settings are splitted into two categories since type systems are too computation-expensive
+// and makes editors so slow
 export default tseslint.config(
+  // non type-aware configs
   {
+    ignores: ['dist', '.next', 'node_modules'],
+    plugins: {
+      '@stylistic': stylistic,
+    },
+    extends: [
+      eslint.configs.recommended,
+      ...compat.config({ extends: ['next/core-web-vitals'] }),
+      stylistic.configs.customize({
+        semi: true,
+        braceStyle: '1tbs',
+      }),
+    ],
+    rules: {
+      '@stylistic/max-statements-per-line': 'off',
+    },
+  },
+  // type-aware settings
+  {
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parserOptions: {
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
-    },
-    plugins: {
-      '@stylistic': stylistic,
     },
     settings: {
       'import/parsers': {
@@ -29,15 +48,9 @@ export default tseslint.config(
       },
     },
     extends: [
-      eslint.configs.recommended,
       ...tseslint.configs.strictTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
-      ...compat.config({ extends: ['next/core-web-vitals', 'next/typescript'] }),
-
-      stylistic.configs.customize({
-        semi: true,
-        braceStyle: '1tbs',
-      }),
+      ...compat.config({ extends: ['next/typescript'] }),
     ],
     rules: {
       'sort-imports': ['warn', { ignoreDeclarationSort: true }],
@@ -50,12 +63,9 @@ export default tseslint.config(
         groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
         alphabetize: { order: 'asc' },
       }],
-      'import/no-unresolved': 'error',
       'import/export': 'error',
       'import/no-duplicates': 'warn',
       'import/consistent-type-specifier-style': ['warn', 'prefer-inline'],
-
-      '@stylistic/max-statements-per-line': 'off',
     },
   },
 );
