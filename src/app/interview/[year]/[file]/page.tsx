@@ -70,7 +70,8 @@ const Page = async (props: PageProps) => {
         </div>
       </div>
     );
-  } catch (_) {
+  } catch (error) {
+    console.log(error);
     return <div>Error: Failed to load markdown content.</div>;
   }
 };

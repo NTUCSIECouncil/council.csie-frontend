@@ -1,4 +1,3 @@
-import { type UUID } from 'crypto';
 import Link from 'next/link';
 import { IoMdLink } from 'react-icons/io';
 import { type Course } from '@/types/backend';
@@ -19,7 +18,7 @@ export default function ResultTable({ rows }: { rows: Course[] }): React.JSX.Ele
           </tr>
         </thead>
         <tbody className="">
-          {rows.map((row: Course, _index: number) => (
+          {rows.map((row: Course) => (
             // <Grow in={showTable} timeout={500 * index} key={index}>
             <tr key={row._id} className="hover:bg-gray-600">
               <th className="px-6 py-3 whitespace-nowrap">

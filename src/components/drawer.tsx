@@ -21,15 +21,16 @@ const Drawer = ({ choices, selected }: Props): React.JSX.Element => {
       if (saved) listRef.current.scrollTop = parseInt(saved, 10);
     }
 
+    const drawer = listRef.current;
     const saveScroll = () => {
-      if (listRef.current)
-        sessionStorage.setItem(storageKey, String(listRef.current.scrollTop));
+      if (drawer)
+        sessionStorage.setItem(storageKey, String(drawer.scrollTop));
     };
-    listRef.current?.addEventListener('scroll', saveScroll);
+    drawer?.addEventListener('scroll', saveScroll);
 
     return () => {
       saveScroll();
-      listRef.current?.removeEventListener('scroll', saveScroll);
+      drawer?.removeEventListener('scroll', saveScroll);
     };
   }, [storageKey]);
 

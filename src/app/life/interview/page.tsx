@@ -1,5 +1,7 @@
 import { redirect } from 'next/navigation';
+import interviewData from '@/data/life/interview';
 
 export default function Page() {
-  redirect('/life/interview/chusong');
+  // Redirect to the first professor's interview page
+  redirect(`/life/interview/${Object.keys(interviewData)[0]}`);
 }

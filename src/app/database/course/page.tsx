@@ -32,7 +32,7 @@ const Page = async (
   const searchParams = await props.searchParams;
   const course = searchParams?.course ?? '';
   const currentPage = Number(searchParams?.offset ?? '0');
-  const limit = Number(searchParams?.limit ?? 10);
+  const limit = Number(searchParams?.limit ?? '10');
   const queryParams = new URLSearchParams();
   if (currentPage !== 0)
     queryParams.append('offset', (currentPage * limit).toString());

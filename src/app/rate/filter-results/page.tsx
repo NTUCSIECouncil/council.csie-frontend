@@ -1,9 +1,9 @@
-'use server';
 import Link from 'next/link';
 import Search from '@/components/search';
-import { renderFilter } from '@/helpers/filter';
+import { Filter } from '@/helpers/filter';
 import searchRedirectServer from '@/helpers/search-redirect-server';
 import { type Article } from '@/types/backend';
+import { getFirstParam } from '@/utils/get-first-params';
 import serverFetch from '@/utils/server-fetch';
 import ArticleBlock from './article-block';
 
@@ -16,25 +16,17 @@ interface ArticleResponse {
   };
 }
 
-const Page = async ({
-  searchParams,
-}: {
-  searchParams?: {
-    categories?: string;
-    keyword?: string;
-    offset?: string;
-    tags?: string;
-  };
-}): Promise<React.JSX.Element> => {
+const Page = async (props: { searchParams: Promise<Record<string, string | string[] | undefined>> }) => {
   const limit = 10;
-  const keyword = searchParams?.keyword ?? '';
-  const currentPage = Number(searchParams?.offset ?? '0') / limit;
+  const searchParams = await props.searchParams;
+  const keyword = getFirstParam(searchParams.keyword);
+  const offset = getFirstParam(searchParams.offset);
 
   const queryParams = new URLSearchParams();
   queryParams.append('keyword', keyword);
   queryParams.append('limit', limit.toString());
-  if (searchParams?.offset)
-    queryParams.append('offset', searchParams.offset);
+  if (offset)
+    queryParams.append('offset', offset);
 
   const url = `/api/articles/search?${queryParams.toString()}`;
   const res = await serverFetch(url, { cache: 'no-store' });
@@ -49,8 +41,8 @@ const Page = async ({
           <Search className="my-2 w-full" placeholder="輸入關鍵字" initialValue={keyword} />
           <div className="flex items-center gap-2 my-2 mx-10 text-sm">
             <p className="text-base">篩選：</p>
-            {renderFilter('courseGrade', 'grade')}
-            {renderFilter('courseCategory', 'type')}
+            <Filter filterKey="courseGrade" name="grade" />
+            <Filter filterKey="courseCategory" name="type" />
           </div>
         </form>
       </div>
