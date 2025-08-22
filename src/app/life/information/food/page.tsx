@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import DividerBar from '@/components/divider-bar';
 import LifeCourseContent from '@/components/life/life-course-content';
-import { Sidebar } from '@/components/life/life-sidebar';
-import { SidebarOptionKey } from '@/utils/constants';
 import MapPoints from './118-restaurant.json';
 import InteractiveMap from './interactive-map';
 

@@ -1,8 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import DividerBar from '@/components/divider-bar';
-import { Sidebar } from '@/components/life/life-sidebar';
-import { SidebarOptionKey } from '@/utils/constants';
 import MapPoints from './content.json';
 import InteractiveMap from './interactive-map';
 

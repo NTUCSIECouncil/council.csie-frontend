@@ -1,7 +1,5 @@
 import LifeEvent from '@/components/life/life-activities-event';
-import { Sidebar } from '@/components/life/life-sidebar';
 import LifeTopic from '@/components/life/life-topic';
-import { SidebarOptionKey } from '@/utils/constants';
 import lifeEvents from './life-council-activities.json' assert { type: 'json' };
 
 interface LifeEventItem {

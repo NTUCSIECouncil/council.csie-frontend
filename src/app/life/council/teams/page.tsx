@@ -1,11 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import DividerBar from '@/components/divider-bar';
-import { Sidebar } from '@/components/life/life-sidebar';
 import LifeSubTopic from '@/components/life/life-sub-topic';
 import LifeTopic from '@/components/life/life-topic';
 import { type CommentItem } from '@/utils/constants';
-import { SidebarOptionKey } from '@/utils/constants';
 import lifeTeams from './life-council-teams.json' assert { type: 'json' };
 
 interface TeamItem {

@@ -1,9 +1,7 @@
 import React from 'react';
-import { Sidebar } from '@/components/life/life-sidebar';
 import LifeSubTopic from '@/components/life/life-sub-topic';
 import LifeTopic from '@/components/life/life-topic';
 import { type CommentType } from '@/utils/constants';
-import { SidebarOptionKey } from '@/utils/constants';
 import departments from './life-council-departments.json';
 
 interface Department {

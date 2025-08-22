@@ -4,11 +4,9 @@ import DividerBar from '@/components/divider-bar';
 import LifeCourseContent from '@/components/life/life-course-content';
 import InformTable from '@/components/life/life-information-table';
 import LifeLink from '@/components/life/life-link';
-import { Sidebar } from '@/components/life/life-sidebar';
 import LifeSubTopic from '@/components/life/life-sub-topic';
 import TLDR from '@/components/life/life-tldr';
 import LifeTopic from '@/components/life/life-topic';
-import { SidebarOptionKey } from '@/utils/constants';
 import contentData from './content.json';
 
 interface LinkItem {
