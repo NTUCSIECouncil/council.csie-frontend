@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import DividerBar from '@/components/divider-bar';
-import LifeCourseContent from '@/components/life/life-course-content';
+import ContentBlock from '@/app/life/components/content-block';
+import DividerBar from '@/app/life/components/divider-bar';
 import MapPoints from './118-restaurant.json';
 import InteractiveMap from './interactive-map';
 
@@ -33,7 +33,7 @@ const Page = (): React.JSX.Element => {
               <InteractiveMap points={selectedSection.points} imageUrl={selectedSection.map} />
             )
           : (
-              <LifeCourseContent content="敬請期待" />
+              <ContentBlock content="敬請期待" />
             )}
       </div>
     </div>

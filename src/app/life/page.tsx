@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import NavCards from '@/components/nav-cards';
+import { NavCards } from '@/app/life/components/nav-cards';
 import { lifePages } from '@/utils/constants';
 import building from '@public/building.jpg';
 

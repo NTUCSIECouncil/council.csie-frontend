@@ -7,7 +7,7 @@ interface LifeEventProps {
   image: string;
 }
 
-const LifeEvent = ({ title, description, image }: LifeEventProps): React.JSX.Element => {
+const Event = ({ title, description, image }: LifeEventProps): React.JSX.Element => {
   return (
     <div className="mb-10 mt-10">
       <div className="bg-white text-[#1c1c29] text-2xl py-1 px-3 font-extrabold rounded-xl my-2 w-fit">
@@ -30,4 +30,4 @@ const LifeEvent = ({ title, description, image }: LifeEventProps): React.JSX.Ele
   );
 };
 
-export default LifeEvent;
+export default Event;

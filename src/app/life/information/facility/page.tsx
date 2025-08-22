@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import DividerBar from '@/components/divider-bar';
+import DividerBar from '@/app/life/components/divider-bar';
 import MapPoints from './content.json';
 import InteractiveMap from './interactive-map';
 

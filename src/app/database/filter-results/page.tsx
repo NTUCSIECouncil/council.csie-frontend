@@ -2,9 +2,9 @@
 // import Image from 'next/image';
 // import Link from 'next/link';
 'use server';
-import SmallSearch from '@/components/small-search';
-import searchRedirectServer from '@/helpers/search-redirect-server';
+import { SmallSearch } from '@/app/database/filter-results/components/small-search';
 import { type Course } from '@/types/backend';
+import searchRedirectServer from '@/utils/search-redirect-server';
 import serverFetch from '@/utils/server-fetch';
 import Background from './background';
 import ResultTable from './results-table';

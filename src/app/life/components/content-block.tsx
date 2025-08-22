@@ -1,4 +1,4 @@
-const LifeSubTopic = ({
+const ContentBlock = ({
   content,
 }: {
   content: string;
@@ -8,4 +8,4 @@ const LifeSubTopic = ({
   );
 };
 
-export default LifeSubTopic;
+export default ContentBlock;

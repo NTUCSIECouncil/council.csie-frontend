@@ -1,4 +1,4 @@
-import LifeTopic from '@/components/life/life-topic';
+import LifeTopic from '@/app/life/components/life-topic';
 import LifeLeader from './life-council-leader.json';
 
 interface LifeLeaderItem {
