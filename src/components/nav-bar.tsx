@@ -3,6 +3,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import Link from 'next/link';
 import { FaUser } from 'react-icons/fa6';
+import { env } from '@/env';
 import { UserAuth } from '@/helpers/context/auth-context';
 import { playfairDisplay } from '@/helpers/fonts';
 import { homePages } from '@/utils/constants';
@@ -90,77 +91,80 @@ const NavBar = (): React.JSX.Element => {
         </div>
 
         {/* <div className="flex items-center space-x-4"> */}
-        <div className="relative w-[100px]">
-          {!isUserLoaded
-            ? (
-                <button className="btn text-white px-4 py-2 rounded bg-gray-700 hover:bg-gray-700 opacity-50 cursor-not-allowed">
-                  Loading...
-                </button>
-              )
-            : currentUser === null
-              ? (
-                  <button className="btn text-white px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0 cursor-pointer">
-                    <div
-                      className="prone text-center tooltip tooltip-bottom inline-flex items-center"
-                      onClick={() => {
-                        handlePromise(signIn);
-                      }}
-                    >
-                      <FaUser className="fill-current w-4 h-4 mr-2" />
-                      Login
-                    </div>
-                  </button>
-                )
-              : (
-                  <div className="dropdown dropdown-hover">
-                    <div
-                      tabIndex={0}
-                      role="button"
-                      className="btn text-white px-4 py-2 bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0"
-                    >
-                      <div className="prone text-center tooltip tooltip-bottom inline-flex items-center">
-                        <FaUser className="fill-current w-4 h-4 mr-2" />
-                        {currentUser.displayName}
+        { env.NEXT_PUBLIC_ENABLE_LOGIN
+          && (
+            <div className="relative w-[100px]">
+              {!isUserLoaded
+                ? (
+                    <button className="btn text-white px-4 py-2 rounded bg-gray-700 hover:bg-gray-700 opacity-50 cursor-not-allowed">
+                      Loading...
+                    </button>
+                  )
+                : currentUser === null
+                  ? (
+                      <button className="btn text-white px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0 cursor-pointer">
+                        <div
+                          className="prone text-center tooltip tooltip-bottom inline-flex items-center"
+                          onClick={() => {
+                            handlePromise(signIn);
+                          }}
+                        >
+                          <FaUser className="fill-current w-4 h-4 mr-2" />
+                          Login
+                        </div>
+                      </button>
+                    )
+                  : (
+                      <div className="dropdown dropdown-hover">
+                        <div
+                          tabIndex={0}
+                          role="button"
+                          className="btn text-white px-4 py-2 bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0"
+                        >
+                          <div className="prone text-center tooltip tooltip-bottom inline-flex items-center">
+                            <FaUser className="fill-current w-4 h-4 mr-2" />
+                            {currentUser.displayName}
+                          </div>
+                        </div>
+                        <ul
+                          tabIndex={0}
+                          className="dropdown-content menu p-2 inset-x-0 bg-gray-800 text-white rounded shadow-lg transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100"
+                        >
+                          <li>
+                            <div
+                              className="prone text-center cursor-pointer hover:bg-gray-700 transition-colors"
+                              onClick={() => {
+                                /* Handle Profile Click */
+                              }}
+                            >
+                              Profile
+                            </div>
+                          </li>
+                          <li>
+                            <div
+                              className="prone text-center cursor-pointer hover:bg-gray-700 transition-colors"
+                              onClick={() => {
+                                /* Handle Settings Click */
+                              }}
+                            >
+                              Settings
+                            </div>
+                          </li>
+                          <li>
+                            <div
+                              className="prone text-center cursor-pointer hover:bg-gray-700 transition-colors"
+                              onClick={() => {
+                                handlePromise(logOut);
+                              }}
+                            >
+                              Logout
+                            </div>
+                          </li>
+                        </ul>
                       </div>
-                    </div>
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content menu p-2 inset-x-0 bg-gray-800 text-white rounded shadow-lg transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100"
-                    >
-                      <li>
-                        <div
-                          className="prone text-center cursor-pointer hover:bg-gray-700 transition-colors"
-                          onClick={() => {
-                            /* Handle Profile Click */
-                          }}
-                        >
-                          Profile
-                        </div>
-                      </li>
-                      <li>
-                        <div
-                          className="prone text-center cursor-pointer hover:bg-gray-700 transition-colors"
-                          onClick={() => {
-                            /* Handle Settings Click */
-                          }}
-                        >
-                          Settings
-                        </div>
-                      </li>
-                      <li>
-                        <div
-                          className="prone text-center cursor-pointer hover:bg-gray-700 transition-colors"
-                          onClick={() => {
-                            handlePromise(logOut);
-                          }}
-                        >
-                          Logout
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-        </div>
+                    )}
+            </div>
+          )}
       </div>
     </nav>
   );

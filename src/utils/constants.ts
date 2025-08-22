@@ -1,3 +1,5 @@
+import { env } from '@/env';
+
 // eslint-disable-next-line @stylistic/operator-linebreak
 export type TabItem =
   | { type: 'text'; label: string }
@@ -54,7 +56,7 @@ export const homePages: HomePageType[] = [
     href: '/rate',
     description: '歷年課程的回饋與評價，可以在選課前參考參考。',
     // lastUpdateTime: new Date('August 11, 2024 08:57:00'),
-    disable: false,
+    disable: !env.NEXT_PUBLIC_ENABLE_DEVELOPING_PAGES,
     gif: '/activities/bbq.png',
   },
   {
@@ -62,7 +64,7 @@ export const homePages: HomePageType[] = [
     href: '/database',
     description: '考古題資料庫。',
     // lastUpdateTime: new Date('August 11, 2024 08:57:00'),
-    disable: false,
+    disable: !env.NEXT_PUBLIC_ENABLE_DEVELOPING_PAGES,
     gif: '/activities/camp.png',
   },
   {
