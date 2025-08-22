@@ -1,9 +1,9 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import SearchFilterPanel from '@/app/rate/components/search-filter-panel';
 import Search from '@/components/search';
-import SearchFilterPanel from '@/components/search-filter-panel';
-import searchRedirect from '@/helpers/search-redirect';
+import searchRedirect from '@/utils/search-redirect';
 import Background from './background';
 
 const Page = (): React.JSX.Element => {

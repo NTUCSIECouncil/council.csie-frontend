@@ -7,7 +7,7 @@ interface SidebarProps {
   optionValue: SidebarOptionValue;
 }
 
-export const Sidebar = ({ optionValue }: SidebarProps) => {
+export const LifeSidebar = ({ optionValue }: SidebarProps) => {
   const choices = optionValue.choices;
   const pathname = usePathname();
   const selected = choices.find(({ value }) => value === pathname)?.description;

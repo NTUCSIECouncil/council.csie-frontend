@@ -1,9 +1,9 @@
 import Link from 'next/link';
+import { Filter, FilterOptionKey } from '@/components/filter';
 import Search from '@/components/search';
-import { Filter } from '@/helpers/filter';
-import searchRedirectServer from '@/helpers/search-redirect-server';
 import { type Article } from '@/types/backend';
 import { getFirstParam } from '@/utils/get-first-params';
+import searchRedirectServer from '@/utils/search-redirect-server';
 import serverFetch from '@/utils/server-fetch';
 import ArticleBlock from './article-block';
 
@@ -41,8 +41,8 @@ const Page = async (props: { searchParams: Promise<Record<string, string | strin
           <Search className="my-2 w-full" placeholder="輸入關鍵字" initialValue={keyword} />
           <div className="flex items-center gap-2 my-2 mx-10 text-sm">
             <p className="text-base">篩選：</p>
-            <Filter filterKey="courseGrade" name="grade" />
-            <Filter filterKey="courseCategory" name="type" />
+            <Filter filterKey={FilterOptionKey.GRADE} name="grade" />
+            <Filter filterKey={FilterOptionKey.CATEGORY} name="type" />
           </div>
         </form>
       </div>

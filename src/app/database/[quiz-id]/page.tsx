@@ -2,8 +2,8 @@ import { type UUID } from 'crypto';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FaPortrait } from 'react-icons/fa';
-import InformationBock from '@/components/information-block';
 import serverFetch from '@/utils/server-fetch';
+import { InformationBlock } from './components/information-block';
 
 interface QuizResponse {
   data: QuizProp;
@@ -40,7 +40,7 @@ const Page = async (
           {quiz.course + ' - ' + quiz.title}
         </p>
         <div className="flex justify-between">
-          <InformationBock
+          <InformationBlock
             avatar={<FaPortrait />}
             primary="Author"
             secondary="author"

@@ -1,6 +1,6 @@
 import React from 'react';
-import LifeSubTopic from '@/components/life/life-sub-topic';
-import LifeTopic from '@/components/life/life-topic';
+import LifeSubTopic from '@/app/life/components/life-sub-topic';
+import LifeTopic from '@/app/life/components/life-topic';
 import { type CommentType } from '@/utils/constants';
 import departments from './life-council-departments.json';
 
