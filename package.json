@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
+    "@t3-oss/env-nextjs": "^0.13.8",
     "autoprefixer": "^10.4.20",
     "eslint-import-resolver-typescript": "^4.4.4",
     "firebase": "^11.8.0",

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FaPortrait } from 'react-icons/fa';
 import InformationBock from '@/components/information-block';
-import { APIFetch } from '@/helpers/api-fetch';
+import serverFetch from '@/utils/server-fetch';
 
 interface QuizResponse {
   data: QuizProp;
@@ -25,7 +25,7 @@ const Page = async (
   const params = await props.params;
   // test url: 00000004-0001-0000-0000-000000000000
 
-  const response = await APIFetch(`/api/quizzes/${params.quizID}`, { cache: 'force-cache' });
+  const response = await serverFetch(`/api/quizzes/${params.quizID}`, { cache: 'force-cache' });
   if (!response.ok) {
     if (response.status === 404) notFound();
     throw new Error('Failed to fetch response');
