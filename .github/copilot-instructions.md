@@ -11,7 +11,7 @@ This file provides guidelines for GitHub Copilot to ensure consistent, clean, an
 - **Modularization:** Break down complex problems and features into smaller, manageable units (components, functions, utilities).
 - **TypeScript First:** All new code should be written in **TypeScript**, leveraging its type safety features.
 - **Testable Code:** Design code to be easily testable.
-- **Package Management:** This project uses **pnpm** for managing dependencies. All package installations and scripts should use `pnpm` instead of `npm` or `yarn`.
+- **Package Management:** This project uses **npm** for managing dependencies.
 - **Documentation:** All principal documentation should be created in the `docs` folder.
 
 ### General Guidelines
@@ -19,7 +19,7 @@ This file provides guidelines for GitHub Copilot to ensure consistent, clean, an
 - **Co-locate logic that change together**
 - **Group code by feature, not by type**
 - **Separate UI, logic, and data fetching**
-- **Typesafety across the whole stack – db-server-client. If a type changes, everywhere using it should be aware.**
+- **Type safety across the whole stack – db-server-client. If a type changes, everywhere using it should be aware.**
 - **Clear product logic vs product infrastructure separation**
 - **Design code such that it is easy to replace and delete**
 - **Minimize places/number of changes to extend features**
@@ -44,7 +44,7 @@ This file provides guidelines for GitHub Copilot to ensure consistent, clean, an
 - **Immutability:** Never mutate props or state directly. Always create new objects or arrays for updates.
 - **Fragments:** Use `<>...</>` or `React.Fragment` to avoid unnecessary DOM wrapper elements.
 - **Custom Hooks:** Extract reusable stateful logic into **custom hooks** (e.g., `useDebounce`, `useLocalStorage`).
-- **UI Components:** Use [shadcn/ui](https://ui.shadcn.com/) for building UI components to ensure consistency and accessibility.
+- **UI Components:** Use [daisy UI](https://daisyui.com/) for building UI components to ensure consistency and accessibility.
 
 ### State Management
 
@@ -53,7 +53,7 @@ This file provides guidelines for GitHub Copilot to ensure consistent, clean, an
 
 ### Styling
 
-- **Consistent Approach:** use Tailwind CSS v4 ou later.
+- **Consistent Approach:** use Tailwind CSS v4 or later.
 - **Scoped Styles:** Ensure styles are scoped to avoid global conflicts.
 
 ### Performance
@@ -92,7 +92,6 @@ This file provides guidelines for GitHub Copilot to ensure consistent, clean, an
 
 - **Colocation:** Colocate component files (JSX/TSX, CSS Modules, tests) within a feature folder.
 - **Utility & Helper Modules:** **All general utility functions, helper functions, and large, non-component-specific logic should be extracted into a dedicated `lib/` folder.**
-- **Private Folders:** Use underscore-prefixed folders (e.g., `_lib`, `_components`) for internal, non-route-related files.
 - **No Barrel Files:** Do not use barrel files (e.g., `index.ts` that re-exports from other files) for module exports. Always import directly from the specific file to improve traceability and avoid circular dependencies.
 
 ### SEO & Accessibility
