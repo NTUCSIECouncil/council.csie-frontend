@@ -24,7 +24,7 @@
     "react-markdown": "^10.1.0",
     "rehype-raw": "^7.0.0",
     "sharp": "^0.34.3",
-    "zod": "^3.25.67"
+    "zod": "^4.0.17"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^5.2.3",

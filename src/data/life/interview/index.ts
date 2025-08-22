@@ -2,7 +2,7 @@ import fs from 'fs';
 
 import path from 'path';
 
-import { z } from 'zod/v4';
+import * as z from 'zod';
 
 const ProfessorInterviewDataContent = z.object({
   subtopic: z.string(),
