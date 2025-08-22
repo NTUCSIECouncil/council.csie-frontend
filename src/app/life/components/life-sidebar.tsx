@@ -1,6 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import Drawer from '@/components/drawer';
+import Drawer from '@/app/life/components/drawer';
 import { type SidebarOptionValue } from '@/utils/life-sidebar-options';
 
 interface SidebarProps {
