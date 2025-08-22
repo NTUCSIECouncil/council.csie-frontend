@@ -1,0 +1,53 @@
+name: CI Checks for PRs & Commits
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+# Cancel in-progress jobs if there are multiple commits
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+npm-nvm-setup: &npm-nvm-setup
+  - name: ⬇️ Checkout code
+    uses: actions/checkout@v4
+
+  - name: ⚙️ Setup Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version-file: '.nvmrc'
+      cache: 'npm'
+
+  - name: 📥 Install dependencies
+    run: npm ci
+
+jobs:
+  lint:
+    name: 🧐 Lint
+    runs-on: ubuntu-latest
+    steps:
+      *npm-nvm-setup
+
+      - name: 🔬 Run linter
+        run: npm run lint
+
+  type-check:
+    name: 🔍 Type Check
+    runs-on: ubuntu-latest
+    steps:
+      *npm-nvm-setup
+
+      - name: 🔎 Run type checker
+        run: npm run type-check
+
+  build:
+    name: 🏗️ Build
+    runs-on: ubuntu-latest
+    steps:
+      *npm-nvm-setup
+
+      - name: 📦 Build application
+        run: npm run build

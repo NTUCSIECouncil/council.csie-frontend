@@ -7,8 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "type-check": "tsc -b",
-    "prepare": "husky"
+    "type-check": "tsc -b"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
@@ -41,7 +40,6 @@
     "eslint": "^9.33.0",
     "eslint-config-next": "^15.5.0",
     "eslint-plugin-import": "^2.32.0",
-    "husky": "^9.1.6",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.40.0"
