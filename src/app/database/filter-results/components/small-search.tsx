@@ -1,6 +1,6 @@
 import { FaSearch } from 'react-icons/fa';
 
-const SmallSearch = ({
+export const SmallSearch = ({
   placeholder,
   className,
 }: {
@@ -25,5 +25,3 @@ const SmallSearch = ({
     </div>
   );
 };
-
-export default SmallSearch;

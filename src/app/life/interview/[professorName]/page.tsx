@@ -1,8 +1,8 @@
 import React from 'react';
-import LifeInterviewAnswer from '@/components/life/life-interview-answer';
-import LifeLink from '@/components/life/life-link';
-import LifeSubTopic from '@/components/life/life-sub-topic';
-import LifeTopic from '@/components/life/life-topic';
+import LifeLink from '@/app/life/components/life-link';
+import LifeSubTopic from '@/app/life/components/life-sub-topic';
+import LifeTopic from '@/app/life/components/life-topic';
+import LifeInterviewAnswer from '@/app/life/interview/[professorName]/components/life-interview-answer';
 import interviewData from '@/data/life/interview';
 
 export function generateStaticParams() {

@@ -1,8 +1,8 @@
 'use client';
 import { useRouter } from 'next/navigation';
+import { Filter, FilterOptionKey } from '@/components/filter';
 import Search from '@/components/search';
-import { Filter } from '@/helpers/filter';
-import searchRedirect from '@/helpers/search-redirect';
+import searchRedirect from '@/utils/search-redirect';
 import Background from './background';
 
 const Page = (): React.JSX.Element => {
@@ -21,8 +21,8 @@ const Page = (): React.JSX.Element => {
           <div>
             <div className="flex items-center gap-2 my-2">
               <p className="text-lg">篩選：</p>
-              <Filter filterKey="courseGrade" name="grade" />
-              <Filter filterKey="courseCategory" name="type" />
+              <Filter filterKey={FilterOptionKey.GRADE} name="grade" />
+              <Filter filterKey={FilterOptionKey.CATEGORY} name="type" />
             </div>
             {/* <div className="flex items-center gap-2 my-2">
               <p className="text-lg">標籤：</p>

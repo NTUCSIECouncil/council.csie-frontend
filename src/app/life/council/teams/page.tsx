@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import DividerBar from '@/components/divider-bar';
-import LifeSubTopic from '@/components/life/life-sub-topic';
-import LifeTopic from '@/components/life/life-topic';
+import DividerBar from '@/app/life/components/divider-bar';
+import LifeSubTopic from '@/app/life/components/life-sub-topic';
+import LifeTopic from '@/app/life/components/life-topic';
 import { type CommentItem } from '@/utils/constants';
 import lifeTeams from './life-council-teams.json' assert { type: 'json' };
 

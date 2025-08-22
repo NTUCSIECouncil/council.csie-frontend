@@ -1,12 +1,12 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import DividerBar from '@/components/divider-bar';
-import LifeCourseContent from '@/components/life/life-course-content';
-import InformTable from '@/components/life/life-information-table';
-import LifeLink from '@/components/life/life-link';
-import LifeSubTopic from '@/components/life/life-sub-topic';
-import TLDR from '@/components/life/life-tldr';
-import LifeTopic from '@/components/life/life-topic';
+import LifeCourseContent from '@/app/life/components/content-block';
+import DividerBar from '@/app/life/components/divider-bar';
+import LifeLink from '@/app/life/components/life-link';
+import LifeSubTopic from '@/app/life/components/life-sub-topic';
+import LifeTopic from '@/app/life/components/life-topic';
+import TLDR from '@/app/life/components/tldr';
+import InformationTable from '@/app/life/information/components/information-table';
 import contentData from './content.json';
 
 interface LinkItem {
@@ -79,7 +79,7 @@ const Page = (): React.JSX.Element => {
             )}
             {item.table && (
               <div className="mt-4">
-                <InformTable table={item.table} />
+                <InformationTable table={item.table} />
               </div>
             )}
             {item.tldr && (

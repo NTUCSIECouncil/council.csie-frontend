@@ -1,7 +1,5 @@
-const InformationBock = ({
-  avatar,
-  primary,
-  secondary,
+export const InformationBlock = ({
+  avatar, primary, secondary,
 }: {
   avatar?: React.JSX.Element;
   primary: string;
@@ -17,5 +15,3 @@ const InformationBock = ({
     </div>
   );
 };
-
-export default InformationBock;

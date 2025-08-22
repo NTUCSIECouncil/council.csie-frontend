@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { IoMdLink } from 'react-icons/io';
+import LifeCourseContent from '@/app/life/components/content-block';
+import LifeSubTopic from '@/app/life/components/life-sub-topic';
+import LifeCourseTopic from '@/app/life/components/life-topic';
+import TLDR from '@/app/life/components/tldr';
+import List from '@/app/life/course/[id]/components/list';
+import Table from '@/app/life/course/[id]/components/table';
 import data from '@/app/life/course/data.json';
-import LifeCourseContent from '@/components/life/life-course-content';
-import List from '@/components/life/life-course-list';
-import Table from '@/components/life/life-course-table';
-import LifeSubTopic from '@/components/life/life-sub-topic';
-import TLDR from '@/components/life/life-tldr';
-import LifeCourseTopic from '@/components/life/life-topic';
 
 const Page = async (
   param: {

@@ -1,6 +1,6 @@
 // n * m table
 
-const InformTable = ({
+const InformationTable = ({
   table,
 }: {
   table: string[][];
@@ -29,4 +29,4 @@ const InformTable = ({
   );
 };
 
-export default InformTable;
+export default InformationTable;
