@@ -1,12 +1,13 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import DividerBar from '@/components/divider-bar';
-import LifeCourseContent from '@/components/life-course-content';
-import InformTable from '@/components/life-information-table';
-import LifeLink from '@/components/life-link';
-import TLDR from '@/components/life-tldr';
-import LifeTopic from '@/components/life-topic';
-import { sidebar } from '@/helpers/sidebar';
+import LifeCourseContent from '@/components/life/life-course-content';
+import InformTable from '@/components/life/life-information-table';
+import LifeLink from '@/components/life/life-link';
+import { Sidebar } from '@/components/life/life-sidebar';
+import TLDR from '@/components/life/life-tldr';
+import LifeTopic from '@/components/life/life-topic';
+import { SidebarOptionKey } from '@/utils/constants';
 import contentData from './content.json';
 
 interface LinkItem {
@@ -39,45 +40,42 @@ const Page = (): React.JSX.Element => {
   }, [selectedTab]);
 
   return (
-    <div className="m-auto flex flex-row w-[80%] mt-12">
-      {sidebar('lifeInformation', '網路與資訊服務')}
 
-      <div className="w-full shrink-0 xl:w-[80%] xl:shrink xl:ml-8 xl:max-w-4xl">
-        <div className="sticky top-18 z-20">
-          <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-        </div>
+    <div className="w-full shrink-0 xl:w-[80%] xl:shrink xl:ml-8 xl:max-w-4xl">
+      <div className="sticky top-18 z-20">
+        <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+      </div>
 
-        <div className="flex flex-col items-start pb-8">
-          {subtitles.map((item, index) => (
-            <div key={index} className="w-full">
-              {item.subtitle && (
-                <div className="mt-4">
-                  <LifeTopic topic={item.subtitle} />
-                </div>
-              )}
-              {item.content && <LifeCourseContent content={item.content} />}
-              {item.table && (
-                <div className="mt-4">
-                  <InformTable table={item.table} />
-                </div>
-              )}
-              {item.tldr && (
-                <div className="mt-4">
-                  <TLDR content={item.tldr} />
-                </div>
-              )}
-              {item.links && (
-                <div className="mt-4">
-                  {item.links.map((link, linkIndex) => (
-                    <span key={linkIndex} className="mr-2 inline-block pb-4">
-                      <LifeLink content={link.name} href={link.href} />
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+      <div className="flex flex-col items-start pb-8">
+        {subtitles.map((item, index) => (
+          <div key={index} className="w-full">
+            {item.subtitle && (
+              <div className="mt-4">
+                <LifeTopic topic={item.subtitle} />
+              </div>
+            )}
+            {item.content && <LifeCourseContent content={item.content} />}
+            {item.table && (
+              <div className="mt-4">
+                <InformTable table={item.table} />
+              </div>
+            )}
+            {item.tldr && (
+              <div className="mt-4">
+                <TLDR content={item.tldr} />
+              </div>
+            )}
+            {item.links && (
+              <div className="mt-4">
+                {item.links.map((link, linkIndex) => (
+                  <span key={linkIndex} className="mr-2 inline-block pb-4">
+                    <LifeLink content={link.name} href={link.href} />
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );

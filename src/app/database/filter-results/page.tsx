@@ -32,7 +32,7 @@ const Page = async (
   const keyword = searchParams?.keyword ?? '';
   const categories = searchParams?.categories ?? '';
   const offset = Number(searchParams?.offset ?? '0');
-  const limit = Number(searchParams?.limit ?? 10);
+  const limit = Number(searchParams?.limit ?? '10');
 
   const queryParams = new URLSearchParams();
   if (keyword !== '')

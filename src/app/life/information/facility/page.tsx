@@ -1,7 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import DividerBar from '@/components/divider-bar';
-import { sidebar } from '@/helpers/sidebar';
+import { Sidebar } from '@/components/life/life-sidebar';
+import { SidebarOptionKey } from '@/utils/constants';
 import MapPoints from './content.json';
 import InteractiveMap from './interactive-map';
 
@@ -23,19 +24,15 @@ const Page = (): React.JSX.Element => {
   const selectedSection = sections.find(section => section.title === selectedTab);
 
   return (
-    <div className="m-auto flex flex-row w-[80%] mt-12">
-      {sidebar('lifeInformation', '系館空間介紹')}
+    <div className="w-full shrink-0 xl:w-[80%] xl:shrink xl:ml-8 xl:max-w-4xl">
+      <div className="sticky top-18 z-20">
+        <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+      </div>
 
-      <div className="w-full shrink-0 xl:w-[80%] xl:shrink xl:ml-8 xl:max-w-4xl">
-        <div className="sticky top-18 z-20">
-          <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-        </div>
-
-        <div className="flex flex-col items-start pt-4">
-          {selectedSection?.points != null && (
-            <InteractiveMap points={selectedSection.points} imageUrl={selectedSection.map} width={selectedSection.width} height={selectedSection.height} />
-          )}
-        </div>
+      <div className="flex flex-col items-start pt-4">
+        {selectedSection?.points != null && (
+          <InteractiveMap points={selectedSection.points} imageUrl={selectedSection.map} width={selectedSection.width} height={selectedSection.height} />
+        )}
       </div>
     </div>
   );

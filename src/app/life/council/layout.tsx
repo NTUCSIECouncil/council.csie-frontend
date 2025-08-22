@@ -5,7 +5,7 @@ import { SIDEBAR_OPTIONS } from '@/utils/life-sidebar-options';
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex">
-      <Sidebar optionValue={SIDEBAR_OPTIONS[SidebarOptionKey.COURSE]} />
+      <Sidebar optionValue={SIDEBAR_OPTIONS[SidebarOptionKey.COUNCIL]} />
       <main className="flex-1">{children}</main>
     </div>
   );

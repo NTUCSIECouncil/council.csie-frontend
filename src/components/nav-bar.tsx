@@ -2,7 +2,6 @@
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import Link from 'next/link';
-import { useState } from 'react';
 import { FaUser } from 'react-icons/fa6';
 import { UserAuth } from '@/helpers/context/auth-context';
 import { playfairDisplay } from '@/helpers/fonts';
@@ -12,15 +11,6 @@ const pages = homePages;
 
 const NavBar = (): React.JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
-  const [_anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-
-  const _handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>): void => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const _handleCloseUserMenu = (): void => {
-    setAnchorElUser(null);
-  };
 
   const handlePromise = (promiseFunction: () => Promise<void>): void => {
     promiseFunction()

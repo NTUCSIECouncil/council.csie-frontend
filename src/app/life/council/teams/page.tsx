@@ -1,10 +1,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import DividerBar from '@/components/divider-bar';
-import LifeSubTopic from '@/components/life-sub-topic';
-import LifeTopic from '@/components/life-topic';
-import { sidebar } from '@/helpers/sidebar';
+import { Sidebar } from '@/components/life/life-sidebar';
+import LifeSubTopic from '@/components/life/life-sub-topic';
+import LifeTopic from '@/components/life/life-topic';
 import { type CommentItem } from '@/utils/constants';
+import { SidebarOptionKey } from '@/utils/constants';
 import lifeTeams from './life-council-teams.json' assert { type: 'json' };
 
 interface TeamItem {
@@ -32,27 +33,24 @@ const Page = (): React.JSX.Element => {
   }, [selectedTab]);
 
   return (
-    <div className="m-auto flex flex-row w-[80%] mt-10 mb-10">
-      {sidebar('lifeCouncil', '系隊介紹')}
-      <div className="xl:ml-8 xl:max-w-[min(56rem,73%)] w md:max-w-4xl">
-        <LifeTopic topic="系隊介紹" />
-        <div className="sticky top-18">
-          <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-        </div>
-        {content && (
-          <>
-            <LifeSubTopic
-              content={content.name}
-              comment={content.comment}
-            />
-            {content.description && (
-              <div className="whitespace-pre-line text-lg mt-4">
-                {content.description}
-              </div>
-            )}
-          </>
-        )}
+    <div className="ml-8 md:max-w-4xl">
+      <LifeTopic topic="系隊介紹" />
+      <div className="sticky top-18">
+        <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
       </div>
+      {content && (
+        <>
+          <LifeSubTopic
+            content={content.name}
+            comment={content.comment}
+          />
+          {content.description && (
+            <div className="whitespace-pre-line text-lg mt-4">
+              {content.description}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };

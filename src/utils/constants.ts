@@ -1,6 +1,8 @@
+// eslint-disable-next-line @stylistic/operator-linebreak
 export type TabItem =
   | { type: 'text'; label: string }
-  | { type: 'image'; icon: string; alt: string };
+  | { type: 'image'; icon: string; alt: string }
+;
 
 export interface CommentLink {
   label: string;
@@ -129,3 +131,11 @@ export const sidePages: SidePageType[] = [
     disable: false,
   },
 ];
+
+export enum SidebarOptionKey {
+  INTERVIEW = 'interview',
+  COUNCIL = 'council',
+  SPACE = 'space',
+  COURSE = 'course',
+  INFORMATION = 'information',
+}

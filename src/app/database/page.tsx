@@ -1,8 +1,7 @@
 'use client';
-import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useRouter } from 'next/navigation';
 import Search from '@/components/search';
-import { renderFilter } from '@/helpers/filter';
+import { Filter } from '@/helpers/filter';
 import searchRedirect from '@/helpers/search-redirect';
 import Background from './background';
 
@@ -22,8 +21,8 @@ const Page = (): React.JSX.Element => {
           <div>
             <div className="flex items-center gap-2 my-2">
               <p className="text-lg">篩選：</p>
-              { renderFilter('courseGrade', 'grade') }
-              { renderFilter('courseCategory', 'type') }
+              <Filter filterKey="courseGrade" name="grade" />
+              <Filter filterKey="courseCategory" name="type" />
             </div>
             {/* <div className="flex items-center gap-2 my-2">
               <p className="text-lg">標籤：</p>
