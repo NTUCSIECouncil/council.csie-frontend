@@ -18,6 +18,13 @@ jobs:
     steps:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: 🛠️ Prepare env file
+        run: |
+          if [ -f .env.example ]; then cp .env.example .env; fi
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
@@ -37,6 +44,13 @@ jobs:
     steps:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: 🛠️ Prepare env file
+        run: |
+          if [ -f .env.example ]; then cp .env.example .env; fi
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
@@ -56,6 +70,13 @@ jobs:
     steps:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: 🛠️ Prepare env file
+        run: |
+          if [ -f .env.example ]; then cp .env.example .env; fi
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
