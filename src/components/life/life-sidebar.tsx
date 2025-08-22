@@ -9,8 +9,7 @@ interface SidebarProps {
 
 export const Sidebar = ({ optionValue }: SidebarProps) => {
   const choices = optionValue.choices;
-  // To slice out the tailing '/'
-  const pathname = usePathname().slice(0, -1);
+  const pathname = usePathname();
   const selected = choices.find(({ value }) => value === pathname)?.description;
 
   if (!selected) {
