@@ -14,7 +14,7 @@ const depts: Department[] = departments;
 
 const Page = (): React.JSX.Element => {
   return (
-    <div className="xl:ml-8 xl:max-w-[min(56rem,73%)] lg:max-w-4xl">
+    <div>
       <LifeTopic topic="部會介紹" />
       {depts.map((dept, idx) => (
         <div key={idx} className="mb-8">
