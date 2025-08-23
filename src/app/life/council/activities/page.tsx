@@ -12,7 +12,7 @@ const typedEvents: LifeEventItem[] = lifeEvents.activities as LifeEventItem[];
 
 const Page = (): React.JSX.Element => {
   return (
-    <div className="xl:ml-8 xl:max-w-[min(56rem,73%)] lg:max-w-4xl">
+    <div>
       <LifeTopic topic="系上活動" />
       {typedEvents.map((event, idx) => (
         <Event

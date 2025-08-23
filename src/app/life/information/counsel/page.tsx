@@ -40,7 +40,7 @@ const Page = (): React.JSX.Element => {
 
   return (
 
-    <div className="w-full shrink-0 xl:w-[80%] xl:shrink xl:ml-8 xl:max-w-4xl">
+    <div>
       <div className="sticky top-18 z-20">
         <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
       </div>

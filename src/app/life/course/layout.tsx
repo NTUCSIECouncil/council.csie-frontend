@@ -1,12 +1,7 @@
-import { LifeSidebar } from '@/app/life/components/life-sidebar';
 import { SidebarOptionKey } from '@/utils/constants';
 import { SIDEBAR_OPTIONS } from '@/utils/life-sidebar-options';
+import LayoutBlock from '../components/life-layour-block';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex">
-      <LifeSidebar optionValue={SIDEBAR_OPTIONS[SidebarOptionKey.COURSE]} />
-      <main className="flex-1">{children}</main>
-    </div>
-  );
+  return <LayoutBlock optionValue={SIDEBAR_OPTIONS[SidebarOptionKey.COURSE]}>{children}</LayoutBlock>;
 }

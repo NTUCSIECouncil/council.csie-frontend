@@ -17,7 +17,7 @@ const Page = async (
   const courseID = Number(params.id);
   const courseData = data[courseID];
   return (
-    <div className="xl:ml-8 xl:max-w-[min(56rem,73%)] mb-10 self-start shrink-0 w-full">
+    <div>
       <div className="flex flex-col items-start gap-2 py-4">
         <LifeCourseTopic topic={courseData.topic.topic} subtopic={courseData.topic.subtopic ?? ''} lecturer={courseData.topic.lecturer ?? ''} author={courseData.topic.author} />
         {courseData.subtopics.map(subtopic => (

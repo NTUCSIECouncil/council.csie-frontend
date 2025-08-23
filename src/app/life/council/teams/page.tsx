@@ -31,7 +31,7 @@ const Page = (): React.JSX.Element => {
   }, [selectedTab]);
 
   return (
-    <div className="ml-8 md:max-w-4xl">
+    <div>
       <LifeTopic topic="系隊介紹" />
       <div className="sticky top-18">
         <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />

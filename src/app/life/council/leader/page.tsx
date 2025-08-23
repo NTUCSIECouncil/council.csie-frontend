@@ -10,7 +10,7 @@ const leader: LifeLeaderItem = LifeLeader as LifeLeaderItem;
 
 const Page = (): React.JSX.Element => {
   return (
-    <div className="xl:ml-8 xl:max-w-[min(56rem,73%)] lg:max-w-4xl">
+    <div>
       <LifeTopic
         topic="會長的話"
         subtopic={leader.title}
