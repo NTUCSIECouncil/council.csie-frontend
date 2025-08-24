@@ -2,9 +2,9 @@ name: CI Checks for PRs & Commits
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main ]
 
 # Cancel in-progress jobs if there are multiple commits
 concurrency:
@@ -26,17 +26,22 @@ jobs:
         run: |
           if [ -f .env.example ]; then cp .env.example .env; fi
 
+      - name: 🔨 Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
+          cache: 'pnpm'
 
       - name: 📥 Install dependencies
-        run: npm ci
+        run: pnpm install
 
       - name: 🔬 Run linter
-        run: npm run lint
+        run: pnpm run lint
 
   type-check:
     name: 🔍 Type Check
@@ -52,17 +57,22 @@ jobs:
         run: |
           if [ -f .env.example ]; then cp .env.example .env; fi
 
+      - name: 🔨 Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
+          cache: 'pnpm'
 
       - name: 📥 Install dependencies
-        run: npm ci
+        run: pnpm install
 
       - name: 🔎 Run type checker
-        run: npm run type-check
+        run: pnpm run type-check
 
   build:
     name: 🏗️ Build
@@ -78,11 +88,16 @@ jobs:
         run: |
           if [ -f .env.example ]; then cp .env.example .env; fi
 
+      - name: 🔨 Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
+          cache: 'pnpm'
       
       - name: 🚀 Restore NextJS cache
         uses: actions/cache@v4
@@ -96,7 +111,7 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
       - name: 📥 Install dependencies
-        run: npm ci
+        run: pnpm install
 
       - name: 📦 Build application
-        run: npm run build
+        run: pnpm run build

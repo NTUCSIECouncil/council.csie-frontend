@@ -2,6 +2,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
+    "preinstall": "npx only-allow pnpm",
     "prebuild": "node copy_teacher_img.js",
     "build": "next build",
     "start": "next start",
@@ -27,6 +28,8 @@
     "zod": "^4.0.17"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.34.0",
     "@stylistic/eslint-plugin": "^5.2.3",
     "@tailwindcss/postcss": "^4.1.12",
     "@tailwindcss/typography": "^0.5.15",
