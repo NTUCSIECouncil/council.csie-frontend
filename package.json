@@ -2,6 +2,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
+    "preinstall": "npx only-allow pnpm",
     "prebuild": "node copy_teacher_img.js",
     "build": "next build",
     "start": "next start",
