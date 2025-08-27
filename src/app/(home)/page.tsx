@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { homePages } from '@/utils/constants';
 import building from '@public/building.jpg';
+import { env } from '@/env';
 
 const Page = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -47,34 +48,36 @@ const Page = () => {
             在 0 與 1 之間，我們編織未來
           </p>
         </main>
-        <div className="grid grid-cols-2 z-10 px-20">
-          <div>
-            {homePages.map((page, index) => (
-              <section
-                key={index}
-                className="flex flex-col md:flex-row items-center justify-center h-screen px-8 transition-all duration-700"
-              >
-                <div className="w-full md:w-1/2 text-white">
-                  <h2 className="text-4xl font-bold mb-4">{page.name}</h2>
-                  <p className="text-lg">{page.description}</p>
-                </div>
-              </section>
-            ))}
-          </div>
-          <div className="relative">
-            <div className="fixed top-1/2 right-1/4 transform -translate-y-1/2">
-              {isClient && scrollPosition > (window.innerHeight * 0.75) && (
-                <Image
-                  alt={homePages[activeIndex - 1].name}
-                  src={homePages[activeIndex - 1].gif}
-                  width={128}
-                  height={128}
-                  className="w-64 h-48"
-                />
-              )}
+        {env.NEXT_PUBLIC_ENABLE_HOMEPAGE_BOTTOM &&
+          <div className="grid grid-cols-2 z-10 px-20">
+            <div>
+              {homePages.map((page, index) => (
+                <section
+                  key={index}
+                  className="flex flex-col md:flex-row items-center justify-center h-screen px-8 transition-all duration-700"
+                >
+                  <div className="w-full md:w-1/2 text-white">
+                    <h2 className="text-4xl font-bold mb-4">{page.name}</h2>
+                    <p className="text-lg">{page.description}</p>
+                  </div>
+                </section>
+              ))}
+            </div>
+            <div className="relative">
+              <div className="fixed top-1/2 right-1/4 transform -translate-y-1/2">
+                {isClient && scrollPosition > (window.innerHeight * 0.75) && (
+                  <Image
+                    alt={homePages[activeIndex - 1].name}
+                    src={homePages[activeIndex - 1].gif}
+                    width={128}
+                    height={128}
+                    className="w-64 h-48"
+                  />
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        }
       </div>
     </>
   );
