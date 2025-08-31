@@ -2,7 +2,7 @@
     "baseball": {
         "name": "系壘",
         "comment": [
-            { "title": "隊長", "content": "魏路德" }, 
+            { "title": "隊長", "content": "鄭宇宏" }, 
             { "title": "時間", "content": "每週一次約兩小時" }, 
             { "title": "地點", "content": "台大棒壘球場" },
             {
@@ -19,7 +19,7 @@
     "male_basketball": {
         "name": "系男籃",
         "comment": [
-            { "title": "隊長", "content": "廖奕翔" }, 
+            { "title": "隊長", "content": "蔡侑岑" }, 
             { "title": "時間", "content": "每週兩次約 3.5 小時" }, 
             { "title": "地點", "content": "中正河濱公園" },
             {
@@ -36,7 +36,7 @@
     "badminton": {
         "name": "系羽",
         "comment": [
-            {"title": "隊長", "content": "陳昱廷" }, 
+            {"title": "隊長", "content": "薛德毓" }, 
             {"title": "時間", "content": "每週一次約三小時" }, 
             {"title": "地點", "content": "台大新體羽球場"},
             {
@@ -53,7 +53,7 @@
     "male_volleyball": {
         "name": "系男排",
         "comment": [
-            { "title": "隊長", "content": "許博智" },
+            { "title": "隊長", "content": "鄧育翔" },
             { "title": "時間", "content": "每週兩天 一次四小時" },
             { "title": "地點", "content": "台大室外排球場" },
             {
@@ -70,7 +70,7 @@
     "female_volleyball": {
         "name": "系女排",
         "comment": [
-            { "title": "隊長", "content": "邱子芹" },
+            { "title": "隊長", "content": "吳品諭" },
             { "title": "時間", "content": "每週兩天 18:00 ~ 22:00" },
             { "title": "地點", "content": "台大室外排球場" },
             {
@@ -87,7 +87,7 @@
     "table_tennis": {
         "name": "系桌",
         "comment": [
-            { "title": "隊長", "content": "陳柏宇" },
+            { "title": "隊長", "content": "陳柏凱" },
             { "title": "時間", "content": "週三晚上 6 點到 8 點" },
             { "title": "地點", "content": "台大新體 B1 桌球室" },
             {
