@@ -1,6 +1,5 @@
 import { env } from '@/env';
 
-// eslint-disable-next-line @stylistic/operator-linebreak
 export type TabItem =
   | { type: 'text'; label: string }
   | { type: 'image'; icon: string; alt: string };
