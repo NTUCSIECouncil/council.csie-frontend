@@ -43,6 +43,37 @@ jobs:
       - name: 🔬 Run linter
         run: pnpm run lint
 
+  format:
+    name: 🧐 Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: 🛠️ Prepare env file
+        run: |
+          if [ -f .env.example ]; then cp .env.example .env; fi
+
+      - name: 🔨 Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: 📥 Install dependencies
+        run: pnpm install
+
+      - name: 🔬 Run formatter
+        run: pnpm run format
+
   type-check:
     name: 🔍 Type Check
     runs-on: ubuntu-latest
