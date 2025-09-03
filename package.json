@@ -8,13 +8,14 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write --list-different .",
     "type-check": "tsc -b"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
     "@t3-oss/env-nextjs": "^0.13.8",
     "autoprefixer": "^10.4.20",
-    "eslint-import-resolver-typescript": "^4.4.4",
     "firebase": "^11.8.0",
     "gray-matter": "^4.0.3",
     "next": "^15.5.0",
@@ -30,7 +31,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.34.0",
-    "@stylistic/eslint-plugin": "^5.2.3",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
     "@tailwindcss/postcss": "^4.1.12",
     "@tailwindcss/typography": "^0.5.15",
     "@tsconfig/next": "^2.0.3",
@@ -42,9 +43,26 @@
     "daisyui": "^5.0.50",
     "eslint": "^9.33.0",
     "eslint-config-next": "^15.5.0",
-    "eslint-plugin-import": "^2.32.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "3.6.2",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.40.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid",
+    "importOrder": [
+      "<BUILTIN_MODULES>",
+      "",
+      "<THIRD_PARTY_MODULES>",
+      "",
+      "^@(public)?/",
+      "^[.]"
+    ],
+    "importOrderTypeScriptVersion": "5.9.2",
+    "plugins": [
+      "@ianvs/prettier-plugin-sort-imports"
+    ]
   }
 }
