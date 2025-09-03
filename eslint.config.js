@@ -35,8 +35,6 @@ export default tseslint.config(
       eslintConfigPrettier, // used twice to suppress stylisticTypeChecked from tseslint
     ],
     rules: {
-      'sort-imports': ['warn', { ignoreDeclarationSort: true }],
-
       '@typescript-eslint/no-empty-object-type': [
         'error',
         { allowInterfaces: 'with-single-extends' },
