@@ -44,7 +44,7 @@ jobs:
         run: pnpm run lint
 
   format:
-    name: 🧐 Format
+    name: ⛏️ Format
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout code
