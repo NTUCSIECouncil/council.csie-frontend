@@ -1,6 +1,7 @@
 import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
 const compat = new FlatCompat({
@@ -9,7 +10,7 @@ const compat = new FlatCompat({
 
 // settings are splitted into two categories since type systems are too computation-expensive
 // and makes editors so slow
-export default tseslint.config(
+export default defineConfig(
   // non type-aware configs
   {
     ignores: ['dist', '.next', 'node_modules'],
@@ -21,7 +22,7 @@ export default tseslint.config(
   },
   // type-aware settings
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx}'],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -29,9 +30,8 @@ export default tseslint.config(
       },
     },
     extends: [
-      ...tseslint.configs.strictTypeChecked,
-      ...tseslint.configs.stylisticTypeChecked,
-      ...compat.config({ extends: ['next/typescript'] }),
+      tseslint.configs.strictTypeChecked,
+      tseslint.configs.stylisticTypeChecked,
       eslintConfigPrettier, // used twice to suppress stylisticTypeChecked from tseslint
     ],
     rules: {
