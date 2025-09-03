@@ -53,10 +53,6 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-      - name: 🛠️ Prepare env file
-        run: |
-          if [ -f .env.example ]; then cp .env.example .env; fi
-
       - name: 🔨 Install pnpm
         uses: pnpm/action-setup@v4
         with:
