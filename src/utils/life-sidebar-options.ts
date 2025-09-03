@@ -29,9 +29,7 @@ export const SIDEBAR_OPTIONS = {
     ],
   },
   [SidebarOptionKey.SPACE]: {
-    choices: [
-      { value: '', description: '' },
-    ],
+    choices: [{ value: '', description: '' }],
   },
   [SidebarOptionKey.COURSE]: {
     choices: [

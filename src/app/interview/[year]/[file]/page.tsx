@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+
 import matter from 'gray-matter';
 import Image from 'next/image';
 import Markdown from 'react-markdown';
@@ -23,9 +24,7 @@ const Page = async (props: PageProps) => {
 
   const postsDir = path.join(process.cwd(), 'src', 'posts', '_posts', year);
   const files = fs.readdirSync(postsDir);
-  const markdownFile = files.find(filename =>
-    filename.endsWith(`-${file}.md`),
-  );
+  const markdownFile = files.find(filename => filename.endsWith(`-${file}.md`));
 
   if (!markdownFile) {
     return <div>Error: Markdown file not found.</div>;

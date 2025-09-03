@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import { FaArrowUp } from 'react-icons/fa6';
 
@@ -15,7 +16,9 @@ const ScrollToTopButton: React.FC = () => {
     };
 
     window.addEventListener('scroll', toggleVisibility);
-    return () => { window.removeEventListener('scroll', toggleVisibility); };
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
   }, []);
 
   const scrollToTop = () => {

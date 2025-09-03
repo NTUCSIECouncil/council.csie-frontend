@@ -1,10 +1,8 @@
-const ContentBlock = ({
-  content,
-}: {
-  content: string;
-}): React.JSX.Element => {
+const ContentBlock = ({ content }: { content: string }): React.JSX.Element => {
   return (
-    <p className="text-xl/8 text-justify" style={{ whiteSpace: 'pre-line' }}>{content}</p>
+    <p className="text-xl/8 text-justify" style={{ whiteSpace: 'pre-line' }}>
+      {content}
+    </p>
   );
 };
 

@@ -1,6 +1,6 @@
 import LifeTopic from '@/app/life/components/life-topic';
 import Event from './components/event';
-import lifeEvents from './life-council-activities.json' assert { type: 'json' };
+import lifeEvents from './life-council-activities.json' with { type: 'json' };
 
 interface LifeEventItem {
   title: string;

@@ -1,4 +1,5 @@
 'use client';
+
 import Image from 'next/image';
 import React, { useState } from 'react';
 
@@ -15,7 +16,10 @@ interface InteractiveMapProps {
   imageUrl: string;
 }
 
-const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => {
+const InteractiveMap: React.FC<InteractiveMapProps> = ({
+  points,
+  imageUrl,
+}) => {
   const [activePoint, setActivePoint] = useState<MapPoint | null>(null);
   const [hoveredTitle, setHoveredTitle] = useState<string | null>(null);
 
@@ -32,21 +36,43 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
     const offset = point.fixed ? '5' : '6';
     switch (point.fixed) {
       case 'top':
-        return { bottom: `calc(100% + ${offset}px)`, left: '50%', transform: 'translateX(-50%)' };
+        return {
+          bottom: `calc(100% + ${offset}px)`,
+          left: '50%',
+          transform: 'translateX(-50%)',
+        };
       case 'bottom':
-        return { top: `calc(100% + ${offset}px)`, left: '50%', transform: 'translateX(-50%)' };
+        return {
+          top: `calc(100% + ${offset}px)`,
+          left: '50%',
+          transform: 'translateX(-50%)',
+        };
       case 'left':
-        return { right: `calc(100% + ${offset}px)`, top: '50%', transform: 'translateY(-50%)' };
+        return {
+          right: `calc(100% + ${offset}px)`,
+          top: '50%',
+          transform: 'translateY(-50%)',
+        };
       case 'right':
       default:
-        return { left: `calc(100% + ${offset}px)`, top: '50%', transform: 'translateY(-50%)' };
+        return {
+          left: `calc(100% + ${offset}px)`,
+          top: '50%',
+          transform: 'translateY(-50%)',
+        };
     }
   };
 
   return (
     <main className="w-full overflow-x-auto">
       <div className="relative flex w-[225%] lg:w-[95%] mx-auto justify-center">
-        <Image src={imageUrl} alt="map" width={mapWidth} height={mapHeight} className="w-full h-auto rounded-lg" />
+        <Image
+          src={imageUrl}
+          alt="map"
+          width={mapWidth}
+          height={mapHeight}
+          className="w-full h-auto rounded-lg"
+        />
 
         {legendItems.map(legend => (
           <div
@@ -58,9 +84,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <div
-              className="absolute left-5 top-1/2 -translate-y-1/2 whitespace-nowrap text-xs text-[#1c1c29]"
-            >
+            <div className="absolute left-5 top-1/2 -translate-y-1/2 whitespace-nowrap text-xs text-[#1c1c29]">
               {legend.label}
             </div>
           </div>
@@ -77,9 +101,15 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
               top: `${((point.cy / mapHeight) * 100).toFixed(2)}%`,
               transform: 'translate(-50%, -50%)',
             }}
-            onMouseEnter={() => { setHoveredTitle(point.title); }}
-            onMouseLeave={() => { setHoveredTitle(null); }}
-            onClick={() => { setActivePoint(point); }}
+            onMouseEnter={() => {
+              setHoveredTitle(point.title);
+            }}
+            onMouseLeave={() => {
+              setHoveredTitle(null);
+            }}
+            onClick={() => {
+              setActivePoint(point);
+            }}
           >
             {(point.fixed ?? hoveredTitle === point.title) && (
               <div
@@ -100,11 +130,15 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({ points, imageUrl }) => 
               <div className="relative flex flex-col bg-[#858484] p-4 rounded-xl max-h-[50vh]">
                 <button
                   className="absolute top-6 right-6 text-white text-2xl hover:text-[#1c1c29]"
-                  onClick={() => { setActivePoint(null); }}
+                  onClick={() => {
+                    setActivePoint(null);
+                  }}
                 >
                   ✕
                 </button>
-                <h3 className="w-fit font-bold text-[#1c1c29] bg-[#d4d2d5] rounded-lg text-2xl px-2 my-2">{activePoint.title}</h3>
+                <h3 className="w-fit font-bold text-[#1c1c29] bg-[#d4d2d5] rounded-lg text-2xl px-2 my-2">
+                  {activePoint.title}
+                </h3>
                 <p
                   className="overflow-y-auto text-white text-lg"
                   style={{ flex: 1 }}

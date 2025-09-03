@@ -12,9 +12,9 @@ const config: Config = {
     extend: {
       colors: {
         // 'navbar': '#1c1c29',
-        'background': '#1c1c29',
-        'card': '#3a3b46',
-        'text': '#d4d2d5',
+        background: '#1c1c29',
+        card: '#3a3b46',
+        text: '#d4d2d5',
         'text-secondary': '#bbb9bd',
         // 'default': '#d4d2d5',
         // 'button': '#40465a'
@@ -26,8 +26,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    typography,
-  ],
+  plugins: [typography],
 };
 export default config;

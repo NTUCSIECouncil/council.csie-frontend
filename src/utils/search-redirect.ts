@@ -1,7 +1,11 @@
 'use client';
+
 import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
-export default function searchRedirect(router: AppRouterInstance, newURL: string) {
+export default function searchRedirect(
+  router: AppRouterInstance,
+  newURL: string,
+) {
   return (formData: FormData) => {
     const params = new URLSearchParams();
     for (const key of formData.keys()) {

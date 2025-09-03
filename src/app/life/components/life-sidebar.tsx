@@ -1,5 +1,7 @@
 'use client';
+
 import { usePathname } from 'next/navigation';
+
 import Drawer from '@/app/life/components/drawer';
 import { type SidebarOptionValue } from '@/utils/life-sidebar-options';
 
@@ -19,10 +21,7 @@ export const LifeSidebar = ({ optionValue }: SidebarProps) => {
   return (
     <div className="w-64 z-40">
       <div className="fixed">
-        <Drawer
-          choices={choices}
-          selected={selected}
-        />
+        <Drawer choices={choices} selected={selected} />
       </div>
     </div>
   );

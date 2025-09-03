@@ -29,7 +29,7 @@ const Search = ({
         name="keyword"
         placeholder={placeholder}
         value={value}
-        onChange={(e) => {
+        onChange={e => {
           setValue(e.target.value);
         }}
       />
@@ -42,7 +42,9 @@ const Search = ({
       {hasAddButton && (
         <button
           type="button"
-          onClick={() => { return; }}
+          onClick={() => {
+            return;
+          }}
           className="group absolute aspect-square right-0 top-1/2 transform origin-center -translate-y-1/2 translate-x-24 h-full
           scale-90 hover:scale-100 hover:rounded-md transition-all duration-300 ease-in-out bg-slate-200 flex rounded-2xl"
         >

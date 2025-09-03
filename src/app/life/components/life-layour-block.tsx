@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { type SidebarOptionValue } from '@/utils/life-sidebar-options';
 import { LifeSidebar } from './life-sidebar';
 

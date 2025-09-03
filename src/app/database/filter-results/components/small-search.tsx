@@ -19,7 +19,10 @@ export const SmallSearch = ({
         name="keyword"
         placeholder={placeholder}
       />
-      <button type="submit" className="absolute left-2 top-1/2 transform -translate-y-1/2 ">
+      <button
+        type="submit"
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 "
+      >
         <FaSearch className="xl:text-xl text-md text-white-200/40" />
       </button>
     </div>

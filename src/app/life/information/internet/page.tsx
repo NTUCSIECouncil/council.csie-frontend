@@ -1,5 +1,7 @@
 'use client';
+
 import React, { useEffect, useState } from 'react';
+
 import LifeCourseContent from '@/app/life/components/content-block';
 import DividerBar from '@/app/life/components/divider-bar';
 import LifeLink from '@/app/life/components/life-link';
@@ -28,19 +30,31 @@ const tabItems = Object.keys(contentData).map(key => ({
 }));
 
 const Page = (): React.JSX.Element => {
-  const items = ['帳號密碼', '無線網路', '系上工作站', '常用資訊服務', '其他資訊服務'];
+  const items = [
+    '帳號密碼',
+    '無線網路',
+    '系上工作站',
+    '常用資訊服務',
+    '其他資訊服務',
+  ];
   const [selectedTab, setSelectedTab] = useState(items[0]);
   const [subtitles, setSubtitles] = useState<ContentItem[]>([]);
 
   useEffect(() => {
-    const selectedContent = (contentData as Record<string, { subtitles: ContentItem[] }>)[selectedTab];
+    const selectedContent = (
+      contentData as Record<string, { subtitles: ContentItem[] }>
+    )[selectedTab];
     setSubtitles(selectedContent.subtitles);
   }, [selectedTab]);
 
   return (
     <div>
       <div className="sticky top-18 z-20">
-        <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+        <DividerBar
+          items={tabItems}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+        />
       </div>
 
       <div className="flex flex-col items-start pb-8">

@@ -14,8 +14,10 @@ export const env = createEnv({
   },
   // For Next.js, we need to destructure client variables:
   experimental__runtimeEnv: {
-    NEXT_PUBLIC_ENABLE_DEVELOPING_PAGES: process.env.NEXT_PUBLIC_ENABLE_DEVELOPING_PAGES,
+    NEXT_PUBLIC_ENABLE_DEVELOPING_PAGES:
+      process.env.NEXT_PUBLIC_ENABLE_DEVELOPING_PAGES,
     NEXT_PUBLIC_ENABLE_LOGIN: process.env.NEXT_PUBLIC_ENABLE_LOGIN,
-    NEXT_PUBLIC_ENABLE_HOMEPAGE_BOTTOM: process.env.NEXT_PUBLIC_ENABLE_HOMEPAGE_BOTTOM,
+    NEXT_PUBLIC_ENABLE_HOMEPAGE_BOTTOM:
+      process.env.NEXT_PUBLIC_ENABLE_HOMEPAGE_BOTTOM,
   },
 });

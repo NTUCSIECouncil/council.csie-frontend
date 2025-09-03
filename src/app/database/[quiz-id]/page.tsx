@@ -1,7 +1,9 @@
 import { type UUID } from 'crypto';
+
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FaPortrait } from 'react-icons/fa';
+
 import serverFetch from '@/utils/server-fetch';
 import { InformationBlock } from './components/information-block';
 
@@ -17,28 +19,26 @@ interface QuizProp {
   download_link: string;
 }
 
-const Page = async (
-  props: {
-    params: Promise<{ quizID: string }>;
-  },
-): Promise<React.JSX.Element> => {
+const Page = async (props: {
+  params: Promise<{ quizID: string }>;
+}): Promise<React.JSX.Element> => {
   const params = await props.params;
   // test url: 00000004-0001-0000-0000-000000000000
 
-  const response = await serverFetch(`/api/quizzes/${params.quizID}`, { cache: 'force-cache' });
+  const response = await serverFetch(`/api/quizzes/${params.quizID}`, {
+    cache: 'force-cache',
+  });
   if (!response.ok) {
     if (response.status === 404) notFound();
     throw new Error('Failed to fetch response');
   }
-  const res: QuizResponse = await response.json() as QuizResponse;
+  const res: QuizResponse = (await response.json()) as QuizResponse;
   const quiz: QuizProp = res.data;
 
   return (
     <main className="flex flex-1 flex-col items-center">
       <div className="flex flex-1 flex-col m-5 w-4/5 min-w-96">
-        <p className="text-4xl font-bold">
-          {quiz.course + ' - ' + quiz.title}
-        </p>
+        <p className="text-4xl font-bold">{quiz.course + ' - ' + quiz.title}</p>
         <div className="flex justify-between">
           <InformationBlock
             avatar={<FaPortrait />}

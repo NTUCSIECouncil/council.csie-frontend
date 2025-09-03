@@ -2,9 +2,9 @@ name: CI Checks for PRs & Commits
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 # Cancel in-progress jobs if there are multiple commits
 concurrency:
@@ -98,7 +98,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-      
+
       - name: 🚀 Restore NextJS cache
         uses: actions/cache@v4
         with:
