@@ -10,7 +10,9 @@ export default function searchRedirectServer(newURL: string) {
           params.append(key, formData.get(key) as string);
     }
 
-    await new Promise((resolve) => { resolve(0); });
+    await new Promise(resolve => {
+      resolve(0);
+    });
 
     redirect(newURL + '?' + params.toString());
   };

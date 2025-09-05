@@ -1,4 +1,5 @@
 import React from 'react';
+
 import LifeSubTopic from '@/app/life/components/life-sub-topic';
 import LifeTopic from '@/app/life/components/life-topic';
 import { type CommentType } from '@/utils/constants';

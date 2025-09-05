@@ -16,9 +16,7 @@ const Page = (): React.JSX.Element => {
         subtopic={leader.title}
         subtopicSize="text-2xl"
       />
-      <div className="whitespace-pre-line text-lg mt-4">
-        {leader.content}
-      </div>
+      <div className="whitespace-pre-line text-lg mt-4">{leader.content}</div>
     </div>
   );
 };

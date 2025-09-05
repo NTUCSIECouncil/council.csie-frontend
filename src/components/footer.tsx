@@ -4,9 +4,21 @@ import { FaFacebook, FaInstagram, FaThreads } from 'react-icons/fa6';
 
 const Footer = (): React.JSX.Element => {
   const socialLinks = [
-    { name: 'Facebook', link: 'https://www.facebook.com/ntucsiecouncil', icons: FaFacebook },
-    { name: 'Instagram', link: 'https://www.instagram.com/ntucsie_council/', icons: FaInstagram },
-    { name: 'Threads', link: 'https://www.threads.net/@ntucsie_council', icons: FaThreads },
+    {
+      name: 'Facebook',
+      link: 'https://www.facebook.com/ntucsiecouncil',
+      icons: FaFacebook,
+    },
+    {
+      name: 'Instagram',
+      link: 'https://www.instagram.com/ntucsie_council/',
+      icons: FaInstagram,
+    },
+    {
+      name: 'Threads',
+      link: 'https://www.threads.net/@ntucsie_council',
+      icons: FaThreads,
+    },
   ];
 
   return (
@@ -16,20 +28,27 @@ const Footer = (): React.JSX.Element => {
           <h2 className="text-xl font-semibold">NTU CSIE Council</h2>
           <p className="text-sm text-gray-400 mt-1">
             &copy;
-            {new Date().getFullYear()}
-            {' '}
-            All rights reserved.
+            {new Date().getFullYear()} All rights reserved.
           </p>
         </div>
 
         <div className="flex space-x-8 my-4 md:my-0">
-          <a href="#" className="text-gray-400 hover:text-white transition duration-300 ease-in-out">
+          <a
+            href="#"
+            className="text-gray-400 hover:text-white transition duration-300 ease-in-out"
+          >
             首頁
           </a>
-          <a href="#" className="text-gray-400 hover:text-white transition duration-300 ease-in-out">
+          <a
+            href="#"
+            className="text-gray-400 hover:text-white transition duration-300 ease-in-out"
+          >
             關於我們
           </a>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" className="text-gray-400 hover:text-white transition duration-300 ease-in-out">
+          <a
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            className="text-gray-400 hover:text-white transition duration-300 ease-in-out"
+          >
             瑞克搖
           </a>
         </div>

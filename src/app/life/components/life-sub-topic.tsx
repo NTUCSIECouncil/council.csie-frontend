@@ -13,8 +13,11 @@ const LifeSubTopic = ({
   comment,
   commentSize = 'text-lg',
 }: LifeSubTopicProps): React.JSX.Element => {
-  const commentArray: CommentItem[]
-  = !comment ? [] : Array.isArray(comment) ? comment : [comment];
+  const commentArray: CommentItem[] = !comment
+    ? []
+    : Array.isArray(comment)
+      ? comment
+      : [comment];
 
   return (
     <div>
@@ -24,29 +27,22 @@ const LifeSubTopic = ({
         {content}
       </div>
       {commentArray.length > 0 && (
-        <div
-          className={`mt-5 ${commentSize} font-bold text-white space-y-3`}
-        >
+        <div className={`mt-5 ${commentSize} font-bold text-white space-y-3`}>
           {commentArray.map((item, idx) => (
             <div key={idx}>
-              <span>
-                {item.title}
-                ：
-              </span>
-              {typeof item.content === 'string'
-                ? (
-                    <span>{item.content}</span>
-                  )
-                : (
-                    <a
-                      href={item.content.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 underline"
-                    >
-                      {item.content.label}
-                    </a>
-                  )}
+              <span>{item.title}：</span>
+              {typeof item.content === 'string' ? (
+                <span>{item.content}</span>
+              ) : (
+                <a
+                  href={item.content.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 underline"
+                >
+                  {item.content.label}
+                </a>
+              )}
             </div>
           ))}
         </div>

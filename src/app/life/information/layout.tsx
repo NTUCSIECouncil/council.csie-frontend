@@ -3,5 +3,9 @@ import { SIDEBAR_OPTIONS } from '@/utils/life-sidebar-options';
 import LayoutBlock from '../components/life-layour-block';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <LayoutBlock optionValue={SIDEBAR_OPTIONS[SidebarOptionKey.INFORMATION]}>{children}</LayoutBlock>;
+  return (
+    <LayoutBlock optionValue={SIDEBAR_OPTIONS[SidebarOptionKey.INFORMATION]}>
+      {children}
+    </LayoutBlock>
+  );
 }

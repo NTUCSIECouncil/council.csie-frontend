@@ -1,10 +1,8 @@
 import { env } from '@/env';
 
-// eslint-disable-next-line @stylistic/operator-linebreak
 export type TabItem =
   | { type: 'text'; label: string }
-  | { type: 'image'; icon: string; alt: string }
-;
+  | { type: 'image'; icon: string; alt: string };
 
 export interface CommentLink {
   label: string;
@@ -47,7 +45,8 @@ export const homePages: HomePageType[] = [
     name: '德田生活',
     href: '/life',
     // href: '/life/information',
-    description: '德田館是資工社畜的家，每當考試前夕，總是聚集許多捲捲人，通宵在新館把所有人捲爆。',
+    description:
+      '德田館是資工社畜的家，每當考試前夕，總是聚集許多捲捲人，通宵在新館把所有人捲爆。',
     disable: false,
     gif: '/activities/azalea.png',
   },
@@ -87,7 +86,8 @@ export const lifePages: NavPageType[] = [
   {
     name: '系學會',
     href: '/life/council',
-    description: '資工系學會介紹，可以了解各部會的職責、舉辦的活動、以及運動系隊等等。',
+    description:
+      '資工系學會介紹，可以了解各部會的職責、舉辦的活動、以及運動系隊等等。',
     disable: false,
   },
   {
@@ -99,7 +99,8 @@ export const lifePages: NavPageType[] = [
   {
     name: '生活資訊',
     href: '/life/information/facility',
-    description: '介紹資工系學生日常生活會接觸到的各種資源，包含系館空間、網路服務、輔導資源、附近美食等等。',
+    description:
+      '介紹資工系學生日常生活會接觸到的各種資源，包含系館空間、網路服務、輔導資源、附近美食等等。',
     disable: false,
   },
 ];
@@ -108,7 +109,8 @@ export const sidePages: SidePageType[] = [
   {
     name: '德田生活',
     href: '/life',
-    description: '德田館是資工社畜的家，每當考試前夕，總是聚集許多捲捲人，通宵在新館把所有人捲爆。',
+    description:
+      '德田館是資工社畜的家，每當考試前夕，總是聚集許多捲捲人，通宵在新館把所有人捲爆。',
     disable: false,
   },
   {

@@ -2,9 +2,9 @@ name: CI Checks for PRs & Commits
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 # Cancel in-progress jobs if there are multiple commits
 concurrency:
@@ -42,6 +42,33 @@ jobs:
 
       - name: 🔬 Run linter
         run: pnpm run lint
+
+  format:
+    name: ⛏️ Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: 🔨 Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: 📥 Install dependencies
+        run: pnpm install
+
+      - name: 🔬 Run formatter
+        run: pnpm run format
 
   type-check:
     name: 🔍 Type Check
@@ -98,7 +125,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-      
+
       - name: 🚀 Restore NextJS cache
         uses: actions/cache@v4
         with:

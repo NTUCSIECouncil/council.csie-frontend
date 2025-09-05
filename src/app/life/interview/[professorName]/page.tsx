@@ -1,4 +1,5 @@
 import React from 'react';
+
 import LifeLink from '@/app/life/components/life-link';
 import LifeSubTopic from '@/app/life/components/life-sub-topic';
 import LifeTopic from '@/app/life/components/life-topic';
@@ -19,11 +20,17 @@ const Page = async ({
   const info = interviewData[(await params).professorName];
   return (
     <div>
-      <LifeTopic topic={info.title} mailto={info.mailto} website={info.website} author_interview={info.author} image={info.image} />
+      <LifeTopic
+        topic={info.title}
+        mailto={info.mailto}
+        website={info.website}
+        author_interview={info.author}
+        image={info.image}
+      />
       {info.content.map((item, index) => (
         <div key={index}>
           <LifeSubTopic content={item.subtopic} />
-          {(item.answers).map((ans, idx) => (
+          {item.answers.map((ans, idx) => (
             <LifeInterviewAnswer key={idx}>{ans}</LifeInterviewAnswer>
           ))}
           {item.links && (

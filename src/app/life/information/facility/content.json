@@ -1,8 +1,8 @@
 {
-  "B1":{
+  "B1": {
     "width": 757,
     "height": 524,
-    "points":[
+    "points": [
       {
         "title": "舊館地下室",
         "cx": 380,
@@ -82,8 +82,7 @@
         "cy": 300,
         "description": "系館樓下有兩張桌球桌，一張在新館門口，一張在販賣機左邊。旁邊桌上就有球具可以使用，使用完畢記得歸位！",
         "pointImageUrl": "/facility/B1/tabletennis.png"
-      }
-      ,
+      },
       {
         "title": "桌球桌二",
         "cx": 440,
@@ -156,10 +155,10 @@
       }
     ]
   },
-  "First":{
+  "First": {
     "width": 1238,
     "height": 868,
-    "points":[
+    "points": [
       {
         "title": "系館門口",
         "cx": 610,
@@ -184,10 +183,10 @@
       }
     ]
   },
-  "Second":{
+  "Second": {
     "width": 825,
     "height": 579,
-    "points":[
+    "points": [
       {
         "title": "資訊系第一辦公室",
         "cx": 300,
@@ -219,10 +218,10 @@
       }
     ]
   },
-  "MK":{
+  "MK": {
     "width": 1638,
     "height": 1244,
-    "points":[
+    "points": [
       {
         "title": "學新館",
         "cx": 590,
@@ -248,4 +247,3 @@
     ]
   }
 }
-    

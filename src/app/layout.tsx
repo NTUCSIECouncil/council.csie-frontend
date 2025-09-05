@@ -1,5 +1,7 @@
 import { type Metadata } from 'next';
+
 import './globals.css';
+
 import Footer from '@/components/footer';
 import NavBar from '@/components/nav-bar';
 import ScrollToTopButton from '@/components/scroll-to-top';
@@ -13,7 +15,11 @@ export const metadata: Metadata = {
   description: 'The database of NTU CSIE.',
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }): React.JSX.Element => {
+const RootLayout = ({
+  children,
+}: {
+  children: React.ReactNode;
+}): React.JSX.Element => {
   return (
     <html lang="en">
       <body className="text-[#d4d2d5] bg-[#1c1c29] flex flex-col min-h-screen">

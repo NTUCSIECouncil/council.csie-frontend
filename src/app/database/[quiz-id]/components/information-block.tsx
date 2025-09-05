@@ -1,5 +1,7 @@
 export const InformationBlock = ({
-  avatar, primary, secondary,
+  avatar,
+  primary,
+  secondary,
 }: {
   avatar?: React.JSX.Element;
   primary: string;

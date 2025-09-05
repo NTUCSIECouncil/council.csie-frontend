@@ -1,5 +1,7 @@
 'use client';
+
 import React, { useEffect, useState } from 'react';
+
 import LifeCourseContent from '@/app/life/components/content-block';
 import DividerBar from '@/app/life/components/divider-bar';
 import LifeLink from '@/app/life/components/life-link';
@@ -34,15 +36,20 @@ const Page = (): React.JSX.Element => {
   const [subtitles, setSubtitles] = useState<ContentItem[]>([]);
 
   useEffect(() => {
-    const selectedContent = (contentData as Record<string, { subtitles: ContentItem[] }>)[selectedTab];
+    const selectedContent = (
+      contentData as Record<string, { subtitles: ContentItem[] }>
+    )[selectedTab];
     setSubtitles(selectedContent.subtitles);
   }, [selectedTab]);
 
   return (
-
     <div>
       <div className="sticky top-18 z-20">
-        <DividerBar items={tabItems} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+        <DividerBar
+          items={tabItems}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+        />
       </div>
 
       <div className="flex flex-col items-start pb-8">

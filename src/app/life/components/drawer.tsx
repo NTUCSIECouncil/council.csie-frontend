@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { FaBars } from 'react-icons/fa6';
@@ -23,8 +24,7 @@ const Drawer = ({ choices, selected }: Props): React.JSX.Element => {
 
     const drawer = listRef.current;
     const saveScroll = () => {
-      if (drawer)
-        sessionStorage.setItem(storageKey, String(drawer.scrollTop));
+      if (drawer) sessionStorage.setItem(storageKey, String(drawer.scrollTop));
     };
     drawer?.addEventListener('scroll', saveScroll);
 
@@ -59,7 +59,6 @@ const Drawer = ({ choices, selected }: Props): React.JSX.Element => {
                        xl:bg-white/5 p-4 font-bold text-xl
                        xl:border-2 xl:rounded-2xl flex flex-col w-64 h-screen xl:h-2/3"
           >
-
             <li className="mt-20 xl:mt-0 invisible" />
 
             {choices.map(choice => (

@@ -1,13 +1,30 @@
 'use client';
-import { GoogleAuthProvider, type User, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+
+import {
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+  signOut,
+  type User,
+} from 'firebase/auth';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+
 import { auth } from '@/helpers/firebase/firebase';
 
 interface AuthRequestInit extends RequestInit {
   auth?: boolean;
 }
 
-type AuthRequest = (url: string, request?: AuthRequestInit) => Promise<Response | null>;
+type AuthRequest = (
+  url: string,
+  request?: AuthRequestInit,
+) => Promise<Response | null>;
 
 interface AuthContextProps {
   currentUser: User | null;
@@ -20,9 +37,18 @@ interface AuthContextProps {
 const AuthContext = createContext<AuthContextProps>({
   currentUser: null,
   isUserLoaded: false,
-  signIn: () => new Promise<void>(() => { return; }),
-  logOut: () => new Promise<void>(() => { return; }),
-  request: async (url: string, request: RequestInit = {}): Promise<Response | null> => {
+  signIn: () =>
+    new Promise<void>(() => {
+      return;
+    }),
+  logOut: () =>
+    new Promise<void>(() => {
+      return;
+    }),
+  request: async (
+    url: string,
+    request: RequestInit = {},
+  ): Promise<Response | null> => {
     try {
       return await fetch(url, request);
     } catch (error) {
@@ -41,7 +67,7 @@ export const AuthContextProvider = ({
   const [isUserLoaded, setIsUserLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
       if (currentUser === null) {
         setCurrentUser(null);
       } else {
@@ -77,13 +103,17 @@ export const AuthContextProvider = ({
   const signIn = async (): Promise<void> => {
     setIsUserLoaded(false);
     const provider = new GoogleAuthProvider();
-    if (window.confirm(`
+    if (
+      window.confirm(
+        `
 Please **DON'T** sign in with in-app browser like Instagram, Facebook or LINE browser. Google Oauth blocks access from insecure browsers.
 On mobile devices, use Chrome or Safari instead.
 
 請**勿**使用應用程式內建瀏覽器登入，如 IG、FB 或 LINE。Google Oauth 拒絕來自不安全瀏覽器的連線。
 若為行動裝置，請在 Chrome 或 Safari 上登入。
-    `.trim())) {
+    `.trim(),
+      )
+    ) {
       await signInWithPopup(auth, provider);
       window.location.reload();
     }
@@ -93,35 +123,42 @@ On mobile devices, use Chrome or Safari instead.
     await signOut(auth);
   };
 
-  const request = useCallback(async (url: string, {
-    auth = true,
-    headers = {},
-    ...options
-  }: AuthRequestInit = {}): Promise<Response | null> => {
-    try {
-      const realHeaders = new Headers(headers);
-      if (isUserLoaded && currentUser !== null && auth) {
-        realHeaders.set('Authorization', `Bearer ${await currentUser.getIdToken()}`);
-        // headers.Authorization = `Bearer ${await user.getIdToken()}`;
+  const request = useCallback(
+    async (
+      url: string,
+      { auth = true, headers = {}, ...options }: AuthRequestInit = {},
+    ): Promise<Response | null> => {
+      try {
+        const realHeaders = new Headers(headers);
+        if (isUserLoaded && currentUser !== null && auth) {
+          realHeaders.set(
+            'Authorization',
+            `Bearer ${await currentUser.getIdToken()}`,
+          );
+          // headers.Authorization = `Bearer ${await user.getIdToken()}`;
+        }
+        const newOptions: RequestInit = {
+          headers: realHeaders,
+          ...options,
+        };
+        return await fetch(url, newOptions);
+      } catch (error) {
+        console.log(error);
+        return null;
       }
-      const newOptions: RequestInit = {
-        headers: realHeaders, ...options,
-      };
-      return await fetch(url, newOptions);
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
-  }, [isUserLoaded, currentUser]);
+    },
+    [isUserLoaded, currentUser],
+  );
 
   return (
-    <AuthContext.Provider value={{
-      currentUser,
-      isUserLoaded,
-      signIn,
-      logOut,
-      request,
-    }}
+    <AuthContext.Provider
+      value={{
+        currentUser,
+        isUserLoaded,
+        signIn,
+        logOut,
+        request,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -46,9 +46,7 @@ export const Filter = ({ filterKey, name }: FilterProps) => {
     <DropdownSelect
       key={FILTER_OPTIONS[filterKey].key}
       choices={FILTER_OPTIONS[filterKey].choices}
-      defaultValue={
-        FILTER_OPTIONS[filterKey].defaultValue
-      }
+      defaultValue={FILTER_OPTIONS[filterKey].defaultValue}
       name={name}
     />
   );

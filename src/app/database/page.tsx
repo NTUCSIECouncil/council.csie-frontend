@@ -1,5 +1,7 @@
 'use client';
+
 import { useRouter } from 'next/navigation';
+
 import { Filter, FilterOptionKey } from '@/components/filter';
 import Search from '@/components/search';
 import searchRedirect from '@/utils/search-redirect';
@@ -12,7 +14,9 @@ const Page = (): React.JSX.Element => {
     <main className="flex flex-1 justify-center items-center">
       <Background />
       <div className="relative">
-        <p className="text-5xl font-bold my-4 tracking-widest text-center">課程資料庫</p>
+        <p className="text-5xl font-bold my-4 tracking-widest text-center">
+          課程資料庫
+        </p>
         <form
           action={searchRedirect(router, '/database/filter-results')}
           className="w-[500px] flex flex-col items-center"
