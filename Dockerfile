@@ -28,7 +28,7 @@ RUN grep -v '^NEXT_PUBLIC_' .env.example > .env
 RUN [ -f .env.static ] || { echo 'Error: .env.static file is required but not found'; exit 1; }
 RUN cat .env.static >> .env
 
-RUN pnpm install --offline -r
+RUN pnpm install --offline
 RUN pnpm run build
 
 # Production image, copy all the files and run next
