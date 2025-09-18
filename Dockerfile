@@ -22,7 +22,8 @@ RUN pnpm fetch
 ENV NEXT_TELEMETRY_DISABLED=1
 
 COPY . /app
-COPY .env.example .env
+# Copy those not starting with NEXT_PUBLIC_ to .env. They are just to bypass the requirement of runtime env vars.
+RUN grep -v '^NEXT_PUBLIC_' .env.example > .env
 # Make sure .env.static exists
 RUN test -f .env.static
 RUN cat .env.static >> .env
