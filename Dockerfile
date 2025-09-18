@@ -25,7 +25,7 @@ COPY . /app
 # Copy those not starting with NEXT_PUBLIC_ to .env. They are just to bypass the requirement of runtime env vars.
 RUN grep -v '^NEXT_PUBLIC_' .env.example > .env
 # Make sure .env.static exists
-RUN test -f .env.static
+RUN [ -f .env.static ] || { echo 'Error: .env.static file is required but not found'; exit 1; }
 RUN cat .env.static >> .env
 
 RUN pnpm install --offline -r
