@@ -19,7 +19,7 @@ export const LifeSidebar = ({ optionValue }: SidebarProps) => {
   }
 
   return (
-    <div className="w-64 z-40">
+    <div className="fixed md:static w-64 z-40">
       <div className="fixed">
         <Drawer choices={choices} selected={selected} />
       </div>
