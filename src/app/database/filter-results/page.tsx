@@ -39,7 +39,7 @@ const Page = async (params: {
   if (offset !== 0) queryParams.append('offset', offset.toString());
   if (limit !== 0) queryParams.append('limit', limit.toString());
 
-  const url = `/api/courses/search?${queryParams.toString()}`;
+  const url = `/api/courses?${queryParams.toString()}`;
   const res = await serverFetch(url, { cache: 'no-store' });
   if (res.status != 200) throw Error('Unknown error');
   const ret = (await res.json()) as CourseResponse;

@@ -30,7 +30,7 @@ const Page = async (props: {
   queryParams.append('limit', limit.toString());
   if (offset) queryParams.append('offset', offset);
 
-  const url = `/api/articles/search?${queryParams.toString()}`;
+  const url = `/api/articles?${queryParams.toString()}`;
   const res = await serverFetch(url, { cache: 'no-store' });
   if (res.status != 200) throw Error('Unknown error');
   const filterResult = (await res.json()) as ArticleResponse;
