@@ -1,5 +1,6 @@
 {
   "type": "module",
+  "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "preinstall": "npx only-allow pnpm",
