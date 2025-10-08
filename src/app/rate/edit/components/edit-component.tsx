@@ -1,0 +1,97 @@
+'use client';
+
+import { useState } from 'react';
+import { FaFilter } from 'react-icons/fa';
+
+import SearchFilterPanel from '@/app/rate/components/search-filter-panel';
+import ContentEditor from './content-editor';
+import CourseSearch, { type Course } from './course-search';
+import Disclaimer from './disclaimer';
+
+interface Props {
+  selectedCourse: Course | null;
+  onCourseSelect: (course: Course | null) => void;
+  content: string;
+  onContentChange: (content: string) => void;
+  selectedTags: string[];
+  onTagsChange: (tags: string[]) => void;
+  title: string;
+  onTitleChange: (title: string) => void;
+}
+
+const EditComponent = ({
+  selectedCourse,
+  onCourseSelect,
+  content,
+  onContentChange,
+  selectedTags,
+  onTagsChange,
+  title,
+  onTitleChange,
+}: Props): React.JSX.Element => {
+  const [showTagFilter, setShowTagFilter] = useState(false);
+
+  return (
+    <>
+      {/* Post Title Input */}
+      <div className="w-full px-4 my-4">
+        <label className="block text-lg font-medium mb-4 text-white">
+          標題 <span className="text-red-400">*</span>
+        </label>
+        <input
+          type="text"
+          placeholder="請輸入評價標題..."
+          className="w-full px-4 py-3 border border-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 bg-[#1c1c29] bg-opacity-50 text-white placeholder:text-gray-400"
+          value={title}
+          onChange={e => onTitleChange(e.target.value)}
+        />
+      </div>
+
+      {/* Course Selection */}
+      <div className="w-full px-4 my-4">
+        <CourseSearch
+          selectedCourse={selectedCourse}
+          onCourseSelect={onCourseSelect}
+        />
+      </div>
+
+      {/* Content Editor */}
+      <div className="w-full px-4 my-4">
+        <ContentEditor content={content} onContentChange={onContentChange} />
+      </div>
+
+      {/* Tag Selection */}
+      <div className="w-full px-4 my-4">
+        <div className="flex items-center justify-between mb-4">
+          <label className="block text-lg font-medium text-white">標籤</label>
+          <button
+            type="button"
+            onClick={() => setShowTagFilter(true)}
+            className="flex items-center gap-2 px-4 py-2 bg-slate-300 text-slate-900 rounded-xl hover:bg-slate-400 transition"
+          >
+            <FaFilter />
+            篩選標籤
+          </button>
+        </div>
+      </div>
+
+      {/* Disclaimer */}
+      <div className="w-full px-4 my-4">
+        <Disclaimer />
+      </div>
+
+      {/* Tag Filter Modal */}
+      {showTagFilter && (
+        <div className="fixed inset-0 z-50">
+          <SearchFilterPanel
+            selectedTags={selectedTags}
+            onTagsChange={onTagsChange}
+            onClose={() => setShowTagFilter(false)}
+          />
+        </div>
+      )}
+    </>
+  );
+};
+
+export default EditComponent;

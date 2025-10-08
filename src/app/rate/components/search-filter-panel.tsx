@@ -5,6 +5,8 @@ import { FaTimes } from 'react-icons/fa';
 
 interface Props {
   onClose: () => void;
+  selectedTags?: string[];
+  onTagsChange?: (tags: string[]) => void;
 }
 
 const COMMON_TAGS = [
@@ -42,9 +44,13 @@ const COMMON_TAGS = [
   '電機系',
 ];
 
-const SearchFilterPanel = ({ onClose }: Props): React.JSX.Element => {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+const SearchFilterPanel = ({ onClose, selectedTags: externalSelectedTags, onTagsChange: externalOnTagsChange }: Props): React.JSX.Element => {
+  const [internalSelectedTags, setInternalSelectedTags] = useState<string[]>([]);
   const [searchText, setSearchText] = useState('');
+
+  // Use external tags if provided, otherwise use internal state
+  const selectedTags = externalSelectedTags ?? internalSelectedTags;
+  const setSelectedTags = externalOnTagsChange ?? setInternalSelectedTags;
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -57,9 +63,18 @@ const SearchFilterPanel = ({ onClose }: Props): React.JSX.Element => {
   }, [onClose]);
 
   const toggleTag = (tag: string) => {
-    setSelectedTags(prev =>
-      prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag],
-    );
+    if (externalOnTagsChange) {
+      // External mode: call the provided callback
+      const newTags = selectedTags.includes(tag) 
+        ? selectedTags.filter(t => t !== tag) 
+        : [...selectedTags, tag];
+      externalOnTagsChange(newTags);
+    } else {
+      // Internal mode: update internal state
+      setInternalSelectedTags(prev =>
+        prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag],
+      );
+    }
   };
 
   const filteredTags = COMMON_TAGS.filter(
