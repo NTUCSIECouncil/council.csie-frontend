@@ -8,7 +8,7 @@ interface Props {
 
 const ClickableTag = ({ tag }: Props): React.JSX.Element => {
   const router = useRouter();
-  
+
   const handleTagClick = () => {
     router.push(`/rate/filter-results?tags=${encodeURIComponent(tag)}`);
   };

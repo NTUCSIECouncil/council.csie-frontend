@@ -65,4 +65,3 @@ const CollapsibleCourseInfo = ({
 };
 
 export default CollapsibleCourseInfo;
-

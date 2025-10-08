@@ -2,14 +2,13 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { BsFilterLeft } from 'react-icons/bs';
+import { FaPen } from 'react-icons/fa6';
 
 import SearchFilterPanel from '@/app/rate/components/search-filter-panel';
 import Search from '@/components/search';
 import searchRedirect from '@/utils/search-redirect';
 import Background from './background';
-
-import { FaPen } from 'react-icons/fa6';
-import { BsFilterLeft } from "react-icons/bs";
 
 const Page = (): React.JSX.Element => {
   const router = useRouter();

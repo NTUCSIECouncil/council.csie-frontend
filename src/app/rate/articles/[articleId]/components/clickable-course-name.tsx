@@ -8,9 +8,11 @@ interface Props {
 
 const ClickableCourseName = ({ courseName }: Props): React.JSX.Element => {
   const router = useRouter();
-  
+
   const handleCourseClick = () => {
-    router.push(`/rate/filter-results?keyword=${encodeURIComponent(courseName)}`);
+    router.push(
+      `/rate/filter-results?keyword=${encodeURIComponent(courseName)}`,
+    );
   };
 
   return (

@@ -44,8 +44,14 @@ const COMMON_TAGS = [
   '電機系',
 ];
 
-const SearchFilterPanel = ({ onClose, selectedTags: externalSelectedTags, onTagsChange: externalOnTagsChange }: Props): React.JSX.Element => {
-  const [internalSelectedTags, setInternalSelectedTags] = useState<string[]>([]);
+const SearchFilterPanel = ({
+  onClose,
+  selectedTags: externalSelectedTags,
+  onTagsChange: externalOnTagsChange,
+}: Props): React.JSX.Element => {
+  const [internalSelectedTags, setInternalSelectedTags] = useState<string[]>(
+    [],
+  );
   const [searchText, setSearchText] = useState('');
 
   // Use external tags if provided, otherwise use internal state
@@ -65,8 +71,8 @@ const SearchFilterPanel = ({ onClose, selectedTags: externalSelectedTags, onTags
   const toggleTag = (tag: string) => {
     if (externalOnTagsChange) {
       // External mode: call the provided callback
-      const newTags = selectedTags.includes(tag) 
-        ? selectedTags.filter(t => t !== tag) 
+      const newTags = selectedTags.includes(tag)
+        ? selectedTags.filter(t => t !== tag)
         : [...selectedTags, tag];
       externalOnTagsChange(newTags);
     } else {
