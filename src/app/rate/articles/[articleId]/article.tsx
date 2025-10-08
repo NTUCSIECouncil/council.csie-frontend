@@ -2,30 +2,11 @@ import { notFound } from 'next/navigation';
 import { FaCalendarAlt, FaUser } from 'react-icons/fa';
 import Markdown from 'react-markdown';
 
-import PreviousPageButton from '@/components/previous-page-button';
 import { type Article, type Course } from '@/types/backend';
 import serverFetch from '@/utils/server-fetch';
 import ClickableTag from './components/clickable-tag';
 import CollapsibleCourseInfo from './components/collapsible-course-info';
 import EditButton from './components/edit-button';
-
-interface ArticleResponse {
-  article: Article;
-  course?: Course;
-}
-
-interface ArticleContentResponse {
-  file: string;
-}
-
-const mockCourse = {
-  _id: 'course-123' as const,
-  curriculum: 'CSIE1212',
-  lecturer: '劉邦鋒',
-  names: ['計算機程式設計', 'Computer Programming'],
-  credit: 3,
-  categories: ['必修', '程式設計'],
-};
 
 const mockMetrics = {
   createdAt: '2024-03-15',
@@ -43,7 +24,7 @@ const Article = async ({
     if (res.status === 404) notFound();
     throw new Error('Failed to fetch response');
   }
-  const articleMetaResponse = (await res.json()) as ArticleResponse;
+  const articleMetaResponse = (await res.json()) as { article: Article };
   const articleMeta = articleMetaResponse.article;
 
   console.log('Fetched article metadata:', articleMetaResponse);
@@ -55,15 +36,20 @@ const Article = async ({
     if (resContent.status === 404) notFound();
     throw new Error('Failed to fetch response');
   }
-  const contentData = (await resContent.json()) as ArticleContentResponse;
-  const content = contentData.file;
+  const content = ((await resContent.json()) as { file: string }).file;
 
-  const courseData = mockCourse;
+  const courseRes = await serverFetch(`/api/courses/${articleMeta.course}`, {
+    cache: 'no-store',
+  });
+  if (!courseRes.ok) {
+    if (courseRes.status === 404) notFound();
+    throw new Error('Failed to fetch response');
+  }
+
+  const courseMeta = ((await courseRes.json()) as { course: Course }).course;
 
   return (
     <>
-      <PreviousPageButton />
-
       {/* Post Title and Author */}
       <div className="w-full flex justify-between items-end my-4 px-4">
         <h1 className="font-bold text-4xl text-white">{articleMeta.title}</h1>
@@ -77,7 +63,7 @@ const Article = async ({
 
       {/* Course Information - Collapsible */}
       <CollapsibleCourseInfo
-        courseData={courseData}
+        courseData={courseMeta}
         semester={articleMeta.semester}
       />
 
