@@ -10,6 +10,10 @@ interface ArticleResponse {
   article: Article;
 }
 
+interface ArticleContentResponse {
+  file: string;
+}
+
 const Article = async ({
   articleId,
 }: {
@@ -32,7 +36,8 @@ const Article = async ({
     if (resContent.status === 404) notFound();
     throw new Error('Failed to fetch response');
   }
-  const content = await resContent.text();
+  const contentData = (await resContent.json()) as ArticleContentResponse;
+  const content = contentData.file;
 
   return (
     <>
@@ -47,7 +52,7 @@ const Article = async ({
           {articleMeta.tags.map(tag => tag && <Tag content={tag} key={tag} />)}
         </div>
       </div>
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start prose prose-slate max-w-none">
         <Markdown>{content}</Markdown>
       </div>
     </>
