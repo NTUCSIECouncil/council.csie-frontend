@@ -14,6 +14,10 @@ interface ArticleResponse {
   course?: Course;
 }
 
+interface ArticleContentResponse {
+  file: string;
+}
+
 const mockCourse = {
   _id: 'course-123' as const,
   curriculum: 'CSIE1212',
@@ -51,7 +55,8 @@ const Article = async ({
     if (resContent.status === 404) notFound();
     throw new Error('Failed to fetch response');
   }
-  const content = await resContent.text();
+  const contentData = (await resContent.json()) as ArticleContentResponse;
+  const content = contentData.file;
 
   const courseData = mockCourse;
 
@@ -95,7 +100,7 @@ const Article = async ({
       </div>
 
       {/* Content */}
-      <div className="flex flex-col items-start w-full px-4 text-white">
+      <div className="flex flex-col items-start prose prose-slate max-w-none">
         <Markdown>{content}</Markdown>
       </div>
     </>
