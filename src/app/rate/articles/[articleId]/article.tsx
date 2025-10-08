@@ -1,18 +1,31 @@
 import { notFound } from 'next/navigation';
+import { FaCalendarAlt, FaUser } from 'react-icons/fa';
 import Markdown from 'react-markdown';
 
 import PreviousPageButton from '@/components/previous-page-button';
-import Tag from '@/components/tag';
-import { type Article } from '@/types/backend';
+import { type Article, type Course } from '@/types/backend';
 import serverFetch from '@/utils/server-fetch';
+import ClickableTag from './components/clickable-tag';
+import CollapsibleCourseInfo from './components/collapsible-course-info';
+import EditButton from './components/edit-button';
 
 interface ArticleResponse {
   article: Article;
+  course?: Course;
 }
 
-interface ArticleContentResponse {
-  file: string;
-}
+const mockCourse = {
+  _id: 'course-123' as const,
+  curriculum: 'CSIE1212',
+  lecturer: '劉邦鋒',
+  names: ['計算機程式設計', 'Computer Programming'],
+  credit: 3,
+  categories: ['必修', '程式設計'],
+};
+
+const mockMetrics = {
+  createdAt: '2024-03-15',
+};
 
 const Article = async ({
   articleId,
@@ -26,33 +39,63 @@ const Article = async ({
     if (res.status === 404) notFound();
     throw new Error('Failed to fetch response');
   }
-  const articleMetaRespoonse = (await res.json()) as ArticleResponse;
-  const articleMeta = articleMetaRespoonse.article;
+  const articleMetaResponse = (await res.json()) as ArticleResponse;
+  const articleMeta = articleMetaResponse.article;
+
+  console.log('Fetched article metadata:', articleMetaResponse);
 
   const resContent = await serverFetch(`/api/articles/${articleId}/file`, {
     cache: 'no-store',
   });
-  if (resContent.status != 200) {
+  if (!resContent.ok) {
     if (resContent.status === 404) notFound();
     throw new Error('Failed to fetch response');
   }
-  const contentData = (await resContent.json()) as ArticleContentResponse;
-  const content = contentData.file;
+  const content = await resContent.text();
+
+  const courseData = mockCourse;
 
   return (
     <>
       <PreviousPageButton />
-      <div className="w-full flex justify-between items-end my-2 px-4">
-        <p className="font-bold text-5xl">{articleMeta.title}</p>
-        <p className="font text-2xl">{articleMeta.creator}</p>
-      </div>
-      <hr className="w-full border-gray-500 border-t-4" />
-      <div className="w-full flex gap-3 justify-end my-2">
-        <div className="flex gap-1 items-center">
-          {articleMeta.tags.map(tag => tag && <Tag content={tag} key={tag} />)}
+
+      {/* Post Title and Author */}
+      <div className="w-full flex justify-between items-end my-4 px-4">
+        <h1 className="font-bold text-4xl text-white">{articleMeta.title}</h1>
+        <div className="flex items-center gap-1 text-white">
+          <FaUser />
+          <span className="text-xl">{articleMeta.creator}</span>
         </div>
       </div>
-      <div className="flex flex-col items-start prose prose-slate max-w-none">
+
+      <hr className="w-full border-gray-500 border-t-4" />
+
+      {/* Course Information - Collapsible */}
+      <CollapsibleCourseInfo
+        courseData={courseData}
+        semester={articleMeta.semester}
+      />
+
+      {/* Tags and Metrics */}
+      <div className="w-full flex gap-3 justify-between items-center my-4 px-4">
+        <div className="flex gap-1 items-center">
+          {articleMeta.tags.map(
+            tag => tag && <ClickableTag key={tag} tag={tag} />,
+          )}
+        </div>
+
+        <div className="flex items-center gap-4 text-sm text-gray-300">
+          <div className="flex items-center gap-1">
+            <FaCalendarAlt />
+            <span>{mockMetrics.createdAt}</span>
+          </div>
+
+          <EditButton articleId={articleId} />
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col items-start w-full px-4 text-white">
         <Markdown>{content}</Markdown>
       </div>
     </>
