@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { FaCalendarAlt, FaUser } from 'react-icons/fa';
+import { FaCalendarAlt, FaTags, FaUser } from 'react-icons/fa';
 import Markdown from 'react-markdown';
 
 import { type Article, type Course } from '@/types/backend';
@@ -68,15 +68,19 @@ const Article = async ({
       />
 
       {/* Tags and Metrics */}
-      <div className="w-full flex gap-3 justify-between items-center my-4 px-4">
-        <div className="flex gap-1 items-center">
-          {articleMeta.tags.map(
-            tag => tag && <ClickableTag key={tag} tag={tag} />,
-          )}
+      <div className="w-full flex gap-3 justify-between items-start my-4 px-4">
+        <div className="flex items-center gap-2 mb-3">
+          <FaTags className="text-white" />
+          <span className="text-lg font-semibold text-white">標籤</span>
+          <div className="flex gap-1 items-start px-2">
+            {articleMeta.tags.map(
+              tag => tag && <ClickableTag key={tag} tag={tag} />,
+            )}
+          </div>
         </div>
 
         <div className="flex items-center gap-4 text-sm text-gray-300">
-          <div className="flex items-center gap-1">
+          <div className="flex items-end gap-1">
             <FaCalendarAlt />
             <span>{mockMetrics.createdAt}</span>
           </div>
