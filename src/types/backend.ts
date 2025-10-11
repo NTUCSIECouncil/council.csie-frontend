@@ -23,12 +23,12 @@ export interface Course {
 export interface Quiz {
   _id: UUID;
   course: UUID;
-  uploader: UUID;
-  session: 'midterm' | 'final' | 'first' | 'second';
+  uploader: UUID | User;
+  session: 'midterm' | 'final' | 'first' | 'second' | 'other';
 }
 
 export interface User {
   _id: string;
   email: string;
-  name: string;
+  nickname: string;
 }
