@@ -1,13 +1,15 @@
 import { type UUID } from 'crypto';
 
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
-import { IoMdLink } from 'react-icons/io';
 
+import { env } from '@/env';
 import { type Course, type Quiz, type User } from '@/types/backend';
 import serverFetch from '@/utils/server-fetch';
 import Background from '../filter-results/background';
+import DownloadLink from './components/download-link';
+
+const BACKEND_URL = env.API_BASE_URL;
 
 interface QuizResponse {
   quizzes: Quiz[];
@@ -51,7 +53,6 @@ const Page = async (props: {
     queryParams.append('offset', (currentPage * limit).toString());
   queryParams.append('embed[0]', 'uploader');
   const url = `/api/courses/${course}/quizzes?${queryParams}`;
-  console.log(url);
   const res = await serverFetch(url, { cache: 'force-cache' });
   if (res.status != 200) {
     if (res.status === 404) notFound();
@@ -112,9 +113,10 @@ const Page = async (props: {
                       {(quiz.uploader as User).nickname}
                     </td>
                     <td className="px-6 py-3 flex justify-center">
-                      <Link key={quiz._id} href="https://www.example.com/">
-                        <IoMdLink className="xl:text-2xl text-xl text-white -rotate-45" />
-                      </Link>
+                      <DownloadLink
+                        quizId={quiz._id}
+                        BACKEND_URL={BACKEND_URL}
+                      />
                     </td>
                   </tr>
                 ))}
