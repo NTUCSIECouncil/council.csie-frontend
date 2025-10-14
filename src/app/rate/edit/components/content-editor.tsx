@@ -77,14 +77,14 @@ const ContentEditor = ({
           }}
         >
           <div
-            className="bg-white rounded-2xl shadow-2xl p-6 w-[600px] max-w-full max-h-[80vh] overflow-y-auto"
+            className="bg-gray-800 rounded-2xl shadow-2xl p-6 w-[600px] max-w-full max-h-[80vh] overflow-y-auto"
             onClick={e => {
               e.stopPropagation();
             }}
           >
             <h3 className="text-xl font-semibold mb-4">課程心得模板</h3>
 
-            <pre className="bg-gray-50 p-4 rounded-xl text-sm whitespace-pre-wrap overflow-x-auto mb-4 border">
+            <pre className="bg-gray-700 p-4 rounded-xl text-sm whitespace-pre-wrap overflow-x-auto mb-4 border">
               {SAMPLE_TEMPLATE}
             </pre>
 

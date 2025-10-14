@@ -18,7 +18,7 @@ const ClickableCourseName = ({ courseName }: Props): React.JSX.Element => {
   return (
     <button
       onClick={handleCourseClick}
-      className="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors font-medium text-left"
+      className="text-blue-400 hover:text-blue-300 hover:underline transition-colors font-medium text-left cursor-pointer"
     >
       {courseName}
     </button>

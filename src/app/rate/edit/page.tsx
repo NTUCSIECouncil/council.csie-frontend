@@ -3,10 +3,9 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import PreviousPageButton from '@/components/previous-page-button';
+import ArticleDisplay from '@/app/rate/articles/[articleId]/components/article-display';
 import { type Course } from './components/course-search';
 import EditComponent from './components/edit-component';
-import PreviewComponent from './components/preview-component';
 
 type TabType = 'edit' | 'preview';
 
@@ -80,7 +79,7 @@ const NewPostPage = (): React.JSX.Element => {
               className={`px-6 py-2 rounded-lg font-medium transition ${
                 activeTab === 'edit'
                   ? 'bg-slate-300 text-slate-900'
-                  : 'text-gray-300 hover:text-white'
+                  : 'text-gray-300 hover:text-white cursor-pointer'
               }`}
             >
               編輯
@@ -90,7 +89,7 @@ const NewPostPage = (): React.JSX.Element => {
               className={`px-6 py-2 rounded-lg font-medium transition ${
                 activeTab === 'preview'
                   ? 'bg-slate-300 text-slate-900'
-                  : 'text-gray-300 hover:text-white'
+                  : 'text-gray-300 hover:text-white cursor-pointer'
               }`}
             >
               預覽
@@ -147,12 +146,30 @@ const NewPostPage = (): React.JSX.Element => {
             )}
           </form>
         ) : (
-          <PreviewComponent
-            title={title}
-            content={content}
-            course={selectedCourse}
-            tags={selectedTags}
-            author="預覽使用者"
+          // Preview Mode
+          <ArticleDisplay
+            articleData={{
+              title: title || '課程評價標題',
+              creator: '預覽使用者',
+              content: content,
+              tags: selectedTags,
+              createdAt: new Date().toISOString().split('T')[0],
+            }}
+            courseData={
+              selectedCourse
+                ? {
+                    names: [selectedCourse.name],
+                    curriculum: selectedCourse.code,
+                    lecturer: selectedCourse.professor,
+                  }
+                : {
+                    names: ['請選擇課程'],
+                    curriculum: '',
+                    lecturer: '',
+                  }
+            }
+            semester={selectedCourse?.year || ''}
+            showEditButton={false}
           />
         )}
       </div>
