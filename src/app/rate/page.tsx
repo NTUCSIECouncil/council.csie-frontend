@@ -21,7 +21,7 @@ const Page = (): React.JSX.Element => {
         </p>
         <form
           action={searchRedirect(router, '/rate/filter-results')}
-          className="w-[500px] flex flex-col items-center -translate-x-6"
+          className="md:w-[500px] flex flex-col items-center -translate-x-6"
         >
           <Search
             className="my-2 w-full"
