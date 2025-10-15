@@ -9,7 +9,7 @@ const DownloadLink = ({
   quizId: string;
   BACKEND_URL: string;
 }) => {
-  const fetchFile = async () => {
+  const fetchFile = () => {
     const url = `/api/quizzes/${quizId}/file`;
     window.open(BACKEND_URL + url);
   };
