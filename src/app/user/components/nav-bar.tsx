@@ -2,8 +2,6 @@
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useRouter } from 'next/navigation';
 import { FaUser } from 'react-icons/fa6';
 
 import { env } from '@/env';
@@ -15,9 +13,6 @@ const pages = homePages;
 
 const NavBar = (): React.JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
-  const router = useRouter();
-  const pathname = usePathname();
-  const display_navigation_option = (pathname != "/user");
 
   const handlePromise = (promiseFunction: () => Promise<void>): void => {
     promiseFunction()
@@ -36,7 +31,6 @@ const NavBar = (): React.JSX.Element => {
             NTU CSIE
           </Link>
         </div>
-        {display_navigation_option && (
         <div className="flex-auto items-center">
           <div className="lg:hidden px-4">
             <Menu as="div" className="relative inline-block text-left">
@@ -97,7 +91,6 @@ const NavBar = (): React.JSX.Element => {
             )}
           </div>
         </div>
-        )}
 
         {/* <div className="flex items-center space-x-4"> */}
         {env.NEXT_PUBLIC_ENABLE_LOGIN && (
@@ -139,7 +132,7 @@ const NavBar = (): React.JSX.Element => {
                     <div
                       className="prone text-center cursor-pointer hover:bg-gray-700 transition-colors"
                       onClick={() => {
-                        router.push('/user');
+                        /* Handle Profile Click */
                       }}
                     >
                       Profile
