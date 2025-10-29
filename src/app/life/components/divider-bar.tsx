@@ -15,7 +15,7 @@ const DividerBar = ({
 }: DividerBarProps): React.JSX.Element => {
   return (
     <div className="bg-[#1c1c29] py-2">
-      <div className="flex justify-between mx-auto px-4 text-white text-lg border-b-2 border-[#d4d2d5]">
+      <div className="h-12 items-center flex justify-between mx-auto px-4 text-white text-lg border-b-2 border-[#d4d2d5]">
         {items.map(item => {
           const value = item.type === 'text' ? item.label : item.alt;
           const isSelected = selectedTab === value;
