@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import ArticleDisplay from '@/app/rate/articles/[articleId]/components/article-display';
-import { type Course } from './components/course-search';
+import { Course } from '@/types/backend';
 import EditComponent from './components/edit-component';
 
 type TabType = 'edit' | 'preview';
@@ -33,35 +33,36 @@ const NewPostPage = (): React.JSX.Element => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    return;
+    // e.preventDefault();
 
-    if (!isFormValid()) return;
+    // if (!isFormValid()) return;
 
-    setIsSubmitting(true);
+    // setIsSubmitting(true);
 
-    try {
-      // TODO: Replace with actual API call
-      const postData = {
-        title: title.trim(),
-        courseId: selectedCourse!.id,
-        content: content.trim(),
-        tags: selectedTags,
-        timestamp: new Date().toISOString(),
-      };
+    // try {
+    //   // TODO: Replace with actual API call
+    //   const postData = {
+    //     title: title.trim(),
+    //     courseId: selectedCourse!.id,
+    //     content: content.trim(),
+    //     tags: selectedTags,
+    //     timestamp: new Date().toISOString(),
+    //   };
 
-      console.log('Submitting post:', postData);
+    //   console.log('Submitting post:', postData);
 
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+    //   // Simulate API call
+    //   await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Redirect to success page or back to rate page
-      router.push('/rate');
-    } catch (error) {
-      console.error('Error submitting post:', error);
-      // TODO: Show error message to user
-    } finally {
-      setIsSubmitting(false);
-    }
+    //   // Redirect to success page or back to rate page
+    //   router.push('/rate');
+    // } catch (error) {
+    //   console.error('Error submitting post:', error);
+    //   // TODO: Show error message to user
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
   };
 
   const handleCancel = () => {
@@ -147,30 +148,31 @@ const NewPostPage = (): React.JSX.Element => {
           </form>
         ) : (
           // Preview Mode
-          <ArticleDisplay
-            articleData={{
-              title: title || '課程評價標題',
-              creator: '預覽使用者',
-              content: content,
-              tags: selectedTags,
-              createdAt: new Date().toISOString().split('T')[0],
-            }}
-            courseData={
-              selectedCourse
-                ? {
-                    names: [selectedCourse.name],
-                    curriculum: selectedCourse.code,
-                    lecturer: selectedCourse.professor,
-                  }
-                : {
-                    names: ['請選擇課程'],
-                    curriculum: '',
-                    lecturer: '',
-                  }
-            }
-            semester={selectedCourse?.year || ''}
-            showEditButton={false}
-          />
+          <div className="mb-20">Preview Mode</div>
+          // <ArticleDisplay
+          //   articleData={{
+          //     title: title || '課程評價標題',
+          //     creator: '預覽使用者',
+          //     content: content,
+          //     tags: selectedTags,
+          //     createdAt: new Date().toISOString().split('T')[0],
+          //   }}
+          //   courseData={
+          //     selectedCourse
+          //       ? {
+          //           names: [selectedCourse.name],
+          //           curriculum: selectedCourse.code,
+          //           lecturer: selectedCourse.professor,
+          //         }
+          //       : {
+          //           names: ['請選擇課程'],
+          //           curriculum: '',
+          //           lecturer: '',
+          //         }
+          //   }
+          //   semester={selectedCourse?.year || ''}
+          //   showEditButton={false}
+          // />
         )}
       </div>
     </main>

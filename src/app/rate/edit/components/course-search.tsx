@@ -1,15 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FaSearch, FaTimes } from 'react-icons/fa';
 
-export interface Course {
-  id: string;
-  name: string;
-  code: string;
-  year: string;
-  professor: string;
-}
+import { Course } from '@/types/backend';
+import clientFetch from '@/utils/client-fetch';
 
 interface Props {
   selectedCourse: Course | null;
@@ -17,44 +12,14 @@ interface Props {
   disabled?: boolean;
 }
 
-// Mock data for development - in real implementation this would come from API
-const MOCK_COURSES: Course[] = [
-  {
-    id: '1',
-    name: '計算機程式設計',
-    code: 'CSIE1212',
-    year: '2024',
-    professor: '劉邦鋒',
-  },
-  {
-    id: '2',
-    name: '資料結構與演算法',
-    code: 'CSIE2310',
-    year: '2024',
-    professor: '陳縕儂',
-  },
-  {
-    id: '3',
-    name: '機率統計',
-    code: 'MATH2810',
-    year: '2024',
-    professor: '林軒田',
-  },
-  {
-    id: '4',
-    name: '離散數學',
-    code: 'CSIE1310',
-    year: '2024',
-    professor: '呂學一',
-  },
-  {
-    id: '5',
-    name: '計算機組織',
-    code: 'CSIE2340',
-    year: '2024',
-    professor: '洪士灝',
-  },
-];
+interface APIResponse {
+  courses: Course[];
+  meta: {
+    total: number;
+    offset: number;
+    limit: number;
+  };
+}
 
 const CourseSearch = ({
   selectedCourse,
@@ -63,13 +28,50 @@ const CourseSearch = ({
 }: Props): React.JSX.Element => {
   const [searchText, setSearchText] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const filteredCourses = MOCK_COURSES.filter(
-    course =>
-      course.name.toLowerCase().includes(searchText.toLowerCase()) ||
-      course.code.toLowerCase().includes(searchText.toLowerCase()) ||
-      course.professor.toLowerCase().includes(searchText.toLowerCase()),
-  );
+  const fetchCourses = useCallback(async (keyword: string) => {
+    if (!keyword.trim()) {
+      setCourses([]);
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const params = new URLSearchParams({
+        keyword,
+        limit: '20',
+      });
+      const res = await clientFetch(`/api/courses?${params.toString()}`, {
+        cache: 'force-cache',
+      });
+      if (!res.ok) {
+        setCourses([]);
+        return;
+      }
+
+      const data: APIResponse = await res.json();
+      console.log(data);
+      console.log(data.courses);
+      setCourses(data.courses);
+    } catch (err) {
+      console.error('Error fetching courses:', err);
+      setCourses([]);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      fetchCourses(searchText);
+    }, 300); // Debounce API calls
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [searchText, fetchCourses]);
 
   const handleCourseSelect = (course: Course) => {
     onCourseSelect(course);
@@ -91,12 +93,12 @@ const CourseSearch = ({
       {selectedCourse ? (
         <div className="flex items-center justify-between p-4 border border-gray-500 rounded-xl bg-[#1c1c29] bg-opacity-50">
           <div>
-            <div className="font-semibold text-white">
+            {/* <div className="font-semibold text-white">
               {selectedCourse.name} / {selectedCourse.code}
             </div>
             <div className="text-sm text-gray-300">
               {selectedCourse.year} / {selectedCourse.professor}
-            </div>
+            </div> */}
           </div>
           {!disabled && (
             <button
@@ -129,11 +131,11 @@ const CourseSearch = ({
             <FaSearch className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
           </div>
 
-          {isDropdownOpen && searchText && filteredCourses.length > 0 && (
+          {isDropdownOpen && searchText && courses.length > 0 && (
             <div className="absolute z-10 w-full mt-1 bg-[#1c1c29] border border-gray-500 rounded-xl shadow-lg max-h-60 overflow-y-auto">
-              {filteredCourses.map(course => (
+              {courses.map((course: Course, index: number) => (
                 <button
-                  key={course.id}
+                  key={index}
                   type="button"
                   className="w-full px-4 py-3 text-left hover:bg-gray-700 border-b border-gray-600 last:border-b-0 transition"
                   onClick={() => {
@@ -141,19 +143,26 @@ const CourseSearch = ({
                   }}
                 >
                   <div className="font-semibold text-white">
-                    {course.name} / {course.code}
+                    {course.names[0]} / {course.curriculum}
                   </div>
-                  <div className="text-sm text-gray-300">
-                    {course.year} / {course.professor}
-                  </div>
+                  <div className="text-sm text-gray-300">{course.lecturer}</div>
                 </button>
               ))}
             </div>
           )}
 
-          {isDropdownOpen && searchText && filteredCourses.length === 0 && (
+          {isDropdownOpen &&
+            searchText &&
+            courses.length === 0 &&
+            !isLoading && (
+              <div className="absolute z-10 w-full mt-1 bg-[#1c1c29] border border-gray-500 rounded-xl shadow-lg p-4 text-center text-gray-400">
+                找不到符合的課程
+              </div>
+            )}
+
+          {isDropdownOpen && searchText && isLoading && (
             <div className="absolute z-10 w-full mt-1 bg-[#1c1c29] border border-gray-500 rounded-xl shadow-lg p-4 text-center text-gray-400">
-              找不到符合的課程
+              搜尋中...
             </div>
           )}
         </div>
