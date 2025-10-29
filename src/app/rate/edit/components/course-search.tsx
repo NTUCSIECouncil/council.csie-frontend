@@ -8,7 +8,7 @@ import clientFetch from '@/utils/client-fetch';
 
 interface Props {
   selectedCourse: Course | null;
-  onCourseSelect: (course: Course | null) => void;
+  setSelectedCourse: (course: Course | null) => void;
   disabled?: boolean;
 }
 
@@ -23,7 +23,7 @@ interface APIResponse {
 
 const CourseSearch = ({
   selectedCourse,
-  onCourseSelect,
+  setSelectedCourse,
   disabled = false,
 }: Props): React.JSX.Element => {
   const [searchText, setSearchText] = useState('');
@@ -52,8 +52,6 @@ const CourseSearch = ({
       }
 
       const data: APIResponse = await res.json();
-      console.log(data);
-      console.log(data.courses);
       setCourses(data.courses);
     } catch (err) {
       console.error('Error fetching courses:', err);
@@ -74,13 +72,13 @@ const CourseSearch = ({
   }, [searchText, fetchCourses]);
 
   const handleCourseSelect = (course: Course) => {
-    onCourseSelect(course);
+    setSelectedCourse(course);
     setSearchText('');
     setIsDropdownOpen(false);
   };
 
   const handleClearSelection = () => {
-    onCourseSelect(null);
+    setSelectedCourse(null);
     setSearchText('');
   };
 
@@ -93,18 +91,19 @@ const CourseSearch = ({
       {selectedCourse ? (
         <div className="flex items-center justify-between p-4 border border-gray-500 rounded-xl bg-[#1c1c29] bg-opacity-50">
           <div>
-            {/* <div className="font-semibold text-white">
-              {selectedCourse.name} / {selectedCourse.code}
+            <div className="font-semibold text-white">
+              {/* FIXME: names is an array? */}
+              {selectedCourse.names[0]} / {selectedCourse.curriculum}
             </div>
             <div className="text-sm text-gray-300">
-              {selectedCourse.year} / {selectedCourse.professor}
-            </div> */}
+              {selectedCourse.lecturer}
+            </div>
           </div>
           {!disabled && (
             <button
               type="button"
               onClick={handleClearSelection}
-              className="p-2 hover:bg-gray-700 rounded-full transition text-gray-400 hover:text-white"
+              className="p-2 hover:bg-gray-700 rounded-full transition text-gray-400 hover:text-white cursor-pointer"
               title="清除選擇"
             >
               <FaTimes />
@@ -131,13 +130,14 @@ const CourseSearch = ({
             <FaSearch className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
           </div>
 
+          {/* display course list */}
           {isDropdownOpen && searchText && courses.length > 0 && (
             <div className="absolute z-10 w-full mt-1 bg-[#1c1c29] border border-gray-500 rounded-xl shadow-lg max-h-60 overflow-y-auto">
               {courses.map((course: Course, index: number) => (
                 <button
                   key={index}
                   type="button"
-                  className="w-full px-4 py-3 text-left hover:bg-gray-700 border-b border-gray-600 last:border-b-0 transition"
+                  className="w-full px-4 py-3 text-left hover:bg-gray-700 border-b border-gray-600 last:border-b-0 transition cursor-pointer"
                   onClick={() => {
                     handleCourseSelect(course);
                   }}

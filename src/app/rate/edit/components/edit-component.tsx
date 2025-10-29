@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
 
 import SearchFilterPanel from '@/app/rate/components/search-filter-panel';
+import { Course } from '@/types/backend';
 import ContentEditor from './content-editor';
-import CourseSearch, { type Course } from './course-search';
+import CourseSearch from './course-search';
 import Disclaimer from './disclaimer';
 
 interface Props {
@@ -51,7 +52,7 @@ const EditComponent = ({
       <div className="w-full px-4 my-4">
         <CourseSearch
           selectedCourse={selectedCourse}
-          onCourseSelect={onCourseSelect}
+          setSelectedCourse={onCourseSelect}
         />
       </div>
 
