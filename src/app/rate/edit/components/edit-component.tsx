@@ -9,6 +9,7 @@ import { useEdit } from '../context';
 import ContentEditor from './content-editor';
 import CourseSearch from './course-search';
 import Disclaimer from './disclaimer';
+import SemesterSelect from './semester-select';
 
 const EditComponent = (): React.JSX.Element => {
   const [showTagFilter, setShowTagFilter] = useState(false);
@@ -30,9 +31,12 @@ const EditComponent = (): React.JSX.Element => {
         />
       </div>
 
-      {/* Course Selection */}
+      {/* Course + Semester */}
       <div className="w-full px-4 my-4">
-        <CourseSearch />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <CourseSearch />
+          <SemesterSelect />
+        </div>
       </div>
 
       {/* Content Editor */}

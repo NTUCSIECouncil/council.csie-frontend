@@ -11,6 +11,8 @@ interface EditContextType {
   setContent: (c: string) => void;
   selectedTags: string[];
   setSelectedTags: (t: string[]) => void;
+  semester: string;
+  setSemester: (s: string) => void;
 }
 
 export const EditContext = createContext<EditContextType | null>(null);

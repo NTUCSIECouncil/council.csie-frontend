@@ -13,18 +13,20 @@ type TabType = 'edit' | 'preview';
 const NewPostPage = (): React.JSX.Element => {
   const router = useRouter();
 
-  // Tab state
+  // tab state
   const [activeTab, setActiveTab] = useState<TabType>('edit');
 
-  // Form state
+  // form state
   const [title, setTitle] = useState('');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const [semester, setSemester] = useState<string>('');
   const [content, setContent] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Validation
+  // validation
   const isFormValid = () => {
+    // TODO: check validation rules
     return (
       title.trim().length > 0 &&
       selectedCourse !== null &&
@@ -81,6 +83,8 @@ const NewPostPage = (): React.JSX.Element => {
         setContent,
         selectedTags,
         setSelectedTags,
+        semester,
+        setSemester,
       }}
     >
       <main className="flex flex-col items-center w-3/5 mx-auto min-h-screen">
@@ -152,31 +156,30 @@ const NewPostPage = (): React.JSX.Element => {
             </form>
           ) : (
             // Preview Mode
-            <div className="mb-20">Preview Mode</div>
-            // <ArticleDisplay
-            //   articleData={{
-            //     title: title || '課程評價標題',
-            //     creator: '預覽使用者',
-            //     content: content,
-            //     tags: selectedTags,
-            //     createdAt: new Date().toISOString().split('T')[0],
-            //   }}
-            //   courseData={
-            //     selectedCourse
-            //       ? {
-            //           names: [selectedCourse.name],
-            //           curriculum: selectedCourse.code,
-            //           lecturer: selectedCourse.professor,
-            //         }
-            //       : {
-            //           names: ['請選擇課程'],
-            //           curriculum: '',
-            //           lecturer: '',
-            //         }
-            //   }
-            //   semester={selectedCourse?.year || ''}
-            //   showEditButton={false}
-            // />
+            <ArticleDisplay
+              articleData={{
+                title: title || '課程評價標題',
+                creator: '預覽使用者',
+                content: content,
+                tags: selectedTags,
+                createdAt: new Date().toISOString().split('T')[0],
+              }}
+              courseData={
+                selectedCourse
+                  ? {
+                      names: [selectedCourse.names[0]],
+                      curriculum: selectedCourse.curriculum,
+                      lecturer: selectedCourse.lecturer,
+                    }
+                  : {
+                      names: ['請選擇課程'],
+                      curriculum: '',
+                      lecturer: '',
+                    }
+              }
+              semester={selectedCourse?.class || ''}
+              showEditButton={false}
+            />
           )}
         </div>
       </main>
