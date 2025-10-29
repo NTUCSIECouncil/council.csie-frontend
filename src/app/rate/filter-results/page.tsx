@@ -22,12 +22,11 @@ interface ArticleResponse {
 const Page = async (props: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) => {
-  const limit = 3;
+  const limit = 10;
   const searchParams = await props.searchParams;
   const keyword = getFirstParam(searchParams.keyword);
   const index = Math.max(parseInt(getFirstParam(searchParams.index)) | 0, 0);
   const offset = index*limit;
-  console.log(index, limit);
 //   const offset = "1";
 
   const queryParams = new URLSearchParams();

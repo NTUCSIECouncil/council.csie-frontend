@@ -1,8 +1,22 @@
 import Link from 'next/link';
 import React from 'react';
 import { FaAngleDoubleLeft, FaAngleDoubleRight, FaAngleLeft, FaAngleRight} from "react-icons/fa";
+import { Element } from 'hast';
 
-// 讓上/下一頁不要out of range
+const StyledLink = ({
+    href,
+    children,
+}:{
+    href: string,
+    children: React.ReactNode,
+}): React.JSX.Element => {
+    return (
+        <Link href={href} className='flex justify-center items-center w-12 h-12 
+        rounded-full bg-gray-800 hover:bg-[#d4d2d5] hover:text-gray-800 transition-all duration-200'>
+            {children}
+        </Link>   
+    )
+}
 
 const PageNum = ({
     keyword,
@@ -15,16 +29,17 @@ const PageNum = ({
     total: number,
     limit: number,
 }): React.JSX.Element => {
-    console.log(index, index*limit)
     if(index+1 > 0 && index*limit < total){
         return (
-            <Link href={`?keyword=${keyword}&index=${index}`}>
+            <StyledLink href={`?keyword=${keyword}&index=${index}`}>
                 {index+1}
-            </Link>
+            </StyledLink>
         )
-    }else
-        return (
-            <Link href={`?keyword=${keyword}`}>
+    }else 
+        return ( 
+            // deactivated link
+            <Link href={`?keyword=${keyword}`} className='flex justify-center items-center w-12 h-12 
+            rounded-full bg-[#1c1c29] pointer-events-none'> 
             </Link>
         )
 }
@@ -40,23 +55,22 @@ const PageSelector = ({
     limit: number,
     total: number,
 }): React.JSX.Element => {
-    console.log(total); 
     const pageIndexOffset: number[] = [-2,-1,0,1,2];
     return (
-        <div className="flex justify-between w-full mt-4 h-10">
-        <Link href={`?keyword=${keyword}&index=0`}>
+        <div className="flex justify-between w-full mt-4 h-15">
+        <StyledLink href={`?keyword=${keyword}&index=0`}>
             <FaAngleDoubleLeft />
-        </Link>
-        <Link href={`?keyword=${keyword}&index=${Math.max(0, index-1)}`}>
+        </StyledLink>
+        <StyledLink href={`?keyword=${keyword}&index=${Math.max(0, index-1)}`}>
             <FaAngleLeft />
-        </Link>
+        </StyledLink>
         {pageIndexOffset.map((num) => (<PageNum key={num} keyword={keyword} index={index+num} limit={limit} total={total}/>))}
-        <Link href={`?keyword=${keyword}&index=${Math.min(index+1, Math.floor(Math.max(total-1, 0)/limit))}`}>
+        <StyledLink href={`?keyword=${keyword}&index=${Math.min(index+1, Math.floor(Math.max(total-1, 0)/limit))}`}>
             <FaAngleRight />
-        </Link>
-        <Link href={`?keyword=${keyword}&index=${Math.floor(Math.max(total-1, 0)/limit)}`}>
+        </StyledLink>
+        <StyledLink href={`?keyword=${keyword}&index=${Math.floor(Math.max(total-1, 0)/limit)}`}>
             <FaAngleDoubleRight />
-        </Link>
+        </StyledLink>
         </div>
     )
 }
