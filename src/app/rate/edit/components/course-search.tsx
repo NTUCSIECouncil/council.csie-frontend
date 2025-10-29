@@ -5,10 +5,9 @@ import { FaSearch, FaTimes } from 'react-icons/fa';
 
 import { Course } from '@/types/backend';
 import clientFetch from '@/utils/client-fetch';
+import { useEdit } from '../context';
 
 interface Props {
-  selectedCourse: Course | null;
-  setSelectedCourse: (course: Course | null) => void;
   disabled?: boolean;
 }
 
@@ -21,11 +20,8 @@ interface APIResponse {
   };
 }
 
-const CourseSearch = ({
-  selectedCourse,
-  setSelectedCourse,
-  disabled = false,
-}: Props): React.JSX.Element => {
+const CourseSearch = ({ disabled = false }: Props): React.JSX.Element => {
+  const { selectedCourse, setSelectedCourse } = useEdit();
   const [searchText, setSearchText] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [courses, setCourses] = useState<Course[]>([]);

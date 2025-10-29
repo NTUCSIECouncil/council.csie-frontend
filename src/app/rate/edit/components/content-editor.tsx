@@ -3,10 +3,7 @@
 import { useState } from 'react';
 import { FaFileAlt } from 'react-icons/fa';
 
-interface Props {
-  content: string;
-  onContentChange: (content: string) => void;
-}
+import { useEdit } from '../context';
 
 // Sample template for course review - can be expanded later
 const SAMPLE_TEMPLATE = `# 課程心得
@@ -26,14 +23,12 @@ const SAMPLE_TEMPLATE = `# 課程心得
 ---
 評分 (1-5星): ⭐⭐⭐⭐⭐`;
 
-const ContentEditor = ({
-  content,
-  onContentChange,
-}: Props): React.JSX.Element => {
+const ContentEditor = (): React.JSX.Element => {
+  const { content, setContent } = useEdit();
   const [showTemplate, setShowTemplate] = useState(false);
 
   const loadTemplate = () => {
-    onContentChange(SAMPLE_TEMPLATE);
+    setContent(SAMPLE_TEMPLATE);
     setShowTemplate(false);
   };
 
@@ -60,7 +55,7 @@ const ContentEditor = ({
         placeholder="請分享您對這門課的心得與評價..."
         value={content}
         onChange={e => {
-          onContentChange(e.target.value);
+          setContent(e.target.value);
         }}
       />
 

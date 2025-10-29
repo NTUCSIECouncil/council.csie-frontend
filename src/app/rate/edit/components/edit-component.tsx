@@ -5,32 +5,14 @@ import { FaFilter } from 'react-icons/fa';
 
 import SearchFilterPanel from '@/app/rate/components/search-filter-panel';
 import { Course } from '@/types/backend';
+import { useEdit } from '../context';
 import ContentEditor from './content-editor';
 import CourseSearch from './course-search';
 import Disclaimer from './disclaimer';
 
-interface Props {
-  selectedCourse: Course | null;
-  onCourseSelect: (course: Course | null) => void;
-  content: string;
-  onContentChange: (content: string) => void;
-  selectedTags: string[];
-  onTagsChange: (tags: string[]) => void;
-  title: string;
-  onTitleChange: (title: string) => void;
-}
-
-const EditComponent = ({
-  selectedCourse,
-  onCourseSelect,
-  content,
-  onContentChange,
-  selectedTags,
-  onTagsChange,
-  title,
-  onTitleChange,
-}: Props): React.JSX.Element => {
+const EditComponent = (): React.JSX.Element => {
   const [showTagFilter, setShowTagFilter] = useState(false);
+  const { title, setTitle, selectedTags, setSelectedTags } = useEdit();
 
   return (
     <>
@@ -44,21 +26,18 @@ const EditComponent = ({
           placeholder="請輸入評價標題..."
           className="w-full px-4 py-3 border border-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 bg-[#1c1c29] bg-opacity-50 text-white placeholder:text-gray-400"
           value={title}
-          onChange={e => onTitleChange(e.target.value)}
+          onChange={e => setTitle(e.target.value)}
         />
       </div>
 
       {/* Course Selection */}
       <div className="w-full px-4 my-4">
-        <CourseSearch
-          selectedCourse={selectedCourse}
-          setSelectedCourse={onCourseSelect}
-        />
+        <CourseSearch />
       </div>
 
       {/* Content Editor */}
       <div className="w-full px-4 my-4">
-        <ContentEditor content={content} onContentChange={onContentChange} />
+        <ContentEditor />
       </div>
 
       {/* Tag Selection */}
@@ -86,7 +65,7 @@ const EditComponent = ({
         <div className="fixed inset-0 z-50">
           <SearchFilterPanel
             selectedTags={selectedTags}
-            onTagsChange={onTagsChange}
+            onTagsChange={setSelectedTags}
             onClose={() => setShowTagFilter(false)}
           />
         </div>
