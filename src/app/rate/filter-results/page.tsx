@@ -73,7 +73,7 @@ const Page = async (props: {
         </div>
       </div>
       <PageSelector 
-        keyword={keyword} 
+        baseParams={`keyword=${keyword}&`} 
         limit={limit} 
         index={Math.min(index, Math.floor(Math.max(filterResult.meta.total-1, 0)/limit))} 
         total={filterResult.meta.total}
