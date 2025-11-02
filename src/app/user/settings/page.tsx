@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 import { env } from '@/env';
 import { homePages } from '@/utils/constants';
-import { SettingsPanel } from '@/app/user/settings/Component/Setting_panel';
+import { SettingsPanel } from '@/app/user/settings/components/setting_panel';
 
 const Page = () => {
   const [activeIndex, setActiveIndex] = useState(0);

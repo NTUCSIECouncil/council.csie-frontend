@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 
 import { env } from '@/env';
 import { homePages } from '@/utils/constants';
+import TopicBlock from '@/app/user/components/topic-block';
+import ContentBlock from '@/app/user/components/content-block';
 
 const Page = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -32,13 +34,16 @@ const Page = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center">
-        <main className="relative z-10 flex flex-col items-center justify-center h-screen -mt-16 text-center">
-          <div className="text-6xl font-bold font-serif">CSIE Council</div>
-          <p className="text-2xl mt-6 font-mono italic">
-            在 0 與 1 之間，我們編織未來
-          </p>
-        </main>
+      <div className="relative flex flex-col items-start gap-2 py-4 lg:ml-8 lg:pr-8 lg:max-w-4xl lg:w-[80%]">
+        <div className="flex flex-col items-start gap-2 py-4">
+          <div key="course" className="w-full">
+            <TopicBlock content="你發布的課程評價" />
+            <ContentBlock
+              key="1"
+              content="happy hpa    jkdjljalf"
+            />
+          </div>
+        </div>
       </div>
     </>
   );

@@ -20,7 +20,6 @@ const CloseIcon = () => (
   </svg>
 );
 
-// --- The Main Settings Panel Component ---
 export const SettingsPanel = () => {
   const [configs, setConfigs] = useState<SettingOption[]>(SettingOptions);
   const router = useRouter();
