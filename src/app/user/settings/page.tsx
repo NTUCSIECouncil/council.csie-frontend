@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 import { env } from '@/env';
 import { homePages } from '@/utils/constants';
+import { SettingsPanel } from '@/app/user/settings/Component/Setting_panel';
 
 const Page = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -34,10 +35,7 @@ const Page = () => {
     <>
       <div className="flex flex-col items-center justify-center">
         <main className="relative z-10 flex flex-col items-center justify-center h-screen -mt-16 text-center">
-          <div className="text-6xl font-bold font-serif">CSIE Council</div>
-          <p className="text-2xl mt-6 font-mono italic">
-            在 0 與 1 之間，我們編織未來
-          </p>
+          <SettingsPanel/>
         </main>
       </div>
     </>
