@@ -14,7 +14,9 @@ const ContentEditor = (): React.JSX.Element => {
     fetch('/templates/course-review.md')
       .then(res => res.text())
       .then(setTemplate)
-      .catch(() => console.error('Failed to preload template'));
+      .catch(() => {
+        console.error('Failed to preload template');
+      });
   }, []);
 
   const loadTemplate = () => {

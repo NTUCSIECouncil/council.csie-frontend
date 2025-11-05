@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-import { Course } from '@/types/backend';
+import { type Course } from '@/types/backend';
 
 interface EditContextType {
   title: string;
@@ -16,4 +16,11 @@ interface EditContextType {
 }
 
 export const EditContext = createContext<EditContextType | null>(null);
-export const useEdit = () => useContext(EditContext)!;
+
+export const useEdit = () => {
+  const context = useContext(EditContext);
+  if (!context) {
+    throw new Error('useEdit must be used within an EditProvider');
+  }
+  return context;
+};

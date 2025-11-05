@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FaSearch, FaTimes } from 'react-icons/fa';
 
-import { Course } from '@/types/backend';
+import { type Course } from '@/types/backend';
 import clientFetch from '@/utils/client-fetch';
 import { useEdit } from '../context';
 
@@ -47,7 +47,7 @@ const CourseSearch = ({ disabled = false }: Props): React.JSX.Element => {
         return;
       }
 
-      const data: APIResponse = await res.json();
+      const data: APIResponse = (await res.json()) as APIResponse;
       setCourses(data.courses);
     } catch (err) {
       console.error('Error fetching courses:', err);
@@ -59,7 +59,7 @@ const CourseSearch = ({ disabled = false }: Props): React.JSX.Element => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      fetchCourses(searchText);
+      void fetchCourses(searchText);
     }, 300); // Debounce API calls
 
     return () => {

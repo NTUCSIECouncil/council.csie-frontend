@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
 
 import SearchFilterPanel from '@/app/rate/components/search-filter-panel';
-import { Course } from '@/types/backend';
 import { useEdit } from '../context';
 import ContentEditor from './content-editor';
 import CourseSearch from './course-search';
@@ -27,7 +26,9 @@ const EditComponent = (): React.JSX.Element => {
           placeholder="請輸入評價標題..."
           className="w-full px-4 py-3 border border-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 bg-[#1c1c29] bg-opacity-50 text-white placeholder:text-gray-400"
           value={title}
-          onChange={e => setTitle(e.target.value)}
+          onChange={e => {
+            setTitle(e.target.value);
+          }}
         />
       </div>
 
@@ -50,7 +51,9 @@ const EditComponent = (): React.JSX.Element => {
           <label className="block text-lg font-medium text-white">標籤</label>
           <button
             type="button"
-            onClick={() => setShowTagFilter(true)}
+            onClick={() => {
+              setShowTagFilter(true);
+            }}
             className="flex items-center gap-2 px-4 py-2 bg-slate-300 text-slate-900 rounded-xl hover:bg-slate-400 transition"
           >
             <FaFilter />
@@ -70,7 +73,9 @@ const EditComponent = (): React.JSX.Element => {
           <SearchFilterPanel
             selectedTags={selectedTags}
             onTagsChange={setSelectedTags}
-            onClose={() => setShowTagFilter(false)}
+            onClose={() => {
+              setShowTagFilter(false);
+            }}
           />
         </div>
       )}

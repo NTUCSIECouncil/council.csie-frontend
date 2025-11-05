@@ -56,7 +56,6 @@ const SearchFilterPanel = ({
 
   // Use external tags if provided, otherwise use internal state
   const selectedTags = externalSelectedTags ?? internalSelectedTags;
-  const setSelectedTags = externalOnTagsChange ?? setInternalSelectedTags;
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import ArticleDisplay from '@/app/rate/articles/[articleId]/components/article-display';
-import { Course } from '@/types/backend';
+import { type Course } from '@/types/backend';
 import EditComponent from './components/edit-component';
 import { EditContext } from './context';
 
@@ -35,8 +35,11 @@ const NewPostPage = (): React.JSX.Element => {
     );
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
     return;
+
     // e.preventDefault();
 
     // if (!isFormValid()) return;
@@ -93,7 +96,9 @@ const NewPostPage = (): React.JSX.Element => {
           <div className="flex justify-center mb-6">
             <div className="flex bg-gray-800 rounded-xl p-1">
               <button
-                onClick={() => setActiveTab('edit')}
+                onClick={() => {
+                  setActiveTab('edit');
+                }}
                 className={`px-6 py-2 rounded-lg font-medium transition ${
                   activeTab === 'edit'
                     ? 'bg-slate-300 text-slate-900'
@@ -103,7 +108,9 @@ const NewPostPage = (): React.JSX.Element => {
                 編輯
               </button>
               <button
-                onClick={() => setActiveTab('preview')}
+                onClick={() => {
+                  setActiveTab('preview');
+                }}
                 className={`px-6 py-2 rounded-lg font-medium transition ${
                   activeTab === 'preview'
                     ? 'bg-slate-300 text-slate-900'
@@ -143,16 +150,16 @@ const NewPostPage = (): React.JSX.Element => {
               </div>
 
               {/* Validation Messages */}
-              {!isFormValid() && (title || selectedCourse || content) && (
+              {/* {!isFormValid() && (title || selectedCourse || content) && (
                 <div className="text-sm text-red-400 mt-2 px-4">
                   {!title.trim() && '請輸入標題'}
                   {title.trim() && !selectedCourse && '請選擇課程'}
                   {title.trim() &&
                     selectedCourse &&
                     content.trim().length < 50 &&
-                    `內容至少需要 50 字 (目前 ${content.trim().length} 字)`}
+                    `內容至少需要 50 字`}
                 </div>
-              )}
+              )} */}
             </form>
           ) : (
             // Preview Mode
@@ -177,7 +184,7 @@ const NewPostPage = (): React.JSX.Element => {
                       lecturer: '',
                     }
               }
-              semester={selectedCourse?.class || ''}
+              semester={selectedCourse?.class ?? ''}
               showEditButton={false}
             />
           )}

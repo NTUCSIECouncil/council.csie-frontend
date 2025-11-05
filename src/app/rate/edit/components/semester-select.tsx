@@ -14,7 +14,9 @@ const SemesterSelect = (): React.JSX.Element => {
       </label>
       <select
         value={semester}
-        onChange={e => setSemester(e.target.value)}
+        onChange={e => {
+          setSemester(e.target.value);
+        }}
         className="w-full px-4 py-3 border border-gray-500 rounded-xl
                    focus:outline-none focus:ring-2 focus:ring-slate-500
                    focus:border-slate-500 bg-[#1c1c29] bg-opacity-50 text-white"

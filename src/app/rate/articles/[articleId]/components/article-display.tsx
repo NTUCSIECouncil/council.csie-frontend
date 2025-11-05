@@ -67,7 +67,7 @@ const ArticleDisplay = ({
           <div className="flex items-center gap-1">
             <FaCalendarAlt />
             <span>
-              {articleData.createdAt || new Date().toISOString().split('T')[0]}
+              {articleData.createdAt ?? new Date().toISOString().split('T')[0]}
             </span>
           </div>
 
