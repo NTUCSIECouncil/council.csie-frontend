@@ -46,7 +46,7 @@ const Page = async (params: {
   queryParams.append('limit', limit.toString());
 
   const url = `/api/courses?${queryParams.toString()}`;
-  const res = await serverFetch(url, { cache: 'no-store' });
+  const res = await serverFetch(url, {cache: 'force-cache', next: { revalidate: 3600}});
   if (res.status != 200) throw Error('Unknown error');
   const ret = (await res.json()) as CourseResponse;
   const rows = ret.courses;

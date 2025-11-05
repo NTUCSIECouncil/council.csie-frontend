@@ -35,7 +35,7 @@ const Page = async (props: {
   if (offset) queryParams.append('offset', offset.toString());
 
   const url = `/api/articles?${queryParams.toString()}`;
-  const res = await serverFetch(url, { cache: 'no-store' });
+  const res = await serverFetch(url, { cache: 'force-cache', next: { revalidate: 3600}});
   if (res.status != 200) throw Error('Unknown error');
   const filterResult = (await res.json()) as ArticleResponse;
 
