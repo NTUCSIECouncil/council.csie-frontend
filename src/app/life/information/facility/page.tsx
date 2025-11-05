@@ -59,7 +59,7 @@ const Page = (): React.JSX.Element => {
         />
       </div>
 
-      <div className="flex flex-col items-start pt-4">
+      <div className="flex flex-col items-start pt-4 w-180">
         {selectedSection?.points != null && (
           <InteractiveMap
             points={selectedSection.points}

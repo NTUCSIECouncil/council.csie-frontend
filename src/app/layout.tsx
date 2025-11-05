@@ -25,9 +25,7 @@ const RootLayout = ({
       <body className="text-[#d4d2d5] bg-[#1c1c29] flex flex-col min-h-screen">
         <AuthContextProvider>
           <NavBar />
-          <div className="grow flex justify-center items-center mx-15">
-            {children}
-          </div>
+          <div className="grow flex justify-center mx-15">{children}</div>
           <ScrollToTopButton />
           <Footer />
         </AuthContextProvider>
