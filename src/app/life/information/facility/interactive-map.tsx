@@ -30,7 +30,10 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
   return (
     <div className="flex flex-col items-center w-full px-4">
-      <div className="relative w-full max-w-[1000px] mx-auto mb-8" style={{ aspectRatio: `${width} / ${height}` }}>
+      <div
+        className="relative w-full max-w-[1000px] mx-auto mb-8"
+        style={{ aspectRatio: `${String(width)} / ${String(height)}` }}
+      >
         <Image
           src={imageUrl}
           alt="Interactive Map"
