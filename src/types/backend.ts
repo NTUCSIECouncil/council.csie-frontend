@@ -17,18 +17,18 @@ export interface Course {
   names: string[];
   credit: number;
   categories: string[];
+  semester: string;
 }
 
 export interface Quiz {
   _id: UUID;
   course: UUID;
-  uploader: UUID;
-  semester: string;
-  session: 'midterm' | 'final' | 'first' | 'second';
+  uploader: UUID | User;
+  session: 'midterm' | 'final' | 'first' | 'second' | 'other';
 }
 
 export interface User {
   _id: string;
   email: string;
-  name: string;
+  nickname: string;
 }
