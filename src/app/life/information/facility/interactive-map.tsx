@@ -35,9 +35,8 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
           src={imageUrl}
           alt="Interactive Map"
           fill
-          sizes="1000px, 100vw"
-          className="rounded-lg shadow-lg grayscale"
-          object-cover
+          className="rounded-lg shadow-lg grayscale object-cover"
+          sizes="(max-width: 1000px) 100vw, 1000px"
           priority
         />
 
