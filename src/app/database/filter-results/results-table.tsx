@@ -21,7 +21,7 @@ export default function ResultTable({
               課名
             </th>
             <th scope="col" className="px-6 py-3">
-              學分數
+              學期
             </th>
             <th scope="col" className="px-6 py-3">
               授課教師
@@ -42,7 +42,7 @@ export default function ResultTable({
               <td className="px-6 py-3">
                 {row.names.length > 0 ? row.names[0] : ''}
               </td>
-              <td className="px-6 py-3">{row.credit}</td>
+              <td className="px-6 py-3">{row.semester}</td>
               <td className="px-6 py-3">{row.lecturer}</td>
               <td className="px-6 py-3">
                 <Link href={`/database/course?course=${row._id}`}>
