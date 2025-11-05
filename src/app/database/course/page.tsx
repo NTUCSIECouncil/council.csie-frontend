@@ -1,13 +1,15 @@
 import { type UUID } from 'crypto';
 
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
-import { IoMdLink } from 'react-icons/io';
 
-import { type Course, type Quiz } from '@/types/backend';
+import { env } from '@/env';
+import { type Course, type Quiz, type User } from '@/types/backend';
 import serverFetch from '@/utils/server-fetch';
 import Background from '../filter-results/background';
+import DownloadLink from './components/download-link';
+
+const BACKEND_URL = env.API_BASE_URL;
 
 interface QuizResponse {
   quizzes: Quiz[];
@@ -21,6 +23,19 @@ interface QuizResponse {
 interface CourseResponse {
   course: Course;
 }
+
+const SESSION_LABELS = ['first', 'second', 'midterm', 'final', 'other'];
+const SESSION_CHINESE_LABELS = [
+  '第一次期中',
+  '第二次期中',
+  '期中考',
+  '期末考',
+  '其他',
+];
+const SESSION_TO_CHINESE_LABEL = new Map(
+  SESSION_LABELS.map((k, i) => [k, SESSION_CHINESE_LABELS[i]]),
+);
+const SESSION_ORDER = new Map(SESSION_LABELS.map((k, i) => [k, i]));
 
 const Page = async (props: {
   searchParams?: Promise<{
@@ -36,6 +51,7 @@ const Page = async (props: {
   const queryParams = new URLSearchParams();
   if (currentPage !== 0)
     queryParams.append('offset', (currentPage * limit).toString());
+  queryParams.append('embed[0]', 'uploader');
   const url = `/api/courses/${course}/quizzes?${queryParams}`;
   const res = await serverFetch(url, { cache: 'force-cache' });
   if (res.status != 200) {
@@ -50,6 +66,13 @@ const Page = async (props: {
   );
   const course_ret = (await course_res.json()) as CourseResponse;
   const title: string = course_ret.course.names[0];
+  const semester: string = course_ret.course.semester;
+  const quizzes = ret.quizzes;
+  quizzes.sort(
+    (a, b) =>
+      (SESSION_ORDER.get(a.session) ?? Infinity) -
+      (SESSION_ORDER.get(b.session) ?? Infinity),
+  );
 
   return (
     <main className="flex flex-col items-center self-start">
@@ -58,24 +81,47 @@ const Page = async (props: {
         <Suspense>
           <div className="w-full flex items-end my-2 px-4">
             <p className="font-bold md:text-4xl xl:text-5xl text-3xl mr-3">
-              {title}
+              {semester + ' ' + title}
             </p>
             <p className="ond-bold md:text-2xl xl:text-3xl text-xl ">
               的歷屆考古題
             </p>
           </div>
           <hr className="w-full border-gray-500 border-t-4 my-3" />
-          <div className="w-full flex flex-around flex-wrap pt-6 gap-6">
-            {ret.quizzes.map(quiz => (
-              <Link key={quiz._id} href="https://www.example.com/">
-                <div className="flex flex-row gap-1 items-center">
-                  <p className="font-bold xl:text-2xl text-xl white">
-                    {quiz.semester + ' ' + quiz.session}
-                  </p>
-                  <IoMdLink className="xl:text-2xl text-xl text-white -rotate-45" />
-                </div>
-              </Link>
-            ))}
+          <div className="relative overflow-x-auto my-6 no-scrollbar">
+            <table className="w-full text-white-400 text-center font-medium">
+              <thead className="font-bold">
+                <tr className="border-b-2 mb-2">
+                  <th scope="col" className="px-6 py-3">
+                    考試類別
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    上傳者
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    下載連結
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="">
+                {quizzes.map((quiz: Quiz) => (
+                  <tr key={quiz._id} className="hover:bg-gray-600">
+                    <th className="px-6 py-3 whitespace-nowrap">
+                      {SESSION_TO_CHINESE_LABEL.get(quiz.session)}
+                    </th>
+                    <td className="px-6 py-3">
+                      {(quiz.uploader as User).nickname}
+                    </td>
+                    <td className="px-6 py-3 flex justify-center">
+                      <DownloadLink
+                        quizId={quiz._id}
+                        BACKEND_URL={BACKEND_URL}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </Suspense>
       </div>

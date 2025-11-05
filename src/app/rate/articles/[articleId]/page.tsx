@@ -11,7 +11,7 @@ const Page = async (props: {
   // const { request } = UserAuth();
 
   return (
-    <main className="flex flex-col items-center w-3/5">
+    <main className="flex flex-col items-center w-3/5 min-h-screen">
       <div className="w-full max-w-5xl m-4">
         <Suspense>
           <Article articleId={params.articleId} />
