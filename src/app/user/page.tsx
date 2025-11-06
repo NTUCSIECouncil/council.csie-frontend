@@ -2,11 +2,15 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { FaPencilAlt } from 'react-icons/fa'; // Edit button
+import { getAuth, updateProfile } from "firebase/auth";
 
 import { env } from '@/env';
 import { homePages } from '@/utils/constants';
+import { UserAuth } from '@/helpers/context/auth-context';
 import TopicBlock from '@/app/user/components/topic-block';
-import ContentBlock from '@/app/user/components/content-block';
+import InformationBlock from '@/app/user/components/information-block';
+import NameBlock from '@/app/user/components/name-block';
 import Table from '@/app/user/components/table';
 import rating_data from '@/app/user/rating_data.json';
 import exam_data from '@/app/user/exam_data.json';
@@ -31,26 +35,69 @@ const Page = () => {
 
   // Prevent window not defined error
   const [isClient, setIsClient] = useState(false);
+  const [dummyName, setName] = useState("Jaime");
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  const user = getAuth().currentUser;
   const rating_header = ["標題", "課名", "課號", "授課教師", "年份"]
   const rating_colRatio = ["30%", "30%", "15%", "15%", "10%"]
   const exam_header = ["課名", "課號", "授課教師", "年份"]
   const exam_colRatio = ["50%", "20%", "20%", "10%"]
+  const handlePromise = (promiseFunction: () => Promise<void>): void => {
+    promiseFunction()
+      .then()
+      .catch(() => "I don't want to do anything.");
+  };
+  // Hangle noot login case
   return (
     <>
-      {/* lg:ml-8 lg:pr-8 lg:max-w-4xl lg:w-[80%]*/}
-      <div className="relative flex flex-col items-start gap-2 py-4">
+      <div className="relative flex flex-col items-start gap-2 py-4 lg:ml-8 lg:pr-8 lg:max-w-4xl lg:w-[80%]">
+        <div className="container mx-auto flex flex-row justify-between items-stretch py-4">
+          <div className="flex flex-row items-center gap-6">
+            <Image
+              alt="Teacher Image"
+              src={"/teacher_img/Hm_tsai.png"/* user.photoUrl */}
+              height={128}
+              width={128}
+              className="object-cover object-top w-36 h-36 rounded-full"
+            />
+            
+            {/* Specialized container for Display Name + Edit Button */}
+            <div className="flex flex-row items-center gap-3">
+              <NameBlock
+                content={dummyName/* user.displayName */}
+              />
+              {/*
+                onClick={/*() => handlePromise(() =>
+                  updateProfile(user, {
+                    displayName: "Jane Q. User", photoURL: "https://example.com/jane-q-user/profile.jpg"
+                  }))*/
+                }
+              <button
+                
+                className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
+                aria-label="Modify display name"
+              >
+                <FaPencilAlt className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+          <div className="flex flex-col justify-end items-end">
+            <InformationBlock
+              key="other"
+              content={"Social credti: 777"/* other user property */}
+            />
+            <InformationBlock
+              key="email"
+              content={"b12902141@csie.ntu.edu.tw"/*user.email*/}
+            />
+          </div>
+        </div>
         <div className="flex flex-col gap-4 py-4 w-full">
           <div key="course" className="w-full">
             <TopicBlock content="你發布的課程評價" />
-            {/*<ContentBlock
-              key="1"
-              content="happy hpa    jkdjljalf"
-            />
-            */}
             <Table key="rating_table" table={rating_data} header={rating_header} colRatio={rating_colRatio} />
           </div>
           <div key="exam" className="w-full">
