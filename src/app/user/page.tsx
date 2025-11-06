@@ -70,8 +70,8 @@ const Page = () => {
     setPanelOpen(false);
   };
 
-  const rating_header = ["標題", "課名", "課號", "授課教師", "年份"]
-  const rating_colRatio = ["30%", "30%", "15%", "15%", "10%"]
+  const rating_header = ["標題", "課名", "課號", "授課教師", "年份", "編輯"]
+  const rating_colRatio = ["25%", "25%", "15%", "15%", "10%", "10%"]
   const exam_header = ["課名", "課號", "授課教師", "年份"]
   const exam_colRatio = ["50%", "20%", "20%", "10%"]
   const handlePromise = (promiseFunction: () => Promise<void>): void => {

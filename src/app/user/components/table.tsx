@@ -1,3 +1,5 @@
+import { FaPencilAlt } from 'react-icons/fa';
+
 {/* Stolen from life-component */}
 const Table = ({ table, header, colRatio }: { table: string[][], header: string[], colRatio: string[] }): React.JSX.Element => {
   return (
@@ -28,6 +30,11 @@ const Table = ({ table, header, colRatio }: { table: string[][], header: string[
                   {content.length > 40 ? content.substring(0, 40) + '...' : content}
                 </td>
               ))}
+              <td className="p-3 text-center">
+                <button className="text-gray-400 underline hover:text-gray-600">
+                  <FaPencilAlt className="w-5 h-5" />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
