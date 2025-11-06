@@ -4,12 +4,12 @@
 'use server';
 
 import { SmallSearch } from '@/app/database/filter-results/components/small-search';
+import PageSelector from '@/components/page-selector';
 import { type Course } from '@/types/backend';
 import searchRedirectServer from '@/utils/search-redirect-server';
 import serverFetch from '@/utils/server-fetch';
 import Background from './background';
 import ResultTable from './results-table';
-import PageSelector from '@/components/page-selector';
 
 interface CourseResponse {
   courses: Course[];
@@ -37,7 +37,7 @@ const Page = async (params: {
   const type = searchParams?.type ?? '';
   const limit = 10;
   const index = Math.max(searchParams?.index ?? 0, 0);
-  const offset = index*limit;
+  const offset = index * limit;
 
   const queryParams = new URLSearchParams();
   if (keyword !== '') queryParams.append('keyword', keyword);
@@ -46,7 +46,10 @@ const Page = async (params: {
   queryParams.append('limit', limit.toString());
 
   const url = `/api/courses?${queryParams.toString()}`;
-  const res = await serverFetch(url, {cache: 'force-cache', next: { revalidate: 3600}});
+  const res = await serverFetch(url, {
+    cache: 'force-cache',
+    next: { revalidate: 3600 },
+  });
   if (res.status != 200) throw Error('Unknown error');
   const ret = (await res.json()) as CourseResponse;
   const rows = ret.courses;
@@ -71,13 +74,16 @@ const Page = async (params: {
         <div className="xl:mx-5 mt-5 mb-10">
           <ResultTable rows={rows} />
         </div>
-        <div className='w-full flex justify-center'>
-            <PageSelector 
-            baseParams={`${baseParams.toString()}&`} 
-            limit={limit} 
-            index={Math.min(index, Math.floor(Math.max(ret.meta.total-1, 0)/limit))} 
+        <div className="w-full flex justify-center">
+          <PageSelector
+            baseParams={`${baseParams.toString()}&`}
+            limit={limit}
+            index={Math.min(
+              index,
+              Math.floor(Math.max(ret.meta.total - 1, 0) / limit),
+            )}
             total={ret.meta.total}
-            />
+          />
         </div>
       </main>
     </div>

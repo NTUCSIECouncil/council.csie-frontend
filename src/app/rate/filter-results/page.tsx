@@ -1,14 +1,14 @@
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 import { Filter, FilterOptionKey } from '@/components/filter';
-import Search from '@/components/search';
 import PageSelector from '@/components/page-selector';
+import Search from '@/components/search';
 import { type Article } from '@/types/backend';
 import { getFirstParam } from '@/utils/get-first-params';
 import searchRedirectServer from '@/utils/search-redirect-server';
 import serverFetch from '@/utils/server-fetch';
 import ArticleBlock from './article-block';
-import { redirect } from 'next/navigation'
 
 interface ArticleResponse {
   articles: Article[];
@@ -26,8 +26,8 @@ const Page = async (props: {
   const searchParams = await props.searchParams;
   const keyword = getFirstParam(searchParams.keyword);
   const index = Math.max(parseInt(getFirstParam(searchParams.index)) | 0, 0);
-  const offset = index*limit;
-//   const offset = "1";
+  const offset = index * limit;
+  //   const offset = "1";
 
   const queryParams = new URLSearchParams();
   queryParams.append('keyword', keyword);
@@ -35,7 +35,10 @@ const Page = async (props: {
   if (offset) queryParams.append('offset', offset.toString());
 
   const url = `/api/articles?${queryParams.toString()}`;
-  const res = await serverFetch(url, { cache: 'force-cache', next: { revalidate: 3600}});
+  const res = await serverFetch(url, {
+    cache: 'force-cache',
+    next: { revalidate: 3600 },
+  });
   if (res.status != 200) throw Error('Unknown error');
   const filterResult = (await res.json()) as ArticleResponse;
 
@@ -72,10 +75,13 @@ const Page = async (props: {
           ))}
         </div>
       </div>
-      <PageSelector 
-        baseParams={`keyword=${keyword}&`} 
-        limit={limit} 
-        index={Math.min(index, Math.floor(Math.max(filterResult.meta.total-1, 0)/limit))} 
+      <PageSelector
+        baseParams={`keyword=${keyword}&`}
+        limit={limit}
+        index={Math.min(
+          index,
+          Math.floor(Math.max(filterResult.meta.total - 1, 0) / limit),
+        )}
         total={filterResult.meta.total}
       />
     </main>

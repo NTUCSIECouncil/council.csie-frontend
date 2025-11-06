@@ -15,7 +15,10 @@ const ArticleBlock = async ({
   id?: UUID;
 }): Promise<React.JSX.Element> => {
   const url = '/api/articles/' + (id?.toString() ?? 'unknown') + '/file';
-  const res = await serverFetch(url, { cache: 'force-cache', next: { revalidate: 3600}});
+  const res = await serverFetch(url, {
+    cache: 'force-cache',
+    next: { revalidate: 3600 },
+  });
 
   const content = await res.text();
 

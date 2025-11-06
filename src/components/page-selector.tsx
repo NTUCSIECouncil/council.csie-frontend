@@ -1,5 +1,7 @@
+'use client';
+
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   FaAngleDoubleLeft,
   FaAngleDoubleRight,
@@ -78,9 +80,28 @@ const PageSelector = ({
   limit: number;
   total: number;
 }): React.JSX.Element => {
-  const pageIndexOffset: number[] = [-2, -1, 0, 1, 2];
+  const [width, setWidth] = useState(0);
+  const [pageIndexOffset, setPageIndexOffSet] = useState<number[]>([]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const w = window.innerWidth;
+      setWidth(w);
+      if (w < 750) {
+        setPageIndexOffSet([0]);
+      } else if (w < 1024) {
+        setPageIndexOffSet([-1, 0, 1]);
+      } else {
+        setPageIndexOffSet([-2, -1, 0, 1, 2]);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="flex justify-between w-full mt-4 h-15 relative z-10 max-w-200">
+    <div className="flex justify-between w-full mt-4 mb-10 h-15 relative z-10 max-w-200">
       <StyledLink href={`?${baseParams}index=0`}>
         <FaAngleDoubleLeft />
       </StyledLink>
