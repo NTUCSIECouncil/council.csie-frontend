@@ -80,13 +80,11 @@ const PageSelector = ({
   limit: number;
   total: number;
 }): React.JSX.Element => {
-  const [width, setWidth] = useState(0);
   const [pageIndexOffset, setPageIndexOffSet] = useState<number[]>([]);
 
   useEffect(() => {
     const handleResize = () => {
       const w = window.innerWidth;
-      setWidth(w);
       if (w < 750) {
         setPageIndexOffSet([0]);
       } else if (w < 1024) {
@@ -97,7 +95,9 @@ const PageSelector = ({
     };
     handleResize();
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 
 import { Filter, FilterOptionKey } from '@/components/filter';
 import PageSelector from '@/components/page-selector';
