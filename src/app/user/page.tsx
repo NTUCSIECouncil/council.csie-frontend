@@ -3,17 +3,25 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FaPencilAlt } from 'react-icons/fa'; // Edit button
-import { getAuth, updateProfile } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 
 import { env } from '@/env';
 import { homePages } from '@/utils/constants';
 import { UserAuth } from '@/helpers/context/auth-context';
+import { auth } from '@/helpers/firebase/firebase';
 import TopicBlock from '@/app/user/components/topic-block';
 import InformationBlock from '@/app/user/components/information-block';
 import NameBlock from '@/app/user/components/name-block';
 import Table from '@/app/user/components/table';
+import RenamePanel from '@/app/user/components/rename-panel';
 import rating_data from '@/app/user/rating_data.json';
 import exam_data from '@/app/user/exam_data.json';
+
+const handlePromise = (promiseFunction: () => Promise<void>): void => {
+  promiseFunction()
+    .then(() => console.log("Promise resolved successfully."))
+    .catch((error) => console.error("Promise failed:", error));
+};
 
 const Page = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -35,12 +43,33 @@ const Page = () => {
 
   // Prevent window not defined error
   const [isClient, setIsClient] = useState(false);
-  const [dummyName, setName] = useState("Jaime");
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const user = getAuth().currentUser;
+  // Handling rename
+  const { currentUser } = UserAuth();
+  const [displayName, setDisplayName] = useState("Jaime"); // dummy variable for testing, since I can't login properly QAQ
+  const [isPanelOpen, setPanelOpen] = useState(false);
+
+  useEffect(() => {
+    if (currentUser?.displayName) {
+      setDisplayName(currentUser.displayName);
+    }
+  }, [currentUser]);
+
+  const handleSave = (newName: string) => {
+    /*
+    handlePromise(() => 
+      updateProfile(auth.currentUser, {
+        displayName: newName
+      })
+    );
+    */
+    setDisplayName(newName);
+    setPanelOpen(false);
+  };
+
   const rating_header = ["標題", "課名", "課號", "授課教師", "年份"]
   const rating_colRatio = ["30%", "30%", "15%", "15%", "10%"]
   const exam_header = ["課名", "課號", "授課教師", "年份"]
@@ -58,25 +87,18 @@ const Page = () => {
           <div className="flex flex-row items-center gap-6">
             <Image
               alt="Teacher Image"
-              src={"/teacher_img/Hm_tsai.png"/* user.photoUrl */}
+              src={"/teacher_img/Hm_tsai.png"/* currentUser.photoUrl */}
               height={128}
               width={128}
               className="object-cover object-top w-36 h-36 rounded-full"
             />
             
-            {/* Specialized container for Display Name + Edit Button */}
             <div className="flex flex-row items-center gap-3">
               <NameBlock
-                content={dummyName/* user.displayName */}
+                content={displayName/* currentUser.displayName */}
               />
-              {/*
-                onClick={/*() => handlePromise(() =>
-                  updateProfile(user, {
-                    displayName: "Jane Q. User", photoURL: "https://example.com/jane-q-user/profile.jpg"
-                  }))*/
-                }
               <button
-                
+                onClick={() => setPanelOpen(true)}
                 className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
                 aria-label="Modify display name"
               >
@@ -87,14 +109,22 @@ const Page = () => {
           <div className="flex flex-col justify-end items-end">
             <InformationBlock
               key="other"
-              content={"Social credti: 777"/* other user property */}
+              content={"Social credit: 777"/* other user property */}
             />
             <InformationBlock
               key="email"
-              content={"b12902141@csie.ntu.edu.tw"/*user.email*/}
+              content={"b12902141@csie.ntu.edu.tw"/*currentUser.email*/}
             />
           </div>
         </div>
+        
+        <RenamePanel
+          isOpen={isPanelOpen}
+          initialName={displayName}
+          onCancel={() => setPanelOpen(false)}
+          onSave={handleSave}
+        />
+
         <div className="flex flex-col gap-4 py-4 w-full">
           <div key="course" className="w-full">
             <TopicBlock content="你發布的課程評價" />
