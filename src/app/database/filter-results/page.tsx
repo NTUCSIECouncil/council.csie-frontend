@@ -58,7 +58,7 @@ const Page = async (params: {
   if (keyword !== '') baseParams.append('keyword', keyword);
   if (categories !== '') baseParams.append('categories', categories.toString());
   if (grade !== '') baseParams.append('grade', grade.toString());
-  if (type !== '') baseParams.append('type', type.toString());
+  if (type !== '') baseParams.append('type', type);
 
   return (
     <div className="h-full w-full">
