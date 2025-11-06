@@ -48,7 +48,7 @@ const Page = () => {
   }, []);
 
   // Handling rename
-  const { currentUser } = UserAuth();
+  const { currentUser, isUserLoaded, signIn } = UserAuth();
   const [displayName, setDisplayName] = useState("Jaime"); // dummy variable for testing, since I can't login properly QAQ
   const [isPanelOpen, setPanelOpen] = useState(false);
 
@@ -80,14 +80,18 @@ const Page = () => {
       .catch(() => "I don't want to do anything.");
   };
   // Hangle noot login case
-  return (
+  if(isUserLoaded && currentUser) {
+    handlePromise(signIn);
+    return <div>Redirecting to login...</div>;
+  }
+  else return (
     <>
       <div className="relative flex flex-col items-start gap-2 py-4 lg:ml-8 lg:pr-8 lg:max-w-4xl lg:w-[80%]">
         <div className="container mx-auto flex flex-row justify-between items-stretch py-4">
           <div className="flex flex-row items-center gap-6">
             <Image
-              alt="Teacher Image"
-              src={"/teacher_img/Hm_tsai.png"/* currentUser.photoUrl */}
+              alt="User Icon"
+              src={isUserLoaded ? "/teacher_img/Hm_tsai.png"/* currentUser.photoUrl */ : "/teacher_img/Hm_tsai.png" /* default image */}
               height={128}
               width={128}
               className="object-cover object-top w-36 h-36 rounded-full"
@@ -95,12 +99,13 @@ const Page = () => {
             
             <div className="flex flex-row items-center gap-3">
               <NameBlock
-                content={displayName/* currentUser.displayName */}
+                content={isUserLoaded ? displayName/* currentUser.displayName */ : "Loading..."}
               />
               <button
                 onClick={() => setPanelOpen(true)}
                 className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
                 aria-label="Modify display name"
+                disabled={!isUserLoaded}
               >
                 <FaPencilAlt className="w-5 h-5" />
               </button>
@@ -113,7 +118,7 @@ const Page = () => {
             />
             <InformationBlock
               key="email"
-              content={"b12902141@csie.ntu.edu.tw"/*currentUser.email*/}
+              content={isUserLoaded ? "b12902141@csie.ntu.edu.tw"/*currentUser.email*/ : ""}
             />
           </div>
         </div>

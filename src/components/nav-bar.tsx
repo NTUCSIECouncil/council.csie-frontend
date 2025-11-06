@@ -138,7 +138,7 @@ const NavBar = (): React.JSX.Element => {
                     <MenuItem>
                       <button
                         onClick={() => {
-                          handlePromise(signIn);
+                          handlePromise(logOut);
                         }}
                         className="py-1 block w-full min-w-[180px] text-md text-white text-center rounded-2xl transition-colors duration-150 data-[headlessui-state=active]:bg-violet-200 data-[headlessui-state=active]:text-gray-800"
                       >
