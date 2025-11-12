@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { Filter, FilterOptionKey } from '@/components/filter';
-import PageSelector from '@/components/page-selector';
+import Paginator from '@/components/page-selector';
 import Search from '@/components/search';
 import { type Article } from '@/types/backend';
 import { getFirstParam } from '@/utils/get-first-params';
@@ -26,7 +26,6 @@ const Page = async (props: {
   const keyword = getFirstParam(searchParams.keyword);
   const index = Math.max(parseInt(getFirstParam(searchParams.index)) | 0, 0);
   const offset = index * limit;
-  //   const offset = "1";
 
   const queryParams = new URLSearchParams();
   queryParams.append('keyword', keyword);
@@ -74,7 +73,7 @@ const Page = async (props: {
           ))}
         </div>
       </div>
-      <PageSelector
+      <Paginator
         baseParams={`keyword=${keyword}&`}
         limit={limit}
         index={Math.min(

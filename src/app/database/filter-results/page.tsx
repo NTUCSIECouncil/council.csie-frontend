@@ -4,7 +4,7 @@
 'use server';
 
 import { SmallSearch } from '@/app/database/filter-results/components/small-search';
-import PageSelector from '@/components/page-selector';
+import Paginator from '@/components/page-selector';
 import { type Course } from '@/types/backend';
 import searchRedirectServer from '@/utils/search-redirect-server';
 import serverFetch from '@/utils/server-fetch';
@@ -26,15 +26,11 @@ const Page = async (params: {
     limit?: number;
     index?: number;
     categories?: string[];
-    grade?: number;
-    type?: string;
   }>;
 }) => {
   const searchParams = await params.searchParams;
   const keyword = searchParams?.keyword ?? '';
   const categories = searchParams?.categories ?? '';
-  const grade = searchParams?.grade ?? '';
-  const type = searchParams?.type ?? '';
   const limit = 10;
   const index = Math.max(searchParams?.index ?? 0, 0);
   const offset = index * limit;
@@ -57,9 +53,6 @@ const Page = async (params: {
   const baseParams = new URLSearchParams();
   if (keyword !== '') baseParams.append('keyword', keyword);
   if (categories !== '') baseParams.append('categories', categories.toString());
-  if (grade !== '') baseParams.append('grade', grade.toString());
-  if (type !== '') baseParams.append('type', type);
-
   return (
     <div className="h-full w-full">
       <Background />
@@ -75,7 +68,7 @@ const Page = async (params: {
           <ResultTable rows={rows} />
         </div>
         <div className="w-full flex justify-center">
-          <PageSelector
+          <Paginator
             baseParams={`${baseParams.toString()}&`}
             limit={limit}
             index={Math.min(

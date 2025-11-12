@@ -69,7 +69,7 @@ const PageNum = ({
     );
 };
 
-const PageSelector = ({
+const Paginator = ({
   baseParams, // for example, "keyword=123&", or "keyword=123&group=456&", or simply ""
   index,
   limit,
@@ -80,17 +80,17 @@ const PageSelector = ({
   limit: number;
   total: number;
 }): React.JSX.Element => {
-  const [pageIndexOffset, setPageIndexOffSet] = useState<number[]>([]);
+  const [pageIndexOffset, setPageIndexOffset] = useState<number[]>([]);
 
   useEffect(() => {
     const handleResize = () => {
       const w = window.innerWidth;
       if (w < 750) {
-        setPageIndexOffSet([0]);
+        setPageIndexOffset([0]);
       } else if (w < 1024) {
-        setPageIndexOffSet([-1, 0, 1]);
+        setPageIndexOffset([-1, 0, 1]);
       } else {
-        setPageIndexOffSet([-2, -1, 0, 1, 2]);
+        setPageIndexOffset([-2, -1, 0, 1, 2]);
       }
     };
     handleResize();
@@ -134,4 +134,4 @@ const PageSelector = ({
   );
 };
 
-export default PageSelector;
+export default Paginator;
