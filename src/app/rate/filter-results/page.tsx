@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { Filter, FilterOptionKey } from '@/components/filter';
+import Paginator from '@/components/page-selector';
 import Search from '@/components/search';
 import { type Article } from '@/types/backend';
 import { getFirstParam } from '@/utils/get-first-params';
@@ -12,7 +13,7 @@ interface ArticleResponse {
   articles: Article[];
   meta: {
     total: number;
-    offset: number;
+    index: number;
     limit: number;
   };
 }
@@ -23,15 +24,19 @@ const Page = async (props: {
   const limit = 10;
   const searchParams = await props.searchParams;
   const keyword = getFirstParam(searchParams.keyword);
-  const offset = getFirstParam(searchParams.offset);
+  const index = Math.max(parseInt(getFirstParam(searchParams.index)) | 0, 0);
+  const offset = index * limit;
 
   const queryParams = new URLSearchParams();
   queryParams.append('keyword', keyword);
   queryParams.append('limit', limit.toString());
-  if (offset) queryParams.append('offset', offset);
+  if (offset) queryParams.append('offset', offset.toString());
 
   const url = `/api/articles?${queryParams.toString()}`;
-  const res = await serverFetch(url, { cache: 'no-store' });
+  const res = await serverFetch(url, {
+    cache: 'force-cache',
+    next: { revalidate: 3600 },
+  });
   if (res.status != 200) throw Error('Unknown error');
   const filterResult = (await res.json()) as ArticleResponse;
 
@@ -68,6 +73,15 @@ const Page = async (props: {
           ))}
         </div>
       </div>
+      <Paginator
+        baseParams={`keyword=${keyword}&`}
+        limit={limit}
+        index={Math.min(
+          index,
+          Math.floor(Math.max(filterResult.meta.total - 1, 0) / limit),
+        )}
+        total={filterResult.meta.total}
+      />
     </main>
   );
 };
