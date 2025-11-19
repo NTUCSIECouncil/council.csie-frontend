@@ -58,11 +58,11 @@ const NewPostPage = (): React.JSX.Element => {
     setIsSubmitting(true);
 
     try {
-      // TODO: Replace with actual API call
       const postData = {
         title: title.trim(),
         tags: selectedTags,
         ratings: {
+          // TODO: use fixed value for ratings temporarily
           sweetness: 4,
           chill: 5,
           teaching: 3,
@@ -106,10 +106,20 @@ const NewPostPage = (): React.JSX.Element => {
         },
       );
 
+      if (!contentUploadResponse.ok) {
+        const errorData = (await createResponse.json()) as ErrorResponse;
+        if (createResponse.status === 400) {
+          throw new Error(`Bad Request: ${errorData.message}`);
+        } else if (createResponse.status === 401) {
+          throw new Error(`Bad Request: ${errorData.message}`);
+        }
+      }
+
       // Redirect to success page or back to rate page
-      router.push('/rate');
+      router.push(`/rate/articles/${articleId}`);
     } catch (error) {
       console.error('Error submitting post:', error);
+      // TODO: Show error message to user
     } finally {
       setIsSubmitting(false);
     }
@@ -210,7 +220,7 @@ const NewPostPage = (): React.JSX.Element => {
             <ArticleDisplay
               articleData={{
                 title: title || '課程評價標題',
-                creator: '預覽使用者',
+                creator: '預覽使用者', // TODO: change to real userId
                 content: content,
                 tags: selectedTags,
                 createdAt: new Date().toISOString().split('T')[0],
