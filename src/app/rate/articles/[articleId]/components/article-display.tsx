@@ -2,6 +2,7 @@
 
 import { FaCalendarAlt, FaUser } from 'react-icons/fa';
 import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 import ClickableTag from './clickable-tag';
 import CollapsibleCourseInfo from './collapsible-course-info';
@@ -29,6 +30,7 @@ interface Props {
   showPreviousButton?: boolean;
   showEditButton?: boolean;
 }
+
 
 const ArticleDisplay = ({
   articleData,
@@ -79,7 +81,7 @@ const ArticleDisplay = ({
       <div className="flex flex-col items-start w-full px-4 text-white">
         {articleData.content ? (
           <div className="prose prose-invert max-w-none">
-            <Markdown>{articleData.content}</Markdown>
+            <Markdown remarkPlugins={[remarkGfm]}>{articleData.content}</Markdown>
           </div>
         ) : (
           <div className="text-gray-400 italic">請在編輯模式中輸入內容...</div>

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { BsFilterLeft } from 'react-icons/bs';
+import { LuTag } from "react-icons/lu";
 import { FaPen } from 'react-icons/fa6';
 
 import SearchFilterPanel from '@/app/rate/components/search-filter-panel';
@@ -37,22 +37,26 @@ const Page = (): React.JSX.Element => {
             onClick={() => {
               setShowFilter(true);
             }}
-            className="px-6 py-2 bg-slate-300 text-slate-900 rounded-xl hover:bg-slate-400 transition"
+            className="group py-2 px-4 bg-gray-700 border-gray-600 border placeholder-gray-400 font-medium rounded-md hover:bg-gray-600 hover:border-gray-500 transition"
           >
-            <div className="flex items-center gap-2">
-              <BsFilterLeft className="text-2xl text-[#1c1c29] self-center" />
-              篩選標籤
+            <div className="flex items-center gap-2 group-hover:text-white transition-colors duration-300 ease-in-out">
+              <LuTag className="self-center group-hover:rotate-12 group-hover:scale-120 transition-transform duration-300 ease-in-out" />
+              <div className="group-hover:scale-105 transition-transform duration-300 ease-in-out">篩選標籤</div>
             </div>
           </button>
           <button
             type="button"
             onClick={() => {
+              //TODO: Check if user is logged in
+              router.push('/rate/edit');
               return;
             }}
-            className="size-10 aspect-square transform origin-center
-            scale-90 hover:scale-100 hover:rounded-md transition-all duration-300 ease-in-out bg-slate-200 flex rounded-2xl"
+            className="group relative py-2 px-3 flex items-center gap-0 transform origin-center  bg-slate-200 rounded-full
+            hover:px-4 hover:gap-2 hover:bg-slate-100
+            transition-all duration-300 ease-in-out"
           >
-            <FaPen className="size-5 transition-all duration-300 ease-in-out text-3xl text-[#1c1c29] self-center mx-auto" />
+            <FaPen className="text-[#1c1c29] group-hover:-rotate-45 transition-all duration-300 ease-in-out" />
+            <span className="text-[#1c1c29] scale-105 font-bold max-w-0 opacity-0 group-hover:max-w-20 group-hover:opacity-100 transition-all duration-300 ease-in-out whitespace-nowrap pointer-events-none">撰寫評價</span>            
           </button>
         </div>
       </div>
