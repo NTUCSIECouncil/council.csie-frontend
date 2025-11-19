@@ -2,13 +2,13 @@
 const Table = ({ table }: { table: string[][] }): React.JSX.Element => {
   return (
     <div className="w-full overflow-x-auto no-scrollbar">
-      <table className="w-full text-xl border-collapse border border-gray-400 relative">
+      <table className="w-full text-xl border-collapse table-fixed md:table-auto border border-gray-400 relative">
         <thead>
           <tr>
             {table[0].map((content, index) => (
               <th
                 key={index}
-                className={`p-3 border border-2 border-gray-400 ${index === 0 ? 'bg-white/10' : ''}`}
+                className={`break-words p-3 border border-2 border-gray-400 ${index === 0 ? 'bg-white/10' : ''}`}
               >
                 {content}
               </th>
@@ -20,7 +20,7 @@ const Table = ({ table }: { table: string[][] }): React.JSX.Element => {
             {table[1].map((content, index) => (
               <th
                 key={index}
-                className={`p-3 border border-2 border-gray-400 ${index === 0 ? 'bg-white/10' : ''}`}
+                className={`break-words p-3 border border-2 border-gray-400 ${index === 0 ? 'bg-white/10' : ''}`}
               >
                 {content}
               </th>
