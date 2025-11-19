@@ -97,7 +97,7 @@ const Page = async (props: {
                   creator={article.creator}
                   semester={article.semester}
                   tags={article.tags}
-                  content={article.content || ''}
+                  content={article.content ?? ''}
                 />
               </Link>
             ))}
