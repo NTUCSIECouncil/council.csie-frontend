@@ -5,10 +5,25 @@ import { useState } from 'react';
 
 import ArticleDisplay from '@/app/rate/articles/[articleId]/components/article-display';
 import { type Course } from '@/types/backend';
+import clientFetch from '@/utils/client-fetch';
 import EditComponent from './components/edit-component';
 import { EditContext } from './context';
 
 type TabType = 'edit' | 'preview';
+
+interface ArticleIdResponse {
+  articleId: string;
+}
+
+interface ErrorResponse {
+  message: string;
+  details?: ErrorDetail;
+}
+
+interface ErrorDetail {
+  field: string;
+  reason: string;
+}
 
 const NewPostPage = (): React.JSX.Element => {
   const router = useRouter();
@@ -35,40 +50,69 @@ const NewPostPage = (): React.JSX.Element => {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isFormValid()) return;
+
     setIsSubmitting(true);
-    return;
 
-    // e.preventDefault();
+    try {
+      // TODO: Replace with actual API call
+      const postData = {
+        title: title.trim(),
+        tags: selectedTags,
+        ratings: {
+          sweetness: 4,
+          chill: 5,
+          teaching: 3,
+          gain: 4,
+          recommend: 5,
+        },
+        course: selectedCourse._id,
+      };
 
-    // if (!isFormValid()) return;
+      const createResponse = await clientFetch('/api/articles', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+        cache: 'no-store',
+      });
 
-    // setIsSubmitting(true);
+      if (!createResponse.ok) {
+        const errorData = (await createResponse.json()) as ErrorResponse;
+        if (createResponse.status === 400) {
+          throw new Error(`Bad Request: ${errorData.message}`);
+        } else if (createResponse.status === 401) {
+          throw new Error(`Bad Request: ${errorData.message}`);
+        }
+      }
 
-    // try {
-    //   // TODO: Replace with actual API call
-    //   const postData = {
-    //     title: title.trim(),
-    //     courseId: selectedCourse!.id,
-    //     content: content.trim(),
-    //     tags: selectedTags,
-    //     timestamp: new Date().toISOString(),
-    //   };
+      const articleId = ((await createResponse.json()) as ArticleIdResponse)
+        .articleId;
 
-    //   console.log('Submitting post:', postData);
+      console.log('Post submitted successfully, articleId:', articleId);
 
-    //   // Simulate API call
-    //   await new Promise(resolve => setTimeout(resolve, 1000));
+      const contentUploadResponse = await clientFetch(
+        `/articles/${articleId}/file`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ content: content.trim() }),
+        },
+      );
 
-    //   // Redirect to success page or back to rate page
-    //   router.push('/rate');
-    // } catch (error) {
-    //   console.error('Error submitting post:', error);
-    //   // TODO: Show error message to user
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
+      // Redirect to success page or back to rate page
+      router.push('/rate');
+    } catch (error) {
+      console.error('Error submitting post:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCancel = () => {
