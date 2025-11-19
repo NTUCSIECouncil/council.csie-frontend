@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { Filter, FilterOptionKey } from '@/components/filter';
+import Paginator from '@/components/page-selector';
 import Search from '@/components/search';
 import { type Article, type Course, type User } from '@/types/backend';
 import { getFirstParam } from '@/utils/get-first-params';
@@ -29,19 +30,23 @@ const Page = async (props: {
   const limit = 10;
   const searchParams = await props.searchParams;
   const keyword = getFirstParam(searchParams.keyword);
-  const offset = getFirstParam(searchParams.offset);
+  const index = Math.max(parseInt(getFirstParam(searchParams.index)) | 0, 0);
+  const offset = index * limit;
 
   const queryParams = new URLSearchParams();
   queryParams.append('keyword', keyword);
   queryParams.append('limit', limit.toString());
-  if (offset) queryParams.append('offset', offset);
+  if (offset) queryParams.append('offset', offset.toString());
 
   queryParams.append('embed', 'course');
   queryParams.append('embed', 'creator');
   queryParams.append('embed', 'content');
 
   const url = `/api/articles?${queryParams.toString()}`;
-  const res = await serverFetch(url, { cache: 'no-store' });
+  const res = await serverFetch(url, {
+    cache: 'force-cache',
+    next: { revalidate: 3600 },
+  });
 
   let filterResult: ArticleResponse;
   if (res.status !== 200) {
@@ -56,8 +61,6 @@ const Page = async (props: {
   } else {
     filterResult = (await res.json()) as ArticleResponse;
   }
-
-  console.log('Filter result:', filterResult);
 
   return (
     <main className="flex flex-col gap-4 items-center mt-8 w-3/5">
@@ -101,6 +104,15 @@ const Page = async (props: {
           </div>
         )}
       </div>
+      <Paginator
+        baseParams={`keyword=${keyword}&`}
+        limit={limit}
+        index={Math.min(
+          index,
+          Math.floor(Math.max(filterResult.meta.total - 1, 0) / limit),
+        )}
+        total={filterResult.meta.total}
+      />
     </main>
   );
 };
