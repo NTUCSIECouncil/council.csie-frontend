@@ -125,11 +125,6 @@ const NavBar = (): React.JSX.Element => {
 
                 <MenuItems className="absolute right-0 w-fit min-w-[180px] mt-6 z-10 rounded-2xl bg-black/70 shadow-lg transition-all duration-200 ease-out transform scale-95 opacity-0 data-[headlessui-state=open]:scale-100 data-[headlessui-state=open]:opacity-100">
                   <div>
-                    <MenuItem key="Home" as={Link} href="/">
-                      <div className="py-1 block min-w-[180px] text-md text-white text-center rounded-2xl transition-colors duration-150 data-[headlessui-state=active]:bg-violet-200 data-[headlessui-state=active]:text-gray-800">
-                        Home
-                      </div>
-                    </MenuItem>
                     <MenuItem key="Settings" as={Link} href="/user/settings">
                       <div className="py-1 block min-w-[180px] text-md text-white text-center rounded-2xl transition-colors duration-150 data-[headlessui-state=active]:bg-violet-200 data-[headlessui-state=active]:text-gray-800">
                         Settings
@@ -150,13 +145,6 @@ const NavBar = (): React.JSX.Element => {
               </Menu>
             </div>
             <div className="hidden lg:flex items-center space-x-6">
-              <Link
-                key="Home"
-                href="/"
-                className="text-white text-xl hover:text-gray-400 transition-colors duration-200"
-              >
-                Home      
-              </Link>
               <Link
                 key="Settings"
                 href="/user/settings"

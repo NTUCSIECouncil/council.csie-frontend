@@ -2,12 +2,13 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { FaPencilAlt } from 'react-icons/fa'; // Edit button
+import { FaPencilAlt, FaHome } from 'react-icons/fa'; // Edit button
 import { updateProfile } from "firebase/auth";
 
 import { env } from '@/env';
 import { homePages } from '@/utils/constants';
 import { UserAuth } from '@/helpers/context/auth-context';
+import { useRouter } from 'next/navigation';
 import { auth } from '@/helpers/firebase/firebase';
 import TopicBlock from '@/app/user/components/topic-block';
 import InformationBlock from '@/app/user/components/information-block';
@@ -15,7 +16,10 @@ import NameBlock from '@/app/user/components/name-block';
 import Table from '@/app/user/components/table';
 import RenamePanel from '@/app/user/components/rename-panel';
 import rating_data from '@/app/user/rating_data.json';
+import user_data from '@/app/user/user_data.json';
+/* To be deleted after confirmation, please also delete exam_data.json
 import exam_data from '@/app/user/exam_data.json';
+*/
 
 const handlePromise = (promiseFunction: () => Promise<void>): void => {
   promiseFunction()
@@ -72,14 +76,17 @@ const Page = () => {
 
   const rating_header = ["標題", "課名", "課號", "授課教師", "年份", "編輯"]
   const rating_colRatio = ["25%", "25%", "15%", "15%", "10%", "10%"]
+  /* To be deleted after confirmation, please also delete exam_data.json
   const exam_header = ["課名", "課號", "授課教師", "年份"]
   const exam_colRatio = ["50%", "20%", "20%", "10%"]
+  */
+  const router = useRouter();
   const handlePromise = (promiseFunction: () => Promise<void>): void => {
     promiseFunction()
       .then()
       .catch(() => "I don't want to do anything.");
   };
-  // Hangle noot login case
+  // Handle not login case
   if(isUserLoaded && currentUser) {
     handlePromise(signIn);
     return <div>Redirecting to login...</div>;
@@ -91,7 +98,7 @@ const Page = () => {
           <div className="flex flex-row items-center gap-6">
             <Image
               alt="User Icon"
-              src={isUserLoaded ? "/teacher_img/Hm_tsai.png"/* currentUser.photoUrl */ : "/teacher_img/Hm_tsai.png" /* default image */}
+              src={isUserLoaded ? "/teacher_img/Hm_tsai.png"/* user_data.photo */ : "/teacher_img/Hm_tsai.png" /* default image */}
               height={128}
               width={128}
               className="object-cover object-top w-36 h-36 rounded-full"
@@ -99,7 +106,7 @@ const Page = () => {
             
             <div className="flex flex-row items-center gap-3">
               <NameBlock
-                content={isUserLoaded ? displayName/* currentUser.displayName */ : "Loading..."}
+                content={isUserLoaded ? user_data.nickname : "Loading..."}
               />
               <button
                 onClick={() => setPanelOpen(true)}
@@ -112,13 +119,24 @@ const Page = () => {
             </div>
           </div>
           <div className="flex flex-col justify-end items-end">
+            
+            <button
+              onClick={() => {
+                        router.push('/');
+                      }}
+              className="text-white hover:text-gray-400 transition-colors p-3 rounded-full bg-white/10 hover:bg-white/0 mb-6"
+              aria-label="Modify display name"
+              disabled={!isUserLoaded}
+            >
+              <p> Back to home </p>
+            </button>
             <InformationBlock
               key="other"
-              content={"Social credit: 777"/* other user property */}
+              content={isUserLoaded ? user_data.name : ""}
             />
             <InformationBlock
               key="email"
-              content={isUserLoaded ? "b12902141@csie.ntu.edu.tw"/*currentUser.email*/ : ""}
+              content={isUserLoaded ? user_data.email : ""}
             />
           </div>
         </div>
@@ -135,10 +153,12 @@ const Page = () => {
             <TopicBlock content="你發布的課程評價" />
             <Table key="rating_table" table={rating_data} header={rating_header} colRatio={rating_colRatio} />
           </div>
+          {/* To be deleted after confirmation, please also delete exam_data.json
           <div key="exam" className="w-full">
             <TopicBlock content="你發布的考古題" />
             <Table key="exam_table" table={exam_data} header={exam_header} colRatio={exam_colRatio} />
           </div>
+          */}
         </div>
       </div>
     </>
