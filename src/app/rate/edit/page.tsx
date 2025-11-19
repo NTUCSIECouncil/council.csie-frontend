@@ -96,13 +96,13 @@ const NewPostPage = (): React.JSX.Element => {
       console.log('Post submitted successfully, articleId:', articleId);
 
       const contentUploadResponse = await clientFetch(
-        `/articles/${articleId}/file`,
+        `/api/articles/${articleId}/file`,
         {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ content: content.trim() }),
+          body: JSON.stringify({ file: content.trim() }),
         },
       );
 
