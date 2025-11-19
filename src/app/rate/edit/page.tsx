@@ -179,8 +179,6 @@ const NewPostPage = (): React.JSX.Element => {
           {activeTab === 'edit' ? (
             <form onSubmit={handleSubmit}>
               <EditComponent />
-
-              {/* Form Actions */}
               <div className="flex gap-4 pt-6 border-t border-gray-500 px-4 mt-8">
                 <button
                   type="button"

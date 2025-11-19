@@ -85,14 +85,12 @@ const CourseSearch = ({ disabled = false }: Props): React.JSX.Element => {
       </label>
 
       {selectedCourse ? (
-        <div className="flex items-center justify-between p-4 border border-gray-500 rounded-xl bg-[#1c1c29] bg-opacity-50">
+        <div className="flex items-center justify-between px-4 h-12 border border-gray-500 rounded-xl bg-[#1c1c29] bg-opacity-50">
           <div>
             <div className="font-semibold text-white">
               {/* FIXME: names is an array? */}
-              {selectedCourse.names[0]} / {selectedCourse.curriculum}
-            </div>
-            <div className="text-sm text-gray-300">
-              {selectedCourse.lecturer}
+              {selectedCourse.lecturer} / {selectedCourse.names[0]} /{' '}
+              {selectedCourse.curriculum}
             </div>
           </div>
           {!disabled && (
@@ -112,7 +110,7 @@ const CourseSearch = ({ disabled = false }: Props): React.JSX.Element => {
             <input
               type="text"
               placeholder="搜尋課程名稱、課號或教授..."
-              className="w-full px-4 py-3 pr-12 border border-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 bg-[#1c1c29] bg-opacity-50 text-white placeholder:text-gray-400"
+              className="w-full px-4 h-12 pr-12 border border-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 bg-[#1c1c29] bg-opacity-50 text-white placeholder:text-gray-400"
               value={searchText}
               onChange={e => {
                 setSearchText(e.target.value);
