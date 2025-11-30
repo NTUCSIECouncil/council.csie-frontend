@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 
-import { type Article, type Course } from '@/types/backend';
+import { type Article, type Course, type User } from '@/types/backend';
 import serverFetch from '@/utils/server-fetch';
 import ArticleDisplay from './components/article-display';
 
@@ -20,6 +20,17 @@ const Article = async ({
   const articleMeta = articleMetaResponse.article;
 
   console.log('Fetched article metadata:', articleMetaResponse);
+
+  const creatorRes = await serverFetch(`/api/users/${articleMeta.creator}`, {
+    cache: 'force-cache',
+  });
+  let creatorName = 'Unknown';
+  if (!creatorRes.ok) {
+    if (creatorRes.status === 404) notFound();
+    throw new Error('Failed to fetch response');
+  } else {
+    creatorName = ((await creatorRes.json()) as { user: User }).user.nickname;
+  }
 
   const resContent = await serverFetch(`/api/articles/${articleId}/file`, {
     cache: 'no-store',
@@ -42,7 +53,8 @@ const Article = async ({
 
   const articleData = {
     title: articleMeta.title,
-    creator: articleMeta.creator,
+    creatorId: articleMeta.creator,
+    creatorName: creatorName,
     content: content,
     tags: articleMeta.tags,
     createdAt: '2024-03-15', // TODO: get this from the API

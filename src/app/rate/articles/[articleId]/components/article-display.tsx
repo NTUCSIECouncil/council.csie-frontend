@@ -7,10 +7,12 @@ import remarkGfm from 'remark-gfm';
 import ClickableTag from './clickable-tag';
 import CollapsibleCourseInfo from './collapsible-course-info';
 import EditButton from './edit-button';
+import { UserAuth } from '@/helpers/context/auth-context';
 
 export interface ArticleData {
   title: string;
-  creator: string;
+  creatorId: string;
+  creatorName: string;
   content: string;
   tags: string[];
   createdAt?: string;
@@ -39,6 +41,8 @@ const ArticleDisplay = ({
   articleId,
   showEditButton = true,
 }: Props): React.JSX.Element => {
+  const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
+  
   return (
     <>
       {/* Post Title and Author */}
@@ -46,7 +50,7 @@ const ArticleDisplay = ({
         <h1 className="font-bold text-4xl text-white">{articleData.title}</h1>
         <div className="flex items-center gap-1 text-white">
           <FaUser />
-          <span className="text-xl">{articleData.creator}</span>
+          <span className="text-xl">{articleData.creatorName}</span>
         </div>
       </div>
 
@@ -73,7 +77,7 @@ const ArticleDisplay = ({
             </span>
           </div>
 
-          {showEditButton && articleId && <EditButton articleId={articleId} />}
+          {showEditButton && articleId && currentUser?.uid === articleData.creatorId && <EditButton articleId={articleId} />}
         </div>
       </div>
 

@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { LuTag } from "react-icons/lu";
 import { FaPen } from 'react-icons/fa6';
 
+import { UserAuth } from '@/helpers/context/auth-context';
+
 import SearchFilterPanel from '@/app/rate/components/search-filter-panel';
 import Search from '@/components/search';
 import searchRedirect from '@/utils/search-redirect';
@@ -13,6 +15,13 @@ import Background from './background';
 const Page = (): React.JSX.Element => {
   const router = useRouter();
   const [showFilter, setShowFilter] = useState(false);
+  const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
+
+  const handlePromise = (promiseFunction: () => Promise<void>): void => {
+    promiseFunction()
+      .then()
+      .catch(() => "I don't want to do anything.");
+  };
 
   return (
     <main className="flex flex-1 justify-center items-center">
@@ -28,7 +37,6 @@ const Page = (): React.JSX.Element => {
           <Search
             className="my-2 w-full"
             placeholder="輸入關鍵字"
-            //hasAddButton={true}
           />
         </form>
         <div className="flex justify-between items-center mt-4 w-full">
@@ -47,8 +55,10 @@ const Page = (): React.JSX.Element => {
           <button
             type="button"
             onClick={() => {
-              //TODO: Check if user is logged in
-              router.push('/rate/edit');
+              if (!isUserLoaded || currentUser === null) {
+                handlePromise(signIn);
+              }
+              else router.push('/rate/edit');
               return;
             }}
             className="group relative py-2 px-3 flex items-center gap-0 transform origin-center  bg-slate-200 rounded-full
