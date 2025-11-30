@@ -49,7 +49,9 @@ const Page = (): React.JSX.Element => {
           >
             <div className="flex items-center gap-2 group-hover:text-white transition-colors duration-300 ease-in-out">
               <LuTag className="self-center group-hover:rotate-12 group-hover:scale-120 transition-transform duration-300 ease-in-out" />
-              <div className="group-hover:scale-105 transition-transform duration-300 ease-in-out">篩選標籤</div>
+              <div className="group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                篩選標籤
+              </div>
             </div>
           </button>
           <button

@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import ClickableTag from './clickable-tag';
 import CollapsibleCourseInfo from './collapsible-course-info';
 import EditButton from './edit-button';
+import ReportButton from './report-button';
 import { UserAuth } from '@/helpers/context/auth-context';
 
 export interface ArticleData {
@@ -77,7 +78,9 @@ const ArticleDisplay = ({
             </span>
           </div>
 
-          {showEditButton && articleId && currentUser?.uid === articleData.creatorId && <EditButton articleId={articleId} />}
+          {(showEditButton && articleId) && (currentUser?.uid === articleData.creatorId
+            ? <EditButton articleId={articleId} />
+            : <ReportButton articleId={articleId} articleTitle={articleData.title} />)}
         </div>
       </div>
 
