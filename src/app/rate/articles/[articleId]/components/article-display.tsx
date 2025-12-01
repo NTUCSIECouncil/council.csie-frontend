@@ -1,6 +1,7 @@
 'use client';
 
 import { FaCalendarAlt, FaUser } from 'react-icons/fa';
+import { LuTag } from "react-icons/lu";
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -63,8 +64,18 @@ const ArticleDisplay = ({
       {/* Tags and Metrics */}
       <div className="w-full flex gap-3 justify-between items-center my-4 px-4">
         <div className="flex gap-1 items-center">
+          <div className="aspect-square rounded-md bg-transparent border-2 border-blue-300 p-1 mr-2">
+            <LuTag className="text-blue-300" strokeWidth={3} />
+          </div>
           {articleData.tags.length > 0 ? (
-            articleData.tags.map(tag => <ClickableTag key={tag} tag={tag} />)
+            articleData.tags.map(tag => {
+              return (
+                <>
+                  {tag !== articleData.tags[0] && <p className="text-blue-300">．</p>}
+                  <ClickableTag key={tag} tag={tag} style="text" />
+                </>
+              );
+            })
           ) : (
             <span className="text-gray-400">尚未選擇標籤</span>
           )}
