@@ -2,14 +2,14 @@ import Link from 'next/link';
 
 import { Filter, FilterOptionKey } from '@/components/filter';
 import Search from '@/components/search';
-import { type Article } from '@/types/backend';
+import { type Article, type Course } from '@/types/backend';
 import { getFirstParam } from '@/utils/get-first-params';
 import searchRedirectServer from '@/utils/search-redirect-server';
 import serverFetch from '@/utils/server-fetch';
 import ArticleBlock from './article-block';
 
 interface ArticleResponse {
-  articles: Article[];
+  articles: (Article & { content: string })[];
   meta: {
     total: number;
     offset: number;
@@ -28,6 +28,8 @@ const Page = async (props: {
   const queryParams = new URLSearchParams();
   queryParams.append('keyword', keyword);
   queryParams.append('limit', limit.toString());
+  queryParams.append('embed[0]', 'course');
+  queryParams.append('embed[1]', 'content');
   if (offset) queryParams.append('offset', offset);
 
   const url = `/api/articles?${queryParams.toString()}`;
@@ -47,7 +49,7 @@ const Page = async (props: {
             placeholder="輸入關鍵字"
             initialValue={keyword}
           />
-          <div className="flex items-center gap-2 my-2 mx-10 text-sm">
+          <div className="flex items-center gap-2 mt-4 mb-2 mx-10 text-sm">
             <p className="text-base">篩選：</p>
             <Filter filterKey={FilterOptionKey.GRADE} name="grade" />
             <Filter filterKey={FilterOptionKey.CATEGORY} name="type" />
@@ -56,16 +58,22 @@ const Page = async (props: {
       </div>
       <div className="w-full">
         <div className="flex flex-col gap-3">
-          {filterResult.articles.map(article => (
-            <Link href={`/rate/articles/${article._id}`} key={article._id}>
-              <ArticleBlock
-                title={article.title}
-                lecturer=""
-                tag={undefined}
-                id={article._id}
-              />
-            </Link>
-          ))}
+          {filterResult.articles.map(article => {
+            const course = article.course as Course;
+            return (
+              <Link href={`/rate/articles/${article._id}`} key={article._id}>
+                <ArticleBlock
+                  title={article.title}
+                  courseName={course.names[0]}
+                  lecturer={course.lecturer}
+                  semester={course.semester}
+                  content={article.content || ''}
+                  tag={undefined}
+                  id={article._id}
+                />
+              </Link>
+            );
+          })}
         </div>
       </div>
     </main>

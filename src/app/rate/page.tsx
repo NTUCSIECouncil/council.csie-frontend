@@ -45,7 +45,7 @@ const Page = (): React.JSX.Element => {
             onClick={() => {
               setShowFilter(true);
             }}
-            className="group py-2 px-4 bg-gray-700 border-gray-600 border placeholder-gray-400 font-medium rounded-md hover:bg-gray-600 hover:border-gray-500 transition"
+            className="group py-2 px-4 ml-4 bg-gray-700 border-gray-600 border placeholder-gray-400 font-medium rounded-md hover:bg-gray-600 hover:border-gray-500 transition"
           >
             <div className="flex items-center gap-2 group-hover:text-white transition-colors duration-300 ease-in-out">
               <LuTag className="self-center group-hover:rotate-12 group-hover:scale-120 transition-transform duration-300 ease-in-out" />
@@ -63,7 +63,7 @@ const Page = (): React.JSX.Element => {
               else router.push('/rate/edit');
               return;
             }}
-            className="group relative py-2 px-3 flex items-center gap-0 transform origin-center  bg-slate-200 rounded-full
+            className="group relative py-2 px-3 mr-4 flex items-center gap-0 transform origin-center  bg-slate-200 rounded-full
             hover:px-4 hover:gap-2 hover:bg-slate-100
             transition-all duration-300 ease-in-out"
           >

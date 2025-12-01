@@ -1,32 +1,37 @@
 import { type UUID } from 'crypto';
 
 import Tag from '@/components/tag';
-import serverFetch from '@/utils/server-fetch';
+import MarkdownPreview from '../components/markdown-preview';
 
 const ArticleBlock = async ({
   title,
+  courseName,
   lecturer,
+  semester,
+  content,
   tag,
   id,
 }: {
   title: string;
+  courseName: string;
   lecturer: string;
+  semester: string;
+  content: string;
   tag?: string[];
   id?: UUID;
 }): Promise<React.JSX.Element> => {
-  const url = '/api/articles/' + (id?.toString() ?? 'unknown') + '/file';
-  const res = await serverFetch(url, { cache: 'no-store' });
-
-  const content = await res.text();
-
   return (
-    <div className="flex flex-col w-full rounded-lg bg-gray-800 py-4 px-6 hover:bg-opacity-75">
-      <div className="flex justify-between w-full">
-        <p className="font-bold text-xl">{title}</p>
-        <p className="font-semibold text-lg">{lecturer}</p>
+    <div className="group flex flex-col w-full rounded-md bg-gray-800 py-4 px-6 hover:bg-gray-700 transition-colors duration-300 ease-in-out">
+      <p className="font-bold text-2xl pl-2 mb-3">{title}</p>
+      <div className="relative">
+        <div className="absolute right-0 -top-8">
+          <p className="font-semibold bg-gray-400 rounded-t-md border-gray-400 border-2 border-l-2 border-r-2 py-1 px-2 text-slate-900 text-sm">
+            {`${courseName}．${lecturer}（${semester}）`}
+          </p>
+        </div>
+        <hr className="w-full border-gray-400 border-t-2" />
       </div>
-      <hr className="w-full my-2 border-gray-500 border-t-2" />
-      <p className="w-full">{content}</p>
+      <MarkdownPreview content={content} className="p-3" />
       <div className="flex w-full justify-end gap-2">
         {tag?.map((t, i) => (
           <Tag content={t} key={i} />
