@@ -1,12 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { MdOutlineReportProblem } from "react-icons/md";
+import { MdOutlineReportProblem } from 'react-icons/md';
 
-
-
-import ReportPanel from "@/app/rate/components/report-panel";
-
+import ReportPanel from '@/app/rate/components/report-panel';
 
 interface Props {
   articleId: string;

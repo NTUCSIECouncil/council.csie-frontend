@@ -7,7 +7,7 @@ import { MdOutlineReportProblem } from 'react-icons/md';
 interface Props {
   onClose: () => void;
   articleId: string;
-  articleTitle?: string;
+  articleTitle: string;
 }
 
 const ReportPanel = ({

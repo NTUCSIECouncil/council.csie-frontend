@@ -2,13 +2,12 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { LuTag } from "react-icons/lu";
 import { FaPen } from 'react-icons/fa6';
-
-import { UserAuth } from '@/helpers/context/auth-context';
+import { LuTag } from 'react-icons/lu';
 
 import SearchFilterPanel from '@/app/rate/components/search-filter-panel';
 import Search from '@/components/search';
+import { UserAuth } from '@/helpers/context/auth-context';
 import searchRedirect from '@/utils/search-redirect';
 import Background from './background';
 
@@ -34,10 +33,7 @@ const Page = (): React.JSX.Element => {
           action={searchRedirect(router, '/rate/filter-results')}
           className="w-full flex flex-col items-center"
         >
-          <Search
-            className="my-2 w-full"
-            placeholder="輸入關鍵字"
-          />
+          <Search className="my-2 w-full" placeholder="輸入關鍵字" />
         </form>
         <div className="flex justify-between items-center mt-4 w-full">
           <button
@@ -59,8 +55,7 @@ const Page = (): React.JSX.Element => {
             onClick={() => {
               if (!isUserLoaded || currentUser === null) {
                 handlePromise(signIn);
-              }
-              else router.push('/rate/edit');
+              } else router.push('/rate/edit');
               return;
             }}
             className="group relative py-2 px-3 mr-4 flex items-center gap-0 transform origin-center  bg-slate-200 rounded-full
@@ -68,7 +63,9 @@ const Page = (): React.JSX.Element => {
             transition-all duration-300 ease-in-out"
           >
             <FaPen className="text-[#1c1c29] group-hover:-rotate-45 transition-all duration-300 ease-in-out" />
-            <span className="text-[#1c1c29] scale-105 font-bold max-w-0 opacity-0 group-hover:max-w-20 group-hover:opacity-100 transition-all duration-300 ease-in-out whitespace-nowrap pointer-events-none">撰寫評價</span>            
+            <span className="text-[#1c1c29] scale-105 font-bold max-w-0 opacity-0 group-hover:max-w-20 group-hover:opacity-100 transition-all duration-300 ease-in-out whitespace-nowrap pointer-events-none">
+              撰寫評價
+            </span>
           </button>
         </div>
       </div>

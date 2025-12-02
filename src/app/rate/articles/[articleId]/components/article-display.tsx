@@ -1,15 +1,15 @@
 'use client';
 
 import { FaCalendarAlt, FaUser } from 'react-icons/fa';
-import { LuTag } from "react-icons/lu";
+import { LuTag } from 'react-icons/lu';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
+import { UserAuth } from '@/helpers/context/auth-context';
 import ClickableTag from './clickable-tag';
 import CollapsibleCourseInfo from './collapsible-course-info';
 import EditButton from './edit-button';
 import ReportButton from './report-button';
-import { UserAuth } from '@/helpers/context/auth-context';
 
 export interface ArticleData {
   title: string;
@@ -35,7 +35,6 @@ interface Props {
   showEditButton?: boolean;
 }
 
-
 const ArticleDisplay = ({
   articleData,
   courseData,
@@ -44,7 +43,7 @@ const ArticleDisplay = ({
   showEditButton = true,
 }: Props): React.JSX.Element => {
   const { currentUser } = UserAuth();
-  
+
   return (
     <>
       {/* Post Title and Author */}
@@ -68,18 +67,23 @@ const ArticleDisplay = ({
             <LuTag className="text-blue-300" strokeWidth={3} />
           </div>
           <div className="flex items-center overflow-x-auto no-scrollbar flex-1 min-w-0 whitespace-nowrap">
-          {articleData.tags.length > 0 ? (
-            articleData.tags.map(tag => {
-              return (
-                <div key={tag} className="flex items-center gap-1 min-w-0 flex-shrink-0 whitespace-nowrap">
-                  {tag !== articleData.tags[0] && <p className="text-blue-300 flex-shrink-0">．</p>}
-                  <ClickableTag key={tag} tag={tag} style="text" />
-                </div>
-              );
-            })
-          ) : (
-            <span className="text-gray-400">尚未選擇標籤</span>
-          )}
+            {articleData.tags.length > 0 ? (
+              articleData.tags.map(tag => {
+                return (
+                  <div
+                    key={tag}
+                    className="flex items-center gap-1 min-w-0 flex-shrink-0 whitespace-nowrap"
+                  >
+                    {tag !== articleData.tags[0] && (
+                      <p className="text-blue-300 flex-shrink-0">．</p>
+                    )}
+                    <ClickableTag key={tag} tag={tag} style="text" />
+                  </div>
+                );
+              })
+            ) : (
+              <span className="text-gray-400">尚未選擇標籤</span>
+            )}
           </div>
         </div>
 
@@ -91,9 +95,16 @@ const ArticleDisplay = ({
             </span>
           </div>
 
-          {(showEditButton && articleId) && (currentUser?.uid === articleData.creatorId
-            ? <EditButton articleId={articleId} />
-            : <ReportButton articleId={articleId} articleTitle={articleData.title} />)}
+          {showEditButton &&
+            articleId &&
+            (currentUser?.uid === articleData.creatorId ? (
+              <EditButton articleId={articleId} />
+            ) : (
+              <ReportButton
+                articleId={articleId}
+                articleTitle={articleData.title}
+              />
+            ))}
         </div>
       </div>
 
@@ -101,7 +112,9 @@ const ArticleDisplay = ({
       <div className="flex flex-col items-start w-full px-4 text-white">
         {articleData.content ? (
           <div className="prose prose-invert max-w-none">
-            <Markdown remarkPlugins={[remarkGfm]}>{articleData.content}</Markdown>
+            <Markdown remarkPlugins={[remarkGfm]}>
+              {articleData.content}
+            </Markdown>
           </div>
         ) : (
           <div className="text-gray-400 italic">請在編輯模式中輸入內容...</div>
