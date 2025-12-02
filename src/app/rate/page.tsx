@@ -26,13 +26,13 @@ const Page = (): React.JSX.Element => {
   return (
     <main className="flex flex-1 justify-center items-center">
       <Background />
-      <div className="relative">
+      <div className="relative w-[90%] sm:w-[500px]">
         <p className="text-5xl font-bold my-6 tracking-widest text-center">
           課程評價網
         </p>
         <form
           action={searchRedirect(router, '/rate/filter-results')}
-          className="sm:w-[500px] flex flex-col items-center"
+          className="w-full flex flex-col items-center"
         >
           <Search
             className="my-2 w-full"
