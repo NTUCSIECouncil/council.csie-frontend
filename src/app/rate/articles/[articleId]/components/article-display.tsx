@@ -63,25 +63,27 @@ const ArticleDisplay = ({
 
       {/* Tags and Metrics */}
       <div className="w-full flex gap-3 justify-between items-center my-4 px-4">
-        <div className="flex gap-1 items-center">
+        <div className="flex items-center flex-shrink min-w-0 max-w-full">
           <div className="aspect-square rounded-md bg-transparent border-2 border-blue-300 p-1 mr-2">
             <LuTag className="text-blue-300" strokeWidth={3} />
           </div>
+          <div className="flex items-center overflow-x-auto no-scrollbar flex-1 min-w-0 whitespace-nowrap">
           {articleData.tags.length > 0 ? (
             articleData.tags.map(tag => {
               return (
-                <>
-                  {tag !== articleData.tags[0] && <p className="text-blue-300">．</p>}
+                <div key={tag} className="flex items-center gap-1 min-w-0 flex-shrink-0 whitespace-nowrap">
+                  {tag !== articleData.tags[0] && <p className="text-blue-300 flex-shrink-0">．</p>}
                   <ClickableTag key={tag} tag={tag} style="text" />
-                </>
+                </div>
               );
             })
           ) : (
             <span className="text-gray-400">尚未選擇標籤</span>
           )}
+          </div>
         </div>
 
-        <div className="flex items-center gap-4 text-sm text-gray-300">
+        <div className="flex items-center gap-4 text-sm text-gray-300 flex-shrink-0 whitespace-nowrap">
           <div className="flex items-center gap-1">
             <FaCalendarAlt />
             <span>
