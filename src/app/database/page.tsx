@@ -19,7 +19,7 @@ const Page = (): React.JSX.Element => {
         </p>
         <form
           action={searchRedirect(router, '/database/filter-results')}
-          className="w-[500px] flex flex-col items-center"
+          className="md:w-[500px] flex flex-col items-center"
         >
           <Search className="my-2 w-full" placeholder="輸入關鍵字" />
           <div>

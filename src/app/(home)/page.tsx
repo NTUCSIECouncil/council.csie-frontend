@@ -52,12 +52,12 @@ const Page = () => {
           </p>
         </main>
         {env.NEXT_PUBLIC_ENABLE_HOMEPAGE_BOTTOM && (
-          <div className="grid grid-cols-2 z-10 px-20">
+          <div className="grid grid-cols-2 z-10 sm:px-20">
             <div>
               {homePages.map((page, index) => (
                 <section
                   key={index}
-                  className="flex flex-col md:flex-row items-center justify-center h-screen px-8 transition-all duration-700"
+                  className="flex flex-col md:flex-row items-center justify-center h-screen pl-0 md:px-8 transition-all duration-700 pr-8 md:pr-0"
                 >
                   <div className="w-full md:w-1/2 text-white">
                     <h2 className="text-4xl font-bold mb-4">{page.name}</h2>
@@ -67,14 +67,14 @@ const Page = () => {
               ))}
             </div>
             <div className="relative">
-              <div className="fixed top-1/2 right-1/4 transform -translate-y-1/2">
+              <div className="fixed top-1/2 md:right-1/4 transform -translate-y-1/2">
                 {isClient && scrollPosition > window.innerHeight * 0.75 && (
                   <Image
                     alt={homePages[activeIndex - 1].name}
                     src={homePages[activeIndex - 1].gif}
                     width={128}
                     height={128}
-                    className="w-64 h-48"
+                    className="w-48 sm:w-64 h-36 sm:h-48"
                   />
                 )}
               </div>

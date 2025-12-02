@@ -57,7 +57,7 @@ const Page = (): React.JSX.Element => {
         />
       </div>
 
-      <div className="flex flex-col items-start pb-8">
+      <div className="flex flex-col items-start pb-8 w-180">
         {subtitles.map((item, index) => (
           <div key={index} className="w-full">
             {item.subtitle && (

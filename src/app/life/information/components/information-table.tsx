@@ -7,13 +7,13 @@ const InformationTable = ({
 }): React.JSX.Element => {
   return (
     <div className="w-full overflow-x-auto no-scrollbar">
-      <table className="w-full min-w-[600px] text-xl border-collapse border border-gray-400 relative">
+      <table className="w-full table-fixed md:table-auto md:min-w-[600px] text-xl border-collapse border border-gray-400 relative">
         <thead>
           <tr>
             {table[0].map((content, index) => (
               <th
                 key={index}
-                className="p-3 border border-2 border-gray-400 bg-white/10"
+                className="p-3 border border-2 border-gray-400 bg-white/10 break-words"
                 style={{ whiteSpace: 'pre-line' }}
               >
                 {content}

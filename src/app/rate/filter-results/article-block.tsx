@@ -1,39 +1,48 @@
-import { type UUID } from 'crypto';
-
 import Tag from '@/components/tag';
-import MarkdownPreview from '../components/markdown-preview';
+import { type Course, type User } from '@/types/backend';
 
-const ArticleBlock = async ({
+const ArticleBlock = ({
   title,
-  courseName,
-  lecturer,
+  course,
+  creator,
   semester,
+  tags,
   content,
-  tag,
-  id,
 }: {
   title: string;
-  courseName: string;
-  lecturer: string;
+  course: Course;
+  creator: User;
   semester: string;
+  tags: string[];
   content: string;
-  tag?: string[];
-  id?: UUID;
-}): Promise<React.JSX.Element> => {
+}): React.JSX.Element => {
   return (
-    <div className="group flex flex-col w-full rounded-md bg-gray-800 py-4 px-6 hover:bg-gray-700 transition-colors duration-300 ease-in-out">
-      <p className="font-bold text-2xl pl-2 mb-3">{title}</p>
-      <div className="relative">
-        <div className="absolute right-0 -top-8">
-          <p className="font-semibold bg-gray-400 rounded-t-md border-gray-400 border-2 border-l-2 border-r-2 py-1 px-2 text-slate-900 text-sm">
-            {`${courseName}．${lecturer}（${semester}）`}
+    <div className="flex flex-col w-full rounded-lg bg-gray-800 py-5 px-6 hover:bg-gray-750 hover:scale-[1.02] transition-transform duration-200">
+      {/* Title and lecturer/creator info */}
+      <div className="flex justify-between w-full items-start gap-6">
+        <div className="flex-1">
+          <p className="font-bold text-xl text-white">{title}</p>
+          <p className="font-medium text-base text-gray-300 mt-1">
+            {course.names[0] || course.curriculum}
           </p>
+          <p className="text-sm text-gray-400 mt-0.5">{semester}</p>
         </div>
-        <hr className="w-full border-gray-400 border-t-2" />
+        <div className="flex flex-col items-end text-right flex-shrink-0">
+          <p className="font-semibold text-base text-white">
+            {course.lecturer}
+          </p>
+          <p className="text-sm text-gray-400 mt-0.5">by {creator.nickname}</p>
+        </div>
       </div>
-      <MarkdownPreview content={content} className="p-3" />
-      <div className="flex w-full justify-end gap-2">
-        {tag?.map((t, i) => (
+
+      <hr className="w-full my-3 border-gray-500" />
+
+      {/* Content preview */}
+      <p className="w-full text-gray-300 text-sm mb-2">{content}</p>
+
+      {/* Tags */}
+      <div className="flex w-full justify-start gap-2 flex-wrap">
+        {tags.map((t, i) => (
           <Tag content={t} key={i} />
         ))}
       </div>
