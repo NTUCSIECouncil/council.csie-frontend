@@ -2,10 +2,11 @@
 
 import { useRouter } from 'next/navigation';
 
-import { Filter, FilterOptionKey } from '@/components/filter';
+// import { Filter, FilterOptionKey } from '@/components/filter';
 import Search from '@/components/search';
 import searchRedirect from '@/utils/search-redirect';
 import Background from './background';
+import { MdOutlineFileUpload } from "react-icons/md";
 
 const Page = (): React.JSX.Element => {
   const router = useRouter();
@@ -22,17 +23,27 @@ const Page = (): React.JSX.Element => {
           className="md:w-[500px] flex flex-col items-center"
         >
           <Search className="my-2 w-full" placeholder="輸入關鍵字" />
-          <div>
+          <button
+            type="button"
+            onClick={() => {
+              router.push('/database/upload');
+            }}
+            className="mt-4 bg-slate-500 hover:bg-indigo-400 text-white px-5 py-2 rounded-lg flex items-center gap-2 transition-colors duration-300 text-lg font-bold"
+          >
+            上傳考古
+            <MdOutlineFileUpload className="text-xl " />
+          </button>
+          {/* <div>
             <div className="flex items-center gap-2 my-2">
               <p className="text-lg">篩選：</p>
               <Filter filterKey={FilterOptionKey.GRADE} name="grade" />
               <Filter filterKey={FilterOptionKey.CATEGORY} name="type" />
             </div>
-            {/* <div className="flex items-center gap-2 my-2">
+            {<div className="flex items-center gap-2 my-2">
               <p className="text-lg">標籤：</p>
               感覺做成搜尋的比較好，不知道 DCard 怎麼運作的
-            </div> */}
-          </div>
+            </div> }
+          </div> */}
         </form>
       </div>
     </main>
