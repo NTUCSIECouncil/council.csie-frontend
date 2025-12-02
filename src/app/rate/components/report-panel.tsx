@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { MdOutlineReportProblem } from "react-icons/md";
+import { MdOutlineReportProblem } from 'react-icons/md';
 
 interface Props {
   onClose: () => void;
@@ -31,11 +31,10 @@ const ReportPanel = ({
   const openMailClient = () => {
     const recipient = 'CSIEacademic@gmail.com';
     const subject = encodeURIComponent(`檢舉文章 - ${articleId}`);
-    
-    // 构建邮件正文
+
     const bodyLines = [
       `文章編號: ${articleId}`,
-      `文章標題: ${articleTitle || 'N/A'}`,
+      `文章標題: ${articleTitle}`,
       '',
       '檢舉原因:',
       selectedReason || '未選擇',
@@ -45,14 +44,11 @@ const ReportPanel = ({
     ];
     const body = encodeURIComponent(bodyLines.join('\n'));
 
-    // 方案：直接使用 Gmail compose URL（在浏览器中打开，使用用户已登录的 Gmail 账号）
-    // 如果用户没有登录 Gmail，会提示登录
+    //Using Gmail
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
-    
-    // 在新标签页打开 Gmail compose
+
     window.open(gmailUrl, '_blank');
-    
-    // 关闭面板
+
     setTimeout(() => {
       onClose();
     }, 500);
@@ -95,20 +91,24 @@ const ReportPanel = ({
             檢舉原因
           </label>
           <div className="flex flex-wrap gap-2">
-            {['不當內容', '垃圾訊息', '惡意攻擊', '侵犯隱私', '其他'].map(reason => (
-              <button
-                key={reason}
-                type="button"
-                className={`px-4 py-2 rounded-full transition ${
-                  selectedReason === reason
-                    ? 'bg-red-600 text-white'
-                    : 'bg-slate-800 text-white hover:bg-slate-700'
-                }`}
-                onClick={() => setSelectedReason(reason)}
-              >
-                {reason}
-              </button>
-            ))}
+            {['不當內容', '垃圾訊息', '惡意攻擊', '侵犯隱私', '其他'].map(
+              reason => (
+                <button
+                  key={reason}
+                  type="button"
+                  className={`px-4 py-2 rounded-full transition ${
+                    selectedReason === reason
+                      ? 'bg-red-600 text-white'
+                      : 'bg-slate-800 text-white hover:bg-slate-700'
+                  }`}
+                  onClick={() => {
+                    setSelectedReason(reason);
+                  }}
+                >
+                  {reason}
+                </button>
+              ),
+            )}
           </div>
         </div>
 
@@ -121,7 +121,9 @@ const ReportPanel = ({
             rows={5}
             placeholder="請詳細說明檢舉原因..."
             value={description}
-            onChange={e => setDescription(e.target.value)}
+            onChange={e => {
+              setDescription(e.target.value);
+            }}
           />
         </div>
 

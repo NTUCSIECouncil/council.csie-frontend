@@ -43,7 +43,7 @@ const ArticleDisplay = ({
   articleId,
   showEditButton = true,
 }: Props): React.JSX.Element => {
-  const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
+  const { currentUser } = UserAuth();
   
   return (
     <>

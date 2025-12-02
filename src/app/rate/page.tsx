@@ -15,7 +15,7 @@ import Background from './background';
 const Page = (): React.JSX.Element => {
   const router = useRouter();
   const [showFilter, setShowFilter] = useState(false);
-  const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
+  const { currentUser, isUserLoaded, signIn } = UserAuth();
 
   const handlePromise = (promiseFunction: () => Promise<void>): void => {
     promiseFunction()

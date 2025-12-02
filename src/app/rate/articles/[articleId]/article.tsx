@@ -41,7 +41,11 @@ const Article = async ({
   }
   const content = ((await resContent.json()) as { file: string }).file;
 
-  const courseRes = await serverFetch(`/api/courses/${articleMeta.course}`, {
+  const courseId = typeof articleMeta.course === 'string' 
+  ? articleMeta.course 
+  : articleMeta.course._id;
+
+  const courseRes = await serverFetch(`/api/courses/${courseId}`, {
     cache: 'no-store',
   });
   if (!courseRes.ok) {

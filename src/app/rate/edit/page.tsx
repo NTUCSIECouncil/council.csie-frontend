@@ -8,6 +8,7 @@ import { type Course } from '@/types/backend';
 import clientFetch from '@/utils/client-fetch';
 import EditComponent from './components/edit-component';
 import { EditContext } from './context';
+import { UserAuth } from '@/helpers/context/auth-context';
 
 type TabType = 'edit' | 'preview';
 
@@ -27,7 +28,7 @@ interface ErrorDetail {
 
 const NewPostPage = (): React.JSX.Element => {
   const router = useRouter();
-
+  const { currentUser, isUserLoaded, signIn } = UserAuth();
   // tab state
   const [activeTab, setActiveTab] = useState<TabType>('edit');
 
@@ -69,7 +70,7 @@ const NewPostPage = (): React.JSX.Element => {
           gain: 4,
           recommend: 5,
         },
-        course: selectedCourse._id,
+        course: selectedCourse?._id ?? '',
       };
 
       const createResponse = await clientFetch('/api/articles', {
@@ -177,7 +178,11 @@ const NewPostPage = (): React.JSX.Element => {
           </div>
 
           {activeTab === 'edit' ? (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => {
+              handleSubmit(e);
+            }}
+            className="w-full flex flex-col items-center"
+            >
               <EditComponent />
               <div className="flex gap-4 pt-6 border-t border-gray-500 px-4 mt-8">
                 <button
@@ -218,7 +223,8 @@ const NewPostPage = (): React.JSX.Element => {
             <ArticleDisplay
               articleData={{
                 title: title || '課程評價標題',
-                creator: '預覽使用者', // TODO: change to real userId
+                creatorId: currentUser?.uid || '',
+                creatorName: currentUser?.displayName || '尚未登錄',
                 content: content,
                 tags: selectedTags,
                 createdAt: new Date().toISOString().split('T')[0],
