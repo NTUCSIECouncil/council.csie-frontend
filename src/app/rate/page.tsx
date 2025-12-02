@@ -32,7 +32,7 @@ const Page = (): React.JSX.Element => {
         </p>
         <form
           action={searchRedirect(router, '/rate/filter-results')}
-          className="md:w-[500px] flex flex-col items-center -translate-x-6"
+          className="sm:w-[500px] flex flex-col items-center"
         >
           <Search
             className="my-2 w-full"
@@ -45,11 +45,11 @@ const Page = (): React.JSX.Element => {
             onClick={() => {
               setShowFilter(true);
             }}
-            className="group py-2 px-4 ml-4 bg-gray-700 border-gray-600 border placeholder-gray-400 font-medium rounded-md hover:bg-gray-600 hover:border-gray-500 transition"
+            className="group py-2 px-4 ml-4 scale-95 hover:scale-100 transition-all duration-300 ease-in-out bg-gray-700 border-gray-600 border placeholder-gray-400 font-medium rounded-md hover:bg-gray-600 hover:border-gray-500 transition"
           >
             <div className="flex items-center gap-2 group-hover:text-white transition-colors duration-300 ease-in-out">
-              <LuTag className="self-center group-hover:rotate-12 group-hover:scale-120 transition-transform duration-300 ease-in-out" />
-              <div className="group-hover:scale-105 transition-transform duration-300 ease-in-out">
+              <LuTag className="self-center group-hover:rotate-12 transition-transform duration-300 ease-in-out" />
+              <div className="transition-transform duration-300 ease-in-out">
                 篩選標籤
               </div>
             </div>
