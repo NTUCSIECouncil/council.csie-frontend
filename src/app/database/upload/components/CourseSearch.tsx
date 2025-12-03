@@ -21,7 +21,11 @@ interface APIResponse {
   };
 }
 
-const CourseSearch = ({ selectedCourse, onSelect, disabled = false }: Props): React.JSX.Element => {
+const CourseSearch = ({
+  selectedCourse,
+  onSelect,
+  disabled = false,
+}: Props): React.JSX.Element => {
   const [searchText, setSearchText] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [courses, setCourses] = useState<Course[]>([]);

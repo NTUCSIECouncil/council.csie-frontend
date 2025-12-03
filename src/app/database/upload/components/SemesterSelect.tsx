@@ -15,7 +15,11 @@ interface APIResponse {
   courses: Course[];
 }
 
-const SemesterSelect = ({ value, onChange, disabled = false }: Props): React.JSX.Element => {
+const SemesterSelect = ({
+  value,
+  onChange,
+  disabled = false,
+}: Props): React.JSX.Element => {
   const [semesters, setSemesters] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,16 +39,18 @@ const SemesterSelect = ({ value, onChange, disabled = false }: Props): React.JSX
         }
 
         const data = (await res.json()) as APIResponse;
-        
+
         // Extract unique semesters
-        const semesterSet = new Set(data.courses.map(course => course.semester));
-        
+        const semesterSet = new Set(
+          data.courses.map(course => course.semester),
+        );
+
         // Sort semesters
         const sortedSemesters = Array.from(semesterSet).sort((a, b) => {
           // Sort in descending order (newest first)
           const [yearA, semA] = a.split('-').map(Number);
           const [yearB, semB] = b.split('-').map(Number);
-          
+
           if (yearA !== yearB) return yearB - yearA;
           return semB - semA;
         });
@@ -62,7 +68,10 @@ const SemesterSelect = ({ value, onChange, disabled = false }: Props): React.JSX
 
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor="semester-select" className="text-xl font-medium text-white">
+      <label
+        htmlFor="semester-select"
+        className="text-xl font-medium text-white"
+      >
         學期 <span className="text-red-400">*</span>
       </label>
       <select

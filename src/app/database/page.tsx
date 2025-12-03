@@ -1,12 +1,12 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { MdOutlineFileUpload } from 'react-icons/md';
 
 // import { Filter, FilterOptionKey } from '@/components/filter';
 import Search from '@/components/search';
 import searchRedirect from '@/utils/search-redirect';
 import Background from './background';
-import { MdOutlineFileUpload } from "react-icons/md";
 
 const Page = (): React.JSX.Element => {
   const router = useRouter();

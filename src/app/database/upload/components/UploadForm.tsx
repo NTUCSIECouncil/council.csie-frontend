@@ -42,7 +42,12 @@ export const UploadForm = () => {
       }
 
       // Check file type (double check)
-      const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg'];
+      const allowedTypes = [
+        'application/pdf',
+        'image/jpeg',
+        'image/png',
+        'image/jpg',
+      ];
       if (!allowedTypes.includes(file.type)) {
         alert('只允許上傳 PDF 或圖片檔 (JPG, PNG)');
         e.target.value = '';
@@ -85,7 +90,7 @@ export const UploadForm = () => {
       submitData.append('examType', selectedExamType);
 
       // Mock API call for testing
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 1000));
       console.log('Mock upload payload:', {
         file: selectedFile.name,
         courseId: selectedCourse._id,
@@ -124,13 +129,17 @@ export const UploadForm = () => {
   };
 
   return (
-    <form ref={formRef} className="space-y-8" onSubmit={(e) => {
-      void handleSubmit(e);
-    }}>
+    <form
+      ref={formRef}
+      className="space-y-8"
+      onSubmit={e => {
+        void handleSubmit(e);
+      }}
+    >
       {/* semester selection */}
       <SemesterSelect
         value={selectedSemester}
-        onChange={(val) => {
+        onChange={val => {
           setSelectedSemester(val);
           setUploadError('');
         }}
@@ -140,7 +149,7 @@ export const UploadForm = () => {
       {/* course selection */}
       <CourseSearch
         selectedCourse={selectedCourse}
-        onSelect={(course) => {
+        onSelect={course => {
           setSelectedCourse(course);
           setUploadError('');
         }}
@@ -152,7 +161,10 @@ export const UploadForm = () => {
 
       {/* exam type */}
       <div className="flex flex-col gap-2">
-        <label htmlFor="exam-type-select" className="text-xl font-medium text-white">
+        <label
+          htmlFor="exam-type-select"
+          className="text-xl font-medium text-white"
+        >
           考試類型 <span className="text-red-400">*</span>
         </label>
         <select
@@ -223,10 +235,21 @@ export const UploadForm = () => {
       </div>
 
       {/* submit button */}
-      <div className="flex justify-end pt-6">
+      <div className="flex flex-col items-end gap-4 pt-6">
+        {uploadError && (
+          <p className="text-red-400 text-sm">{uploadError}</p>
+        )}
+        {uploadSuccess && (
+          <p className="text-green-400 text-sm">上傳成功！</p>
+        )}
         <button
           type="submit"
-          disabled={isSubmitting || !selectedFile || !selectedCourse || !selectedSemester}
+          disabled={
+            isSubmitting ||
+            !selectedFile ||
+            !selectedCourse ||
+            !selectedSemester
+          }
           className="
             px-12 py-4
             bg-gray-700 hover:bg-gray-600
