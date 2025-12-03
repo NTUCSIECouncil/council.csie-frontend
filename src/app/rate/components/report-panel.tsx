@@ -30,16 +30,16 @@ const ReportPanel = ({
 
   const openMailClient = () => {
     const recipient = 'CSIEacademic@gmail.com';
-    const subject = encodeURIComponent(`檢舉文章 - ${articleId}`);
+    const subject = encodeURIComponent(`檢舉文章 -〈${articleTitle}〉`);
 
     const bodyLines = [
-      `文章編號: ${articleId}`,
-      `文章標題: ${articleTitle}`,
+      `文章編號：${articleId}`,
+      `文章標題：〈${articleTitle}〉`,
       '',
-      '檢舉原因:',
+      '檢舉原因：',
       selectedReason || '未選擇',
       '',
-      '詳細說明:',
+      '詳細說明：',
       description || '無',
     ];
     const body = encodeURIComponent(bodyLines.join('\n'));
@@ -47,7 +47,15 @@ const ReportPanel = ({
     //Using Gmail
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
 
-    window.open(gmailUrl, '_blank');
+    const width = 500;
+    const height = 600;
+    const left = (window.screen.width - width) / 2;
+    const top = (window.screen.height - height) / 2;
+    
+    window.open(gmailUrl,
+      'gmailCompose',
+      `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`,
+    );
 
     setTimeout(() => {
       onClose();
@@ -82,7 +90,7 @@ const ReportPanel = ({
           <div className="mb-4 p-3 bg-slate-800 rounded-lg">
             <p className="text-sm text-gray-300 mb-1">文章標題</p>
             <p className="text-white font-medium">{articleTitle}</p>
-            <p className="text-sm text-gray-400 mt-1">文章編號: {articleId}</p>
+            <p className="text-sm text-gray-400 mt-1">文章編號：{articleId}</p>
           </div>
         )}
 
@@ -91,7 +99,7 @@ const ReportPanel = ({
             檢舉原因
           </label>
           <div className="flex flex-wrap gap-2">
-            {['不當內容', '垃圾訊息', '惡意攻擊', '侵犯隱私', '其他'].map(
+            {['不當內容', '垃圾訊息', '惡意攻擊', '侵犯隱私', '我不喜歡自己出現在這篇文章', '其他'].map(
               reason => (
                 <button
                   key={reason}
