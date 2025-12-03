@@ -12,7 +12,8 @@ import SemesterSelect from './semester-select';
 
 const EditComponent = (): React.JSX.Element => {
   const [showTagFilter, setShowTagFilter] = useState(false);
-  const { title, setTitle, selectedTags, setSelectedTags } = useEdit();
+  const { title, setTitle, selectedTags, setSelectedTags, semester } =
+    useEdit();
 
   return (
     <>
@@ -35,8 +36,8 @@ const EditComponent = (): React.JSX.Element => {
       {/* Course + Semester */}
       <div className="w-full px-4 my-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <CourseSearch />
           <SemesterSelect />
+          <CourseSearch disabled={semester === ''} />
         </div>
       </div>
 

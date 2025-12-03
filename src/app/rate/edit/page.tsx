@@ -120,7 +120,6 @@ const NewPostPage = (): React.JSX.Element => {
       router.push(`/rate/articles/${articleId}`);
     } catch (error) {
       console.error('Error submitting post:', error);
-      // TODO: Show error message to user
     } finally {
       setIsSubmitting(false);
     }

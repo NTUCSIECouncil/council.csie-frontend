@@ -110,7 +110,7 @@ const CourseSearch = ({ disabled = false }: Props): React.JSX.Element => {
             <input
               type="text"
               placeholder="搜尋課程名稱、課號或教授..."
-              className="w-full px-4 h-12 pr-12 border border-gray-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 bg-[#1c1c29] bg-opacity-50 text-white placeholder:text-gray-400"
+              className={`w-full px-4 h-12 pr-12 border rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500 bg-[#1c1c29] bg-opacity-50 text-white ${disabled ? 'placeholder:text-gray-600 border-gray-700' : 'placeholder:text-gray-400 border-gray-500'}`}
               value={searchText}
               onChange={e => {
                 setSearchText(e.target.value);
