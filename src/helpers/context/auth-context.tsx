@@ -14,6 +14,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { env } from '@/env';
 
 import { auth } from '@/helpers/firebase/firebase';
 
@@ -28,15 +29,19 @@ type AuthRequest = (
 
 interface AuthContextProps {
   currentUser: User | null;
+  currentToken: string | null;
   isUserLoaded: boolean;
   signIn: () => Promise<void>;
   logOut: () => Promise<void>;
   request: AuthRequest;
 }
 
+const BACKEND_URL = env.NEXT_PUBLIC_API_BASE_URL;
+
 const AuthContext = createContext<AuthContextProps>({
   currentUser: null,
   isUserLoaded: false,
+  currentToken: null,
   signIn: () =>
     new Promise<void>(() => {
       return;
@@ -64,31 +69,39 @@ export const AuthContextProvider = ({
   children: React.ReactNode;
 }): React.JSX.Element => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [currentToken, setCurrentToken] = useState<string | null>(null);
   const [isUserLoaded, setIsUserLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      if (currentUser === null) {
+    const unsubscribe = onAuthStateChanged(auth, firebaseUser => {
+      if (firebaseUser === null) {
         setCurrentUser(null);
       } else {
         (async () => {
-          let res = await fetch(`/api/users/${currentUser.uid}`, {
+          const token = await firebaseUser.getIdToken();
+          let res = await fetch(BACKEND_URL + `/api/users/me`, {
             headers: {
-              Authorization: `Bearer ${await currentUser.getIdToken()}`,
+              Authorization: `Bearer ${token}`,
             },
           });
-
           // If user is not currently exist in server DB, request to create it
-          if (res.status === 404) {
-            res = await fetch(`/api/users/${currentUser.uid}`, {
+          if (res.status === 401) {
+            res = await fetch(BACKEND_URL + `/api/users`, {
               method: 'POST',
               headers: {
-                Authorization: `Bearer ${await currentUser.getIdToken()}`,
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
               },
+              body: JSON.stringify({
+                nickname: firebaseUser.displayName ?? 'Doe',
+              }),
             });
           }
 
-          if (res.ok) setCurrentUser(currentUser);
+          if (res.ok) {
+            setCurrentUser(firebaseUser);
+            setCurrentToken(token);
+          }
         })().catch((err: unknown) => {
           console.error('auth error');
           console.error(err);
@@ -154,6 +167,7 @@ On mobile devices, use Chrome or Safari instead.
     <AuthContext.Provider
       value={{
         currentUser,
+        currentToken,
         isUserLoaded,
         signIn,
         logOut,
