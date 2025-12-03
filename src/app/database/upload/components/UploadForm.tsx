@@ -236,12 +236,8 @@ export const UploadForm = () => {
 
       {/* submit button */}
       <div className="flex flex-col items-end gap-4 pt-6">
-        {uploadError && (
-          <p className="text-red-400 text-sm">{uploadError}</p>
-        )}
-        {uploadSuccess && (
-          <p className="text-green-400 text-sm">上傳成功！</p>
-        )}
+        {uploadError && <p className="text-red-400 text-sm">{uploadError}</p>}
+        {uploadSuccess && <p className="text-green-400 text-sm">上傳成功！</p>}
         <button
           type="submit"
           disabled={
