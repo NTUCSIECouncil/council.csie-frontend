@@ -20,7 +20,7 @@ export async function sendExamUploadMail(options: {
 
   const { data, error } = await resend.emails.send({
     from: 'uploadexam <onboarding@resend.dev>',
-    to: ['andromeda@csie.ntu.edu.tw'], //change to council's email
+    to: '0501dylan.andromeda@gmail.com', //change to council's email
     subject: 'upload Exam',
     react: ExamUploadEmail({ info, fileNames }),
     attachments: files.map((f) => ({
