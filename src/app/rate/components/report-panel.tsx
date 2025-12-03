@@ -55,7 +55,7 @@ const ReportPanel = ({
     window.open(
       gmailUrl,
       'gmailCompose',
-      `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`,
+      `width=${width.toString()},height=${height.toString()},left=${left.toString()},top=${top.toString()},resizable=yes,scrollbars=yes`,
     );
 
     setTimeout(() => {
