@@ -1,4 +1,3 @@
-// components/ExamUploadEmail.tsx
 import * as React from 'react';
 
 export interface ExamUploadEmailProps {
@@ -30,8 +29,6 @@ export function ExamUploadEmail({ info, fileNames }: ExamUploadEmailProps) {
           ))}
         </ul>
       )}
-
     </div>
   );
 }
-
