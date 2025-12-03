@@ -51,8 +51,9 @@ const ReportPanel = ({
     const height = 600;
     const left = (window.screen.width - width) / 2;
     const top = (window.screen.height - height) / 2;
-    
-    window.open(gmailUrl,
+
+    window.open(
+      gmailUrl,
       'gmailCompose',
       `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes`,
     );
@@ -99,24 +100,29 @@ const ReportPanel = ({
             檢舉原因
           </label>
           <div className="flex flex-wrap gap-2">
-            {['不當內容', '垃圾訊息', '惡意攻擊', '侵犯隱私', '我不喜歡自己出現在這篇文章', '其他'].map(
-              reason => (
-                <button
-                  key={reason}
-                  type="button"
-                  className={`px-4 py-2 rounded-full transition ${
-                    selectedReason === reason
-                      ? 'bg-red-600 text-white'
-                      : 'bg-slate-800 text-white hover:bg-slate-700'
-                  }`}
-                  onClick={() => {
-                    setSelectedReason(reason);
-                  }}
-                >
-                  {reason}
-                </button>
-              ),
-            )}
+            {[
+              '不當內容',
+              '垃圾訊息',
+              '惡意攻擊',
+              '侵犯隱私',
+              '我不喜歡自己出現在這篇文章',
+              '其他',
+            ].map(reason => (
+              <button
+                key={reason}
+                type="button"
+                className={`px-4 py-2 rounded-full transition ${
+                  selectedReason === reason
+                    ? 'bg-red-600 text-white'
+                    : 'bg-slate-800 text-white hover:bg-slate-700'
+                }`}
+                onClick={() => {
+                  setSelectedReason(reason);
+                }}
+              >
+                {reason}
+              </button>
+            ))}
           </div>
         </div>
 
