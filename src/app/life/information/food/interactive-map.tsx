@@ -65,7 +65,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
   return (
     <main className="w-full overflow-x-auto">
-      <div className="relative flex w-[225%] lg:w-[95%] mx-auto justify-center">
+      <div className="relative flex w-[220%] sm:w-[125%] md:w-[110%] lg:w-[95%] mx-auto justify-center">
         <Image
           src={imageUrl}
           alt="map"
