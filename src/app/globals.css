@@ -12,3 +12,21 @@
     scrollbar-width: none;
   }
 }
+
+@theme {
+  --text-xs: clamp(0.656rem, 2vw, 0.75rem);
+  --text-sm: clamp(0.766rem, 2vw, 0.875rem);
+  --text-base: clamp(0.875rem, 2vw, 1rem);
+  --text-lg: clamp(0.984rem, 2vw, 1.125rem);
+  --text-xl: clamp(1.094rem, 2vw, 1.25rem);
+  --text-2xl: clamp(1.313rem, 3vw, 1.5rem);
+  --text-3xl: clamp(1.641rem, 3vw, 1.875rem);
+
+  --text-4xl: clamp(1.688rem, 4vw, 2.25rem);
+  --text-5xl: clamp(2.25rem, 5vw, 3rem);
+  --text-6xl: clamp(2.813rem, 6vw, 3.75rem);
+
+  --text-7xl: clamp(2.938rem, 7vw, 4.5rem);
+  --text-8xl: clamp(3.9rem, 8vw, 6rem);
+  --text-9xl: clamp(5.2rem, 9vw, 8rem);
+}

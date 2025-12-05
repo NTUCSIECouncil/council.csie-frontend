@@ -48,7 +48,7 @@ const Page = (): React.JSX.Element => {
   }, [selectedTab]);
 
   return (
-    <div>
+    <div className="mx-[-10] lg:mx-0">
       <div className="sticky top-18 z-20">
         <DividerBar
           items={tabItems}
@@ -57,7 +57,7 @@ const Page = (): React.JSX.Element => {
         />
       </div>
 
-      <div className="flex flex-col items-start pb-8 w-180">
+      <div className="flex flex-col items-start pb-8 lg:w-180">
         {subtitles.map((item, index) => (
           <div key={index} className="w-full">
             {item.subtitle && (
