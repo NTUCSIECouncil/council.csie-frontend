@@ -22,7 +22,7 @@ const EditButton = ({
   return (
     <button
       onClick={handleEditClick}
-      className={`flex items-center gap-2 px-3 py-1 bg-slate-300 text-slate-900 rounded-xl hover:bg-slate-400 transition-colors ${className}`}
+      className={`cursor-pointer flex items-center gap-2 px-3 py-1 bg-slate-300 text-slate-900 rounded-xl hover:bg-slate-400 transition-colors ${className}`}
     >
       <FaEdit />
       編輯

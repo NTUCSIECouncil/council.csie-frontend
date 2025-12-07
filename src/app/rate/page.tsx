@@ -37,7 +37,7 @@ const Page = (): React.JSX.Element => {
             onClick={() => {
               setShowFilter(true);
             }}
-            className="px-6 py-2 bg-slate-300 text-slate-900 rounded-xl hover:bg-slate-400 transition"
+            className="cursor-pointer px-6 py-2 bg-slate-300 text-slate-900 rounded-xl hover:bg-slate-400 transition"
           >
             <div className="flex items-center gap-2">
               <BsFilterLeft className="text-2xl text-[#1c1c29] self-center" />
@@ -49,7 +49,7 @@ const Page = (): React.JSX.Element => {
             onClick={() => {
               return;
             }}
-            className="size-10 aspect-square transform origin-center
+            className="cursor-pointer size-10 aspect-square transform origin-center
             scale-90 hover:scale-100 hover:rounded-md transition-all duration-300 ease-in-out bg-slate-200 flex rounded-2xl"
           >
             <FaPen className="size-5 transition-all duration-300 ease-in-out text-3xl text-[#1c1c29] self-center mx-auto" />

@@ -73,7 +73,7 @@ const Page = (): React.JSX.Element => {
                           onClick={() => {
                             handleButtonClick(link.url);
                           }}
-                          className=" bg-slate-500 hover:bg-indigo-400 text-white px-3 py-1 rounded-full md:mr-2 mb-2 transition-colors duration-300"
+                          className="cursor-pointer bg-slate-500 hover:bg-indigo-400 text-white px-3 py-1 rounded-full md:mr-2 mb-2 transition-colors duration-300"
                         >
                           {link.label}
                         </button>

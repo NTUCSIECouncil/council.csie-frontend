@@ -95,7 +95,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             key={point.title}
             className={`absolute w-4 h-4 rounded-[4px]
               ${point.description ? 'bg-slate-600' : point.fixed ? 'bg-[#d4d2d5]' : 'bg-slate-400'}
-              ${point.fixed ? '' : 'hover:bg-[#1c1c29]'}`}
+              ${point.fixed ? '' : 'hover:bg-[#1c1c29] cursor-pointer'}`}
             style={{
               left: `${((point.cx / mapWidth) * 100).toFixed(2)}%`,
               top: `${((point.cy / mapHeight) * 100).toFixed(2)}%`,
