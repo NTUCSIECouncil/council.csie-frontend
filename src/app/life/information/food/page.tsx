@@ -42,8 +42,10 @@ const Page = (): React.JSX.Element => {
             imageUrl={selectedSection.map}
           />
         ) : (
-          <div className="lg:w-160 max-w-[1000px] mx-auto">
-            <ContentBlock content="敬請期待" />
+          <div className="max-w-[85vw] overflow-x-hidden">
+            <div className="w-160 max-w-[1000px] mx-auto translate-x-5">
+              <ContentBlock content="敬請期待" />
+            </div>
           </div>
         )}
       </div>
