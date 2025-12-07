@@ -40,7 +40,7 @@ const ArticleDisplay = ({
   return (
     <>
       {/* Post Title and Author */}
-      <div className="w-full flex justify-between items-end my-4 px-4">
+      <div className="w-full flex flex-col items-start md:flex-row justify-between md:items-end my-4 px-4">
         <h1 className="font-bold text-4xl text-white">{articleData.title}</h1>
         <div className="flex items-center gap-1 text-white">
           <FaUser />
@@ -54,8 +54,8 @@ const ArticleDisplay = ({
       <CollapsibleCourseInfo courseData={courseData} semester={semester} />
 
       {/* Tags and Metrics */}
-      <div className="w-full flex gap-3 justify-between items-center my-4 px-4">
-        <div className="flex gap-1 items-center">
+      <div className="w-full flex flex-col items-start md:flex-row gap-3 justify-between md:items-center my-4 px-4">
+        <div className="flex flex-wrap gap-1 items-center">
           {articleData.tags.length > 0 ? (
             articleData.tags.map(tag => <ClickableTag key={tag} tag={tag} />)
           ) : (
