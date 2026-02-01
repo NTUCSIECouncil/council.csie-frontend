@@ -12,9 +12,12 @@ const Article = async ({
   const queryParams = new URLSearchParams();
   queryParams.append('embed[0]', 'creator');
 
-  const res = await serverFetch(`/api/articles/${articleId}?${queryParams.toString()}`, {
-    cache: 'force-cache',
-  });
+  const res = await serverFetch(
+    `/api/articles/${articleId}?${queryParams.toString()}`,
+    {
+      cache: 'force-cache',
+    },
+  );
   if (!res.ok) {
     if (res.status === 404) notFound();
     throw new Error('Failed to fetch response');
