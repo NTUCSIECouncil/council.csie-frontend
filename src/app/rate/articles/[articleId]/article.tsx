@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 
-import { type Article, type Course, type User } from '@/types/backend';
+import { type Article, type Course } from '@/types/backend';
 import serverFetch from '@/utils/server-fetch';
 import ArticleDisplay from './components/article-display';
 
@@ -9,7 +9,10 @@ const Article = async ({
 }: {
   articleId: string;
 }): Promise<React.JSX.Element> => {
-  const res = await serverFetch(`/api/articles/${articleId}`, {
+  const queryParams = new URLSearchParams();
+  queryParams.append('embed[0]', 'creator');
+
+  const res = await serverFetch(`/api/articles/${articleId}?${queryParams.toString()}`, {
     cache: 'force-cache',
   });
   if (!res.ok) {
@@ -21,16 +24,14 @@ const Article = async ({
 
   console.log('Fetched article metadata:', articleMetaResponse);
 
-  const creatorRes = await serverFetch(`/api/users/${articleMeta.creator}`, {
-    cache: 'force-cache',
-  });
-  let creatorName = 'Unknown';
-  if (!creatorRes.ok) {
-    if (creatorRes.status === 404) notFound();
-    throw new Error('Failed to fetch response');
-  } else {
-    creatorName = ((await creatorRes.json()) as { user: User }).user.nickname;
-  }
+  const creatorId =
+    typeof articleMeta.creator === 'string'
+      ? articleMeta.creator
+      : articleMeta.creator._id;
+  const creatorName =
+    typeof articleMeta.creator === 'string'
+      ? 'Unknown'
+      : articleMeta.creator.nickname;
 
   const resContent = await serverFetch(`/api/articles/${articleId}/file`, {
     cache: 'no-store',
@@ -58,7 +59,7 @@ const Article = async ({
 
   const articleData = {
     title: articleMeta.title,
-    creatorId: articleMeta.creator,
+    creatorId: creatorId,
     creatorName: creatorName,
     content: content,
     tags: articleMeta.tags,

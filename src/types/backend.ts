@@ -3,7 +3,7 @@ type UUID = `${string}-${string}-${string}-${string}-${string}`;
 export interface Article {
   _id: UUID;
   course: UUID | Course;
-  creator: UUID;
+  creator: UUID | User;
   semester: string;
   title: string;
   tags: string[];
