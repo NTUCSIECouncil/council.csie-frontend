@@ -14,8 +14,8 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { env } from '@/env';
 
+import { env } from '@/env';
 import { auth } from '@/helpers/firebase/firebase';
 
 interface AuthRequestInit extends RequestInit {
@@ -33,7 +33,7 @@ interface AuthContextProps {
   isUserLoaded: boolean;
   signIn: () => Promise<void>;
   logOut: () => Promise<void>;
-  request: AuthRequest;
+  clientFetch: AuthRequest;
 }
 
 const BACKEND_URL = env.NEXT_PUBLIC_API_BASE_URL;
@@ -50,7 +50,7 @@ const AuthContext = createContext<AuthContextProps>({
     new Promise<void>(() => {
       return;
     }),
-  request: async (
+  clientFetch: async (
     url: string,
     request: RequestInit = {},
   ): Promise<Response | null> => {
@@ -76,6 +76,7 @@ export const AuthContextProvider = ({
     const unsubscribe = onAuthStateChanged(auth, firebaseUser => {
       if (firebaseUser === null) {
         setCurrentUser(null);
+        setCurrentToken(null);
       } else {
         (async () => {
           const token = await firebaseUser.getIdToken();
@@ -83,6 +84,7 @@ export const AuthContextProvider = ({
             headers: {
               Authorization: `Bearer ${token}`,
             },
+            credentials: 'include',
           });
           // If user is not currently exist in server DB, request to create it
           if (res.status === 401) {
@@ -91,13 +93,13 @@ export const AuthContextProvider = ({
               headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
+                credentials: 'include',
               },
               body: JSON.stringify({
                 nickname: firebaseUser.displayName ?? 'Doe',
               }),
             });
           }
-
           if (res.ok) {
             setCurrentUser(firebaseUser);
             setCurrentToken(token);
@@ -136,7 +138,7 @@ On mobile devices, use Chrome or Safari instead.
     await signOut(auth);
   };
 
-  const request = useCallback(
+  const clientFetch = useCallback(
     async (
       url: string,
       { auth = true, headers = {}, ...options }: AuthRequestInit = {},
@@ -148,13 +150,12 @@ On mobile devices, use Chrome or Safari instead.
             'Authorization',
             `Bearer ${await currentUser.getIdToken()}`,
           );
-          // headers.Authorization = `Bearer ${await user.getIdToken()}`;
         }
         const newOptions: RequestInit = {
           headers: realHeaders,
           ...options,
         };
-        return await fetch(url, newOptions);
+        return await fetch(BACKEND_URL + url, newOptions);
       } catch (error) {
         console.log(error);
         return null;
@@ -171,7 +172,7 @@ On mobile devices, use Chrome or Safari instead.
         isUserLoaded,
         signIn,
         logOut,
-        request,
+        clientFetch,
       }}
     >
       {children}
