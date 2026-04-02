@@ -108,11 +108,11 @@ const NewPostPage = (): React.JSX.Element => {
       );
 
       if (!contentUploadResponse.ok) {
-        const errorData = (await createResponse.json()) as ErrorResponse;
-        if (createResponse.status === 400) {
+        const errorData = (await contentUploadResponse.json()) as ErrorResponse;
+        if (contentUploadResponse.status === 400) {
           throw new Error(`Bad Request: ${errorData.message}`);
-        } else if (createResponse.status === 401) {
-          throw new Error(`Bad Request: ${errorData.message}`);
+        } else if (contentUploadResponse.status === 401) {
+          throw new Error(`Unauthorized: ${errorData.message}`);
         }
       }
 
