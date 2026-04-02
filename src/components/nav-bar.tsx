@@ -3,6 +3,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { FaSignOutAlt } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa6';
 
 import { env } from '@/env';
@@ -124,10 +125,9 @@ const NavBar = (): React.JSX.Element => {
                 <div
                   tabIndex={0}
                   role="button"
-                  className="btn text-white px-4 py-2 bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0"
+                  className="btn text-white px-10 py-2 bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0"
                 >
                   <div className="prone text-center tooltip tooltip-bottom inline-flex items-center">
-                    <FaUser className="fill-current w-4 h-4 mr-2" />
                     {currentUser.displayName}
                   </div>
                 </div>
@@ -137,22 +137,25 @@ const NavBar = (): React.JSX.Element => {
                 >
                   <li>
                     <div
-                      className="prone text-center cursor-pointer hover:bg-gray-700 transition-colors"
+                      className="prone flex items-center justify-center gap-2 cursor-pointer hover:bg-violet-500/80 hover:text-white transition-all duration-200 py-2 rounded-md"
                       onClick={() => {
                         router.push('/user');
                       }}
                     >
-                      Profile
+                      <FaUser className="w-4 h-4 ml-1" />
+                      <span>Profile</span>
                     </div>
                   </li>
+                  <div className="h-[1px] w-full bg-gray-700/50 my-1"></div>
                   <li>
                     <div
-                      className="prone text-center cursor-pointer hover:bg-gray-700 transition-colors"
+                      className="prone flex items-center justify-center gap-2 cursor-pointer hover:bg-red-500/80 hover:text-white transition-all duration-200 text-red-300/80 font-medium py-2 rounded-md"
                       onClick={() => {
                         handlePromise(logOut);
                       }}
                     >
-                      Logout
+                      <FaSignOutAlt className="w-4 h-4 ml-1" />
+                      <span>Logout</span>
                     </div>
                   </li>
                 </ul>

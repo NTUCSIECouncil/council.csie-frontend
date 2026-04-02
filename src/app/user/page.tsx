@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { FaPencilAlt } from 'react-icons/fa'; // Edit button
+import { FaPencilAlt, FaSignOutAlt } from 'react-icons/fa';
 
 import InformationBlock from '@/app/user/components/information-block';
 import NameBlock from '@/app/user/components/name-block';
@@ -119,10 +119,11 @@ const Page = () => {
                 onClick={() => {
                   handlePromise(logOut);
                 }}
-                className="text-white hover:text-gray-400 transition-colors p-3 rounded-full bg-white/10 hover:bg-white/0 mb-6"
-                aria-label="Modify display name"
+                className="flex items-center gap-2 text-white/80 hover:text-white hover:bg-red-500/30 transition-all duration-300 p-2 px-5 rounded-xl bg-white/10 border border-white/5 hover:border-red-500/40 shadow-sm backdrop-blur-sm mb-6 font-medium"
+                aria-label="Logout"
               >
-                <p> Logout </p>
+                <FaSignOutAlt className="w-4 h-4" />
+                <p>Logout</p>
               </button>
               <InformationBlock
                 key="other"
