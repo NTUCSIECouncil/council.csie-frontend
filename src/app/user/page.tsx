@@ -16,10 +16,6 @@ import NameBlock from '@/app/user/components/name-block';
 import Table from '@/app/user/components/table';
 import RenamePanel from '@/app/user/components/rename-panel';
 import rating_data from '@/app/user/rating_data.json';
-import user_data from '@/app/user/user_data.json';
-/* To be deleted after confirmation, please also delete exam_data.json
-import exam_data from '@/app/user/exam_data.json';
-*/
 
 const handlePromise = (promiseFunction: () => Promise<void>): void => {
   promiseFunction()
@@ -52,26 +48,41 @@ const Page = () => {
   }, []);
 
   // Handling rename
-  const { currentUser, isUserLoaded, signIn } = UserAuth();
-  const [displayName, setDisplayName] = useState("Jaime"); // dummy variable for testing, since I can't login properly QAQ
+  const { currentUser, isUserLoaded, signIn, request } = UserAuth();
+  const [userData, setUserData] = useState<{ nickname?: string, email?: string, name?: string } | null>(null);
+  const [displayName, setDisplayName] = useState("Loading...");
   const [isPanelOpen, setPanelOpen] = useState(false);
 
   useEffect(() => {
-    if (currentUser?.displayName) {
-      setDisplayName(currentUser.displayName);
+    if (isUserLoaded && currentUser) {
+      setDisplayName(currentUser.displayName ?? '');
+      handlePromise(async () => {
+        const res = await request('/api/users/me/private');
+        if (res && res.ok) {
+          const data = await res.json();
+          setUserData(data.user);
+          if (data.user.nickname) {
+            setDisplayName(data.user.nickname);
+          }
+        }
+      });
     }
-  }, [currentUser]);
+  }, [currentUser, isUserLoaded, request]);
 
   const handleSave = (newName: string) => {
-    /*
-    handlePromise(() => 
-      updateProfile(auth.currentUser, {
-        displayName: newName
-      })
-    );
-    */
     setDisplayName(newName);
     setPanelOpen(false);
+
+    handlePromise(async () => {
+      const res = await request('/api/users/me', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nickname: newName }),
+      });
+      if (res && res.ok) {
+        setUserData(prev => prev ? { ...prev, nickname: newName } : prev);
+      }
+    });
   };
 
   const rating_header = ["標題", "課名", "課號", "授課教師", "年份", "編輯"]
@@ -86,9 +97,14 @@ const Page = () => {
       .then()
       .catch(() => "I don't want to do anything.");
   };
+  useEffect(() => {
+    if (isUserLoaded && currentUser === null) {
+      handlePromise(signIn);
+    }
+  }, [isUserLoaded, currentUser, signIn]);
+
   // Handle not login case
-  if(isUserLoaded && currentUser) {
-    handlePromise(signIn);
+  if (!isUserLoaded || currentUser === null) {
     return <div>Redirecting to login...</div>;
   }
   else return (
@@ -98,15 +114,15 @@ const Page = () => {
           <div className="flex flex-row items-center gap-6">
             <Image
               alt="User Icon"
-              src={isUserLoaded ? "/teacher_img/Hm_tsai.png"/* user_data.photo */ : "/teacher_img/Hm_tsai.png" /* default image */}
+              src={currentUser?.photoURL ?? "/teacher_img/Hm_tsai.png"} // May want to change to other picture when for deployment
               height={128}
               width={128}
               className="object-cover object-top w-36 h-36 rounded-full"
             />
-            
+
             <div className="flex flex-row items-center gap-3">
               <NameBlock
-                content={isUserLoaded ? user_data.nickname : "Loading..."}
+                content={isUserLoaded && userData ? userData.nickname ?? userData.name ?? "Loading..." : "Loading..."}
               />
               <button
                 onClick={() => setPanelOpen(true)}
@@ -119,11 +135,11 @@ const Page = () => {
             </div>
           </div>
           <div className="flex flex-col justify-end items-end">
-            
+
             <button
               onClick={() => {
-                        router.push('/');
-                      }}
+                router.push('/');
+              }}
               className="text-white hover:text-gray-400 transition-colors p-3 rounded-full bg-white/10 hover:bg-white/0 mb-6"
               aria-label="Modify display name"
               disabled={!isUserLoaded}
@@ -132,15 +148,15 @@ const Page = () => {
             </button>
             <InformationBlock
               key="other"
-              content={isUserLoaded ? user_data.name : ""}
+              content={isUserLoaded && userData ? userData.name ?? "" : ""}
             />
             <InformationBlock
               key="email"
-              content={isUserLoaded ? user_data.email : ""}
+              content={isUserLoaded && userData ? userData.email ?? "" : ""}
             />
           </div>
         </div>
-        
+
         <RenamePanel
           isOpen={isPanelOpen}
           initialName={displayName}

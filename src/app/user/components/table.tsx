@@ -1,6 +1,5 @@
 import { FaPencilAlt } from 'react-icons/fa';
 
-{/* Stolen from life-component */}
 const Table = ({ table, header, colRatio }: { table: string[][], header: string[], colRatio: string[] }): React.JSX.Element => {
   return (
     <div className="w-full overflow-x-auto no-scrollbar">
