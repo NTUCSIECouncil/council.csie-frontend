@@ -1,6 +1,14 @@
 import { FaPencilAlt } from 'react-icons/fa';
 
-const Table = ({ table, header, colRatio }: { table: string[][], header: string[], colRatio: string[] }): React.JSX.Element => {
+const Table = ({
+  table,
+  header,
+  colRatio,
+}: {
+  table: string[][];
+  header: string[];
+  colRatio: string[];
+}): React.JSX.Element => {
   return (
     <div className="w-full overflow-x-auto no-scrollbar">
       <table className="w-full text-xl border-collapse relative rounded-1g table-fixed">
@@ -12,10 +20,7 @@ const Table = ({ table, header, colRatio }: { table: string[][], header: string[
         <thead className="bg-white/20">
           <tr>
             {header.map((title, index) => (
-              <th
-                key={index}
-                className="p-3 text-center font-semibold"
-              >
+              <th key={index} className="p-3 text-center font-semibold">
                 {title}
               </th>
             ))}
@@ -23,10 +28,15 @@ const Table = ({ table, header, colRatio }: { table: string[][], header: string[
         </thead>
         <tbody>
           {table.map((row, rowIndex) => (
-            <tr key={rowIndex} className="border-b border-gray-500 hover:bg-white/10">
+            <tr
+              key={rowIndex}
+              className="border-b border-gray-500 hover:bg-white/10"
+            >
               {row.map((content, cellIndex) => (
                 <td key={cellIndex} className="p-3 text-center">
-                  {content.length > 40 ? content.substring(0, 40) + '...' : content}
+                  {content.length > 40
+                    ? content.substring(0, 40) + '...'
+                    : content}
                 </td>
               ))}
               <td className="p-3 text-center">

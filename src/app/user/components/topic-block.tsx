@@ -1,5 +1,8 @@
-{/* Stolen from life-component */}
 import { type CommentItem, type CommentType } from '@/utils/constants';
+
+{
+  /* Stolen from life-component */
+}
 
 interface Props {
   content: string;

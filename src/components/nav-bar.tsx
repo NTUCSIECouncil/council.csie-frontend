@@ -2,15 +2,13 @@
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { FaUser } from 'react-icons/fa6';
 
 import { env } from '@/env';
 import { UserAuth } from '@/helpers/context/auth-context';
 import { playfairDisplay } from '@/helpers/fonts';
 import { homePages } from '@/utils/constants';
-import { log } from 'console';
 
 const pages = homePages;
 
@@ -18,8 +16,8 @@ const NavBar = (): React.JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
   const router = useRouter();
   const pathname = usePathname();
-  const display_navigation_option = (! pathname.includes("/user"));
-  const display_profile_option = (pathname == "/user");
+  const display_navigation_option = !pathname.includes('/user');
+  const display_profile_option = pathname == '/user';
 
   const handlePromise = (promiseFunction: () => Promise<void>): void => {
     promiseFunction()
@@ -85,7 +83,10 @@ const NavBar = (): React.JSX.Element => {
             <div className="hidden lg:flex items-center space-x-6">
               {pages.map(page =>
                 page.disable ? (
-                  <div key={page.name} className="text-white text-xl opacity-50">
+                  <div
+                    key={page.name}
+                    className="text-white text-xl opacity-50"
+                  >
                     {page.name}
                   </div>
                 ) : (
@@ -150,12 +151,12 @@ const NavBar = (): React.JSX.Element => {
                 href="/user/settings"
                 className="text-white text-xl hover:text-gray-400 transition-colors duration-200"
               >
-                Settings      
+                Settings
               </Link>
               <button
                 onClick={() => {
-                          handlePromise(logOut);
-                        }}
+                  handlePromise(logOut);
+                }}
                 className="text-white text-xl hover:text-gray-400 transition-colors duration-200"
               >
                 Logout
@@ -172,7 +173,7 @@ const NavBar = (): React.JSX.Element => {
                 Loading...
               </button>
             ) : currentUser !== null ? (
-            //) : currentUser === null ? (
+              //) : currentUser === null ? (
               <button className="btn text-white px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0 cursor-pointer">
                 <div
                   className="prone text-center tooltip tooltip-bottom inline-flex items-center"
@@ -193,7 +194,7 @@ const NavBar = (): React.JSX.Element => {
                 >
                   <div className="prone text-center tooltip tooltip-bottom inline-flex items-center">
                     <FaUser className="fill-current w-4 h-4 mr-2" />
-                    {/*currentUser.displayName*/"Jaime"}
+                    {/*currentUser.displayName*/ 'Jaime'}
                   </div>
                 </div>
                 <ul
