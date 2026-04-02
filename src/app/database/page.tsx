@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 
-import { Filter, FilterOptionKey } from '@/components/filter';
 import Search from '@/components/search';
 import searchRedirect from '@/utils/search-redirect';
 import Background from './background';
