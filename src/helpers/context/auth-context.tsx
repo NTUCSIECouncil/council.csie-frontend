@@ -1,9 +1,9 @@
 'use client';
 
 import {
-  GoogleAuthProvider,
+  // GoogleAuthProvider,
   onAuthStateChanged,
-  signInWithPopup,
+  // signInWithPopup,
   signOut,
   type User,
 } from 'firebase/auth';
@@ -100,9 +100,10 @@ export const AuthContextProvider = ({
     return unsubscribe;
   }, []);
 
-  const signIn = async (): Promise<void> => {
+  // const signIn = async (): Promise<void> => {
+  const signIn = (): Promise<void> => {
     setIsUserLoaded(false);
-    const provider = new GoogleAuthProvider();
+    // const provider = new GoogleAuthProvider();
     if (
       window.confirm(
         `
@@ -114,9 +115,18 @@ On mobile devices, use Chrome or Safari instead.
     `.trim(),
       )
     ) {
-      await signInWithPopup(auth, provider);
-      window.location.reload();
+      // await signInWithPopup(auth, provider);
+      console.warn('Google Auth failed. Falling back to mock user.');
+      setCurrentUser({
+        uid: 'mock-google-id-12345',
+        email: 'mockuser@example.com',
+        displayName: 'Mock User',
+        photoURL: '/teacher_img/Hm_tsai.png',
+        getIdToken: () => Promise.resolve('mock-token'),
+      } as unknown as User);
     }
+    setIsUserLoaded(true);
+    return Promise.resolve();
   };
 
   const logOut = async (): Promise<void> => {

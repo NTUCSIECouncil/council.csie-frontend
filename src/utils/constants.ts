@@ -40,6 +40,13 @@ export interface SidePageType {
   lastUpdateTime?: Date;
 }
 
+export interface SettingOption {
+  id: string;
+  label: string;
+  description?: string;
+  enabled: boolean;
+}
+
 export const homePages: HomePageType[] = [
   {
     name: '德田生活',
@@ -143,3 +150,24 @@ export enum SidebarOptionKey {
   COURSE = 'course',
   INFORMATION = 'information',
 }
+
+export const SettingOptions: SettingOption[] = [
+  {
+    id: 'dark_mode',
+    label: 'Enable Dark Mode',
+    //description: 'Toggles the user interface to a dark theme.',
+    enabled: true,
+  },
+  {
+    id: 'email_notifications',
+    label: 'Email Notifications',
+    //description: 'Receive email notifications for important updates and messages.',
+    enabled: true,
+  },
+  {
+    id: 'english_interface',
+    label: 'English Interface',
+    //description: 'Turn on for English content and turn off for Chinese ones.',
+    enabled: false,
+  },
+];
