@@ -7,20 +7,12 @@ import { LuTag } from 'react-icons/lu';
 
 import SearchFilterPanel from '@/app/rate/components/search-filter-panel';
 import Search from '@/components/search';
-import { UserAuth } from '@/helpers/context/auth-context';
 import searchRedirect from '@/utils/search-redirect';
 import Background from './background';
 
 const Page = (): React.JSX.Element => {
   const router = useRouter();
   const [showFilter, setShowFilter] = useState(false);
-  const { currentUser, isUserLoaded, signIn } = UserAuth();
-
-  const handlePromise = (promiseFunction: () => Promise<void>): void => {
-    promiseFunction()
-      .then()
-      .catch(() => "I don't want to do anything.");
-  };
 
   return (
     <main className="flex flex-1 justify-center items-center">
@@ -53,9 +45,7 @@ const Page = (): React.JSX.Element => {
           <button
             type="button"
             onClick={() => {
-              if (!isUserLoaded || currentUser === null) {
-                handlePromise(signIn);
-              } else router.push('/rate/edit');
+              router.push('/rate/edit');
             }}
             className="group relative py-2 px-3 mr-4 flex items-center gap-0 transform origin-center bg-slate-200 rounded-full
             hover:px-4 hover:gap-2 hover:bg-slate-100
