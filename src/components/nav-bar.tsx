@@ -35,7 +35,7 @@ const NavBar = (): React.JSX.Element => {
           </Link>
         </div>
 
-        {(
+        {
           <div className="flex-auto items-center">
             <div className="lg:hidden px-4">
               <Menu as="div" className="relative inline-block text-left">
@@ -99,7 +99,7 @@ const NavBar = (): React.JSX.Element => {
               )}
             </div>
           </div>
-        )}
+        }
 
         {/* <div className="flex items-center space-x-4"> */}
         {env.NEXT_PUBLIC_ENABLE_LOGIN && (

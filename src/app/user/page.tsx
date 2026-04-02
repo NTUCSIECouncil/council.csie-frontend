@@ -2,7 +2,6 @@
 
 //import { updateProfile } from 'firebase/auth';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { FaPencilAlt, FaSignOutAlt } from 'react-icons/fa';
 
@@ -26,7 +25,7 @@ const handlePromise = (promiseFunction: () => Promise<void>): void => {
 
 const Page = () => {
   // Handling rename
-  const { currentUser, isUserLoaded, signIn, logOut, request } = UserAuth();
+  const { currentUser, isUserLoaded, logOut, request } = UserAuth();
   const [userData, setUserData] = useState<{
     nickname?: string;
     email?: string;
@@ -75,8 +74,6 @@ const Page = () => {
   const exam_header = ["課名", "課號", "授課教師", "年份"]
   const exam_colRatio = ["50%", "20%", "20%", "10%"]
   */
-  const router = useRouter();
-
 
   // Handle not login case
   if (!isUserLoaded || currentUser === null) {

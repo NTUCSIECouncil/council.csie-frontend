@@ -1,9 +1,9 @@
 'use client';
 
 import {
-  GoogleAuthProvider,
+  // GoogleAuthProvider,
   onAuthStateChanged,
-  signInWithPopup,
+  // signInWithPopup,
   signOut,
   type User,
 } from 'firebase/auth';
@@ -100,9 +100,10 @@ export const AuthContextProvider = ({
     return unsubscribe;
   }, []);
 
-  const signIn = async (): Promise<void> => {
+  // const signIn = async (): Promise<void> => {
+  const signIn = (): Promise<void> => {
     setIsUserLoaded(false);
-    const provider = new GoogleAuthProvider();
+    // const provider = new GoogleAuthProvider();
     if (
       window.confirm(
         `
@@ -125,6 +126,7 @@ On mobile devices, use Chrome or Safari instead.
       } as unknown as User);
     }
     setIsUserLoaded(true);
+    return Promise.resolve();
   };
 
   const logOut = async (): Promise<void> => {
