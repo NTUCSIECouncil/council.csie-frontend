@@ -26,7 +26,7 @@ const handlePromise = (promiseFunction: () => Promise<void>): void => {
 
 const Page = () => {
   // Handling rename
-  const { currentUser, isUserLoaded, signIn, request } = UserAuth();
+  const { currentUser, isUserLoaded, signIn, logOut, request } = UserAuth();
   const [userData, setUserData] = useState<{
     nickname?: string;
     email?: string;
@@ -76,11 +76,7 @@ const Page = () => {
   const exam_colRatio = ["50%", "20%", "20%", "10%"]
   */
   const router = useRouter();
-  useEffect(() => {
-    if (isUserLoaded && currentUser === null) {
-      handlePromise(signIn);
-    }
-  }, [isUserLoaded, currentUser, signIn]);
+
 
   // Handle not login case
   if (!isUserLoaded || currentUser === null) {
@@ -121,12 +117,12 @@ const Page = () => {
             <div className="flex flex-col justify-end items-end">
               <button
                 onClick={() => {
-                  router.push('/');
+                  handlePromise(logOut);
                 }}
                 className="text-white hover:text-gray-400 transition-colors p-3 rounded-full bg-white/10 hover:bg-white/0 mb-6"
                 aria-label="Modify display name"
               >
-                <p> Back to home </p>
+                <p> Logout </p>
               </button>
               <InformationBlock
                 key="other"

@@ -2,7 +2,7 @@
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { FaUser } from 'react-icons/fa6';
 
 import { env } from '@/env';
@@ -15,9 +15,6 @@ const pages = homePages;
 const NavBar = (): React.JSX.Element => {
   const { currentUser, isUserLoaded, signIn, logOut } = UserAuth();
   const router = useRouter();
-  const pathname = usePathname();
-  const display_navigation_option = !pathname.includes('/user');
-  const display_profile_option = pathname == '/user';
 
   const handlePromise = (promiseFunction: () => Promise<void>): void => {
     promiseFunction()
@@ -37,7 +34,7 @@ const NavBar = (): React.JSX.Element => {
           </Link>
         </div>
 
-        {display_navigation_option && (
+        {(
           <div className="flex-auto items-center">
             <div className="lg:hidden px-4">
               <Menu as="div" className="relative inline-block text-left">
@@ -103,77 +100,14 @@ const NavBar = (): React.JSX.Element => {
           </div>
         )}
 
-        {display_profile_option && (
-          <div className="flex-auto items-center lg:flex lg:justify-end">
-            <div className="lg:hidden px-4">
-              <Menu as="div" className="relative inline-block text-left">
-                <div>
-                  <MenuButton className="inline-flex items-center justify-center text-white px-3 py-2 rounded-2xl backdrop-blur-md">
-                    <svg
-                      className="size-6 text-white"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      data-slot="icon"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25  a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                      />
-                    </svg>
-                  </MenuButton>
-                </div>
-
-                <MenuItems className="absolute right-0 w-fit min-w-[180px] mt-6 z-10 rounded-2xl bg-black/70 shadow-lg transition-all duration-200 ease-out transform scale-95 opacity-0 data-[headlessui-state=open]:scale-100 data-[headlessui-state=open]:opacity-100">
-                  <div>
-                    <MenuItem key="Settings" as={Link} href="/user/settings">
-                      <div className="py-1 block min-w-[180px] text-md text-white text-center rounded-2xl transition-colors duration-150 data-[headlessui-state=active]:bg-violet-200 data-[headlessui-state=active]:text-gray-800">
-                        Settings
-                      </div>
-                    </MenuItem>
-                    <MenuItem>
-                      <button
-                        onClick={() => {
-                          handlePromise(logOut);
-                        }}
-                        className="py-1 block w-full min-w-[180px] text-md text-white text-center rounded-2xl transition-colors duration-150 data-[headlessui-state=active]:bg-violet-200 data-[headlessui-state=active]:text-gray-800"
-                      >
-                        Logout
-                      </button>
-                    </MenuItem>
-                  </div>
-                </MenuItems>
-              </Menu>
-            </div>
-            <div className="hidden lg:flex items-center space-x-6">
-              <Link
-                key="Settings"
-                href="/user/settings"
-                className="text-white text-xl hover:text-gray-400 transition-colors duration-200"
-              >
-                Settings
-              </Link>
-              <button
-                onClick={() => {
-                  handlePromise(logOut);
-                }}
-                className="text-white text-xl hover:text-gray-400 transition-colors duration-200"
-              >
-                Logout
-              </button>
-            </div>
-          </div>
-        )}
-
         {/* <div className="flex items-center space-x-4"> */}
-        {env.NEXT_PUBLIC_ENABLE_LOGIN && display_navigation_option && (
+        {env.NEXT_PUBLIC_ENABLE_LOGIN && (
           <div className="relative w-[100px]">
             {!isUserLoaded ? (
               <button className="btn text-white px-4 py-2 rounded bg-gray-700 hover:bg-gray-700 opacity-50 cursor-not-allowed">
                 Loading...
               </button>
-            ) : currentUser !== null ? (
-              //) : currentUser === null ? (
+            ) : currentUser === null ? (
               <button className="btn text-white px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0 cursor-pointer">
                 <div
                   className="prone text-center tooltip tooltip-bottom inline-flex items-center"
@@ -194,7 +128,7 @@ const NavBar = (): React.JSX.Element => {
                 >
                   <div className="prone text-center tooltip tooltip-bottom inline-flex items-center">
                     <FaUser className="fill-current w-4 h-4 mr-2" />
-                    {/*currentUser.displayName*/ 'Jaime'}
+                    {currentUser.displayName}
                   </div>
                 </div>
                 <ul
@@ -209,16 +143,6 @@ const NavBar = (): React.JSX.Element => {
                       }}
                     >
                       Profile
-                    </div>
-                  </li>
-                  <li>
-                    <div
-                      className="prone text-center cursor-pointer hover:bg-gray-700 transition-colors"
-                      onClick={() => {
-                        router.push('/user/settings');
-                      }}
-                    >
-                      Settings
                     </div>
                   </li>
                   <li>
