@@ -87,7 +87,7 @@ const NewPostPage = (): React.JSX.Element => {
         if (createResponse.status === 400) {
           throw new Error(`Bad Request: ${errorData.message}`);
         } else if (createResponse.status === 401) {
-          throw new Error(`Bad Request: ${errorData.message}`);
+          throw new Error(`Unauthorized: ${errorData.message}`);
         }
       }
 

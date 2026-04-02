@@ -77,7 +77,7 @@ const ArticleDisplay = ({
                     {tag !== articleData.tags[0] && (
                       <p className="text-blue-300 flex-shrink-0">．</p>
                     )}
-                    <ClickableTag key={tag} tag={tag} style="text" />
+                    <ClickableTag tag={tag} style="text" />
                   </div>
                 );
               })
