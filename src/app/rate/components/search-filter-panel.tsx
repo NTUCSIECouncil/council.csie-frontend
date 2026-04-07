@@ -112,7 +112,7 @@ const SearchFilterPanel = ({
               selectedTags.map(tag => (
                 <button
                   key={tag}
-                  className="flex items-center gap-1 px-3 py-1 bg-slate-600 rounded-full hover:bg-slate-500 transition"
+                  className="cursor-pointer flex items-center gap-1 px-3 py-1 bg-slate-600 rounded-full hover:bg-slate-500 transition"
                   onClick={() => {
                     toggleTag(tag);
                   }}
@@ -142,7 +142,7 @@ const SearchFilterPanel = ({
               filteredTags.map(tag => (
                 <button
                   key={tag}
-                  className="px-3 py-1 bg-slate-500 rounded-full hover:bg-slate-400 transition"
+                  className="cursor-pointer px-3 py-1 bg-slate-500 rounded-full hover:bg-slate-400 transition"
                   onClick={() => {
                     toggleTag(tag);
                   }}
@@ -157,7 +157,7 @@ const SearchFilterPanel = ({
         </div>
 
         <button
-          className="block mx-auto px-4 py-2 bg-slate-800 text-white rounded-xl hover:bg-slate-700 transition"
+          className="cursor-pointer block mx-auto px-4 py-2 bg-slate-800 text-white rounded-xl hover:bg-slate-700 transition"
           onClick={onClose}
         >
           關閉

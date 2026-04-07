@@ -47,7 +47,7 @@ const ArticleDisplay = ({
   return (
     <>
       {/* Post Title and Author */}
-      <div className="w-full flex justify-between items-end my-4 px-4">
+      <div className="w-full flex flex-col items-start md:flex-row justify-between md:items-end my-4 px-4">
         <h1 className="font-bold text-4xl text-white">{articleData.title}</h1>
         <div className="flex items-center gap-1 text-white">
           <FaUser />

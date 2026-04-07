@@ -65,7 +65,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
   return (
     <main className="w-full overflow-x-auto">
-      <div className="relative flex w-[225%] lg:w-[95%] mx-auto justify-center">
+      <div className="relative flex w-[220%] sm:w-[125%] md:w-[110%] lg:w-[95%] mx-auto justify-center">
         <Image
           src={imageUrl}
           alt="map"
@@ -95,7 +95,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             key={point.title}
             className={`absolute w-4 h-4 rounded-[4px]
               ${point.description ? 'bg-slate-600' : point.fixed ? 'bg-[#d4d2d5]' : 'bg-slate-400'}
-              ${point.fixed ? '' : 'hover:bg-[#1c1c29]'}`}
+              ${point.fixed ? '' : 'hover:bg-[#1c1c29] cursor-pointer'}`}
             style={{
               left: `${((point.cx / mapWidth) * 100).toFixed(2)}%`,
               top: `${((point.cy / mapHeight) * 100).toFixed(2)}%`,
