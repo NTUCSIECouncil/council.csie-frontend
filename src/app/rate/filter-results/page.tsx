@@ -74,7 +74,7 @@ const Page = async (props: {
             placeholder="輸入關鍵字"
             initialValue={keyword}
           />
-          <div className="flex items-center gap-2 my-2 mx-10 text-sm">
+          <div className="flex items-center gap-2 mt-4 mb-2 mx-10 text-sm">
             <p className="text-base">篩選：</p>
             <Filter filterKey={FilterOptionKey.GRADE} name="grade" />
             <Filter filterKey={FilterOptionKey.CATEGORY} name="type" />
