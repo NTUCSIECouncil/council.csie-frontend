@@ -4,15 +4,31 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import ArticleDisplay from '@/app/rate/articles/[articleId]/components/article-display';
+import { UserAuth } from '@/helpers/context/auth-context';
 import { type Course } from '@/types/backend';
+import clientFetch from '@/utils/client-fetch';
 import EditComponent from './components/edit-component';
 import { EditContext } from './context';
 
 type TabType = 'edit' | 'preview';
 
+interface ArticleIdResponse {
+  articleId: string;
+}
+
+interface ErrorResponse {
+  message: string;
+  details?: ErrorDetail;
+}
+
+interface ErrorDetail {
+  field: string;
+  reason: string;
+}
+
 const NewPostPage = (): React.JSX.Element => {
   const router = useRouter();
-
+  const { currentUser } = UserAuth();
   // tab state
   const [activeTab, setActiveTab] = useState<TabType>('edit');
 
@@ -35,40 +51,78 @@ const NewPostPage = (): React.JSX.Element => {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isFormValid()) return;
+
     setIsSubmitting(true);
-    return;
 
-    // e.preventDefault();
+    try {
+      const postData = {
+        title: title.trim(),
+        tags: selectedTags,
+        ratings: {
+          // TODO: use fixed value for ratings temporarily
+          sweetness: 4,
+          chill: 5,
+          teaching: 3,
+          gain: 4,
+          recommend: 5,
+        },
+        course: selectedCourse?._id ?? '',
+      };
 
-    // if (!isFormValid()) return;
+      const createResponse = await clientFetch('/api/articles', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+        cache: 'no-store',
+      });
 
-    // setIsSubmitting(true);
+      if (!createResponse.ok) {
+        const errorData = (await createResponse.json()) as ErrorResponse;
+        if (createResponse.status === 400) {
+          throw new Error(`Bad Request: ${errorData.message}`);
+        } else if (createResponse.status === 401) {
+          throw new Error(`Unauthorized: ${errorData.message}`);
+        }
+      }
 
-    // try {
-    //   // TODO: Replace with actual API call
-    //   const postData = {
-    //     title: title.trim(),
-    //     courseId: selectedCourse!.id,
-    //     content: content.trim(),
-    //     tags: selectedTags,
-    //     timestamp: new Date().toISOString(),
-    //   };
+      const articleId = ((await createResponse.json()) as ArticleIdResponse)
+        .articleId;
 
-    //   console.log('Submitting post:', postData);
+      console.log('Post submitted successfully, articleId:', articleId);
 
-    //   // Simulate API call
-    //   await new Promise(resolve => setTimeout(resolve, 1000));
+      const contentUploadResponse = await clientFetch(
+        `/api/articles/${articleId}/file`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ file: content.trim() }),
+        },
+      );
 
-    //   // Redirect to success page or back to rate page
-    //   router.push('/rate');
-    // } catch (error) {
-    //   console.error('Error submitting post:', error);
-    //   // TODO: Show error message to user
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
+      if (!contentUploadResponse.ok) {
+        const errorData = (await contentUploadResponse.json()) as ErrorResponse;
+        if (contentUploadResponse.status === 400) {
+          throw new Error(`Bad Request: ${errorData.message}`);
+        } else if (contentUploadResponse.status === 401) {
+          throw new Error(`Unauthorized: ${errorData.message}`);
+        }
+      }
+
+      // Redirect to success page or back to rate page
+      router.push(`/rate/articles/${articleId}`);
+    } catch (error) {
+      console.error('Error submitting post:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCancel = () => {
@@ -123,10 +177,13 @@ const NewPostPage = (): React.JSX.Element => {
           </div>
 
           {activeTab === 'edit' ? (
-            <form onSubmit={handleSubmit}>
+            <form
+              onSubmit={e => {
+                void handleSubmit(e);
+              }}
+              className="w-full flex flex-col items-center"
+            >
               <EditComponent />
-
-              {/* Form Actions */}
               <div className="flex gap-4 pt-6 border-t border-gray-500 px-4 mt-8">
                 <button
                   type="button"
@@ -166,7 +223,8 @@ const NewPostPage = (): React.JSX.Element => {
             <ArticleDisplay
               articleData={{
                 title: title || '課程評價標題',
-                creator: '預覽使用者',
+                creatorId: currentUser?.uid ?? 'N/A',
+                creatorName: currentUser?.displayName ?? '尚未登錄',
                 content: content,
                 tags: selectedTags,
                 createdAt: new Date().toISOString().split('T')[0],

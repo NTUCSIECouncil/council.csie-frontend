@@ -9,9 +9,15 @@ const Article = async ({
 }: {
   articleId: string;
 }): Promise<React.JSX.Element> => {
-  const res = await serverFetch(`/api/articles/${articleId}`, {
-    cache: 'force-cache',
-  });
+  const queryParams = new URLSearchParams();
+  queryParams.append('embed[0]', 'creator');
+
+  const res = await serverFetch(
+    `/api/articles/${articleId}?${queryParams.toString()}`,
+    {
+      cache: 'force-cache',
+    },
+  );
   if (!res.ok) {
     if (res.status === 404) notFound();
     throw new Error('Failed to fetch response');
@@ -20,6 +26,15 @@ const Article = async ({
   const articleMeta = articleMetaResponse.article;
 
   console.log('Fetched article metadata:', articleMetaResponse);
+
+  const creatorId =
+    typeof articleMeta.creator === 'string'
+      ? articleMeta.creator
+      : articleMeta.creator._id;
+  const creatorName =
+    typeof articleMeta.creator === 'string'
+      ? 'Unknown'
+      : articleMeta.creator.nickname;
 
   const resContent = await serverFetch(`/api/articles/${articleId}/file`, {
     cache: 'no-store',
@@ -30,7 +45,12 @@ const Article = async ({
   }
   const content = ((await resContent.json()) as { file: string }).file;
 
-  const courseRes = await serverFetch(`/api/courses/${articleMeta.course}`, {
+  const courseId =
+    typeof articleMeta.course === 'string'
+      ? articleMeta.course
+      : articleMeta.course._id;
+
+  const courseRes = await serverFetch(`/api/courses/${courseId}`, {
     cache: 'no-store',
   });
   if (!courseRes.ok) {
@@ -42,7 +62,8 @@ const Article = async ({
 
   const articleData = {
     title: articleMeta.title,
-    creator: articleMeta.creator,
+    creatorId: creatorId,
+    creatorName: creatorName,
     content: content,
     tags: articleMeta.tags,
     createdAt: '2024-03-15', // TODO: get this from the API
