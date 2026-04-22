@@ -25,7 +25,7 @@ interface AuthRequestInit extends RequestInit {
 type AuthRequest = (
   url: string,
   request?: AuthRequestInit,
-) => Promise<Response | null>;
+) => Promise<Response>;
 
 interface AuthContextProps {
   currentUser: User | null;
@@ -53,12 +53,15 @@ const AuthContext = createContext<AuthContextProps>({
   clientFetch: async (
     url: string,
     request: RequestInit = {},
-  ): Promise<Response | null> => {
+  ): Promise<Response> => {
     try {
       return await fetch(url, request);
     } catch (error) {
       console.log(error);
-      return null;
+      return new Response(null, {
+        status: 500,
+        statusText: 'Client Fetch Error',
+      });
     }
   },
 });
@@ -150,7 +153,7 @@ On mobile devices, use Chrome or Safari instead.
     async (
       url: string,
       { auth = true, headers = {}, ...options }: AuthRequestInit = {},
-    ): Promise<Response | null> => {
+    ): Promise<Response> => {
       try {
         const realHeaders = new Headers(headers);
         if (isUserLoaded && currentUser !== null && auth) {
@@ -166,7 +169,10 @@ On mobile devices, use Chrome or Safari instead.
         return await fetch(BACKEND_URL + url, newOptions);
       } catch (error) {
         console.log(error);
-        return null;
+        return new Response(null, {
+          status: 500,
+          statusText: 'Client Fetch Error',
+        });
       }
     },
     [isUserLoaded, currentUser],

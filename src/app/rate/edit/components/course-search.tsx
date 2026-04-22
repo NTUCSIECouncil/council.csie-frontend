@@ -44,7 +44,7 @@ const CourseSearch = ({ disabled = false }: Props): React.JSX.Element => {
         const res = await clientFetch(`/api/courses?${params.toString()}`, {
           cache: 'force-cache',
         });
-        if (!res?.ok) {
+        if (!res.ok) {
           setCourses([]);
           return;
         }
