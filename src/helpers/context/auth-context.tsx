@@ -135,6 +135,14 @@ On mobile devices, use Chrome or Safari instead.
   };
 
   const logOut = async (): Promise<void> => {
+    const res = await fetch(BACKEND_URL + `/api/users/logout`, {
+      method: 'POST',
+      credentials: 'include',
+    });
+    if (res.ok) {
+      setCurrentUser(null);
+      setCurrentToken(null);
+    }
     await signOut(auth);
   };
 
