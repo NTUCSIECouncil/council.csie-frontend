@@ -2,7 +2,7 @@
 
 import {
   GoogleAuthProvider,
-  onAuthStateChanged,
+  onIdTokenChanged,
   signInWithPopup,
   signOut,
   type User,
@@ -29,7 +29,6 @@ type AuthRequest = (
 
 interface AuthContextProps {
   currentUser: User | null;
-  currentToken: string | null;
   isUserLoaded: boolean;
   signIn: () => Promise<void>;
   logOut: () => Promise<void>;
@@ -41,7 +40,6 @@ const BACKEND_URL = env.NEXT_PUBLIC_API_BASE_URL;
 const AuthContext = createContext<AuthContextProps>({
   currentUser: null,
   isUserLoaded: false,
-  currentToken: null,
   signIn: () =>
     new Promise<void>(() => {
       return;
@@ -72,14 +70,17 @@ export const AuthContextProvider = ({
   children: React.ReactNode;
 }): React.JSX.Element => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [currentToken, setCurrentToken] = useState<string | null>(null);
   const [isUserLoaded, setIsUserLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, firebaseUser => {
+    const unsubscribe = onIdTokenChanged(auth, firebaseUser => {
       if (firebaseUser === null) {
-        setCurrentUser(null);
-        setCurrentToken(null);
+        (async () => {
+          await clearUserAndCookie();
+        })().catch((err: unknown) => {
+          console.error('auth logout error');
+          console.error(err);
+        });
       } else {
         (async () => {
           const token = await firebaseUser.getIdToken();
@@ -96,8 +97,8 @@ export const AuthContextProvider = ({
               headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
-                credentials: 'include',
               },
+              credentials: 'include',
               body: JSON.stringify({
                 nickname: firebaseUser.displayName ?? 'Doe',
               }),
@@ -105,7 +106,6 @@ export const AuthContextProvider = ({
           }
           if (res.ok) {
             setCurrentUser(firebaseUser);
-            setCurrentToken(token);
           }
         })().catch((err: unknown) => {
           console.error('auth error');
@@ -114,7 +114,6 @@ export const AuthContextProvider = ({
       }
       setIsUserLoaded(true);
     });
-    // console.log(user);
     return unsubscribe;
   }, []);
 
@@ -137,16 +136,22 @@ On mobile devices, use Chrome or Safari instead.
     }
   };
 
-  const logOut = async (): Promise<void> => {
+  const clearUserAndCookie = async () => {
     const res = await fetch(BACKEND_URL + `/api/users/logout`, {
       method: 'POST',
       credentials: 'include',
     });
     if (res.ok) {
       setCurrentUser(null);
-      setCurrentToken(null);
     }
-    await signOut(auth);
+    return res;
+  };
+
+  const logOut = async (): Promise<void> => {
+    const res = await clearUserAndCookie();
+    if (res.ok) {
+      await signOut(auth);
+    }
   };
 
   const clientFetch = useCallback(
@@ -182,7 +187,6 @@ On mobile devices, use Chrome or Safari instead.
     <AuthContext.Provider
       value={{
         currentUser,
-        currentToken,
         isUserLoaded,
         signIn,
         logOut,
