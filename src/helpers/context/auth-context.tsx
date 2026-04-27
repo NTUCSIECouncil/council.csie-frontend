@@ -2,7 +2,7 @@
 
 import {
   GoogleAuthProvider,
-  onAuthStateChanged,
+  onIdTokenChanged,
   signInWithPopup,
   signOut,
   type User,
@@ -15,6 +15,7 @@ import {
   useState,
 } from 'react';
 
+import { env } from '@/env';
 import { auth } from '@/helpers/firebase/firebase';
 
 interface AuthRequestInit extends RequestInit {
@@ -24,15 +25,17 @@ interface AuthRequestInit extends RequestInit {
 type AuthRequest = (
   url: string,
   request?: AuthRequestInit,
-) => Promise<Response | null>;
+) => Promise<Response>;
 
 interface AuthContextProps {
   currentUser: User | null;
   isUserLoaded: boolean;
   signIn: () => Promise<void>;
   logOut: () => Promise<void>;
-  request: AuthRequest;
+  clientFetch: AuthRequest;
 }
+
+const BACKEND_URL = env.NEXT_PUBLIC_API_BASE_URL;
 
 const AuthContext = createContext<AuthContextProps>({
   currentUser: null,
@@ -45,15 +48,18 @@ const AuthContext = createContext<AuthContextProps>({
     new Promise<void>(() => {
       return;
     }),
-  request: async (
+  clientFetch: async (
     url: string,
     request: RequestInit = {},
-  ): Promise<Response | null> => {
+  ): Promise<Response> => {
     try {
       return await fetch(url, request);
     } catch (error) {
       console.log(error);
-      return null;
+      return new Response(null, {
+        status: 500,
+        statusText: 'Client Fetch Error',
+      });
     }
   },
 });
@@ -67,28 +73,40 @@ export const AuthContextProvider = ({
   const [isUserLoaded, setIsUserLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-      if (currentUser === null) {
-        setCurrentUser(null);
+    const unsubscribe = onIdTokenChanged(auth, firebaseUser => {
+      if (firebaseUser === null) {
+        (async () => {
+          await clearUserAndCookie();
+        })().catch((err: unknown) => {
+          console.error('auth logout error');
+          console.error(err);
+        });
       } else {
         (async () => {
-          let res = await fetch(`/api/users/${currentUser.uid}`, {
+          const token = await firebaseUser.getIdToken();
+          let res = await fetch(BACKEND_URL + `/api/users/me`, {
             headers: {
-              Authorization: `Bearer ${await currentUser.getIdToken()}`,
+              Authorization: `Bearer ${token}`,
             },
+            credentials: 'include',
           });
-
           // If user is not currently exist in server DB, request to create it
-          if (res.status === 404) {
-            res = await fetch(`/api/users/${currentUser.uid}`, {
+          if (res.status === 401) {
+            res = await fetch(BACKEND_URL + `/api/users`, {
               method: 'POST',
               headers: {
-                Authorization: `Bearer ${await currentUser.getIdToken()}`,
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
               },
+              credentials: 'include',
+              body: JSON.stringify({
+                nickname: firebaseUser.displayName ?? 'Doe',
+              }),
             });
           }
-
-          if (res.ok) setCurrentUser(currentUser);
+          if (res.ok) {
+            setCurrentUser(firebaseUser);
+          }
         })().catch((err: unknown) => {
           console.error('auth error');
           console.error(err);
@@ -96,7 +114,6 @@ export const AuthContextProvider = ({
       }
       setIsUserLoaded(true);
     });
-    // console.log(user);
     return unsubscribe;
   }, []);
 
@@ -119,15 +136,29 @@ On mobile devices, use Chrome or Safari instead.
     }
   };
 
-  const logOut = async (): Promise<void> => {
-    await signOut(auth);
+  const clearUserAndCookie = async () => {
+    const res = await fetch(BACKEND_URL + `/api/users/logout`, {
+      method: 'POST',
+      credentials: 'include',
+    });
+    if (res.ok) {
+      setCurrentUser(null);
+    }
+    return res;
   };
 
-  const request = useCallback(
+  const logOut = async (): Promise<void> => {
+    const res = await clearUserAndCookie();
+    if (res.ok) {
+      await signOut(auth);
+    }
+  };
+
+  const clientFetch = useCallback(
     async (
       url: string,
       { auth = true, headers = {}, ...options }: AuthRequestInit = {},
-    ): Promise<Response | null> => {
+    ): Promise<Response> => {
       try {
         const realHeaders = new Headers(headers);
         if (isUserLoaded && currentUser !== null && auth) {
@@ -135,16 +166,18 @@ On mobile devices, use Chrome or Safari instead.
             'Authorization',
             `Bearer ${await currentUser.getIdToken()}`,
           );
-          // headers.Authorization = `Bearer ${await user.getIdToken()}`;
         }
         const newOptions: RequestInit = {
           headers: realHeaders,
           ...options,
         };
-        return await fetch(url, newOptions);
+        return await fetch(BACKEND_URL + url, newOptions);
       } catch (error) {
         console.log(error);
-        return null;
+        return new Response(null, {
+          status: 500,
+          statusText: 'Client Fetch Error',
+        });
       }
     },
     [isUserLoaded, currentUser],
@@ -157,7 +190,7 @@ On mobile devices, use Chrome or Safari instead.
         isUserLoaded,
         signIn,
         logOut,
-        request,
+        clientFetch,
       }}
     >
       {children}
