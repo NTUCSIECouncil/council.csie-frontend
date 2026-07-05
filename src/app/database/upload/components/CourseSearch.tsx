@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FaSearch, FaTimes } from 'react-icons/fa';
 
+import { UserAuth } from '@/helpers/context/auth-context';
 import { type Course } from '@/types/backend';
-import clientFetch from '@/utils/client-fetch';
 
 interface Props {
   selectedCourse: Course | null;
@@ -30,36 +30,40 @@ const CourseSearch = ({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [courses, setCourses] = useState<Course[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { clientFetch } = UserAuth();
 
-  const fetchCourses = useCallback(async (keyword: string) => {
-    if (!keyword.trim()) {
-      setCourses([]);
-      return;
-    }
-
-    setIsLoading(true);
-    try {
-      const params = new URLSearchParams({
-        keyword,
-        limit: '20',
-      });
-      const res = await clientFetch(`/api/courses?${params.toString()}`, {
-        cache: 'force-cache',
-      });
-      if (!res.ok) {
+  const fetchCourses = useCallback(
+    async (keyword: string) => {
+      if (!keyword.trim()) {
         setCourses([]);
         return;
       }
 
-      const data: APIResponse = (await res.json()) as APIResponse;
-      setCourses(data.courses);
-    } catch (err) {
-      console.error('Error fetching courses:', err);
-      setCourses([]);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+      setIsLoading(true);
+      try {
+        const params = new URLSearchParams({
+          keyword,
+          limit: '20',
+        });
+        const res = await clientFetch(`/api/courses?${params.toString()}`, {
+          cache: 'force-cache',
+        });
+        if (!res.ok) {
+          setCourses([]);
+          return;
+        }
+
+        const data: APIResponse = (await res.json()) as APIResponse;
+        setCourses(data.courses);
+      } catch (err) {
+        console.error('Error fetching courses:', err);
+        setCourses([]);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [clientFetch],
+  );
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {

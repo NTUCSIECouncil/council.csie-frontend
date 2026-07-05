@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { MdOutlineReportProblem } from 'react-icons/md';
 
+import { openMailClient } from '@/utils/open-mail-client';
+
 interface Props {
   onClose: () => void;
   articleId: string;
@@ -28,39 +30,21 @@ const ReportPanel = ({
     };
   }, [onClose]);
 
-  const openMailClient = () => {
-    const recipient = 'CSIEacademic@gmail.com';
-    const subject = encodeURIComponent(`檢舉文章 -〈${articleTitle}〉`);
-
-    const bodyLines = [
-      `文章編號：${articleId}`,
-      `文章標題：〈${articleTitle}〉`,
-      '',
-      '檢舉原因：',
-      selectedReason || '未選擇',
-      '',
-      '詳細說明：',
-      description || '無',
-    ];
-    const body = encodeURIComponent(bodyLines.join('\n'));
-
-    //Using Gmail
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
-
-    const width = 500;
-    const height = 600;
-    const left = (window.screen.width - width) / 2;
-    const top = (window.screen.height - height) / 2;
-
-    window.open(
-      gmailUrl,
-      'gmailCompose',
-      `width=${width.toString()},height=${height.toString()},left=${left.toString()},top=${top.toString()},resizable=yes,scrollbars=yes`,
-    );
-
-    setTimeout(() => {
-      onClose();
-    }, 500);
+  const handleOpenMailClient = () => {
+    openMailClient({
+      subject: `檢舉文章 -〈${articleTitle}〉`,
+      bodyLines: [
+        `文章編號：${articleId}`,
+        `文章標題：〈${articleTitle}〉`,
+        '',
+        '檢舉原因：',
+        selectedReason || '未選擇',
+        '',
+        '詳細說明：',
+        description || '無',
+      ],
+      onClose,
+    });
   };
 
   return (
@@ -151,7 +135,7 @@ const ReportPanel = ({
           </button>
           <button
             type="button"
-            onClick={openMailClient}
+            onClick={handleOpenMailClient}
             className="px-6 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition"
           >
             開啟 Gmail 檢舉

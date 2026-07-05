@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
+import { UserAuth } from '@/helpers/context/auth-context';
 import { type Course } from '@/types/backend';
-import clientFetch from '@/utils/client-fetch';
 
 interface Props {
   value: string;
@@ -22,6 +22,7 @@ const SemesterSelect = ({
 }: Props): React.JSX.Element => {
   const [semesters, setSemesters] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { clientFetch } = UserAuth();
 
   useEffect(() => {
     const fetchSemesters = async () => {
@@ -64,7 +65,7 @@ const SemesterSelect = ({
     };
 
     void fetchSemesters();
-  }, []);
+  }, [clientFetch]);
 
   return (
     <div className="flex flex-col gap-2">
