@@ -15,7 +15,7 @@ const DividerBar = ({
 }: DividerBarProps): React.JSX.Element => {
   return (
     <div className="bg-[#1c1c29] py-2">
-      <div className="w-180 h-12 items-center flex mx-auto px-4 text-white text-lg border-b-2 border-[#d4d2d5]">
+      <div className="w-full lg:w-180 h-fit pb-1 items-center flex mx-auto px-4 text-white text-lg border-b-2 border-[#d4d2d5]">
         {items.map(item => {
           const value = item.type === 'text' ? item.label : item.alt;
           const isSelected = selectedTab === value;
@@ -25,7 +25,7 @@ const DividerBar = ({
               onClick={() => {
                 setSelectedTab(value);
               }}
-              className={`relative flex-1 text-center pb-1 transition-all ${
+              className={`relative flex-1 text-center pb-1 transition-all cursor-pointer ${
                 isSelected
                   ? 'text-white after:content-[""] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-2px] after:w-[75%] after:h-1 after:bg-[#d4d2d5] after:rounded-full'
                   : 'text-gray-400 hover:text-white'

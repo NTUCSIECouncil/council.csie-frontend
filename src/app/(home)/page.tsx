@@ -52,22 +52,31 @@ const Page = () => {
           </p>
         </main>
         {env.NEXT_PUBLIC_ENABLE_HOMEPAGE_BOTTOM && (
-          <div className="grid grid-cols-2 z-10 sm:px-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 z-10 sm:px-20">
             <div>
               {homePages.map((page, index) => (
                 <section
                   key={index}
-                  className="flex flex-col md:flex-row items-center justify-center h-screen pl-0 md:px-8 transition-all duration-700 pr-8 md:pr-0"
+                  className="flex flex-col lg:flex-row items-center justify-center h-screen pl-0 lg:px-8 transition-all duration-700 pr-0 lg:pr-0"
                 >
-                  <div className="w-full md:w-1/2 text-white">
+                  <div className="sm:hidden mb-8 w-full">
+                    <Image
+                      alt={page.name}
+                      src={page.gif}
+                      width={350}
+                      height={200}
+                      className="w-1/2 min-w-60 mx-auto"
+                    />
+                  </div>
+                  <div className="w-full lg:w-1/2 text-white text-center sm:text-left">
                     <h2 className="text-4xl font-bold mb-4">{page.name}</h2>
                     <p className="text-lg">{page.description}</p>
                   </div>
                 </section>
               ))}
             </div>
-            <div className="relative">
-              <div className="fixed top-1/2 md:right-1/4 transform -translate-y-1/2">
+            <div className="relative hidden sm:block">
+              <div className="fixed top-1/2 lg:right-1/4 transform -translate-y-1/2">
                 {isClient && scrollPosition > window.innerHeight * 0.75 && (
                   <Image
                     alt={homePages[activeIndex - 1].name}

@@ -26,13 +26,13 @@ const NavBar = (): React.JSX.Element => {
         <div className="md:flex items-center mr-0 md:mr-16">
           <Link
             href="/"
-            className={`${playfairDisplay.className} flex-auto text-4xl text-center text-white font-bold pl-4 transition-transform duration-300 ease-in-out hover:scale-110`}
+            className={`${playfairDisplay.className} flex-auto whitespace-nowrap text-4xl text-center text-white font-bold pl-2 sm:pl-4 transition-transform duration-300 ease-in-out hover:scale-110`}
           >
             NTU CSIE
           </Link>
         </div>
         <div className="flex-auto items-center">
-          <div className="lg:hidden px-4">
+          <div className="lg:hidden px-2 sm:px-4">
             <Menu as="div" className="relative inline-block text-left">
               <div>
                 <MenuButton className="inline-flex items-center justify-center text-white px-3 py-2 rounded-2xl backdrop-blur-md">

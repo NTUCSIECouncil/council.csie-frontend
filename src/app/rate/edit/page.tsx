@@ -6,7 +6,6 @@ import { useState } from 'react';
 import ArticleDisplay from '@/app/rate/articles/[articleId]/components/article-display';
 import { UserAuth } from '@/helpers/context/auth-context';
 import { type Course } from '@/types/backend';
-import clientFetch from '@/utils/client-fetch';
 import EditComponent from './components/edit-component';
 import { EditContext } from './context';
 
@@ -28,7 +27,7 @@ interface ErrorDetail {
 
 const NewPostPage = (): React.JSX.Element => {
   const router = useRouter();
-  const { currentUser } = UserAuth();
+  const { currentUser, clientFetch } = UserAuth();
   // tab state
   const [activeTab, setActiveTab] = useState<TabType>('edit');
 

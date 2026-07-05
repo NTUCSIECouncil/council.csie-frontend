@@ -75,11 +75,11 @@ const Page = async (props: {
   );
 
   return (
-    <main className="flex flex-col items-center self-start">
+    <main className="max-w-full flex flex-col items-center self-start">
       <Background />
       <div className="w-full max-w-5xl m-4 pt-2">
         <Suspense>
-          <div className="w-full flex items-end my-2 px-4">
+          <div className="w-full flex flex-wrap items-end my-2 px-4">
             <p className="font-bold md:text-4xl xl:text-5xl text-3xl mr-3">
               {semester + ' ' + title}
             </p>
@@ -92,13 +92,13 @@ const Page = async (props: {
             <table className="w-full text-white-400 text-center font-medium">
               <thead className="font-bold">
                 <tr className="border-b-2 mb-2">
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className="px-3 py-3">
                     考試類別
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className="px-3 py-3">
                     上傳者
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className="px-3 py-3">
                     下載連結
                   </th>
                 </tr>
@@ -106,13 +106,13 @@ const Page = async (props: {
               <tbody className="">
                 {quizzes.map((quiz: Quiz) => (
                   <tr key={quiz._id} className="hover:bg-gray-600">
-                    <th className="px-6 py-3 whitespace-nowrap">
+                    <th className="px-3 py-3 whitespace-nowrap">
                       {SESSION_TO_CHINESE_LABEL.get(quiz.session)}
                     </th>
-                    <td className="px-6 py-3">
+                    <td className="px-3 py-3">
                       {(quiz.uploader as User).nickname}
                     </td>
-                    <td className="px-6 py-3 flex justify-center">
+                    <td className="px-3 py-3 flex justify-center">
                       <DownloadLink
                         quizId={quiz._id}
                         BACKEND_URL={BACKEND_URL}

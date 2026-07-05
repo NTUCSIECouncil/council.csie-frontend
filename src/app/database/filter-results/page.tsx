@@ -56,7 +56,7 @@ const Page = async (params: {
   return (
     <div className="h-full w-full">
       <Background />
-      <main className="mx-auto w-4/5 min-w-96 mt-4">
+      <main className="mx-auto min-w-4/5 mt-4">
         <form
           action={searchRedirectServer('/database/filter-results')}
           className="flex items-center justify-between xl:mx-7 mx-4"
