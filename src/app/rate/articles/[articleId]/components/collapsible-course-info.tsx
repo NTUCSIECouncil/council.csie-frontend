@@ -26,7 +26,7 @@ const CollapsibleCourseInfo = ({
         onClick={() => {
           setIsExpanded(!isExpanded);
         }}
-        className="flex items-center gap-2 mb-3 hover:opacity-80 transition-opacity"
+        className="cursor-pointer flex items-center gap-2 mb-3 hover:opacity-80 transition-opacity"
       >
         <FaBook className="text-white" />
         <span className="text-lg font-semibold text-white">課程資訊</span>

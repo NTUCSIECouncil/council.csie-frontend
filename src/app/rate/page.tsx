@@ -17,13 +17,13 @@ const Page = (): React.JSX.Element => {
   return (
     <main className="flex flex-1 justify-center items-center">
       <Background />
-      <div className="relative w-[90%] sm:w-[500px]">
+      <div className="absolute top-2/7">
         <p className="text-5xl font-bold my-6 tracking-widest text-center">
           課程評價網
         </p>
         <form
           action={searchRedirect(router, '/rate/filter-results')}
-          className="w-full flex flex-col items-center"
+          className="min-w-[210px] w-[65vw] sm:w-[400px] md:w-[500px] flex flex-col items-center"
         >
           <Search className="my-2 w-full" placeholder="輸入關鍵字" />
         </form>
@@ -33,7 +33,7 @@ const Page = (): React.JSX.Element => {
             onClick={() => {
               setShowFilter(true);
             }}
-            className="group py-2 px-4 ml-4 scale-95 hover:scale-100 transition-all duration-300 ease-in-out bg-gray-700 border-gray-600 border placeholder-gray-400 font-medium rounded-md hover:bg-gray-600 hover:border-gray-500"
+            className="cursor-pointer group py-2 px-4 ml-4 scale-95 hover:scale-100 transition-all duration-300 ease-in-out bg-gray-700 border-gray-600 border placeholder-gray-400 font-medium rounded-md hover:bg-gray-600 hover:border-gray-500"
           >
             <div className="flex items-center gap-2 group-hover:text-white transition-colors duration-300 ease-in-out">
               <LuTag className="self-center group-hover:rotate-12 transition-transform duration-300 ease-in-out" />
@@ -47,7 +47,7 @@ const Page = (): React.JSX.Element => {
             onClick={() => {
               router.push('/rate/edit');
             }}
-            className="group relative py-2 px-3 mr-4 flex items-center gap-0 transform origin-center bg-slate-200 rounded-full
+            className="cursor-pointer group relative py-2 px-3 mr-4 flex items-center gap-0 transform origin-center bg-slate-200 rounded-full
             hover:px-4 hover:gap-2 hover:bg-slate-100
             transition-all duration-300 ease-in-out"
           >

@@ -63,7 +63,7 @@ const Page = async (props: {
   }
 
   return (
-    <main className="flex flex-col gap-4 items-center mt-8 w-3/5">
+    <main className="flex flex-col gap-4 items-center mt-8 w-full sm:w-4/5 lg:w-3/5">
       <div className="w-full">
         <form
           action={searchRedirectServer('/rate/filter-results')}

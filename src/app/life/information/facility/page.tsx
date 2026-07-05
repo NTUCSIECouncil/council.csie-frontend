@@ -50,7 +50,7 @@ const Page = (): React.JSX.Element => {
   );
 
   return (
-    <div>
+    <div className="mx-[-10] lg:mx-0">
       <div className="sticky top-18 z-20">
         <DividerBar
           items={tabItems}
@@ -59,7 +59,7 @@ const Page = (): React.JSX.Element => {
         />
       </div>
 
-      <div className="flex flex-col items-start pt-4 w-180">
+      <div className="flex flex-col items-start pt-4 lg:w-180">
         {selectedSection?.points != null && (
           <InteractiveMap
             points={selectedSection.points}
