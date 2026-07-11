@@ -13,6 +13,7 @@ import Background from './background';
 const Page = (): React.JSX.Element => {
   const router = useRouter();
   const [showFilter, setShowFilter] = useState(false);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   return (
     <main className="flex flex-1 justify-center items-center">
@@ -26,6 +27,13 @@ const Page = (): React.JSX.Element => {
           className="min-w-[210px] w-[65vw] sm:w-[400px] md:w-[500px] flex flex-col items-center"
         >
           <Search className="my-2 w-full" placeholder="輸入關鍵字" />
+          {selectedTags.length > 0 && (
+            <input
+              type="hidden"
+              name="tags"
+              value={JSON.stringify(selectedTags)}
+            />
+          )}
         </form>
         <div className="flex justify-between items-center mt-4 w-full">
           <button
@@ -61,6 +69,8 @@ const Page = (): React.JSX.Element => {
 
       {showFilter && (
         <SearchFilterPanel
+          selectedTags={selectedTags}
+          onTagsChange={setSelectedTags}
           onClose={() => {
             setShowFilter(false);
           }}
