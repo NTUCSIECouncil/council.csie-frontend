@@ -34,7 +34,7 @@ const Search = ({
         }}
       />
       <button
-        className="absolute aspect-square right-0 top-1/2 transform -translate-y-1/2 h-full bg-slate-200 flex rounded-r-2xl"
+        className="cursor-pointer absolute aspect-square right-0 top-1/2 transform -translate-y-1/2 h-full bg-slate-200 flex rounded-r-2xl"
         type="submit"
       >
         <FaSearch className="text-3xl text-[#1c1c29] self-center mx-auto" />

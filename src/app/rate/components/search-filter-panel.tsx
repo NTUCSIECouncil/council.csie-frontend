@@ -5,6 +5,8 @@ import { FaTimes } from 'react-icons/fa';
 
 interface Props {
   onClose: () => void;
+  selectedTags?: string[];
+  onTagsChange?: (tags: string[]) => void;
 }
 
 const COMMON_TAGS = [
@@ -42,9 +44,18 @@ const COMMON_TAGS = [
   '電機系',
 ];
 
-const SearchFilterPanel = ({ onClose }: Props): React.JSX.Element => {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+const SearchFilterPanel = ({
+  onClose,
+  selectedTags: externalSelectedTags,
+  onTagsChange: externalOnTagsChange,
+}: Props): React.JSX.Element => {
+  const [internalSelectedTags, setInternalSelectedTags] = useState<string[]>(
+    [],
+  );
   const [searchText, setSearchText] = useState('');
+
+  // Use external tags if provided, otherwise use internal state
+  const selectedTags = externalSelectedTags ?? internalSelectedTags;
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -57,9 +68,18 @@ const SearchFilterPanel = ({ onClose }: Props): React.JSX.Element => {
   }, [onClose]);
 
   const toggleTag = (tag: string) => {
-    setSelectedTags(prev =>
-      prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag],
-    );
+    if (externalOnTagsChange) {
+      // External mode: call the provided callback
+      const newTags = selectedTags.includes(tag)
+        ? selectedTags.filter(t => t !== tag)
+        : [...selectedTags, tag];
+      externalOnTagsChange(newTags);
+    } else {
+      // Internal mode: update internal state
+      setInternalSelectedTags(prev =>
+        prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag],
+      );
+    }
   };
 
   const filteredTags = COMMON_TAGS.filter(
@@ -92,7 +112,7 @@ const SearchFilterPanel = ({ onClose }: Props): React.JSX.Element => {
               selectedTags.map(tag => (
                 <button
                   key={tag}
-                  className="flex items-center gap-1 px-3 py-1 bg-slate-600 rounded-full hover:bg-slate-500 transition"
+                  className="cursor-pointer flex items-center gap-1 px-3 py-1 bg-slate-600 rounded-full hover:bg-slate-500 transition"
                   onClick={() => {
                     toggleTag(tag);
                   }}
@@ -122,7 +142,7 @@ const SearchFilterPanel = ({ onClose }: Props): React.JSX.Element => {
               filteredTags.map(tag => (
                 <button
                   key={tag}
-                  className="px-3 py-1 bg-slate-500 rounded-full hover:bg-slate-400 transition"
+                  className="cursor-pointer px-3 py-1 bg-slate-500 rounded-full hover:bg-slate-400 transition"
                   onClick={() => {
                     toggleTag(tag);
                   }}
@@ -137,7 +157,7 @@ const SearchFilterPanel = ({ onClose }: Props): React.JSX.Element => {
         </div>
 
         <button
-          className="block mx-auto px-4 py-2 bg-slate-800 text-white rounded-xl hover:bg-slate-700 transition"
+          className="cursor-pointer block mx-auto px-4 py-2 bg-slate-800 text-white rounded-xl hover:bg-slate-700 transition"
           onClick={onClose}
         >
           關閉

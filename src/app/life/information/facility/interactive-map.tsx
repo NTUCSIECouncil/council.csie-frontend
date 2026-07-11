@@ -30,13 +30,19 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
   return (
     <div className="flex flex-col items-center w-full px-4">
-      <div className="relative w-full max-w-[1000px] mx-auto mb-8">
+      <div
+        className="relative sm:w-[480px] md:w-[600px] lg:w-full max-w-[1000px] mx-auto mb-8"
+        style={{
+          aspectRatio: `${String(width)} / ${String(height)}`,
+          width: 'clamp(200px, 90vw, 600px)',
+        }}
+      >
         <Image
           src={imageUrl}
           alt="Interactive Map"
-          width={width}
-          height={height}
-          className="w-full h-auto rounded-lg shadow-lg grayscale"
+          fill
+          className="rounded-lg shadow-lg grayscale object-cover"
+          sizes="(max-width: 1000px) 100vw, 1000px"
           priority
         />
 
@@ -77,7 +83,10 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
         ))}
       </div>
 
-      <div className="w-full max-w-[1000px] mx-auto p-6 bg-gray-50 rounded-lg shadow-lg mb-8">
+      <div
+        className="sm:w-[480px] md:w-[600px] lg:w-full max-w-[1000px] mx-auto p-6 bg-gray-50 rounded-lg shadow-lg mb-8"
+        style={{ width: 'clamp(200px, 90vw, 600px)' }}
+      >
         {activePoint ? (
           <div className="flex flex-col md:flex-row gap-6">
             {activePoint.pointImageUrl && (

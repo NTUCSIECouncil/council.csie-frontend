@@ -8,12 +8,14 @@ export const env = createEnv({
     API_BASE_URL: z.url(),
   },
   client: {
+    NEXT_PUBLIC_API_BASE_URL: z.url(),
     NEXT_PUBLIC_ENABLE_DEVELOPING_PAGES: z.stringbool(),
     NEXT_PUBLIC_ENABLE_LOGIN: z.stringbool(),
     NEXT_PUBLIC_ENABLE_HOMEPAGE_BOTTOM: z.stringbool(),
   },
   // For Next.js, we need to destructure client variables:
   experimental__runtimeEnv: {
+    NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
     NEXT_PUBLIC_ENABLE_DEVELOPING_PAGES:
       process.env.NEXT_PUBLIC_ENABLE_DEVELOPING_PAGES,
     NEXT_PUBLIC_ENABLE_LOGIN: process.env.NEXT_PUBLIC_ENABLE_LOGIN,
