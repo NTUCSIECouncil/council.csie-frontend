@@ -133,6 +133,7 @@ On mobile devices, use Chrome or Safari instead.
     ) {
       await signInWithPopup(auth, provider);
       window.location.reload();
+
     }
   };
 
