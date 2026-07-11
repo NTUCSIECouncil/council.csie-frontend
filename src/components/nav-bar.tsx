@@ -103,7 +103,7 @@ const NavBar = (): React.JSX.Element => {
 
         {/* <div className="flex items-center space-x-4"> */}
         {env.NEXT_PUBLIC_ENABLE_LOGIN && (
-          <div className="relative w-[100px]">
+          <div className="relative ml-auto flex justify-end">
             {!isUserLoaded ? (
               <button className="btn text-white px-4 py-2 rounded bg-gray-700 hover:bg-gray-700 opacity-50 cursor-not-allowed">
                 Loading...
@@ -121,19 +121,19 @@ const NavBar = (): React.JSX.Element => {
                 </div>
               </button>
             ) : (
-              <div className="dropdown dropdown-hover">
+              <div className="dropdown">
                 <div
                   tabIndex={0}
                   role="button"
-                  className="btn text-white px-10 py-2 bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0"
+                  className="btn text-white px-5 py-2 bg-gray-700 hover:bg-gray-600 transition-colors duration-200 border-0 rounded-sm"
                 >
-                  <div className="prone text-center tooltip tooltip-bottom inline-flex items-center">
+                  <div className="prone text-center tooltip tooltip-bottom inline-flex items-center justify-center whitespace-nowrap">
                     {currentUser.displayName}
                   </div>
                 </div>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content menu p-2 inset-x-0 bg-gray-800 text-white rounded shadow-lg transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100"
+                  className="dropdown-content menu p-2 mt-1 right-0 left-auto bg-gray-800 text-white rounded shadow-lg transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100"
                 >
                   <li>
                     <div
