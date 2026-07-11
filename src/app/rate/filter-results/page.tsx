@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-import { Filter, FilterOptionKey } from '@/components/filter';
 import Paginator from '@/components/page-selector';
 import Search from '@/components/search';
 import { type Article, type Course, type User } from '@/types/backend';
@@ -8,6 +7,7 @@ import { getFirstParam } from '@/utils/get-first-params';
 import searchRedirectServer from '@/utils/search-redirect-server';
 import serverFetch from '@/utils/server-fetch';
 import ArticleBlock from './article-block';
+import SearchFilterControls from './search-filter-controls';
 
 interface ArticleWithEmbed extends Omit<Article, 'course' | 'creator'> {
   course: Course;
@@ -30,11 +30,22 @@ const Page = async (props: {
   const limit = 10;
   const searchParams = await props.searchParams;
   const keyword = getFirstParam(searchParams.keyword);
+  const tagsParam = getFirstParam(searchParams.tags);
   const index = Math.max(parseInt(getFirstParam(searchParams.index)) | 0, 0);
   const offset = index * limit;
 
   const queryParams = new URLSearchParams();
   queryParams.append('keyword', keyword);
+  if (tagsParam) {
+    try {
+      const tags = JSON.parse(tagsParam) as string[];
+      for (const tag of tags) {
+        if (tag) queryParams.append('tags', tag);
+      }
+    } catch {
+      queryParams.append('tags', tagsParam);
+    }
+  }
   queryParams.append('limit', limit.toString());
   if (offset) queryParams.append('offset', offset.toString());
 
@@ -67,18 +78,16 @@ const Page = async (props: {
       <div className="w-full">
         <form
           action={searchRedirectServer('/rate/filter-results')}
-          className="items-center"
+          className="flex flex-col gap-3 items-begin"
         >
           <Search
             className="my-2 w-full"
             placeholder="輸入關鍵字"
             initialValue={keyword}
           />
-          <div className="flex items-center gap-2 mt-4 mb-2 mx-10 text-sm">
-            <p className="text-base">篩選：</p>
-            <Filter filterKey={FilterOptionKey.GRADE} name="grade" />
-            <Filter filterKey={FilterOptionKey.CATEGORY} name="type" />
-          </div>
+          <SearchFilterControls
+            initialTags={tagsParam ? (JSON.parse(tagsParam) as string[]) : []}
+          />
         </form>
       </div>
       <div className="w-full">
